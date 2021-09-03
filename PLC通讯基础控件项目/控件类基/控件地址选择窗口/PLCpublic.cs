@@ -58,5 +58,15 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         /// <param name="send"></param>
         /// <param name="e"></param>
         public virtual void  KeyPress(object send, KeyPressEventArgs e) => e.Handled = true;
+        /// <summary>
+        /// 加载字体
+        /// </summary>
+        /// <param name="comboBox"></param>
+        public virtual void GetFontSize(UIComboBox comboBox)
+        {
+            for (int i = 1; i < 50; i++)
+                comboBox.Items.Add(i*10);
+            comboBox.SelectedIndex = 0;
+        }
     }
 }

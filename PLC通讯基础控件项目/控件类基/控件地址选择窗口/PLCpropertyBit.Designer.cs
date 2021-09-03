@@ -86,7 +86,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiLabel8 = new Sunny.UI.UILabel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.uiGroupBox31 = new Sunny.UI.UIGroupBox();
-            this.uiColorPicker1 = new Sunny.UI.UIColorPicker();
+            this.uiColorPicker31 = new Sunny.UI.UIColorPicker();
             this.uiLabel20 = new Sunny.UI.UILabel();
             this.uiGroupBox33 = new Sunny.UI.UIGroupBox();
             this.uiButton32 = new Sunny.UI.UIButton();
@@ -1027,7 +1027,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             // 
             // uiGroupBox31
             // 
-            this.uiGroupBox31.Controls.Add(this.uiColorPicker1);
+            this.uiGroupBox31.Controls.Add(this.uiColorPicker31);
             this.uiGroupBox31.Controls.Add(this.uiLabel20);
             this.uiGroupBox31.Controls.Add(this.uiGroupBox33);
             this.uiGroupBox31.Controls.Add(this.uiCheckBox31);
@@ -1057,24 +1057,23 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiGroupBox31.Text = "文字属性";
             this.uiGroupBox31.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // uiColorPicker1
+            // uiColorPicker31
             // 
-            this.uiColorPicker1.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
-            this.uiColorPicker1.FillColor = System.Drawing.Color.White;
-            this.uiColorPicker1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiColorPicker1.Location = new System.Drawing.Point(97, 156);
-            this.uiColorPicker1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiColorPicker1.MinimumSize = new System.Drawing.Size(63, 0);
-            this.uiColorPicker1.Name = "uiColorPicker1";
-            this.uiColorPicker1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiColorPicker1.ReadOnly = true;
-            this.uiColorPicker1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
-            this.uiColorPicker1.Size = new System.Drawing.Size(125, 29);
-            this.uiColorPicker1.Style = Sunny.UI.UIStyle.White;
-            this.uiColorPicker1.TabIndex = 15;
-            this.uiColorPicker1.Text = "uiColorPicker1";
-            this.uiColorPicker1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiColorPicker1.Value = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.uiColorPicker31.DropDownStyle = Sunny.UI.UIDropDownStyle.DropDownList;
+            this.uiColorPicker31.FillColor = System.Drawing.Color.White;
+            this.uiColorPicker31.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiColorPicker31.Location = new System.Drawing.Point(97, 156);
+            this.uiColorPicker31.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiColorPicker31.MinimumSize = new System.Drawing.Size(63, 0);
+            this.uiColorPicker31.Name = "uiColorPicker31";
+            this.uiColorPicker31.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
+            this.uiColorPicker31.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
+            this.uiColorPicker31.Size = new System.Drawing.Size(125, 29);
+            this.uiColorPicker31.Style = Sunny.UI.UIStyle.White;
+            this.uiColorPicker31.TabIndex = 15;
+            this.uiColorPicker31.Text = "uiColorPicker1";
+            this.uiColorPicker31.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiColorPicker31.Value = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             // 
             // uiLabel20
             // 
@@ -1160,15 +1159,11 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox34.DataSource = null;
             this.uiComboBox34.FillColor = System.Drawing.Color.White;
             this.uiComboBox34.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboBox34.Items.AddRange(new object[] {
-            "对对对",
-            "对对对"});
             this.uiComboBox34.Location = new System.Drawing.Point(304, 118);
             this.uiComboBox34.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox34.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox34.Name = "uiComboBox34";
             this.uiComboBox34.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox34.ReadOnly = true;
             this.uiComboBox34.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox34.Size = new System.Drawing.Size(125, 29);
             this.uiComboBox34.Style = Sunny.UI.UIStyle.White;
@@ -1191,15 +1186,11 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox33.DataSource = null;
             this.uiComboBox33.FillColor = System.Drawing.Color.White;
             this.uiComboBox33.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboBox33.Items.AddRange(new object[] {
-            "对对对",
-            "对对对"});
             this.uiComboBox33.Location = new System.Drawing.Point(96, 118);
             this.uiComboBox33.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox33.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox33.Name = "uiComboBox33";
             this.uiComboBox33.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox33.ReadOnly = true;
             this.uiComboBox33.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox33.Size = new System.Drawing.Size(125, 29);
             this.uiComboBox33.Style = Sunny.UI.UIStyle.White;
@@ -1222,15 +1213,11 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox32.DataSource = null;
             this.uiComboBox32.FillColor = System.Drawing.Color.White;
             this.uiComboBox32.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboBox32.Items.AddRange(new object[] {
-            "对对对",
-            "对对对"});
             this.uiComboBox32.Location = new System.Drawing.Point(304, 78);
             this.uiComboBox32.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox32.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox32.Name = "uiComboBox32";
             this.uiComboBox32.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox32.ReadOnly = true;
             this.uiComboBox32.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox32.Size = new System.Drawing.Size(125, 29);
             this.uiComboBox32.Style = Sunny.UI.UIStyle.White;
@@ -1258,29 +1245,24 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiColorPicker30.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiColorPicker30.Name = "uiColorPicker30";
             this.uiColorPicker30.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiColorPicker30.ReadOnly = true;
             this.uiColorPicker30.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiColorPicker30.Size = new System.Drawing.Size(125, 29);
             this.uiColorPicker30.Style = Sunny.UI.UIStyle.White;
             this.uiColorPicker30.TabIndex = 4;
             this.uiColorPicker30.Text = "uiColorPicker1";
             this.uiColorPicker30.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiColorPicker30.Value = System.Drawing.Color.LightGray;
+            this.uiColorPicker30.Value = System.Drawing.Color.DimGray;
             // 
             // uiComboBox31
             // 
             this.uiComboBox31.DataSource = null;
             this.uiComboBox31.FillColor = System.Drawing.Color.White;
             this.uiComboBox31.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboBox31.Items.AddRange(new object[] {
-            "对对对",
-            "对对对"});
             this.uiComboBox31.Location = new System.Drawing.Point(96, 37);
             this.uiComboBox31.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox31.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox31.Name = "uiComboBox31";
             this.uiComboBox31.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox31.ReadOnly = true;
             this.uiComboBox31.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox31.Size = new System.Drawing.Size(335, 29);
             this.uiComboBox31.Style = Sunny.UI.UIStyle.White;
@@ -1415,15 +1397,11 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox30.DataSource = null;
             this.uiComboBox30.FillColor = System.Drawing.Color.White;
             this.uiComboBox30.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboBox30.Items.AddRange(new object[] {
-            "对对对",
-            "对对对"});
             this.uiComboBox30.Location = new System.Drawing.Point(98, 32);
             this.uiComboBox30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox30.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox30.Name = "uiComboBox30";
             this.uiComboBox30.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox30.ReadOnly = true;
             this.uiComboBox30.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox30.Size = new System.Drawing.Size(173, 29);
             this.uiComboBox30.Style = Sunny.UI.UIStyle.White;
@@ -1584,7 +1562,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         private Sunny.UI.UIGroupBox uiGroupBox33;
         private Sunny.UI.UIButton uiButton32;
         private Sunny.UI.UIRichTextBox uiRichTextBox30;
-        private Sunny.UI.UIColorPicker uiColorPicker1;
+        private Sunny.UI.UIColorPicker uiColorPicker31;
         private Sunny.UI.UILabel uiLabel20;
     }
 }

@@ -112,9 +112,9 @@ namespace PLC通讯基础控件项目.控件类基
         bool Speech { get; set; }
         //标签控制-----
         /// <summary>
-        /// 文字状态--0--1--
+        /// 文字状态--0-字体对齐方式
         /// </summary>
-        int TextState { get; set; }
+        string Textalign_0 { get; set; }
         /// <summary>
         /// 文字属性--字体-尺寸-
         /// </summary>
@@ -131,6 +131,10 @@ namespace PLC通讯基础控件项目.控件类基
         /// 文本文字是否有下划线
         /// </summary>
         bool TextUnderline_0 { get; set; }
+        /// <summary>
+        /// 文字状态--0-字体对齐方式
+        /// </summary>
+        string Textalign_1 { get; set; }
         /// <summary>
         /// 文字属性--字体-尺寸-
         /// </summary>

@@ -65,6 +65,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public Color TextColor_1 { get; set; } = Color.White;
         public string TextContent_1 { get; set; } = "0";
         public System.Threading.Timer PLCTimer { get; set; }
+        public string Textalign_0 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Textalign_1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         #endregion
 
     }
