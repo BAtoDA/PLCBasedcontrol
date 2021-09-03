@@ -234,5 +234,19 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         /// </summary>
         Regression
     }
+    /// <summary>
+    /// 安全操作行为模式
+    /// </summary>
+    public enum Pattern
+    { 
+        ON,OFF
+    }
+    /// <summary>
+    /// 用户控件操作类型等级枚举
+    /// </summary>
+    public enum OperatingClass
+    {
+        A,B,C,D
+    }
 }
 

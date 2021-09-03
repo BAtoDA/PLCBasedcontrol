@@ -634,6 +634,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiGroupBox23.TabIndex = 3;
             this.uiGroupBox23.Text = "声音";
             this.uiGroupBox23.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox23.Visible = false;
             // 
             // uiCheckBox23
             // 
@@ -673,6 +674,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiGroupBox22.TabIndex = 2;
             this.uiGroupBox22.Text = "用户限制";
             this.uiGroupBox22.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox22.Visible = false;
             // 
             // uiCheckBox22
             // 
@@ -720,7 +722,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox26.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox26.Name = "uiComboBox26";
             this.uiComboBox26.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox26.ReadOnly = true;
             this.uiComboBox26.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox26.Size = new System.Drawing.Size(265, 29);
             this.uiComboBox26.Style = Sunny.UI.UIStyle.White;
@@ -765,6 +766,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiGroupBox21.TabIndex = 1;
             this.uiGroupBox21.Text = "开启/关闭";
             this.uiGroupBox21.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiGroupBox21.Visible = false;
             // 
             // uiComboBox25
             // 
@@ -776,7 +778,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox25.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox25.Name = "uiComboBox25";
             this.uiComboBox25.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox25.ReadOnly = true;
             this.uiComboBox25.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox25.Size = new System.Drawing.Size(265, 29);
             this.uiComboBox25.Style = Sunny.UI.UIStyle.White;
@@ -805,7 +806,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox24.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox24.Name = "uiComboBox24";
             this.uiComboBox24.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox24.ReadOnly = true;
             this.uiComboBox24.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox24.Size = new System.Drawing.Size(106, 29);
             this.uiComboBox24.Style = Sunny.UI.UIStyle.White;
@@ -852,7 +852,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox23.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox23.Name = "uiComboBox23";
             this.uiComboBox23.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox23.ReadOnly = true;
             this.uiComboBox23.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox23.Size = new System.Drawing.Size(106, 29);
             this.uiComboBox23.Style = Sunny.UI.UIStyle.White;
@@ -870,7 +869,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox22.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox22.Name = "uiComboBox22";
             this.uiComboBox22.Padding = new System.Windows.Forms.Padding(0, 0, 30, 2);
-            this.uiComboBox22.ReadOnly = true;
             this.uiComboBox22.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiComboBox22.Size = new System.Drawing.Size(265, 29);
             this.uiComboBox22.Style = Sunny.UI.UIStyle.White;
@@ -1267,7 +1265,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiColorPicker30.TabIndex = 4;
             this.uiColorPicker30.Text = "uiColorPicker1";
             this.uiColorPicker30.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiColorPicker30.Value = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.uiColorPicker30.Value = System.Drawing.Color.LightGray;
             // 
             // uiComboBox31
             // 

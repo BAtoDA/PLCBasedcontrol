@@ -19,7 +19,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     /// <summary>
     /// 用于实现PLC属性设置菜单
     /// </summary>
-    class PLCpropertyClass
+    class PLCpropertyClass: PLCpublic
     {
         /// <summary>
         /// Bit位构造函数
@@ -94,39 +94,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             writeplc.KeyPress += KeyPress;
             writePLCfunction.KeyPress += KeyPress;
             pattern.KeyPress += KeyPress;
-            void KeyPress(object send, KeyPressEventArgs e) => e.Handled = true;
-        }
-        /// <summary>
-        /// 读取指定名称PLC对应Bit类型的枚举值
-        /// </summary>
-        /// <param name="comboBox">需要填充下拉菜单</param>
-        /// <param name="EnumName">对应PLC名称</param>
-        private void GetPLCBitName(UIComboBox comboBox,string EnumName)
-        {
-            try
-            {
-                var EnumType = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + EnumName + "_bit");
-                Enum.GetNames(EnumType).ForEach(Reuq =>
-                {
-                    comboBox.Items.Add(Reuq);
-                });
-                comboBox.SelectedIndex = 0;
-            }
-            catch { }
-        }
-        /// <summary>
-        /// 读取指定枚举名称并且填充到下拉菜单中
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="comboBox"></param>
-        private void GetPLCEnumName<T>(UIComboBox comboBox)where T :Enum
-        {
-            comboBox.Items.Clear();
-            Enum.GetNames(typeof(T)).ForEach(Reuq => 
-            {
-                comboBox.Items.Add(Reuq);           
-            });
-            comboBox.SelectedIndex = 0;
         }
         
         /// <summary>
