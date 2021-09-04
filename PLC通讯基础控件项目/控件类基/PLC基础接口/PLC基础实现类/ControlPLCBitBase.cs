@@ -18,26 +18,28 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     /// <summary>
     /// 实现基本控件类--PLC刷新--文字事件等处理
     /// </summary>
-    public partial class ControlPLCBitBase : Control, PLCBitClassBase, PLCBitproperty
+    public partial class ControlPLCBitBase : Control
     {
         #region 实现基本接口  
         //基础外部文本颜色 与 内容控制
-        public Color backgroundColor_0 { get; set; }
-        public Color TextColor_0 { get; set; }
-        public string TextContent_0 { get; set; }
-        public Color backgroundColor_1 { get; set; }
-        public Color TextColor_1 { get; set; }
-        public string TextContent_1 { get; set; }
-        public System.Threading.Timer PLCTimer { get; set; }
-        public PLCBitselectRealize pLCBitselectRealize { get; set; } = new PLCBitselectRealize();
-        public PLCSet APLC { get; set; }
+        /// <summary>
+        /// 控件保存的参数
+        /// </summary>
+        PLCBitClassBase pLCBitClassBase;
+        /// <summary>
+        /// 控件外部文字已经背景颜色等参数
+        /// </summary>
+        PLCBitproperty pLCBitproperty;
         #endregion
         /// <summary>
         /// 构造函数
         /// </summary>
-        public ControlPLCBitBase()
+        public ControlPLCBitBase(Control PlcControl)
         {
-
+            if (!(PlcControl is PLCBitClassBase)) throw new Exception($"{PlcControl.GetType().Name} 不实现：PLCBitBase接口");
+            if (!(PlcControl is PLCBitproperty)) throw new Exception($"{PlcControl.GetType().Name} 不实现：PLCBitproperty接口");
+            pLCBitClassBase = PlcControl as PLCBitClassBase;
+            pLCBitproperty = PlcControl as PLCBitproperty;
         }
 
         public event EventHandler Modification;

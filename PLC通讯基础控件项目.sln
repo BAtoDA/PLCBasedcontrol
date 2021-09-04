@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLC通讯基础控件项目", "PLC通讯基础控件项目\PLC通讯基础控件项目.csproj", "{37A9E0C4-AE41-40A2-A05B-2DFEDAF94655}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLC通讯基础控件项目", "PLC通讯基础控件项目\PLC通讯基础控件项目.csproj", "{37A9E0C4-AE41-40A2-A05B-2DFEDAF94655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLC通讯库", "PLC通讯库\PLC通讯库.csproj", "{31BAB9B3-AFE9-4858-BE23-628CEE72DBA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{37A9E0C4-AE41-40A2-A05B-2DFEDAF94655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37A9E0C4-AE41-40A2-A05B-2DFEDAF94655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37A9E0C4-AE41-40A2-A05B-2DFEDAF94655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31BAB9B3-AFE9-4858-BE23-628CEE72DBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31BAB9B3-AFE9-4858-BE23-628CEE72DBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31BAB9B3-AFE9-4858-BE23-628CEE72DBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31BAB9B3-AFE9-4858-BE23-628CEE72DBA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

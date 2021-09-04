@@ -15,4 +15,8 @@
     <PackageReference Include="SunnyUI" Version="3.0.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="控件类基\PLC基础接口\PLC基础实现类\PLCBit控件实现类\" />
+  </ItemGroup>
+
 </Project>
