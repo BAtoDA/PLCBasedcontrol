@@ -18,7 +18,7 @@ namespace PLC通讯基础控件项目
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PLCpropertyBit());
+            Application.Run(new Form1());
         }
     }
 }

@@ -167,6 +167,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiButton2.StyleCustomMode = true;
             this.uiButton2.TabIndex = 8;
             this.uiButton2.Text = "取消";
+            this.uiButton2.Click += new System.EventHandler(this.uiButton2_Click);
             // 
             // uiTabControl1
             // 
@@ -1443,6 +1444,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiButton1.StyleCustomMode = true;
             this.uiButton1.TabIndex = 7;
             this.uiButton1.Text = "确定";
+            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
             // 
             // errorProvider1
             // 
@@ -1455,6 +1457,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.ClientSize = new System.Drawing.Size(464, 753);
             this.Controls.Add(this.panel1);
             this.Name = "PLCpropertyBit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PLCpropertyBit";
             this.Load += new System.EventHandler(this.PLCproperty_Load);
             this.panel1.ResumeLayout(false);

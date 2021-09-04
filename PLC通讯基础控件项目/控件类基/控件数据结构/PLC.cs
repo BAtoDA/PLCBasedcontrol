@@ -246,7 +246,12 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     /// </summary>
     public enum OperatingClass
     {
-        A,B,C,D
+        A,B,C, D
     }
+    public enum PLCSet
+    { 
+     Set1,Set0
+    }
+
 }
 

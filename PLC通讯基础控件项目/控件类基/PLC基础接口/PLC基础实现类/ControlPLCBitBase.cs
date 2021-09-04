@@ -29,8 +29,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public Color TextColor_1 { get; set; }
         public string TextContent_1 { get; set; }
         public System.Threading.Timer PLCTimer { get; set; }
-        public PLCBitselectRealize pLCBitselectRealize { get; set; }
-        public int PLCs { get; set; }
+        public PLCBitselectRealize pLCBitselectRealize { get; set; } = new PLCBitselectRealize();
+        public PLCSet APLC { get; set; }
         #endregion
         /// <summary>
         /// 构造函数

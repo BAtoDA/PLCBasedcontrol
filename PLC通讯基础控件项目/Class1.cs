@@ -12,53 +12,79 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using PLC通讯基础控件项目.控件类基.PLC基础接口;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
+using PLC通讯基础控件项目.控件类基.控件数据结构;
 
 namespace PLC通讯基础控件项目
 {
     [ToolboxItem(true)]
     [Browsable(true)]
+
     class Class1 : Button, PLCBitClassBase, PLCBitproperty
     {
-        [Description("选择PLC类型\r\n默认三菱PLC"), Category("PLC类型")]
         [Browsable(false)]
-        public PLCBitselectRealize pLCBitselectRealize 
+        public event EventHandler Modification;
+        [Description("是否启用PLC功能"), Category("PLC类型")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        public PLCBitselectRealize pLCBitselectRealize
         {
-            get;set;
+            get => pLCBitselects1;
+            set => pLCBitselects1 = value;
         }
-        public int PLCs 
+        private PLCBitselectRealize pLCBitselects1 { get; set; } = new PLCBitselectRealize();
+        [Description("选择PLC类型\r\n默认三菱PLC"), Category("PLC类型")]
+        [Browsable(true)]
+        public PLCSet APLC
         {
             get => PLCs1;
             set
             {
-                this.Modification += new EventHandler(Modifications_Eeve);
-                this.Modification(this, new EventArgs());
+                if (plc_Enable)
+                {
+                    this.Modification += new EventHandler(Modifications_Eeve);
+                    this.Modification(this, new EventArgs());
+                    this.Modification -= new EventHandler(Modifications_Eeve);
+                    return;
+                }
                 this.Modification -= new EventHandler(Modifications_Eeve);
             }
 
         }
-        private int PLCs1 = 0;
+        private PLCSet PLCs1 = 0;
+        [Description("是否启用PLC功能"), Category("PLC类型")]
+        public bool PLC_Enable
+        {
+            get => plc_Enable;
+            set => plc_Enable = value;
+        }
+        private bool plc_Enable = false;
         [Browsable(false)]
-        public Color backgroundColor_0 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Color backgroundColor_0 { get; set; }
         [Browsable(false)]
-        public Color TextColor_0 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Color TextColor_0 { get; set; }
         [Browsable(false)]
-        public string TextContent_0 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string TextContent_0 { get; set; }
         [Browsable(false)]
-        public Color backgroundColor_1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Color backgroundColor_1 { get; set; }
         [Browsable(false)]
-        public Color TextColor_1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Color TextColor_1 { get; set; }
         [Browsable(false)]
-        public string TextContent_1 { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string TextContent_1 { get; set; }
         [Browsable(false)]
-        public System.Threading.Timer PLCTimer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        [Browsable(false)]
-        public event EventHandler Modification;
+        public System.Threading.Timer PLCTimer { get; set; }
 
+        public void SetKeyName(int index, string name)
+        {
+
+        }
         public void Modifications_Eeve(object send, EventArgs e)
         {
-            MessageBox.Show("运行了");
+            PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(this.pLCBitselectRealize) ;
+            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+            pLCpropertyBit.ShowDialog();
         }
     }
 }

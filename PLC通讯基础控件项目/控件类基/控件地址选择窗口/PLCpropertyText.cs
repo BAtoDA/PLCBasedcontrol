@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Text;
+using PLC通讯基础控件项目.控件类基.PLC基础接口;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using Sunny.UI;
 
@@ -24,7 +26,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         /// <summary>
         /// 状态0字体背景颜色参数
         /// </summary>
-        public PLCselectTextBase TextBase { get; set; } = new PLCselectTextBase();
+        public PLCBitselectRealize TextBase { get; set; } = new PLCBitselectRealize();
         /// <summary>
         /// 状态暂时保存
         /// </summary>
@@ -43,7 +45,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         /// <param name="TextBase"></param>
         public PLCpropertyText(UIComboBox Textstate, UIButton Text0, UIButton Text1, UIComboBox FontText, UIComboBox FontSize, UIComboBox Fontalign
             , UIComboBox Fontflicker, UIRichTextBox TextrichTextBox, UIColorPicker TextColor, UIColorPicker BackColor, UICheckBox TextFont1, UICheckBox TextFont2
-            , PLCselectTextBase TextBase)
+            , PLCBitselectRealize TextBase,UIButton SetplcButton)
         {
             //填充标签状态
             for (int i = 0; i < 2; i++)
@@ -72,7 +74,10 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             Textstate.TextChanged += ((send, e) => { PLCselectBasee(Textstate, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2); });
             Text0.Click+= ((send, e) => { Textstate.Text = "0"; PLCselectBasee(Textstate, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2);  });
             Text1.Click += ((send, e) => { Textstate.Text = "1"; PLCselectBasee(Textstate, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2);});
-
+            SetplcButton.Click += ((send, e) =>
+              {
+                  TextSwitch(PLCselectTexte, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2);
+              });
         }
         /// <summary>
         /// 用户切换时切换以及保存数据

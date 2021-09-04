@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using Sunny.UI;
 
@@ -21,7 +22,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     class PLCpropertysafety:PLCpublic
     {
         public PLCpropertysafety(UIComboBox MinCombobox,UICheckBox SafetyCheck,UIComboBox MaxCombobox, UIComboBox readwriteplc, UIComboBox readwritePLCfunction,
-            UITextBox readwriteaddress,UIComboBox PLCEnable,UIComboBox PlcBehavior,UIComboBox Operation,UIGroupBox[] groupBoxes)
+            UITextBox readwriteaddress,UIComboBox PLCEnable,UIComboBox PlcBehavior,UIComboBox Operation,UIGroupBox[] groupBoxes,UICheckBox[] Safety,UICheckBox Voice,UIButton SETplcButton ,PLCBitselectRealize PlcBitselect)
         {
             //填充安全操作时间
             RandomTime(MinCombobox);
@@ -66,7 +67,38 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             PLCEnable.KeyPress += KeyPress;
             PlcBehavior.KeyPress += KeyPress;
             Operation.KeyPress += KeyPress;
-            
+            //----------处理保存值-------
+            GetPLCValue();
+            void GetPLCValue()
+            {
+                MinCombobox.Text = PlcBitselect.keyMinTime.ToString();
+                MaxCombobox.Text = PlcBitselect.AwaitTime.ToString();
+                SafetyCheck.Checked = Convert.ToBoolean(PlcBitselect.SafetyPattern);
+                readwriteplc.Text = PlcBitselect.SafetyPLC.ToString();
+                readwritePLCfunction.Text = PlcBitselect.SafetyFunction ?? "M";
+                readwriteaddress.Text = PlcBitselect.WrSafetyAddress ?? "0";
+                PLCEnable.SelectedIndex = 0;
+                PlcBehavior.SelectedIndex = PlcBitselect.SafetyBehaviorPattern;
+                Operation.SelectedIndex = PlcBitselect.SafetyCategory;
+                Safety[0].Checked = PlcBitselect.NoAccessConceal;
+                Safety[1].Checked = PlcBitselect.NoAccessForm;
+                Voice.Checked = PlcBitselect.Speech;
+            }
+            SETplcButton.Click += ((send, e) =>
+              {
+                  PlcBitselect.keyMinTime =Convert.ToInt32(MinCombobox.Text);
+                  PlcBitselect.AwaitTime = Convert.ToInt32(MaxCombobox.Text);
+                  PlcBitselect.SafetyPattern = Convert.ToInt32(SafetyCheck.Checked);
+                  PlcBitselect.SafetyPLC =(PLC)Enum.Parse(typeof(PLC),readwriteplc.Text);
+                  PlcBitselect.SafetyFunction = readwritePLCfunction.Text;
+                  PlcBitselect.WrSafetyAddress = readwriteaddress.Text;
+                  PlcBitselect.SafetyBehaviorPattern = PlcBehavior.SelectedIndex;
+                  PlcBitselect.SafetyCategory = Operation.SelectedIndex;
+                  PlcBitselect.NoAccessConceal = Safety[0].Checked;
+                  PlcBitselect.NoAccessForm = Safety[1].Checked;
+                  PlcBitselect.Speech = Voice.Checked;
+              });
+
         }
         /// <summary>
         /// 自动产生时间间隔
