@@ -23,10 +23,11 @@ namespace PLC通讯基础控件项目
     [ToolboxItem(true)]
     [Browsable(true)]
 
-    class Class1 : Button, PLCBitClassBase, PLCBitproperty
+    class Class1 : Button, PLCBitClassBase, PLCBitproperty, ICloneable
     {
         [Browsable(false)]
         public event EventHandler Modification;
+        [Browsable(false)]
         [Description("是否启用PLC功能"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
         public PLCBitselectRealize pLCBitselectRealize
@@ -76,15 +77,28 @@ namespace PLC通讯基础控件项目
         [Browsable(false)]
         public System.Threading.Timer PLCTimer { get; set; }
 
-        public void SetKeyName(int index, string name)
-        {
-
-        }
         public void Modifications_Eeve(object send, EventArgs e)
         {
+            var Copy = this.pLCBitselectRealize.GetType().GetProperties();
+            PLCBitselectRealize bitselectRealize = new PLCBitselectRealize();
+            var CopyTo = bitselectRealize.GetType().GetProperties();
+            for(int i=0;i<Copy.Length;i++)
+            {
+                if (Copy[i].Name == CopyTo[i].Name)
+                    CopyTo[i] = Copy[i];
+            }
             PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(this.pLCBitselectRealize) ;
             pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
             pLCpropertyBit.ShowDialog();
+            if(!pLCpropertyBit.Save)
+            {
+                this.pLCBitselectRealize = bitselectRealize;
+            }
+        }
+
+        public object Clone()
+        {
+            return this;
         }
     }
 }

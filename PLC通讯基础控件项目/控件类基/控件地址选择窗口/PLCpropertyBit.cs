@@ -18,6 +18,10 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         /// 传入的控件参数
         /// </summary>
         private PLCBitselectRealize PlcBitselect;
+        /// <summary>
+        /// 标识是否保存数据
+        /// </summary>
+        public bool Save;
         public PLCpropertyBit(PLCBitselectRealize ControlPlcBit)
         {
             InitializeComponent();
@@ -49,6 +53,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
 
         private void uiButton1_Click(object sender, EventArgs e)
         {
+            Save = true;
             this.Close();
         }
     }

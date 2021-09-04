@@ -76,7 +76,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             Text1.Click += ((send, e) => { Textstate.Text = "1"; PLCselectBasee(Textstate, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2);});
             SetplcButton.Click += ((send, e) =>
               {
-                  TextSwitch(PLCselectTexte, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2);
+                  PLCselectBasee(Textstate, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2);
               });
         }
         /// <summary>

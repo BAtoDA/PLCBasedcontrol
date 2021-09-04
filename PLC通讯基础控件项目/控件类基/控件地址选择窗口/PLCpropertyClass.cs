@@ -110,7 +110,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 readwritePLCfunction.Text = pLCBitselect.ReadWriteFunction != null ? pLCBitselect.ReadWriteFunction : "M";
                 readwriteaddress.Text = pLCBitselect.ReadWriteAddress != null ? pLCBitselect.ReadWriteAddress : "0";
                 Out.Checked = pLCBitselect.OutReverse;
-                writeplc.Text = pLCBitselect.ReadWritePLC.ToString();
+                writeplc.Text = pLCBitselect.WritePLC.ToString();
                 writePLCfunction.Text = pLCBitselect.WriteFunction != null ? pLCBitselect.WriteFunction : "M";
                 writeaddress.Text = pLCBitselect.WriteAddress != null ? pLCBitselect.WriteAddress : "0";
                 loosenOut.Checked = pLCBitselect.LoosenOut;
