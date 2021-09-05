@@ -19,7 +19,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     /// 主要实现PLCBitproperty接口
     /// 用于处理控件选择保存0 1 控件文本背景颜色等参数
     /// </summary>
-    class PLCselectTextBase : PLCBitproperty
+    sealed class PLCselectTextBase : PLCBitproperty
     {
         public Color backgroundColor_0 { get; set; } = Color.FromArgb(80, 160, 255);
         public Color TextColor_0 { get; set; } = Color.FromName("LightGray");

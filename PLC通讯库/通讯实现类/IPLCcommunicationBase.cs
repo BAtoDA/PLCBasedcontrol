@@ -12,13 +12,13 @@ using HslCommunication.Profinet.Melsec;
 using PLC通讯库.通讯基础接口;
 using PLC通讯库.通讯枚举;
 
-namespace Bottom_Control.PLC通讯协议
+namespace PLC通讯库.通讯实现类
 {
     /// <summary>
     /// 继承接口IPLC_interface 
     /// PLC通讯类基实现类
     /// </summary>
-    class IPLCcommunicationBase : PLC_public_Class, IPLC_interface
+    public class IPLCcommunicationBase : PLC_public_Class, IPLC_interface
     {
         /// <summary>
         /// IP地址

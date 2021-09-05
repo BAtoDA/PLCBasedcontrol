@@ -20,7 +20,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     /// <summary>
     /// 用于实现PLC属性设置菜单
     /// </summary>
-    class PLCpropertyClass: PLCpublic
+    sealed class  PLCpropertyClass: PLCpublic
     {
         /// <summary>
         /// Bit位构造函数

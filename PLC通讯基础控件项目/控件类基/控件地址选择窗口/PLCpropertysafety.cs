@@ -19,7 +19,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     /// <summary>
     /// 用于处理控件属性安全选择页
     /// </summary>
-    class PLCpropertysafety:PLCpublic
+    sealed class PLCpropertysafety:PLCpublic
     {
         public PLCpropertysafety(UIComboBox MinCombobox,UICheckBox SafetyCheck,UIComboBox MaxCombobox, UIComboBox readwriteplc, UIComboBox readwritePLCfunction,
             UITextBox readwriteaddress,UIComboBox PLCEnable,UIComboBox PlcBehavior,UIComboBox Operation,UIGroupBox[] groupBoxes,UICheckBox[] Safety,UICheckBox Voice,UIButton SETplcButton ,PLCBitselectRealize PlcBitselect)

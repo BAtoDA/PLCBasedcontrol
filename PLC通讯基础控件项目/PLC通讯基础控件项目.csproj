@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>PLC通讯基础控件项目.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,10 @@
 
   <ItemGroup>
     <Folder Include="控件类基\PLC基础接口\PLC基础实现类\PLCBit控件实现类\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PLC通讯库\PLC通讯库.csproj" />
   </ItemGroup>
 
 </Project>

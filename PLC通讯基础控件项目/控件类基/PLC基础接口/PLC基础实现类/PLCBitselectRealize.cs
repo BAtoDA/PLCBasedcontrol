@@ -18,7 +18,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     /// 主要用于处理位控件保存参数使用
     /// </summary>
     [Serializable]
-    public class PLCBitselectRealize : PLCBitBase, PLCBitproperty
+    public sealed class PLCBitselectRealize : PLCBitBase, PLCBitproperty
     {
         #region 实现基本接口
         //--基础PLC参数部分

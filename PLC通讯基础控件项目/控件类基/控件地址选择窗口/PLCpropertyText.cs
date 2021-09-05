@@ -21,7 +21,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     /// <summary>
     /// 用于处理控件文字选择页面加载类
     /// </summary>
-    class PLCpropertyText : PLCpublic
+    sealed class PLCpropertyText : PLCpublic
     {
         /// <summary>
         /// 状态0字体背景颜色参数
