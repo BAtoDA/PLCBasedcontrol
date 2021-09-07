@@ -1,7 +1,7 @@
 ﻿
 namespace PLC通讯基础控件项目
 {
-    partial class Form1
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.
@@ -30,29 +30,11 @@ namespace PLC通讯基础控件项目
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
-            this.SuspendLayout();
-            // 
-            // plcControlsPreferences1
-            // 
-            this.plcControlsPreferences1.Location = new System.Drawing.Point(0, 0);
-            this.plcControlsPreferences1.Name = "plcControlsPreferences1";
-            this.plcControlsPreferences1.TabIndex = 0;
-            this.plcControlsPreferences1.Text = "plcControlsPreferences1";
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 450);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "Form2";
         }
 
         #endregion
-
-        private PLCControlsPreferences plcControlsPreferences1;
     }
 }

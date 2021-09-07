@@ -120,8 +120,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             SetPlcButton.Click += ((Send, e) =>
               {
                   pLCBitselect.description = Description.Text;
-                  pLCBitselect.BitPattern = Alamp.Checked;
-                  pLCBitselect.BitPattern = Aswitch.Checked;
+                  pLCBitselect.BitPattern = Alamp.Checked  ? false: true ;
+                  //pLCBitselect.BitPattern = Aswitch.Checked;
                   pLCBitselect.ReadWrite = readwrite.Checked;
                   pLCBitselect.ReadWritePLC = (PLC)Enum.Parse(typeof(PLC), readwriteplc.Text);
                   pLCBitselect.ReadWriteFunction = readwritePLCfunction.Text;
