@@ -104,7 +104,7 @@ namespace PLC通讯基础控件项目
             this.daButton1.pLCBitselectRealize.SafetyFunction = "Y";
             this.daButton1.pLCBitselectRealize.SafetyPattern = 1;
             this.daButton1.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
-            this.daButton1.pLCBitselectRealize.Speech = false;
+            this.daButton1.pLCBitselectRealize.Speech = true;
             this.daButton1.pLCBitselectRealize.Textalign_0 = "TopLeft";
             this.daButton1.pLCBitselectRealize.Textalign_1 = "TopLeft";
             this.daButton1.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;

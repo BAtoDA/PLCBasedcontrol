@@ -26,7 +26,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     /// <summary>
     /// 实现基本控件类--PLC刷新--文字事件等处理
     /// </summary>
-    public sealed partial class ControlPLCBitBase 
+    public sealed partial class ControlPLCBitBase : BasepublicClass
     {
         #region 实现基本接口  
         //基础外部文本颜色 与 内容控制
@@ -79,7 +79,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 pLCBitproperty.PLCTimer.Change(500, 300);
             }
             //---------安全操作模式----------
-            PLCsafetypattern = pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? Getsafetypattern() : Safetypattern.Nooperation;
+            PLCsafetypattern = pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? Getsafetypattern(pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern) : Safetypattern.Nooperation;
         }
         /// <summary>
         /// 处理点击事件
@@ -88,6 +88,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <param name="e"></param>
         private void ClickPLC(object send,EventArgs e)
         {
+            //语音播报系统
+            if(pLCBitClassBase.pLCBitselectRealize.Speech&& pLCBitClassBase.pLCBitselectRealize.OperationAffirm)
+            {
+                Voicebroadcast($"{this.PlcControl.Name}已触发");
+            }
             //判断改控件是否只读
             if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut|| PLCsafetypattern==Safetypattern.Close) return;
             PLCoopErr();
@@ -275,13 +280,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 {
                     case 0:
                         if (State)
-                            PLCsafetypattern = Getsafetypattern();
+                            PLCsafetypattern = Getsafetypattern(pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern);
                         else
                             PLCsafetypattern = Safetypattern.Nooperation;
                         break;
                     case 1:
                         if (!State)
-                            PLCsafetypattern = Getsafetypattern();
+                            PLCsafetypattern = Getsafetypattern(pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern);
                         else
                             PLCsafetypattern = Safetypattern.Nooperation;
                         break;
@@ -290,20 +295,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             else
                 PLCsafetypattern = Safetypattern.Nooperation;
         }
-       private Safetypattern Getsafetypattern()
-        {
-            switch (pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern)
-            {
-                case 0:
-                    return Safetypattern.Close;
-                case 1:
-                    return Safetypattern.Hide;
-                case 2:
-                    return Safetypattern.Gray;
-                case 3:
-                    return Safetypattern.Nooperation;
-            }
-            return Safetypattern.Nooperation;
-        }
+  
     }
 }
