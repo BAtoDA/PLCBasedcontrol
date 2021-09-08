@@ -16,7 +16,7 @@ namespace PLC通讯基础控件项目.控件类基.控件安全对象池
     class ObjectPool<T>:IDisposable
     {
         //并发安全集合，存放可用的实例
-        private static ConcurrentBag<T> _objects;
+        public volatile static ConcurrentBag<T> _objects;
         //索引所有实例，以便最终释放
         private static List<T> _AllObject;
         private static Func<T> _objectGenerator;

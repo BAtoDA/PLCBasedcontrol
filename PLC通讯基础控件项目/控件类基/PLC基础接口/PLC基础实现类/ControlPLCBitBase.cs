@@ -46,6 +46,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 控件对象
         /// </summary>
         Control PlcControl;
+        /// <summary>
+        /// 复归型按钮标志位
+        /// </summary>
+        private volatile bool State = false;
         #endregion
         /// <summary>
         /// 构造函数
@@ -62,7 +66,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //---------处理控件与PLC通讯事件---------
             if (((dynamic)PlcControl).PLC_Enable)
             {
-                PlcControl.Click += ClickPLC;
+                PlcControl.MouseDown += ClickPLC;
                 PlcControl.MouseUp += MouseUpPLC;
                 pLCBitproperty.PLCTimer = new System.Threading.Timer(new TimerCallback((s) =>
                 {
@@ -84,6 +88,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //根据设定的模式进行写入PLC操作
             //向对象池申请 
             var Poss = ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.GetObject();
+            //判断对象池是否为空
+            if (ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>._objects == null) return;
             //开始测量定时
             Poss.Item1.Start();
             //获取控件鼠标松开事件
@@ -122,11 +128,34 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //根据设定的模式进行写入PLC操作
             if (pLCBitClassBase.pLCBitselectRealize.LoosenOut)
             {
-                PLCSwitch(pLCBitClassBase.pLCBitselectRealize.Pattern);
+                if (pLCBitClassBase.pLCBitselectRealize.Pattern == Button_pattern.Regression)
+                {
+                    PLCSwitch(pLCBitClassBase.pLCBitselectRealize.Pattern);
+                    //向对象池申请 
+                    var Poss = ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.GetObject();
+                    //判断对象池是否为空
+                    if (ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>._objects == null) return;
+                    //开始测量定时
+                    Poss.Item2.Enabled = true;
+                    Poss.Item2.Interval = 200;
+                    Poss.Item2.Start();
+                    //判断是否到达安全范围
+                    Poss.Item2.Tick += SafetyTick;
+                    void SafetyTick(object send, EventArgs e)
+                    {
+                        PLCSwitch(Button_pattern.Set_as_off);
+                        Poss.Item2.Stop();
+                        //处理完成归还对象
+                        Poss.Item2.Tick -= SafetyTick;
+                        ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(Poss);
+                    }                
+                }
+                else
+                    PLCSwitch(pLCBitClassBase.pLCBitselectRealize.Pattern);
             }
             else
             {
-                if(pLCBitClassBase.pLCBitselectRealize.Pattern==Button_pattern.Regression)
+                if (pLCBitClassBase.pLCBitselectRealize.Pattern == Button_pattern.Regression)
                     PLCSwitch(Button_pattern.Set_as_off);
             }
         }
@@ -147,12 +176,16 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                pLCBitClassBase.pLCBitselectRealize.OutReverse ? false : true);
                     return;
                 case Button_pattern.selector_witch:
-                    IPLCcommunicationBase PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) as IPLCcommunicationBase;
-                    var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                    IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC.ToString() : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) as IPLCcommunicationBase;
+                    if (!PLCoop.PLC_ready) return;
+                    //var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteFunction : pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction,
+               //pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteAddress : pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+
                     PLCWrite(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC,
                pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteFunction : pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction,
                pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteAddress : pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress,
                pLCBitClassBase.pLCBitselectRealize.OutReverse ? State ? true : false : State ? false : true);
+                    State =State?false:true;
                     return;
                 case Button_pattern.Regression:
                     PLCWrite(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC,
@@ -165,10 +198,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 写入PLC操作
         /// </summary>
-        private void PLCWrite(PLC IPLC,string Id,string Addary,bool Value)
+        private void PLCWrite(PLC IPLC, string Id, string Addary, bool Value)
         {
-            IPLCcommunicationBase PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
-            PLCoop.PLC_write_M_bit(Id,Addary,(Button_state)Enum.Parse(typeof(Button_state),Value?"ON":"OFF"));
+            IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
+            if (PLCoop.PLC_ready)
+                PLCoop.PLC_write_M_bit(Id, Addary, (Button_state)Enum.Parse(typeof(Button_state), Value ? "ON" : "Off"));
         }
         /// <summary>
         /// 校验PLC对象

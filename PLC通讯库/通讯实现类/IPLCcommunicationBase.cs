@@ -39,7 +39,7 @@ namespace PLC通讯库.通讯实现类
         /// <summary>
         /// PLC状态
         /// </summary>
-        bool IPLC_interface.PLC_ready { get => PLC_ready; } //PLC状态
+        bool  IPLC_interface.PLC_ready { get => PLC_ready; } //PLC状态
         /// <summary>
         /// PLC报警代码
         /// </summary>
@@ -218,11 +218,11 @@ namespace PLC通讯库.通讯实现类
             }
             catch { }
 
-            async Task<OperateResult<short>> ReadInt16() => await melsec_net.ReadInt16Async(Name.Trim() + id.Trim());
-            async Task<OperateResult<int>> ReadInt32() => await melsec_net.ReadInt32Async(Name.Trim() + id.Trim());
-            async Task<OperateResult<ushort>> ReadUInt16() => await melsec_net.ReadUInt16Async(Name.Trim() + id.Trim());
-            async Task<OperateResult<uint>> ReadUInt32() => await melsec_net.ReadUInt32Async(Name.Trim() + id.Trim());
-            async Task<OperateResult<float>> ReadFloat() => await melsec_net.ReadFloatAsync(Name.Trim() + id.Trim());
+            async Task<OperateResult<short>> ReadInt16() => await melsec_net.ReadInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet"?Name.Trim() + id.Trim(): id.Trim());
+            async Task<OperateResult<int>> ReadInt32() => await melsec_net.ReadInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+            async Task<OperateResult<ushort>> ReadUInt16() => await melsec_net.ReadUInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+            async Task<OperateResult<uint>> ReadUInt32() => await melsec_net.ReadUInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+            async Task<OperateResult<float>> ReadFloat() => await melsec_net.ReadFloatAsync(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
             return result;//返回数据
         }
         /// <summary>
@@ -244,32 +244,32 @@ namespace PLC通讯库.通讯实现类
                     {
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
-                            writeResultRender(WriteInt16(Name.Trim() + id.Trim(), short.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
-                            writeResultRender(WriteInt32(Name.Trim() + id.Trim(), int.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_16_Bit:
-                            writeResultRender(WriteInt16(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_32_Bit:
-                            writeResultRender(WriteInt32(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Float_32_Bit:
-                            writeResultRender(WriteFloat(Name.Trim() + id.Trim(), float.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), float.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_16_Bit:
-                            writeResultRender(WriteInt16(Name.Trim() + id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_32_Bit:
-                            writeResultRender(WriteInt32(Name.Trim() + id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_16_Bit:
-                            writeResultRender(WriteUInt16(Name.Trim() + id.Trim(), ushort.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), ushort.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_32_Bit:
-                            writeResultRender(WriteUInt32(Name.Trim() + id.Trim(), uint.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), uint.Parse(content)).Result, Name.Trim() + id.Trim());
                             break;
                     }
                 }
@@ -346,11 +346,11 @@ namespace PLC通讯库.通讯实现类
             catch { }
             string Err = string.Empty;
             readResultRender(new OperateResult<bool>() { ErrorCode = 88, IsSuccess = false, Message = "错误" },Name,ref Err);
-            async Task<OperateResult<short[]>> ReadInt16() => await melsec_net.ReadInt16Async(Name.Trim() + id.Trim(),Index);
-            async Task<OperateResult<int[]>> ReadInt32() => await melsec_net.ReadInt32Async(Name.Trim() + id.Trim(),Index);
-            async Task<OperateResult<ushort[]>> ReadUInt16() => await melsec_net.ReadUInt16Async(Name.Trim() + id.Trim(),Index);
-            async Task<OperateResult<uint[]>> ReadUInt32() => await melsec_net.ReadUInt32Async(Name.Trim() + id.Trim(),Index);
-            async Task<OperateResult<float[]>> ReadFloat() => await melsec_net.ReadFloatAsync(Name.Trim() + id.Trim(),Index);
+            async Task<OperateResult<short[]>> ReadInt16() => await melsec_net.ReadInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            async Task<OperateResult<int[]>> ReadInt32() => await melsec_net.ReadInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            async Task<OperateResult<ushort[]>> ReadUInt16() => await melsec_net.ReadUInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            async Task<OperateResult<uint[]>> ReadUInt32() => await melsec_net.ReadUInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            async Task<OperateResult<float[]>> ReadFloat() => await melsec_net.ReadFloatAsync(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
             return new int[] { 0 };
         }
         /// <summary>

@@ -32,7 +32,6 @@ namespace PLC通讯基础控件项目.PLC参数设置控件
         /// <summary>
         /// PLCIP
         /// </summary>
-
         public string IPEnd { get; set; } = "127.0.0.1";
         /// <summary>
         /// PLC 端口
