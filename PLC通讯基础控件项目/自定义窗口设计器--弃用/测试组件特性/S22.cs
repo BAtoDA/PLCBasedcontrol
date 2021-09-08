@@ -52,7 +52,8 @@ namespace ExampleComponent
             MessageBox.Show("The event handler for the Example Designer Verb Command was invoked.");
         }
     }
-
+    [ToolboxItem(false)]
+    [Browsable(false)]
     // Provides an example component associated with the example component designer.
     [DesignerAttribute(typeof(ExampleComponentDesigner), typeof(IDesigner))]
     public class ExampleComponent : System.ComponentModel.Component

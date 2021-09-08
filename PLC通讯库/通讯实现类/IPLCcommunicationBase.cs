@@ -117,7 +117,15 @@ namespace PLC通讯库.通讯实现类
             {
                 // 读取bool变量 重写方法
                 //var PLCData = melsec_net.ReadBoolAsync(Name + id, 1).Result;
-                var PLCData = melsec_net.ReadBool(Name + id);
+                dynamic PLCData = "";
+                if (this.melsec_net.GetType().Name != "ModbusTcpNet")
+                {
+                    PLCData = melsec_net.ReadBool(Name + id);
+                }
+                else
+                {
+                    PLCData = melsec_net.ReadCoil(id);
+                }
                 readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
                 return PLCData.Content;
             }
@@ -136,7 +144,15 @@ namespace PLC通讯库.通讯实现类
             try
             {
                 //var PLCData = melsec_net.WriteAsync(Name + id, button_State == Button_state.ON ? true : false).Result;
-                var PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
+                dynamic PLCData = "";
+                if (this.melsec_net.GetType().Name != "ModbusTcpNet")
+                {
+                   PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
+                }
+                else
+                {
+                    PLCData = melsec_net.WriteCoil(id, button_State == Button_state.ON ? true : false);
+                }
                 writeResultRender(PLCData, Name.Trim() + id.Trim());
                 return PLCData.IsSuccess;//返回数据
             }

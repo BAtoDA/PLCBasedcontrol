@@ -13,11 +13,13 @@ using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Linq;
 using PLC通讯基础控件项目.控件类基.控件安全对象池;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using PLC通讯库.PLC通讯设备类型表;
 using PLC通讯库.通讯实现类;
 using PLC通讯库.通讯枚举;
+using PLC通讯库.通讯基础接口;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类
 {
@@ -56,6 +58,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             pLCBitproperty = PlcControl as PLCBitproperty;
             //读取PLC--自动获取对象的PLC类型对象
             PLCoopErr();
+            this.PlcControl = PlcControl;
             //---------处理控件与PLC通讯事件---------
             if (((dynamic)PlcControl).PLC_Enable)
             {
@@ -87,7 +90,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             PlcControl.MouseUp += SafetyClick;
             //开始定时处理委托任务
             Poss.Item2.Enabled = true;
-            Poss.Item2.Interval = Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime+ (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0));
+            Poss.Item2.Interval = Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime+ (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0))<1?1: Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0));
             Poss.Item2.Start();
             //判断是否到达安全范围
             Poss.Item2.Tick += SafetyTick;
@@ -172,31 +175,46 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         private void PLCoopErr()
         {
-            if (pLCBitClassBase == null) throw new Exception($" 不实现：PLCBitBase接口");
-            if (pLCBitproperty == null) throw new Exception($" 不实现：PLCBitproperty接口");
-            if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+            try
+            {
+                if (pLCBitClassBase == null) throw new Exception($" 不实现：PLCBitBase接口");
+                if (pLCBitproperty == null) throw new Exception($" 不实现：PLCBitproperty接口");
+                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+            }
+            catch(Exception E)
+            {
+                Debug.WriteLine(E.Message);
+            }
         }
         /// <summary>
         /// PLC刷新处理
         /// </summary>
         public  void PLCrefresh()
         {
-            if (PlcControl.IsDisposed|| PlcControl.Created == false) return;
-            PLCoopErr();
-            IPLCcommunicationBase PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) as IPLCcommunicationBase;
-            var State= PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
-            //处理状态颜色
-            if (State)
+            lock (this)
             {
-                pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
-                pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
-                pLCBitproperty.TextColor_0 = pLCBitClassBase.pLCBitselectRealize.TextColor_0;
-            }
-            else
-            {
-                pLCBitproperty.backgroundColor_1 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_1;
-                pLCBitproperty.TextContent_1 = pLCBitClassBase.pLCBitselectRealize.TextContent_1;
-                pLCBitproperty.TextColor_1 = pLCBitClassBase.pLCBitselectRealize.TextColor_1;
+                if (PlcControl.IsDisposed || PlcControl.Created == false) return;
+                PLCoopErr();
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p=>p.Key.Trim()==pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                if (PLCoop==null) return;
+                if (!PLCoop.PLC_ready) return;
+                var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                //---委托控件----处理状态颜色
+                PlcControl.BeginInvoke((MethodInvoker)delegate
+                {
+                    if (!State)
+                    {
+                        pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
+                        pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
+                        pLCBitproperty.TextColor_0 = pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                    }
+                    else
+                    {
+                        pLCBitproperty.backgroundColor_1 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_1;
+                        pLCBitproperty.TextContent_1 = pLCBitClassBase.pLCBitselectRealize.TextContent_1;
+                        pLCBitproperty.TextColor_1 = pLCBitClassBase.pLCBitselectRealize.TextColor_1;
+                    }
+                });
             }
         }
     }

@@ -20,7 +20,7 @@ namespace PLC通讯库.PLC通讯设备类型表
     /// </summary>
     public class IPLCsurface
     {
-        public static Dictionary<string, object> PLCDictionary = new Dictionary<string, object>();
+        public volatile static Dictionary<string, object> PLCDictionary = new Dictionary<string, object>();
         /// <summary>
         /// 添加PLC通讯表对象
         /// </summary>

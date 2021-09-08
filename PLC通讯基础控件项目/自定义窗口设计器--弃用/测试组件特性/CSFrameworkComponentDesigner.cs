@@ -91,6 +91,8 @@ namespace WindowsFormsApp2.测试组件特性
         }
 
     }
+    [ToolboxItem(false)]
+    [Browsable(false)]
     [Serializable]
     class MyNodeComponent: IComponent
     {

@@ -19,6 +19,8 @@ namespace PLC通讯基础控件项目.PLC参数设置控件
     /// PLC参数设置类
     /// 不可以继承重写 可序列化
     /// </summary>
+    [ToolboxItem(false)]
+    [Browsable(false)]
     [Serializable]
     public  class PLCPreferences: IComponent
     {
@@ -47,7 +49,7 @@ namespace PLC通讯基础控件项目.PLC参数设置控件
         /// <summary>
         /// 预留属性
         /// </summary>
-        public object Retain { get; set; } = " ";
+        public string Retain { get; set; } = "S1500";
         #region 实现接口
         public ISite Site { get; set; }
 

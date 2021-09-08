@@ -11,14 +11,14 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
 
     public enum PLC
     {
-        Mitsubishi = 00,
+        Mitsubishi = 0,
         Siemens = 01,
         Modbus_TCP = 02,
-        HMI = 03,
+        //HMI = 03,
         OmronTCP = 04,
         OmronCIP = 05,
         OmronUDP = 06,
-        Fanuc = 07
+        //Fanuc = 07
     }
     /// <summary>
     /// PLC各可访问软元件  三菱-bit位

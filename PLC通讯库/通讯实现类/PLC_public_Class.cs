@@ -12,12 +12,13 @@ namespace PLC通讯库.通讯实现类
     /// <summary>
     /// 本类是共用类 
     /// </summary>
-    public class PLC_public_Class
+    public class PLC_public_Class:Object
     {
         /// <summary>
         /// 指示着其他用户正在访问
         /// </summary>
         public static bool PLC_busy;//指示着其他用户正在访问
+     
         /// <summary>
         /// int转B00L
         /// </summary>

@@ -6,6 +6,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp2.测试组件特性
 {
+    [ToolboxItem(false)]
+    [Browsable(false)]
     [ToolboxBitmap(typeof(CSFrameworkComponent), "ComponentTest.bmp")]
     [DesignTimeVisible(true)]
     [Designer(typeof(CSFrameworkComponentDesigner), typeof(IDesigner))]
@@ -26,6 +28,8 @@ namespace WindowsFormsApp2.测试组件特性
             container.Add(this);
         }
     }
+    [ToolboxItem(false)]
+    [Browsable(false)]
     [ToolboxBitmap(typeof(CSFrameworkComponent), "ComponentTest.bmp")]
     [DesignTimeVisible(true)]
     [Designer(typeof(CSFrameworkComponentDesigner), typeof(IDesigner))]
