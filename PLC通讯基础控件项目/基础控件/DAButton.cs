@@ -116,7 +116,7 @@ namespace PLC通讯基础控件项目.基础控件
             var CopyTo = bitselectRealize.GetType().GetProperties();
             for (int i = 0; i < Copy.Length; i++)
             {
-                if (Copy[i].Name == CopyTo[i].Name)
+                //if (Copy[i].Name == CopyTo[i].Name)
                     CopyTo[i] = Copy[i];
             }
             PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(this.pLCBitselectRealize);
@@ -124,7 +124,12 @@ namespace PLC通讯基础控件项目.基础控件
             pLCpropertyBit.ShowDialog();
             if (!pLCpropertyBit.Save)
             {
-                this.pLCBitselectRealize = bitselectRealize;
+                for (int i = 0; i < Copy.Length; i++)
+                {
+                    //if (Copy[i].Name == CopyTo[i].Name)
+                    Copy[i] = CopyTo[i];
+                }
+                //this.pLCBitselectRealize = bitselectRealize;
             }
         }
         /// <summary>

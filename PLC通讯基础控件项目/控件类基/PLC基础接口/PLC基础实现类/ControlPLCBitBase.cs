@@ -50,6 +50,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 复归型按钮标志位
         /// </summary>
         private volatile bool State = false;
+        /// <summary>
+        /// PLC安全操作模式
+        /// </summary>
+        volatile Safetypattern PLCsafetypattern=Safetypattern.Nooperation;
         #endregion
         /// <summary>
         /// 构造函数
@@ -74,6 +78,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 }));
                 pLCBitproperty.PLCTimer.Change(500, 300);
             }
+            //---------安全操作模式----------
+            PLCsafetypattern = pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? Getsafetypattern() : Safetypattern.Nooperation;
         }
         /// <summary>
         /// 处理点击事件
@@ -83,7 +89,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         private void ClickPLC(object send,EventArgs e)
         {
             //判断改控件是否只读
-            if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut) return;
+            if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut|| PLCsafetypattern==Safetypattern.Close) return;
             PLCoopErr();
             //根据设定的模式进行写入PLC操作
             //向对象池申请 
@@ -123,7 +129,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         private void MouseUpPLC(object send,EventArgs e)
         {
             //判断改控件是否只读
-            if (pLCBitClassBase.pLCBitselectRealize.BitPattern) return;
+            if (pLCBitClassBase.pLCBitselectRealize.BitPattern|| PLCsafetypattern == Safetypattern.Close) return;
             PLCoopErr();
             //根据设定的模式进行写入PLC操作
             if (pLCBitClassBase.pLCBitselectRealize.LoosenOut)
@@ -229,6 +235,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             {
                 if (PlcControl.IsDisposed || PlcControl.Created == false) return;
                 PLCoopErr();
+                PLCsafety();
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p=>p.Key.Trim()==pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                 if (PLCoop==null) return;
                 if (!PLCoop.PLC_ready) return;
@@ -236,20 +243,67 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 //---委托控件----处理状态颜色
                 PlcControl.BeginInvoke((MethodInvoker)delegate
                 {
+                    //处理安全控制---是否要隐藏控件
+                    this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
                     if (!State)
                     {
                         pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
                         pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
-                        pLCBitproperty.TextColor_0 = pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                        pLCBitproperty.TextColor_0 =PLCsafetypattern==Safetypattern.Gray?Color.FromName("DarkGray") :pLCBitClassBase.pLCBitselectRealize.TextColor_0;
                     }
                     else
                     {
                         pLCBitproperty.backgroundColor_1 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_1;
                         pLCBitproperty.TextContent_1 = pLCBitClassBase.pLCBitselectRealize.TextContent_1;
-                        pLCBitproperty.TextColor_1 = pLCBitClassBase.pLCBitselectRealize.TextColor_1;
+                        pLCBitproperty.TextColor_1 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray"):pLCBitClassBase.pLCBitselectRealize.TextColor_1;
                     }
                 });
             }
+        }
+        /// <summary>
+        /// PLC安全控制
+        /// </summary>
+        private void PLCsafety()
+        {
+            if (pLCBitClassBase.pLCBitselectRealize.OperationAffirm)
+            {
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCBitClassBase.pLCBitselectRealize.SafetyPLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                if (PLCoop == null) return;
+                if (!PLCoop.PLC_ready) return;
+                var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.SafetyFunction, pLCBitClassBase.pLCBitselectRealize.WrSafetyAddress);
+                switch (pLCBitClassBase.pLCBitselectRealize.SafetyPattern)
+                {
+                    case 0:
+                        if (State)
+                            PLCsafetypattern = Getsafetypattern();
+                        else
+                            PLCsafetypattern = Safetypattern.Nooperation;
+                        break;
+                    case 1:
+                        if (!State)
+                            PLCsafetypattern = Getsafetypattern();
+                        else
+                            PLCsafetypattern = Safetypattern.Nooperation;
+                        break;
+                }
+            }
+            else
+                PLCsafetypattern = Safetypattern.Nooperation;
+        }
+       private Safetypattern Getsafetypattern()
+        {
+            switch (pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern)
+            {
+                case 0:
+                    return Safetypattern.Close;
+                case 1:
+                    return Safetypattern.Hide;
+                case 2:
+                    return Safetypattern.Gray;
+                case 3:
+                    return Safetypattern.Nooperation;
+            }
+            return Safetypattern.Nooperation;
         }
     }
 }

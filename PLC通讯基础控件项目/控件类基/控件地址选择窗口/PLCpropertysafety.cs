@@ -48,7 +48,9 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 PLCEnable.Items.Add(i);
             PLCEnable.SelectedIndex = 0;
             //填充行为模式--固定关闭时隐藏
+            PlcBehavior.Items.Add("关闭时不执行任何操作");
             PlcBehavior.Items.Add("关闭时隐藏");
+            PlcBehavior.Items.Add("关闭时使用灰阶效果显示文字");
             PlcBehavior.SelectedIndex = 0;
             //操作类别
             foreach (var i in Enum.GetNames(typeof(OperatingClass)))
@@ -56,7 +58,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             Operation.SelectedIndex = 0;
             //处理是否开启安全事件
             SafetyCheck.CheckedChanged += ((send, e) =>
-              {
+              { 
                   groupBoxes.ForEach(contr =>
                   {
                       contr.Visible = SafetyCheck.Checked;
@@ -74,10 +76,11 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 MinCombobox.Text = PlcBitselect.keyMinTime.ToString();
                 MaxCombobox.Text = PlcBitselect.AwaitTime.ToString();
                 SafetyCheck.Checked = Convert.ToBoolean(PlcBitselect.SafetyPattern);
+                SafetyCheck.Checked = PlcBitselect.OperationAffirm;
                 readwriteplc.Text = PlcBitselect.SafetyPLC.ToString();
                 readwritePLCfunction.Text = PlcBitselect.SafetyFunction ?? "M";
                 readwriteaddress.Text = PlcBitselect.WrSafetyAddress ?? "0";
-                PLCEnable.SelectedIndex = 0;
+                PLCEnable.SelectedIndex = PlcBitselect.SafetyPattern;
                 PlcBehavior.SelectedIndex = PlcBitselect.SafetyBehaviorPattern;
                 Operation.SelectedIndex = PlcBitselect.SafetyCategory;
                 Safety[0].Checked = PlcBitselect.NoAccessConceal;
@@ -88,7 +91,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
               {
                   PlcBitselect.keyMinTime =Convert.ToInt32(MinCombobox.Text);
                   PlcBitselect.AwaitTime = Convert.ToInt32(MaxCombobox.Text);
-                  PlcBitselect.SafetyPattern = Convert.ToInt32(SafetyCheck.Checked);
+                  PlcBitselect.SafetyPattern = PLCEnable.SelectedIndex;
+                  PlcBitselect.OperationAffirm=SafetyCheck.Checked;
                   PlcBitselect.SafetyPLC =(PLC)Enum.Parse(typeof(PLC),readwriteplc.Text);
                   PlcBitselect.SafetyFunction = readwritePLCfunction.Text;
                   PlcBitselect.WrSafetyAddress = readwriteaddress.Text;

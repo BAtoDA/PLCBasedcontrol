@@ -65,7 +65,7 @@ namespace PLC通讯基础控件项目
             // 
             // plcPreferences3
             // 
-            this.plcPreferences3.IPEnd = "192.168.234.154";
+            this.plcPreferences3.IPEnd = "192.168.104.154";
             this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.plcPreferences3.Point = 8000;
             this.plcPreferences3.Receptionovertime = 1000;
@@ -79,7 +79,7 @@ namespace PLC通讯基础控件项目
             this.daButton1.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.daButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.daButton1.ForeColor = System.Drawing.Color.White;
-            this.daButton1.Location = new System.Drawing.Point(269, 166);
+            this.daButton1.Location = new System.Drawing.Point(119, 120);
             this.daButton1.Name = "daButton1";
             this.daButton1.PLC_Enable = true;
             this.daButton1.pLCBitselectRealize.AwaitTime = 0;
@@ -91,19 +91,19 @@ namespace PLC通讯基础控件项目
             this.daButton1.pLCBitselectRealize.LoosenOut = false;
             this.daButton1.pLCBitselectRealize.NoAccessConceal = false;
             this.daButton1.pLCBitselectRealize.NoAccessForm = false;
-            this.daButton1.pLCBitselectRealize.OperationAffirm = false;
-            this.daButton1.pLCBitselectRealize.OutReverse = true;
-            this.daButton1.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.Regression;
+            this.daButton1.pLCBitselectRealize.OperationAffirm = true;
+            this.daButton1.pLCBitselectRealize.OutReverse = false;
+            this.daButton1.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daButton1.pLCBitselectRealize.PLCTimer = null;
-            this.daButton1.pLCBitselectRealize.ReadWrite = true;
+            this.daButton1.pLCBitselectRealize.ReadWrite = false;
             this.daButton1.pLCBitselectRealize.ReadWriteAddress = "0";
             this.daButton1.pLCBitselectRealize.ReadWriteFunction = "Y";
             this.daButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
-            this.daButton1.pLCBitselectRealize.SafetyBehaviorPattern = 0;
+            this.daButton1.pLCBitselectRealize.SafetyBehaviorPattern = 2;
             this.daButton1.pLCBitselectRealize.SafetyCategory = 0;
-            this.daButton1.pLCBitselectRealize.SafetyFunction = "M";
-            this.daButton1.pLCBitselectRealize.SafetyPattern = 0;
-            this.daButton1.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daButton1.pLCBitselectRealize.SafetyFunction = "Y";
+            this.daButton1.pLCBitselectRealize.SafetyPattern = 1;
+            this.daButton1.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.daButton1.pLCBitselectRealize.Speech = false;
             this.daButton1.pLCBitselectRealize.Textalign_0 = "TopLeft";
             this.daButton1.pLCBitselectRealize.Textalign_1 = "TopLeft";
@@ -121,11 +121,11 @@ namespace PLC通讯基础控件项目
             this.daButton1.pLCBitselectRealize.TextUnderline_0 = false;
             this.daButton1.pLCBitselectRealize.TextUnderline_1 = false;
             this.daButton1.pLCBitselectRealize.WriteAddress = "0";
-            this.daButton1.pLCBitselectRealize.WriteFunction = "Y";
-            this.daButton1.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
-            this.daButton1.pLCBitselectRealize.WrSafetyAddress = "0";
+            this.daButton1.pLCBitselectRealize.WriteFunction = "M";
+            this.daButton1.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daButton1.pLCBitselectRealize.WrSafetyAddress = "2";
             this.daButton1.PLCTimer = null;
-            this.daButton1.Size = new System.Drawing.Size(75, 23);
+            this.daButton1.Size = new System.Drawing.Size(120, 48);
             this.daButton1.TabIndex = 0;
             this.daButton1.Text = "ON";
             this.daButton1.TextColor_0 = System.Drawing.Color.White;
