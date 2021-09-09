@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Speech.Synthesis;
+using System.Threading.Tasks;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
+using PLC通讯基础控件项目.控件类基.控件安全对象池;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口
 {
@@ -42,16 +44,20 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// <param name="Value"></param>
         protected void Voicebroadcast(string Value)
         {
-
-            // Initialize a new instance of the SpeechSynthesizer.  
-            SpeechSynthesizer synth = new SpeechSynthesizer();
-
-            // Configure the audio output.   
-            synth.SetOutputToDefaultAudioDevice();
-
-            // Speak a string.  
-            //synth.Speak(Value??"数据为空");
-            synth.SpeakAsync(Value ?? "数据为空");
+            //判断对象池是否为空
+            if (VoiceObjectPool<Tuple<SpeechSynthesizer>>._objects == null) return;
+            //向对象池申请 
+            var Poss = VoiceObjectPool<Tuple<SpeechSynthesizer>>.GetObject();
+            //使用对象池--对象进行语音播报
+            Poss.Item1.SetOutputToDefaultAudioDevice();
+            Poss.Item1.SpeakAsync(Value??"语音播报数据未Null");
+            //归还对象----
+            Poss.Item1.SpeakCompleted += Voice;
+            void Voice(object send,EventArgs e)
+            {
+                Poss.Item1.SpeakCompleted -= Voice;
+                VoiceObjectPool<Tuple<SpeechSynthesizer>>.PutObject(Poss);
+            }
         }
     }
 }

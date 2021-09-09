@@ -97,10 +97,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut|| PLCsafetypattern==Safetypattern.Close) return;
             PLCoopErr();
             //根据设定的模式进行写入PLC操作
-            //向对象池申请 
-            var Poss = ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.GetObject();
             //判断对象池是否为空
             if (ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>._objects == null) return;
+            //向对象池申请 
+            var Poss = ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.GetObject();
             //开始测量定时
             Poss.Item1.Start();
             //获取控件鼠标松开事件
