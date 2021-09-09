@@ -35,6 +35,9 @@ namespace PLC通讯基础控件项目
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.daButton1 = new PLC通讯基础控件项目.基础控件.DAButton();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.uiButton1 = new Sunny.UI.UIButton();
+            this.uiTextBox1 = new Sunny.UI.UITextBox();
             this.SuspendLayout();
             // 
             // plcControlsPreferences1
@@ -134,14 +137,55 @@ namespace PLC通讯基础控件项目
             this.daButton1.TextContent_1 = "ON";
             this.daButton1.UseVisualStyleBackColor = true;
             // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel1.Location = new System.Drawing.Point(350, 174);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(100, 23);
+            this.uiLabel1.TabIndex = 1;
+            this.uiLabel1.Text = "uiLabel1";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiButton1
+            // 
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.Location = new System.Drawing.Point(372, 72);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Size = new System.Drawing.Size(100, 35);
+            this.uiButton1.TabIndex = 2;
+            this.uiButton1.Text = "uiButton1";
+            // 
+            // uiTextBox1
+            // 
+            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox1.FillColor = System.Drawing.Color.White;
+            this.uiTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiTextBox1.Location = new System.Drawing.Point(421, 291);
+            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox1.Maximum = 2147483647D;
+            this.uiTextBox1.Minimum = -2147483648D;
+            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiTextBox1.Name = "uiTextBox1";
+            this.uiTextBox1.Size = new System.Drawing.Size(150, 29);
+            this.uiTextBox1.TabIndex = 3;
+            this.uiTextBox1.Text = "uiTextBox1";
+            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 450);
+            this.Controls.Add(this.uiTextBox1);
+            this.Controls.Add(this.uiButton1);
+            this.Controls.Add(this.uiLabel1);
             this.Controls.Add(this.daButton1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -153,5 +197,8 @@ namespace PLC通讯基础控件项目
         private PLC参数设置控件.PLCPreferences plcPreferences2;
         private PLC参数设置控件.PLCPreferences plcPreferences3;
         private 基础控件.DAButton daButton1;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UIButton uiButton1;
+        private Sunny.UI.UITextBox uiTextBox1;
     }
 }

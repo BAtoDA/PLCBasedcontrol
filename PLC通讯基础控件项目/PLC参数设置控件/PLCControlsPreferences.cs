@@ -79,20 +79,24 @@ namespace PLC通讯基础控件项目
             #region 分配对象池
             if(!PlcLoad)
             {
-                //------------设置安全对象池大小--------------
-                Func<Tuple<Stopwatch, System.Windows.Forms.Timer>> func = new Func<Tuple<Stopwatch, System.Windows.Forms.Timer>>(() =>
+                try
                 {
-                    return new Tuple<Stopwatch, System.Windows.Forms.Timer>(new Stopwatch(), new System.Windows.Forms.Timer());
-                });
-                ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>> objectPool = new ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>(
-         5, func);
-                //------------设置语音播报对象池大小--------------
-                Func<Tuple<SpeechSynthesizer>> Voice = new Func<Tuple<SpeechSynthesizer>>(() =>
-                {
-                    return new Tuple<SpeechSynthesizer>(new SpeechSynthesizer());
-                });
-                VoiceObjectPool<Tuple<SpeechSynthesizer>> VoiceobjectPool = new VoiceObjectPool<Tuple<SpeechSynthesizer>>(
-         10, Voice);
+                    //------------设置安全对象池大小--------------
+                    Func<Tuple<Stopwatch, System.Windows.Forms.Timer>> func = new Func<Tuple<Stopwatch, System.Windows.Forms.Timer>>(() =>
+                    {
+                        return new Tuple<Stopwatch, System.Windows.Forms.Timer>(new Stopwatch(), new System.Windows.Forms.Timer());
+                    });
+                    ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>> objectPool = new ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>(
+             5, func);
+                    //------------设置语音播报对象池大小--------------
+                    Func<Tuple<SpeechSynthesizer>> Voice = new Func<Tuple<SpeechSynthesizer>>(() =>
+                    {
+                        return new Tuple<SpeechSynthesizer>(new SpeechSynthesizer());
+                    });
+                    VoiceObjectPool<Tuple<SpeechSynthesizer>> VoiceobjectPool = new VoiceObjectPool<Tuple<SpeechSynthesizer>>(
+             10, Voice);
+                }
+                catch { }
             }
             #endregion
             #region 添加数据到--PLC通讯表中

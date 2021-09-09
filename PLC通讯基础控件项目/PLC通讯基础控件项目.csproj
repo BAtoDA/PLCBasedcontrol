@@ -20,11 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="控件类基\PLC基础接口\PLC基础实现类\PLCBit控件实现类\" />
+    <ProjectReference Include="..\PLC通讯库\PLC通讯库.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PLC通讯库\PLC通讯库.csproj" />
+    <Folder Include="控件类基\控件文本键盘\" />
   </ItemGroup>
 
 </Project>

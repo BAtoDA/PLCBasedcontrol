@@ -42,14 +42,6 @@ namespace PLC通讯基础控件项目.控件类基.控件安全对象池
                 PutObject(objectGenerator.Invoke());
             }
         }
-
-        //public VoiceObjectPool(int instenceLimit, Func<Tuple<SpeechSynthesizer>> objectGenerator)
-        //{
-        //    this.instenceLimit = instenceLimit;
-        //    this.objectGenerator = objectGenerator;
-
-        //}
-
         public static T GetObject()
         {
             T item;
