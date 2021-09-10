@@ -9,7 +9,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
     /// <summary>
     /// 该接口是用于位基础类型参数-比如字体背景颜色-内容等
     /// </summary>
-    interface PLCBitproperty
+    public interface PLCBitproperty
     {
         /// <summary>
         /// 背景颜色

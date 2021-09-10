@@ -24,7 +24,7 @@ using PLC通讯库.通讯基础接口;
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类
 {
     /// <summary>
-    /// 实现基本控件类--PLC刷新--文字事件等处理
+    /// 实现基本位控件类--PLC刷新--文字事件等处理
     /// </summary>
     public sealed partial class ControlPLCBitBase : BasepublicClass
     {
@@ -60,12 +60,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         public ControlPLCBitBase(Control PlcControl)
         {
+            //---------处理控件接口问题---------
             if (!(PlcControl is PLCBitClassBase)) throw new Exception($"{PlcControl.GetType().Name} 不实现：PLCBitBase接口");
             if (!(PlcControl is PLCBitproperty)) throw new Exception($"{PlcControl.GetType().Name} 不实现：PLCBitproperty接口");
             pLCBitClassBase = PlcControl as PLCBitClassBase;
             pLCBitproperty = PlcControl as PLCBitproperty;
             //读取PLC--自动获取对象的PLC类型对象
-            PLCoopErr();
+            PLCoopErr(pLCBitClassBase, pLCBitproperty);
             this.PlcControl = PlcControl;
             //---------处理控件与PLC通讯事件---------
             if (((dynamic)PlcControl).PLC_Enable)
@@ -95,7 +96,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             }
             //判断改控件是否只读
             if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut|| PLCsafetypattern==Safetypattern.Close) return;
-            PLCoopErr();
+            PLCoopErr(pLCBitClassBase, pLCBitproperty);
             //根据设定的模式进行写入PLC操作
             //判断对象池是否为空
             if (ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>._objects == null) return;
@@ -135,7 +136,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         {
             //判断改控件是否只读
             if (pLCBitClassBase.pLCBitselectRealize.BitPattern|| PLCsafetypattern == Safetypattern.Close) return;
-            PLCoopErr();
+            PLCoopErr(pLCBitClassBase, pLCBitproperty);
             //根据设定的模式进行写入PLC操作
             if (pLCBitClassBase.pLCBitselectRealize.LoosenOut)
             {
@@ -215,22 +216,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (PLCoop.PLC_ready)
                 PLCoop.PLC_write_M_bit(Id, Addary, (Button_state)Enum.Parse(typeof(Button_state), Value ? "ON" : "Off"));
         }
-        /// <summary>
-        /// 校验PLC对象
-        /// </summary>
-        private void PLCoopErr()
-        {
-            try
-            {
-                if (pLCBitClassBase == null) throw new Exception($" 不实现：PLCBitBase接口");
-                if (pLCBitproperty == null) throw new Exception($" 不实现：PLCBitproperty接口");
-                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
-            }
-            catch(Exception E)
-            {
-                Debug.WriteLine(E.Message);
-            }
-        }
+   
         /// <summary>
         /// PLC刷新处理
         /// </summary>
@@ -239,7 +225,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             lock (this)
             {
                 if (PlcControl.IsDisposed || PlcControl.Created == false) return;
-                PLCoopErr();
+                PLCoopErr(pLCBitClassBase, pLCBitproperty);
                 PLCsafety();
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p=>p.Key.Trim()==pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                 if (PLCoop==null) return;

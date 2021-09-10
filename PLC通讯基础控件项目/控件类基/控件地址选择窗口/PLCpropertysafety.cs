@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using Sunny.UI;
 
@@ -21,8 +22,9 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     /// </summary>
     sealed class PLCpropertysafety:PLCpublic
     {
+        #region 实现Bit位
         public PLCpropertysafety(UIComboBox MinCombobox,UICheckBox SafetyCheck,UIComboBox MaxCombobox, UIComboBox readwriteplc, UIComboBox readwritePLCfunction,
-            UITextBox readwriteaddress,UIComboBox PLCEnable,UIComboBox PlcBehavior,UIComboBox Operation,UIGroupBox[] groupBoxes,UICheckBox[] Safety,UICheckBox Voice,UIButton SETplcButton ,PLCBitselectRealize PlcBitselect)
+            UITextBox readwriteaddress,UIComboBox PLCEnable,UIComboBox PlcBehavior,UIComboBox Operation,UIGroupBox[] groupBoxes,UICheckBox[] Safety,UICheckBox Voice,UIButton SETplcButton ,dynamic PlcBitselect)
         {
             //填充安全操作时间
             RandomTime(MinCombobox);
@@ -104,6 +106,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
               });
 
         }
+        #endregion;
         /// <summary>
         /// 自动产生时间间隔
         /// </summary>

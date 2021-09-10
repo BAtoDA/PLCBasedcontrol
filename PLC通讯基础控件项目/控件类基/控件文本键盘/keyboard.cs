@@ -33,8 +33,8 @@ namespace PLC通讯基础控件项目.控件类基.控件文本键盘
             if (textBox.ShowFormat.ToString() == "Float_32_Bit") this.skinButton4.Enabled = true;//允许输入小数点
             if (textBox.ShowFormat.ToString() == "Unsigned_16_Bit" || textBox.ShowFormat.ToString() == "Unsigned_16_Bit") this.skinButton9.Enabled = false;//不允许输入符号
             string[] data= Constraints_data(textBox.ShowFormat.ToString());//获取最大值-最小值
-            this.skinTextBox1.Text = data[0];//填充最大值
-            this.skinTextBox2.Text = data[1];//填充最小值
+            this.skinTextBox1.Text = textBox.NumericalMax.ToString();//填充最大值
+            this.skinTextBox2.Text = textBox.NumericalMin.ToString();//填充最小值
         }
         private void Button_KeyPress(object sender, EventArgs e)//获取用户输入
         {

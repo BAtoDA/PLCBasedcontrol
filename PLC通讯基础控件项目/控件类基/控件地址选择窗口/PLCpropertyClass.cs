@@ -179,12 +179,12 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             readwriteplc.TextChanged += ((sendq, s1) =>
             {
                 readwritePLCfunction.Items.Clear();
-                GetPLCBitName(readwritePLCfunction, readwriteplc.Text);
+                GetPLCDName(readwritePLCfunction, readwriteplc.Text);
             });
             writeplc.TextChanged += ((sendq, s1) =>
             {
                 writePLCfunction.Items.Clear();
-                GetPLCBitName(writePLCfunction, writeplc.Text);
+                GetPLCDName(writePLCfunction, writeplc.Text);
             });
             //处理键盘
             readwriteplc.KeyPress += KeyPress;
@@ -223,7 +223,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             void GetPLCValue()
             {
                 Description.Text = pLCDselect.description ?? this.GetType().Name;
-                Alamp.Checked = pLCDselect.Dataentryfunction ? false : true;
+                Alamp.Checked = pLCDselect.Dataentryfunction ? true : false;
                 readwrite.Checked = pLCDselect.ReadWrite;
                 readwriteplc.Text = pLCDselect.ReadWritePLC.ToString();
                 readwritePLCfunction.Text = pLCDselect.ReadWriteFunction != null ? pLCDselect.ReadWriteFunction : "M";
@@ -245,7 +245,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             SetPlcButton.Click += ((Send, e) =>
             {
                 pLCDselect.description = Description.Text;
-                pLCDselect.Dataentryfunction = Alamp.Checked ? false : true;
+                pLCDselect.Dataentryfunction = Alamp.Checked ? true : false;
                 //pLCBitselect.BitPattern = Aswitch.Checked;
                 pLCDselect.ReadWrite = readwrite.Checked;
                 pLCDselect.ReadWritePLC = (PLC)Enum.Parse(typeof(PLC), readwriteplc.Text);
@@ -315,7 +315,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             });
             readwriteplc.SelectedIndex = 0;
             readwritePLCfunction.Items.Clear();
-            Enum.GetNames(typeof(Mitsubishi_bit)).ForEach(s =>
+            Enum.GetNames(typeof(Mitsubishi_D)).ForEach(s =>
             {
                 readwritePLCfunction.Items.Add(s);
             });

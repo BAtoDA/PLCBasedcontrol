@@ -13,6 +13,8 @@ using System.Speech.Synthesis;
 using System.Threading.Tasks;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using PLC通讯基础控件项目.控件类基.控件安全对象池;
+using PLC通讯库.PLC通讯设备类型表;
+using System.Diagnostics;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口
 {
@@ -57,6 +59,38 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
             {
                 Poss.Item1.SpeakCompleted -= Voice;
                 VoiceObjectPool<Tuple<SpeechSynthesizer>>.PutObject(Poss);
+            }
+        }
+        /// <summary>
+        /// 用于位校验PLC对象
+        /// </summary>
+        protected void PLCoopErr(PLCBitClassBase pLCBitClassBase, PLCBitproperty pLCBitproperty)
+        {
+            try
+            {
+                if (pLCBitClassBase == null) throw new Exception($" 不实现：PLCBitBase接口");
+                if (pLCBitproperty == null) throw new Exception($" 不实现：PLCBitproperty接口");
+                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+            }
+            catch (Exception E)
+            {
+                Debug.WriteLine(E.Message);
+            }
+        }
+        /// <summary>
+        /// 用于寄存器校验PLC对象
+        /// </summary>
+        protected void PLCoopErr(PLCDClassBase pLCDClassBase, PLCDproperty pLCDproperty)
+        {
+            try
+            {
+                if (pLCDClassBase == null) throw new Exception($" 不实现：PLCDBase接口");
+                if (pLCDproperty == null) throw new Exception($" 不实现：PLCDproperty接口");
+                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCDClassBase.pLCDselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+            }
+            catch (Exception E)
+            {
+                Debug.WriteLine(E.Message);
             }
         }
     }

@@ -87,7 +87,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// <summary>
         /// 启用的键盘样式
         /// </summary>
-        int KeyboardStyle { get; set; }
+        string KeyboardStyle { get; set; }
         //------数据格式------//
         /// <summary>
         /// 数据格式显示的资料格式

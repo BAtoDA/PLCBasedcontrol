@@ -788,7 +788,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiTextBox53.Size = new System.Drawing.Size(135, 29);
             this.uiTextBox53.Style = Sunny.UI.UIStyle.White;
             this.uiTextBox53.TabIndex = 11;
-            this.uiTextBox53.Text = "uiTextBox53";
+            this.uiTextBox53.Text = "0";
             this.uiTextBox53.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel27
@@ -817,7 +817,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiTextBox52.Size = new System.Drawing.Size(135, 29);
             this.uiTextBox52.Style = Sunny.UI.UIStyle.White;
             this.uiTextBox52.TabIndex = 9;
-            this.uiTextBox52.Text = "uiTextBox52";
+            this.uiTextBox52.Text = "0";
             this.uiTextBox52.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel26
@@ -891,7 +891,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox51.Size = new System.Drawing.Size(150, 29);
             this.uiComboBox51.Style = Sunny.UI.UIStyle.White;
             this.uiComboBox51.TabIndex = 3;
-            this.uiComboBox51.Text = "uiComboBox51";
+            this.uiComboBox51.Text = "固定";
             this.uiComboBox51.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel23
@@ -1734,9 +1734,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox30.DataSource = null;
             this.uiComboBox30.FillColor = System.Drawing.Color.White;
             this.uiComboBox30.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboBox30.Items.AddRange(new object[] {
-            "对对对",
-            "对对对"});
             this.uiComboBox30.Location = new System.Drawing.Point(98, 32);
             this.uiComboBox30.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox30.MinimumSize = new System.Drawing.Size(63, 0);
@@ -1783,6 +1780,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiButton2.StyleCustomMode = true;
             this.uiButton2.TabIndex = 10;
             this.uiButton2.Text = "取消";
+            this.uiButton2.Click += new System.EventHandler(this.uiButton2_Click);
             // 
             // uiButton1
             // 
@@ -1808,6 +1806,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiButton1.StyleCustomMode = true;
             this.uiButton1.TabIndex = 9;
             this.uiButton1.Text = "确定";
+            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
             // 
             // PLCpropertyD
             // 
@@ -1818,7 +1817,9 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.uiTabControl1);
             this.Name = "PLCpropertyD";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PLCpropertyD";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.PLCpropertyD_Load);
             this.uiTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

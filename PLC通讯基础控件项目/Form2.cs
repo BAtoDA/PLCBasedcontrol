@@ -13,6 +13,7 @@ namespace PLC通讯基础控件项目
         public Form2()
         {
             InitializeComponent();
+            //this.ShowDialog();
         }
     }
 }

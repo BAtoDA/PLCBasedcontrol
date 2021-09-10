@@ -89,6 +89,7 @@
             this.skinTextBox1.TabIndex = 1;
             this.skinTextBox1.Text = "999999999";
             this.skinTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.skinTextBox1.Type = Sunny.UI.UITextBox.UIEditType.Integer;
             // 
             // skinTextBox2
             // 
@@ -109,6 +110,7 @@
             this.skinTextBox2.TabIndex = 3;
             this.skinTextBox2.Text = "0";
             this.skinTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.skinTextBox2.Type = Sunny.UI.UITextBox.UIEditType.Integer;
             // 
             // skinLabel2
             // 

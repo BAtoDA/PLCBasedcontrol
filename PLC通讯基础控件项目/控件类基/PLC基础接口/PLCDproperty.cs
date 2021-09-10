@@ -9,7 +9,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
     /// <summary>
    /// 该接口是用于寄存器基础类型参数-比如字体颜色-内容等
    /// </summary>
-    interface PLCDproperty
+    public interface PLCDproperty
     {
         /// <summary>
         /// 文本颜色

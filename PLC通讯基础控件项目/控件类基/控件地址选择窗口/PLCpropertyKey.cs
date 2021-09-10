@@ -19,7 +19,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     /// <summary>
     /// 用于处理控件参数数值键盘输入界面
     /// </summary>
-    class PLCpropertyKey
+    class PLCpropertyKey : PLCpublic
     {
         /// <summary>
         /// 构造函数处理
@@ -51,12 +51,12 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
               });
             //--------处理数据---------
             Key.Checked = pLCDselect.Keyboard;
-            KeyStey.SelectedIndex = pLCDselect.KeyboardStyle;
+            KeyStey.Text = pLCDselect.KeyboardStyle;
 
             SetPlcButton.Click += ((send, s1) =>
               {
                   pLCDselect.Keyboard = Key.Checked;
-                  pLCDselect.KeyboardStyle = KeyStey.SelectedIndex;
+                  pLCDselect.KeyboardStyle = KeyStey.Text;
               });
         }
     }

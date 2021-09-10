@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,7 +40,12 @@ namespace PLC通讯库.通讯实现类
         /// <summary>
         /// PLC状态
         /// </summary>
-        bool  IPLC_interface.PLC_ready { get => PLC_ready; } //PLC状态
+        bool  IPLC_interface.PLC_ready {
+            get 
+            {
+                return (bool)this.GetType().GetField("PLC_ready", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).GetValue(this);
+            }
+        } //PLC状态
         /// <summary>
         /// PLC报警代码
         /// </summary>
@@ -177,52 +183,52 @@ namespace PLC通讯库.通讯实现类
                     case numerical_format.Signed_16_Bit:
                     case numerical_format.BCD_16_Bit:
                         // 读取short变量
-                        readResultRender(ReadInt16().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadInt16(), Name.Trim() + id.Trim(), ref result);
                         break;
                     case numerical_format.Signed_32_Bit:
                     case numerical_format.BCD_32_Bit:
                         // 读取int变量
-                        readResultRender(ReadInt32().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadInt32(), Name.Trim() + id.Trim(), ref result);
                         break;
                     case numerical_format.Binary_16_Bit:
                         // 读取16位二进制数                      
-                        readResultRender(ReadInt16().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadInt16(), Name.Trim() + id.Trim(), ref result);
                         return Convert.ToString(Convert.ToInt32(result), 2);
                     case numerical_format.Binary_32_Bit:
                         // 读取32位二进制数
-                        readResultRender(ReadInt32().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadInt32(), Name.Trim() + id.Trim(), ref result);
                         return Convert.ToString(Convert.ToInt32(result), 2);
                     case numerical_format.Float_32_Bit:
                         // 读取float变量
-                        readResultRender(ReadFloat().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadFloat(), Name.Trim() + id.Trim(), ref result);
                         break;
                     case numerical_format.Hex_16_Bit:
                         // 读取short变量
-                        readResultRender(ReadInt16().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadInt16(), Name.Trim() + id.Trim(), ref result);
                         result = Convert.ToInt32(result).ToString("X");
                         break;
                     case numerical_format.Hex_32_Bit:
                         // 读取int变量
-                        readResultRender(ReadInt32().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadInt32(), Name.Trim() + id.Trim(), ref result);
                         result = Convert.ToInt32(result).ToString("X");
                         break;
                     case numerical_format.Unsigned_16_Bit:
                         // 读取ushort变量
-                        readResultRender(ReadUInt16().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadUInt16(), Name.Trim() + id.Trim(), ref result);
                         break;
                     case numerical_format.Unsigned_32_Bit:
                         // 读取uint变量
-                        readResultRender(ReadUInt32().Result, Name.Trim() + id.Trim(), ref result);
+                        readResultRender(ReadUInt32(), Name.Trim() + id.Trim(), ref result);
                         break;
                 }
             }
             catch { }
 
-            async Task<OperateResult<short>> ReadInt16() => await melsec_net.ReadInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet"?Name.Trim() + id.Trim(): id.Trim());
-            async Task<OperateResult<int>> ReadInt32() => await melsec_net.ReadInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
-            async Task<OperateResult<ushort>> ReadUInt16() => await melsec_net.ReadUInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
-            async Task<OperateResult<uint>> ReadUInt32() => await melsec_net.ReadUInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
-            async Task<OperateResult<float>> ReadFloat() => await melsec_net.ReadFloatAsync(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+             OperateResult<short> ReadInt16() =>  melsec_net.ReadInt16(this.melsec_net.GetType().Name != "ModbusTcpNet"?Name.Trim() + id.Trim(): id.Trim());
+             OperateResult<int> ReadInt32() =>  melsec_net.ReadInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+             OperateResult<ushort> ReadUInt16() =>  melsec_net.ReadUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+             OperateResult<uint> ReadUInt32() =>  melsec_net.ReadUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+             OperateResult<float> ReadFloat() =>  melsec_net.ReadFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
             return result;//返回数据
         }
         /// <summary>
@@ -244,42 +250,42 @@ namespace PLC通讯库.通讯实现类
                     {
                         case numerical_format.Signed_16_Bit:
                         case numerical_format.BCD_16_Bit:
-                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Signed_32_Bit:
                         case numerical_format.BCD_32_Bit:
-                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_16_Bit:
-                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Binary_32_Bit:
-                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(Convert.ToInt32(content, 2).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Float_32_Bit:
-                            writeResultRender(WriteFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), float.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), float.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_16_Bit:
-                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), short.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Hex_32_Bit:
-                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), int.Parse(Convert.ToInt32(content, 16).ToString())), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_16_Bit:
-                            writeResultRender(WriteUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), ushort.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), ushort.Parse(content)), Name.Trim() + id.Trim());
                             break;
                         case numerical_format.Unsigned_32_Bit:
-                            writeResultRender(WriteUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), uint.Parse(content)).Result, Name.Trim() + id.Trim());
+                            writeResultRender(WriteUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), uint.Parse(content)), Name.Trim() + id.Trim());
                             break;
                     }
                 }
                 catch { }
             }
-            async Task<OperateResult> WriteInt16(string Address, short Data) => await melsec_net.WriteAsync(Address, Data);
-            async Task<OperateResult> WriteInt32(string Address, int Data) => await melsec_net.WriteAsync(Address, Data);
-            async Task<OperateResult> WriteUInt16(string Address, ushort Data) => await melsec_net.WriteAsync(Address, Data);
-            async Task<OperateResult> WriteUInt32(string Address, uint Data) => await melsec_net.WriteAsync(Address, Data);
-            async Task<OperateResult> WriteFloat(string Address, float Data) => await melsec_net.WriteAsync(Address, Data);
+            OperateResult WriteInt16(string Address, short Data) => melsec_net.Write(Address, Data);
+            OperateResult WriteInt32(string Address, int Data) => melsec_net.Write(Address, Data);
+            OperateResult WriteUInt16(string Address, ushort Data) => melsec_net.Write(Address, Data);
+            OperateResult WriteUInt32(string Address, uint Data) => melsec_net.Write(Address, Data);
+            OperateResult WriteFloat(string Address, float Data) => melsec_net.Write(Address, Data);
             return result;//返回数据
         }
         /// <summary>

@@ -58,10 +58,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public bool TextItalic_1 { get; set; } = false;
         public bool TextUnderline_1 { get; set; } = false;
         //基础外部文本颜色 与 内容控制
-        public Color backgroundColor_0 { get; set; } = Color.White;
+        public Color backgroundColor_0 { get; set; } = Color.Black;
         public Color TextColor_0 { get; set; } = Color.White;
         public string TextContent_0 { get; set; } = "0";
-        public Color backgroundColor_1 { get; set; } = Color.White;
+        public Color backgroundColor_1 { get; set; } = Color.Black;
         public Color TextColor_1 { get; set; } = Color.White;
         public string TextContent_1 { get; set; } = "0";
         public System.Threading.Timer PLCTimer { get; set; }
