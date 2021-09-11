@@ -37,24 +37,6 @@ namespace PLC通讯基础控件项目.基础控件
                   }
               });
         }
-        //protected override void InitLayout()
-        //{
-        //    //处理PLC通讯部分
-        //    if (!this.PLC_Enable || this.IsDisposed) return;//用户不开启PLC功能
-        //    {
-        //        ControlPLCDBase controlPLCBitBase = new ControlPLCDBase(this);
-        //    }
-        //    base.InitLayout();
-        //}
-        //protected override void OnEnter(EventArgs e)
-        //{
-        //    //处理PLC通讯部分
-        //    if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
-        //    {
-        //        ControlPLCDBase controlPLCBitBase = new ControlPLCDBase(this);
-        //    }
-        //    base.OnEnter(e);
-        //}
     }
     [ToolboxItem(true)]
     [Browsable(true)]

@@ -50,7 +50,11 @@ namespace PLC通讯基础控件项目.控件类基.控件文本键盘
             }
             if ((button.Text != "Clr") & (button.Text != "Esc") & (button.Text != "Bs") & (button.Text != "Del") & (button.Text != "<") & (button.Text != ">") & (button.Text != "Enter"))//判断是否功能键不录入
             {
-                if ((textBox.ShowFormat.ToString() == "Binary_16_Bit"|| textBox.ShowFormat.ToString() == "Binary_32_Bit")&(Convert.ToInt32(button.Text)>1)) return;//返回方法不录入字体
+                if ((textBox.ShowFormat.ToString() == "Binary_16_Bit" || textBox.ShowFormat.ToString() == "Binary_32_Bit"))
+                {
+                    if((Convert.ToInt32(button.Text) > 1))
+                      return;//返回方法不录入字体
+                }
                 this.skinTextBox3.Text=Button_text_add(sender);//添加字符
             }
             if (button.Text == "Bs" || button.Text == "Del") this.skinTextBox3.Text = "0";//清空字符
@@ -75,37 +79,56 @@ namespace PLC通讯基础控件项目.控件类基.控件文本键盘
         }
         private string complement(string Name)//实现浮点小数自动补码
         {
+            string d = string.Empty;
+            int minusInde = Name.IndexOf('-');//搜索数据是否有小数点
             int Inde = Name.IndexOf('.');//搜索数据是否有小数点
-            if (Inde < 0& textBox.NumericaldigitMin!=0) Name += ".";//自动补码小数点
-            if (textBox.NumericaldigitMin > 0& Inde < 0)
+            //如果有小数点 先移除
+            if (Inde > -1)
+                Name=Name.Remove(Inde, 1);
+            //如果是否负数 先移除符号位
+            if (minusInde > -1)
+                Name = Name.Remove(minusInde, 1);
+            if (textBox.NumericaldigitMin > (Inde>-1?Name.Length: Name.Length-1))
             {
-                for (int i = 0; i < textBox.NumericaldigitMin; i++) Name += "0";//填充数据
-            }          
-            if (textBox.NumericaldigitMin > 0 & Inde > 0)
-            {
-                int In = Name.Length - 1 - Inde;
-                for (int i = 0; i < textBox.NumericaldigitMin - In; i++) Name += "0";//填充数据
+                int forindex = (textBox.NumericaldigitMin - Name.Length) + 1;
+                for (int i=0;i< forindex; i++)
+                  Name = Name.Insert(0, "0");//填充数据
             }
+            if (Inde == -1)
+            {
+                if (textBox.NumericaldigitMin < Name.Length)
+                {
+                    Name = Name.Insert(Name.Length- textBox.NumericaldigitMin, ".");//填充数据
+                }
+            }
+            //补码
+            if (minusInde > -1)
+                Name=Name = Name.Insert(0, "-");//填充数据
             return Name;//返回数据
         }
         /// <方法重写实现获取用户输入的文本-与参数中的格式-判断输入是否正确-控件文本写入与约束>
         private bool numerical_KeyPress_import(string Text, string Name)//获取用户输入的文本-与参数中的格式-判断输入是否正确
         {
             bool Handled = false;//初始化键盘输入状态、
-            int data;
+            long data;
             int constraint_16_0 = Convert.ToInt32(skinTextBox2.Text), constraint_16_1 = Convert.ToInt32(skinTextBox1.Text);//short类型最大约束-与int 约束
-            if ((textBox.ShowFormat.ToString() != "Float_32_Bit") &(Text.IndexOf('.') > 0)) Text.Trim('.');//如果不浮点小数 就移除小数点
+            if ((textBox.ShowFormat.ToString() != "Float_32_Bit") & (Text.IndexOf('.') > 0))//如果不浮点小数 就移除小数点
+            {
+                int index = Text.IndexOf('.');
+                Text = Text.Remove(index, 1);
+                Text.Trim('.');
+            }
             if ((textBox.ShowFormat.ToString() == "Unsigned_16_Bit" || textBox.ShowFormat.ToString() == "Unsigned_32_Bit") & (Text.IndexOf('-') > 0)) Text.Trim('-');//如果不是有符号就移除符号
             if (Text.Length < 4) return Handled;//字符数小于一定数量--不做判断
             switch (Name.Trim())//判断数据
             {
                 case "BCD_16_Bit":
-                    data = Convert.ToInt32(Text??"0");//把数据转换成--int
+                    data = Convert.ToInt64(Text??"0");//把数据转换成--int
                     if ((data > 0) & (data > constraint_16_1)) Handled = true;//取消修改
                     if ((data < 0) & (data < constraint_16_0)) Handled = true;//取消修改
                     break;
                 case "BCD_32_Bit":
-                    data = Convert.ToInt32(Text??"0");//把数据转换成--int
+                    data = Convert.ToInt64(Text??"0");//把数据转换成--int
                     if ((data > 0) & (data > constraint_16_1)) Handled = true;//取消修改
                     if ((data < 0) & (data < constraint_16_0)) Handled = true;//取消修改
                     break;
@@ -129,22 +152,22 @@ namespace PLC通讯基础控件项目.控件类基.控件文本键盘
                     Handled =  In> textBox.NumericaldigitMin ? true:false;//取消修改
                     break;
                 case "Unsigned_16_Bit":
-                    data = Convert.ToInt32(Text ?? "0");//把数据转换成--int
+                    data = Convert.ToInt64(Text ?? "0");//把数据转换成--int
                     if ((data > 0) & (data > constraint_16_1)) Handled = true;//取消修改
                     if ((data < 0)) Handled = true;//取消修改
                     break;
                 case "Unsigned_32_Bit":
-                    data = Convert.ToInt32(Text ?? "0");//把数据转换成--int
+                    data = Convert.ToInt64(Text ?? "0");//把数据转换成--int
                     if ((data > 0) & (data > constraint_16_1)) Handled = true;//取消修改
                     if ((data < 0)) Handled = true;//取消修改
                     break;
                 case "Signed_16_Bit":
-                    data = Convert.ToInt32(Text ?? "0");//把数据转换成--int
+                    data = Convert.ToInt64(Text ?? "0");//把数据转换成--int
                     if ((data > 0) & (data > constraint_16_1)) Handled = true;//取消修改
                     if ((data < 0) & (data < constraint_16_0)) Handled = true;//取消修改
                     break;
                 case "Signed_32_Bit":
-                    data = Convert.ToInt32(Text ?? "0");//把数据转换成--int
+                    data = Convert.ToInt64(Text ?? "0");//把数据转换成--int
                     if ((data > 0) & (data > constraint_16_1)) Handled = true;//取消修改
                     if ((data < 0) & (data < constraint_16_0)) Handled = true;//取消修改
                     break;

@@ -43,6 +43,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 GetPLCBitName(readwritePLCfunction, readwriteplc.Text);
                 readwriteaddress.Text = "0";
             });
+            readwritePLCfunction.Items.Clear();
+            GetPLCBitName(readwritePLCfunction, readwriteplc.Text);
             readwriteaddress.Text = "0";
             readwriteplc.KeyPress += KeyPress;           
             //处理启用状态

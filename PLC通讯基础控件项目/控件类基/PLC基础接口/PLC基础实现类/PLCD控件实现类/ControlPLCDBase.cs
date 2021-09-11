@@ -12,13 +12,17 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using System.Linq;
+using System.Reflection;
+using System.ComponentModel;
 using PLC通讯基础控件项目.控件类基.控件安全对象池;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
-using System.Reflection;
 using PLC通讯基础控件项目.控件类基.控件文本键盘;
 using PLC通讯库.通讯基础接口;
 using PLC通讯库.PLC通讯设备类型表;
 using PLC通讯库.通讯实现类;
+using System.Text.RegularExpressions;
+using PLC通讯库.通讯枚举;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类
 {
@@ -53,6 +57,22 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// PLC安全操作模式
         /// </summary>
         volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
+        /// <summary>
+        /// 用于判断用户是否停止输入文本
+        /// </summary>
+        private System.Windows.Forms.Timer KeyTime = new System.Windows.Forms.Timer() { Interval = 800};
+        private bool Focused
+        {
+            get
+            {
+                PlcControl.BeginInvoke((MethodInvoker)delegate
+                {
+                    focused= PlcControl.Focused;
+                });
+                return focused;
+            }
+        }
+        private volatile bool focused;
         #endregion
         public ControlPLCDBase(Control PlcControl)
         {
@@ -64,6 +84,29 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //----------处理控件PLC--自动获取PLC类型对象----------
             PLCoopErr(pLCDClassBase, pLCDproperty);
             this.PlcControl = PlcControl;
+            //----------处理控件焦点问题--------------------------
+            KeyTime.Enabled = true;
+            KeyTime.Stop();
+            KeyTime.Tick += ((send, e) =>
+              {
+                  KeyTime.Stop();
+                  //遍历该控件的顶级窗口--查找可以获得焦点的控件
+                  if(PlcControl.Parent!=null)
+                  {
+                      ContIndex:
+                      foreach (Control i in PlcControl.Controls)
+                      {
+                          if(i is Button || i is TextBox || i is CheckBox || i is DataGridView)
+                          {
+                              i.Focus();
+                              return;
+                          }
+                      }
+                      //如果找不到对应控件默认添加控件
+                      PlcControl.Controls.Add(new Button() { Visible = false });
+                      goto ContIndex;
+                  }
+              });
             //----------处理控件与PLC事件处理---------------------
             if (((dynamic)PlcControl).PLC_Enable)
             {
@@ -75,8 +118,56 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 pLCDproperty.PLCTimer.Change(500, 300);
             }
             this.PlcControl.Text = "0";
+            ((dynamic)this.PlcControl).ReadOnly = pLCDClassBase.pLCDselectRealize.Keyboard;
             //---------安全操作模式----------
             PLCsafetypattern = pLCDClassBase.pLCDselectRealize.OperationAffirm ? Getsafetypattern(pLCDClassBase.pLCDselectRealize.SafetyBehaviorPattern) : Safetypattern.Nooperation;
+            //---------是否锁死物理键盘-----
+            this.PlcControl.KeyPress += ((send, e) =>
+              {
+                  //语音播报系统
+                  if (pLCDClassBase.pLCDselectRealize.Speech && pLCDClassBase.pLCDselectRealize.OperationAffirm)
+                  {
+                      Voicebroadcast($"{this.PlcControl.Name}已触发");
+                  }
+                  //判断该控件是否启用键盘
+                  if (pLCDClassBase.pLCDselectRealize.Dataentryfunction == false || PLCsafetypattern != Safetypattern.Nooperation) return;
+                  //判断
+                  if (pLCDClassBase.pLCDselectRealize.Keyboard)
+                  {
+                      e.Handled = true;
+                  }
+                  else
+                  {
+                      //判断用户是否输入中--停止焦点定时器
+                      KeyTime.Stop();
+                      ((Control)send).Text = ((Control)send).Text.Length < 1 ? "0" : ((Control)send).Text == "" ? "0" : ((Control)send).Text;
+                      //不允许输入特殊字符
+                      if (e.KeyChar != '\b')//这是允许输入退格键  
+                      {
+                          if ((e.KeyChar < '0') || (e.KeyChar > 'F')& (e.KeyChar != '.'))
+                          {
+                              e.Handled = true;
+                          }
+                      }
+                      return;
+                    
+                  }
+              });
+            this.PlcControl.KeyUp += ((send, e) =>
+            {
+                //判断该控件是否启用键盘
+                if (pLCDClassBase.pLCDselectRealize.Dataentryfunction == false || PLCsafetypattern != Safetypattern.Nooperation) return;
+                if (!pLCDClassBase.pLCDselectRealize.Keyboard)
+                {
+                    ((Control)send).Text = ((Control)send).Text.Length < 1 ? "0" : ((Control)send).Text == "" ? "0" : ((Control)send).Text;
+                    //----------处理控件PLC--自动获取PLC类型对象----------
+                    PLCoopErr(pLCDClassBase, pLCDproperty);
+                    //写入当前控件值
+                    PLCWrite(this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WritePLC : this.pLCDClassBase.pLCDselectRealize.ReadWritePLC, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteFunction : this.pLCDClassBase.pLCDselectRealize.ReadWriteFunction, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteAddress : this.pLCDClassBase.pLCDselectRealize.ReadWriteAddress, this.PlcControl.Text, this.pLCDClassBase.pLCDselectRealize.ShowFormat);
+                    //判断用户是否输入完成启动定时器--焦点定时器
+                    KeyTime.Start();
+                }
+            });
         }
         /// <summary>
         /// 处理鼠标点击事件
@@ -91,7 +182,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 Voicebroadcast($"{this.PlcControl.Name}已触发");
             }
             //判断该控件是否启用键盘
-            if (pLCDClassBase.pLCDselectRealize.Keyboard==false || pLCDClassBase.pLCDselectRealize.Dataentryfunction==false || PLCsafetypattern == Safetypattern.Close) return;
+            if (pLCDClassBase.pLCDselectRealize.Keyboard==false || pLCDClassBase.pLCDselectRealize.Dataentryfunction==false || PLCsafetypattern != Safetypattern.Nooperation) return;
             //----------处理控件PLC--自动获取PLC类型对象----------
             PLCoopErr(pLCDClassBase, pLCDproperty);
             //----------调用对象池处理----------------------------
@@ -130,7 +221,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         Keyoop.ShowDialog();
                         this.PlcControl.Text = Keyoop.O_Text;
                     }
-                    catch
+                    catch(Exception e1)
                     {
                         //异常处理键盘
                         keyboard keyboard = new keyboard(this.PlcControl.Text, this.pLCDClassBase.pLCDselectRealize);
@@ -156,14 +247,105 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
             //bool OopType = (bool)PLCoop.GetType().GetField("PLC_ready", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).GetValue(PLCoop);
             if (PLCoop.PLC_ready)
+            {
                 PLCoop.PLC_write_D_register(Id, Addary, Value, numerical_Format);
+                PLCinform();
+            }
         }
         /// <summary>
         /// 处理控件值--读取PLC
         /// </summary>
         private void PLCrefresh()
         {
-
+            lock(this)
+            {
+                if (PlcControl.IsDisposed || PlcControl.Created == false|| Focused) return;
+                PLCoopErr(pLCDClassBase, pLCDproperty);
+                PLCsafety();
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCDClassBase.pLCDselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                if (PLCoop == null) return;
+                if (!PLCoop.PLC_ready) return;
+                var State = PLCoop.PLC_read_D_register(pLCDClassBase.pLCDselectRealize.ReadWriteFunction, pLCDClassBase.pLCDselectRealize.ReadWriteAddress,pLCDClassBase.pLCDselectRealize.ShowFormat);
+                //---委托控件----处理状态颜色
+                PlcControl.BeginInvoke((MethodInvoker)delegate
+                {
+                    //处理安全控制---是否要隐藏控件
+                    this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
+                    this.PlcControl.Text = complement(State ?? "0");
+                });
+            }
+        }
+        /// <summary>
+        /// PLC安全控制
+        /// </summary>
+        private void PLCsafety()
+        {
+            if (pLCDClassBase.pLCDselectRealize.OperationAffirm)
+            {
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCDClassBase.pLCDselectRealize.SafetyPLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                if (PLCoop == null) return;
+                if (!PLCoop.PLC_ready) return;
+                var State = PLCoop.PLC_read_M_bit(pLCDClassBase.pLCDselectRealize.SafetyFunction, pLCDClassBase.pLCDselectRealize.WrSafetyAddress);
+                switch (pLCDClassBase.pLCDselectRealize.SafetyPattern)
+                {
+                    case 0:
+                        if (State)
+                            PLCsafetypattern = Getsafetypattern(pLCDClassBase.pLCDselectRealize.SafetyBehaviorPattern);
+                        else
+                            PLCsafetypattern = Safetypattern.Nooperation;
+                        break;
+                    case 1:
+                        if (!State)
+                            PLCsafetypattern = Getsafetypattern(pLCDClassBase.pLCDselectRealize.SafetyBehaviorPattern);
+                        else
+                            PLCsafetypattern = Safetypattern.Nooperation;
+                        break;
+                }
+            }
+            else
+                PLCsafetypattern = Safetypattern.Nooperation;
+        }
+        /// <summary>
+        /// 实现PLC写入完成通知功能
+        /// </summary>
+        private void PLCinform()
+        {
+            if(pLCDClassBase.pLCDselectRealize.Inform)
+            {
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCDClassBase.pLCDselectRealize.InformPLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                if (PLCoop == null) return;
+                if (!PLCoop.PLC_ready) return;
+                var State = PLCoop.PLC_write_M_bit(pLCDClassBase.pLCDselectRealize.InformFunction, pLCDClassBase.pLCDselectRealize.InformAddress, pLCDClassBase.pLCDselectRealize.Informpattern>0? Button_state .ON: Button_state.Off);
+            }
+        }
+        private string complement(string Name)//实现浮点小数自动补码
+        {
+            string d = string.Empty;
+            int minusInde = Name.IndexOf('-');//搜索数据是否有小数点
+            int Inde = Name.IndexOf('.');//搜索数据是否有小数点
+            //如果有小数点 先移除
+            if (Inde > -1)
+                Name=Name.Remove(Inde, 1);
+            //如果是否负数 先移除符号位
+            if (minusInde > -1)
+                Name = Name.Remove(minusInde, 1);
+            if (pLCDClassBase.pLCDselectRealize.NumericaldigitMin > (Inde>-1?Name.Length: Name.Length-1))
+            {
+                int forindex = (pLCDClassBase.pLCDselectRealize.NumericaldigitMin - Name.Length) + 1;
+                for (int i=0;i< forindex; i++)
+                  Name = Name.Insert(0, "0");//填充数据
+            }
+            if (Inde == -1)
+            {
+                if (pLCDClassBase.pLCDselectRealize.NumericaldigitMin < Name.Length)
+                {
+                    Name = Name.Insert(Name.Length-pLCDClassBase.pLCDselectRealize.NumericaldigitMin, ".");//填充数据
+                }
+            }
+            //补码
+            if (minusInde > -1)
+                Name=Name = Name.Insert(0, "-");//填充数据
+            return Name;//返回数据
         }
     }
 }

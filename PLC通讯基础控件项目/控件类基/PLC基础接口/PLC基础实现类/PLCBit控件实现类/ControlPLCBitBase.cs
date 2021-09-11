@@ -49,7 +49,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 复归型按钮标志位
         /// </summary>
-        private volatile bool State = false;
+       // private volatile bool State = false;
         /// <summary>
         /// PLC安全操作模式
         /// </summary>
@@ -95,7 +95,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 Voicebroadcast($"{this.PlcControl.Name}已触发");
             }
             //判断改控件是否只读
-            if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut|| PLCsafetypattern==Safetypattern.Close) return;
+            if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut|| PLCsafetypattern!=Safetypattern.Nooperation) return;
             PLCoopErr(pLCBitClassBase, pLCBitproperty);
             //根据设定的模式进行写入PLC操作
             //判断对象池是否为空
@@ -135,7 +135,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         private void MouseUpPLC(object send,EventArgs e)
         {
             //判断改控件是否只读
-            if (pLCBitClassBase.pLCBitselectRealize.BitPattern|| PLCsafetypattern == Safetypattern.Close) return;
+            if (pLCBitClassBase.pLCBitselectRealize.BitPattern|| PLCsafetypattern != Safetypattern.Nooperation) return;
             PLCoopErr(pLCBitClassBase, pLCBitproperty);
             //根据设定的模式进行写入PLC操作
             if (pLCBitClassBase.pLCBitselectRealize.LoosenOut)
@@ -155,6 +155,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     Poss.Item2.Tick += SafetyTick;
                     void SafetyTick(object send, EventArgs e)
                     {
+                        //判断改控件是否只读
+                        if (pLCBitClassBase.pLCBitselectRealize.BitPattern || pLCBitClassBase.pLCBitselectRealize.LoosenOut || PLCsafetypattern != Safetypattern.Nooperation) return;
                         PLCSwitch(Button_pattern.Set_as_off);
                         Poss.Item2.Stop();
                         //处理完成归还对象
@@ -173,6 +175,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         }
         private void PLCSwitch(Button_pattern _Pattern)
         {
+            //判断改控件是否只读
+            if (pLCBitClassBase.pLCBitselectRealize.BitPattern || pLCBitClassBase.pLCBitselectRealize.LoosenOut || PLCsafetypattern != Safetypattern.Nooperation) return;
             switch (_Pattern)
             {
                 case Button_pattern.Set_as_off:
@@ -190,14 +194,14 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 case Button_pattern.selector_witch:
                     IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC.ToString() : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) as IPLCcommunicationBase;
                     if (!PLCoop.PLC_ready) return;
-                    //var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteFunction : pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction,
-               //pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteAddress : pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                    var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteFunction : pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction,
+               pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteAddress : pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
 
                     PLCWrite(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC,
                pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteFunction : pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction,
                pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteAddress : pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress,
                pLCBitClassBase.pLCBitselectRealize.OutReverse ? State ? true : false : State ? false : true);
-                    State =State?false:true;
+                    //State =State?false:true;
                     return;
                 case Button_pattern.Regression:
                     PLCWrite(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC,

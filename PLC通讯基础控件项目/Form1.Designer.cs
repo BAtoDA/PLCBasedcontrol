@@ -108,7 +108,7 @@ namespace PLC通讯基础控件项目
             this.daButton1.pLCBitselectRealize.SafetyCategory = 0;
             this.daButton1.pLCBitselectRealize.SafetyFunction = "Y";
             this.daButton1.pLCBitselectRealize.SafetyPattern = 1;
-            this.daButton1.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.daButton1.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daButton1.pLCBitselectRealize.Speech = true;
             this.daButton1.pLCBitselectRealize.Textalign_0 = "TopLeft";
             this.daButton1.pLCBitselectRealize.Textalign_1 = "TopLeft";
@@ -202,7 +202,7 @@ namespace PLC通讯基础控件项目
             this.daButton2.pLCBitselectRealize.ReadWrite = false;
             this.daButton2.pLCBitselectRealize.ReadWriteAddress = "2";
             this.daButton2.pLCBitselectRealize.ReadWriteFunction = "Y";
-            this.daButton2.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.daButton2.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daButton2.pLCBitselectRealize.SafetyBehaviorPattern = 0;
             this.daButton2.pLCBitselectRealize.SafetyCategory = 0;
             this.daButton2.pLCBitselectRealize.SafetyFunction = "M";
@@ -242,15 +242,15 @@ namespace PLC通讯基础控件项目
             // 
             this.daTextBox1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
             this.daTextBox1.ForeColor = System.Drawing.Color.Black;
-            this.daTextBox1.Location = new System.Drawing.Point(569, 130);
+            this.daTextBox1.Location = new System.Drawing.Point(579, 120);
             this.daTextBox1.Name = "daTextBox1";
             this.daTextBox1.PLC_Enable = true;
             this.daTextBox1.pLCDselectRealize.AwaitTime = 10;
             this.daTextBox1.pLCDselectRealize.Dataentryfunction = true;
             this.daTextBox1.pLCDselectRealize.description = "PLCDselectRealize";
-            this.daTextBox1.pLCDselectRealize.Inform = false;
-            this.daTextBox1.pLCDselectRealize.InformAddress = "0";
-            this.daTextBox1.pLCDselectRealize.InformFunction = "M";
+            this.daTextBox1.pLCDselectRealize.Inform = true;
+            this.daTextBox1.pLCDselectRealize.InformAddress = "2";
+            this.daTextBox1.pLCDselectRealize.InformFunction = "Y";
             this.daTextBox1.pLCDselectRealize.Informpattern = 0;
             this.daTextBox1.pLCDselectRealize.InformPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daTextBox1.pLCDselectRealize.Keyboard = true;
@@ -259,7 +259,7 @@ namespace PLC通讯基础控件项目
             this.daTextBox1.pLCDselectRealize.NoAccessConceal = false;
             this.daTextBox1.pLCDselectRealize.NoAccessForm = false;
             this.daTextBox1.pLCDselectRealize.NumericaldigitMax = 7;
-            this.daTextBox1.pLCDselectRealize.NumericaldigitMin = 0;
+            this.daTextBox1.pLCDselectRealize.NumericaldigitMin = 2;
             this.daTextBox1.pLCDselectRealize.NumericalFormat = 0;
             this.daTextBox1.pLCDselectRealize.NumericalMax = 9999999;
             this.daTextBox1.pLCDselectRealize.NumericalMin = -999999;
@@ -294,6 +294,7 @@ namespace PLC通讯基础控件项目
             this.daTextBox1.pLCDselectRealize.WriteFunction = "D";
             this.daTextBox1.pLCDselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daTextBox1.pLCDselectRealize.WrSafetyAddress = "0";
+            this.daTextBox1.ReadOnly = true;
             this.daTextBox1.Size = new System.Drawing.Size(100, 23);
             this.daTextBox1.TabIndex = 5;
             this.daTextBox1.Text = "0";

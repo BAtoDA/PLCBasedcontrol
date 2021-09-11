@@ -231,7 +231,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiTextBox18.Size = new System.Drawing.Size(125, 29);
             this.uiTextBox18.Style = Sunny.UI.UIStyle.White;
             this.uiTextBox18.TabIndex = 9;
-            this.uiTextBox18.Text = "uiTextBox18";
             this.uiTextBox18.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiComboBox17
@@ -835,12 +834,19 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             // 
             this.uiDoubleUpDown51.FillColor = System.Drawing.Color.White;
             this.uiDoubleUpDown51.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiDoubleUpDown51.HasMaximum = true;
+            this.uiDoubleUpDown51.HasMinimum = true;
             this.uiDoubleUpDown51.Location = new System.Drawing.Point(344, 79);
             this.uiDoubleUpDown51.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiDoubleUpDown51.Maximum = 10D;
+            this.uiDoubleUpDown51.MaximumEnabled = true;
+            this.uiDoubleUpDown51.Minimum = 0D;
+            this.uiDoubleUpDown51.MinimumEnabled = true;
             this.uiDoubleUpDown51.MinimumSize = new System.Drawing.Size(100, 0);
             this.uiDoubleUpDown51.Name = "uiDoubleUpDown51";
             this.uiDoubleUpDown51.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
             this.uiDoubleUpDown51.Size = new System.Drawing.Size(100, 29);
+            this.uiDoubleUpDown51.Step = 1D;
             this.uiDoubleUpDown51.Style = Sunny.UI.UIStyle.White;
             this.uiDoubleUpDown51.TabIndex = 6;
             this.uiDoubleUpDown51.Text = "uiDoubleUpDown51";
@@ -862,10 +868,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             // 
             this.uiDoubleUpDown50.FillColor = System.Drawing.Color.White;
             this.uiDoubleUpDown50.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiDoubleUpDown50.HasMaximum = true;
+            this.uiDoubleUpDown50.HasMinimum = true;
             this.uiDoubleUpDown50.Location = new System.Drawing.Point(123, 80);
             this.uiDoubleUpDown50.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiDoubleUpDown50.Maximum = 10D;
+            this.uiDoubleUpDown50.MaximumEnabled = true;
             this.uiDoubleUpDown50.Minimum = 0D;
+            this.uiDoubleUpDown50.MinimumEnabled = true;
             this.uiDoubleUpDown50.MinimumSize = new System.Drawing.Size(100, 0);
             this.uiDoubleUpDown50.Name = "uiDoubleUpDown50";
             this.uiDoubleUpDown50.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));

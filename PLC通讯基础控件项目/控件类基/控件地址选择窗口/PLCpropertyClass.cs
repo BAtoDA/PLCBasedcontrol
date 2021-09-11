@@ -168,7 +168,20 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         {
             //初始化操作--PLC下拉菜单
             PLCload(readwriteplc, readwritePLCfunction, readwriteaddress, writePelan, writeplc, writePLCfunction, writeaddress);
-            PLCload(inforplc, informPLCfunction, informaddress);
+            //加载通知
+            inforplc.Items.Clear();
+            Enum.GetNames(typeof(PLC)).ForEach(s =>
+            {
+                inforplc.Items.Add(s);
+            });
+            inforplc.SelectedIndex = 0;
+            inforplc.TextChanged += ((sendq, s1) =>
+            {
+                informPLCfunction.Items.Clear();
+                GetPLCBitName(informPLCfunction, inforplc.Text);
+                informaddress.Text = "0";
+            });
+            GetPLCBitName(informPLCfunction, inforplc.Text);
             //处理UI特效部分     
             //处理读取写入不同地址
             readwrite.CheckedChanged += ((sendq, s1) =>
@@ -181,11 +194,15 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 readwritePLCfunction.Items.Clear();
                 GetPLCDName(readwritePLCfunction, readwriteplc.Text);
             });
+            readwritePLCfunction.Items.Clear();
+            GetPLCDName(readwritePLCfunction, readwriteplc.Text);
             writeplc.TextChanged += ((sendq, s1) =>
             {
                 writePLCfunction.Items.Clear();
                 GetPLCDName(writePLCfunction, writeplc.Text);
             });
+            writePLCfunction.Items.Clear();
+            GetPLCDName(writePLCfunction, writeplc.Text);
             //处理键盘
             readwriteplc.KeyPress += KeyPress;
             readwritePLCfunction.KeyPress += KeyPress;
@@ -193,7 +210,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             writePLCfunction.KeyPress += KeyPress;
             inforplc.KeyPress += KeyPress;
             informPLCfunction.KeyPress += KeyPress;
-            informaddress.KeyPress += KeyPress;
             //----------处理通知-------------
             //位状态指示灯特效
             inform1.CheckedChanged += ((sendq, s1) =>
