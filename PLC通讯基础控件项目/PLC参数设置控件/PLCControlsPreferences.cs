@@ -39,6 +39,28 @@ namespace PLC通讯基础控件项目
     [ToolboxBitmap(typeof(PLCControlsPreferences), "ComponentTest.bmp")]
     [DesignTimeVisible(true)]
     [Designer(typeof(FrameworkComponentDesigner))]
+    public partial class PLCControlsPreferences
+    {
+        [Serializable]
+        private sealed class PlclinkClass
+        {
+            public PLC PLC { get; set; }
+            public string Link { get; set; }
+            public string Dll { get; set; }
+            public bool Dllplace { get; set; }
+        }
+        //PLC名称对应的命名空间---
+        private List<PlclinkClass> plclinkClasses = new List<PlclinkClass>()
+        {
+            new PlclinkClass(){ PLC=PLC.Mitsubishi, Link="HslCommunication.Profinet.Melsec.MelsecMcNet",Dllplace=true,Dll="HslCommunication"},
+              new PlclinkClass(){ PLC=PLC.Modbus_TCP, Link="HslCommunication.ModBus.ModbusTcpNet",Dllplace=true,Dll="HslCommunication"},
+                 new PlclinkClass(){ PLC=PLC.OmronCIP, Link="HslCommunication.Profinet.Omron.OmronCipNet",Dllplace=true,Dll="HslCommunication"},
+                 new PlclinkClass(){ PLC=PLC.OmronTCP, Link="HslCommunication.Profinet.Omron.OmronFinsNet",Dllplace=true,Dll="HslCommunication"},
+                 new PlclinkClass(){ PLC=PLC.OmronUDP, Link="HslCommunication.Profinet.Omron.OmronFinsUdp",Dllplace=true,Dll="HslCommunication"},
+                      new PlclinkClass(){ PLC=PLC.Siemens, Link="HslCommunication.Profinet.Siemens.SiemensS7Net",Dllplace=true,Dll="HslCommunication"},
+                      new PlclinkClass(){PLC=PLC.Fanuc,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"}
+        };
+    }
     public partial class PLCControlsPreferences : Timer
     {
 
@@ -113,7 +135,12 @@ namespace PLC通讯基础控件项目
                         var PLClink = this.plclinkClasses.Where(p => p.PLC == i.PLCDevice).FirstOrDefault();
                         if (PLClink != null)
                         {
-                            var PLCoop = Assembly.LoadFrom("HslCommunication").GetType(PLClink.Link);
+                            //-----查找指定Dll并且按照路径进行反射获取Type命名空间-----
+                            Type PLCoop;
+                            if (PLClink.Dllplace)
+                              PLCoop = Assembly.LoadFrom(PLClink.Dll).GetType(PLClink.Link);
+                            else
+                                PLCoop = Assembly.GetExecutingAssembly().GetType(PLClink.Link);
                             if (PLCoop != null && !IPLCsurface.PLCDictionary.ContainsKey(PLClink.PLC.ToString()))
                             {
                                 Object[] constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
@@ -165,25 +192,6 @@ namespace PLC通讯基础控件项目
             base.OnTick(e);
         }
 
-    }
-    public partial class PLCControlsPreferences
-    {
-        [Serializable]
-        private sealed class PlclinkClass
-        {
-            public PLC PLC { get; set; }
-            public string Link { get; set; }
-        }
-        //PLC名称对应的命名空间---
-        private List<PlclinkClass> plclinkClasses = new List<PlclinkClass>()
-        {
-            new PlclinkClass(){ PLC=PLC.Mitsubishi, Link="HslCommunication.Profinet.Melsec.MelsecMcNet"},
-              new PlclinkClass(){ PLC=PLC.Modbus_TCP, Link="HslCommunication.ModBus.ModbusTcpNet"},
-                 new PlclinkClass(){ PLC=PLC.OmronCIP, Link="HslCommunication.Profinet.Omron.OmronCipNet"},
-                 new PlclinkClass(){ PLC=PLC.OmronTCP, Link="HslCommunication.Profinet.Omron.OmronFinsNet"},
-                 new PlclinkClass(){ PLC=PLC.OmronUDP, Link="HslCommunication.Profinet.Omron.OmronFinsUdp"},
-                      new PlclinkClass(){ PLC=PLC.Siemens, Link="HslCommunication.Profinet.Siemens.SiemensS7Net"}
-        };
     }
   
 }

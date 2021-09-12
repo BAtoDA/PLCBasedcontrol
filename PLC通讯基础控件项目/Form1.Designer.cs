@@ -87,12 +87,12 @@ namespace PLC通讯基础控件项目
             this.daButton1.Location = new System.Drawing.Point(119, 120);
             this.daButton1.Name = "daButton1";
             this.daButton1.PLC_Enable = true;
-            this.daButton1.pLCBitselectRealize.AwaitTime = 0;
+            this.daButton1.pLCBitselectRealize.AwaitTime = 500;
             this.daButton1.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.daButton1.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.daButton1.pLCBitselectRealize.BitPattern = false;
             this.daButton1.pLCBitselectRealize.description = "PLCBitselectRealize";
-            this.daButton1.pLCBitselectRealize.keyMinTime = 0;
+            this.daButton1.pLCBitselectRealize.keyMinTime = 200;
             this.daButton1.pLCBitselectRealize.LoosenOut = false;
             this.daButton1.pLCBitselectRealize.NoAccessConceal = false;
             this.daButton1.pLCBitselectRealize.NoAccessForm = false;
@@ -103,7 +103,7 @@ namespace PLC通讯基础控件项目
             this.daButton1.pLCBitselectRealize.ReadWrite = false;
             this.daButton1.pLCBitselectRealize.ReadWriteAddress = "1";
             this.daButton1.pLCBitselectRealize.ReadWriteFunction = "Y";
-            this.daButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.daButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daButton1.pLCBitselectRealize.SafetyBehaviorPattern = 2;
             this.daButton1.pLCBitselectRealize.SafetyCategory = 0;
             this.daButton1.pLCBitselectRealize.SafetyFunction = "Y";
@@ -129,7 +129,6 @@ namespace PLC通讯基础控件项目
             this.daButton1.pLCBitselectRealize.WriteFunction = "M";
             this.daButton1.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daButton1.pLCBitselectRealize.WrSafetyAddress = "2";
-            this.daButton1.PLCTimer = null;
             this.daButton1.Size = new System.Drawing.Size(120, 48);
             this.daButton1.TabIndex = 0;
             this.daButton1.Text = "ON-1";
@@ -228,7 +227,6 @@ namespace PLC通讯基础控件项目
             this.daButton2.pLCBitselectRealize.WriteFunction = "M";
             this.daButton2.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daButton2.pLCBitselectRealize.WrSafetyAddress = "0";
-            this.daButton2.PLCTimer = null;
             this.daButton2.Size = new System.Drawing.Size(75, 23);
             this.daButton2.TabIndex = 4;
             this.daButton2.Text = "0";

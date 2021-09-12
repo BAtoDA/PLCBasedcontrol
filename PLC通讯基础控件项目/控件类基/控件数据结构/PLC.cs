@@ -18,7 +18,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         OmronTCP = 04,
         OmronCIP = 05,
         OmronUDP = 06,
-        //Fanuc = 07
+        Fanuc = 07
     }
     /// <summary>
     /// PLC各可访问软元件  三菱-bit位
@@ -143,10 +143,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     /// </summary>
     public enum Fanuc_D
     {
-        R = 1,
-        PR = 2,
-        GO = 3,
-        GI = 4
+        R = 1
     }
     /// <summary>
     ///  PLC各可访问软元件 西门子 -bit位

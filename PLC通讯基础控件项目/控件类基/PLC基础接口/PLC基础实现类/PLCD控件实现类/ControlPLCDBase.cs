@@ -179,7 +179,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //语音播报系统
             if (pLCDClassBase.pLCDselectRealize.Speech && pLCDClassBase.pLCDselectRealize.OperationAffirm)
             {
-                Voicebroadcast($"{this.PlcControl.Name}已触发");
+                string safet = PLCsafetypattern != Safetypattern.Nooperation ? "无权限触发" : "以触发";
+                Voicebroadcast($"{this.PlcControl.Name}{safet}");
             }
             //判断该控件是否启用键盘
             if (pLCDClassBase.pLCDselectRealize.Keyboard==false || pLCDClassBase.pLCDselectRealize.Dataentryfunction==false || PLCsafetypattern != Safetypattern.Nooperation) return;
@@ -229,6 +230,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     }
                     finally
                     {
+                        Debug.WriteLine($"安全控制当前值是：{Poss.Item1.Elapsed.TotalMilliseconds} 设置值是：{Convert.ToInt32(pLCDClassBase.pLCDselectRealize.keyMinTime + (pLCDClassBase.pLCDselectRealize.OperationAffirm ? pLCDClassBase.pLCDselectRealize.AwaitTime : 0))}");
                         //写入当前控件值
                         PLCWrite(this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WritePLC : this.pLCDClassBase.pLCDselectRealize.ReadWritePLC, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteFunction : this.pLCDClassBase.pLCDselectRealize.ReadWriteFunction, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteAddress : this.pLCDClassBase.pLCDselectRealize.ReadWriteAddress, this.PlcControl.Text, this.pLCDClassBase.pLCDselectRealize.ShowFormat);
                     }
@@ -236,6 +238,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 //处理完成归还对象
                 PlcControl.MouseUp -= SafetyClick;
                 Poss.Item2.Tick -= SafetyTick;
+                Poss.Item1.Reset();
                 ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(Poss);
             }
         }

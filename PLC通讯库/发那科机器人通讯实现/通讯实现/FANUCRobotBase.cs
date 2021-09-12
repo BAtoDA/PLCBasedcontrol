@@ -26,7 +26,7 @@ namespace PLC通讯库.发那科机器人通讯实现.通讯实现
         /// 构造函数
         /// </summary>
         /// <param name="ip">机器人IP地址端口固定</param>
-        public FANUCRobotBase(string ip):base(ip)
+        public FANUCRobotBase(string ip,int Port):base(ip)
         {
             IpAddress = ip;
         }
@@ -113,10 +113,167 @@ namespace PLC通讯库.发那科机器人通讯实现.通讯实现
             }
             return new OperateResult<bool>() { Content = Boolarray[0], ErrorCode = 0, IsSuccess = true, Message = "0" };
         }
-        //public OperateResult<short> ReadInt16(string address)
-        //{
-            
-        //}
+        /// <summary>
+        /// 读取有符号单个个字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public OperateResult<short> ReadInt16(string address)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if(addre>99)
+                        return new OperateResult<short>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    return new OperateResult<short>() { Content =Convert.ToInt16(this.intRegs[addre]), ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<short>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        /// <summary>
+        /// 读取有符号双字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public OperateResult<int> ReadInt32(string address)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<int>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    return new OperateResult<int>() { Content = Convert.ToInt32(this.intRegs[addre]), ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<int>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        /// <summary>
+        /// 读取无符号单个字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public OperateResult<ushort> ReadUInt16(string address)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<ushort>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    return new OperateResult<ushort>() { Content = Convert.ToUInt16(this.intRegs[addre]), ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<ushort>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        /// <summary>
+        /// 读取无符号双字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public OperateResult<uint> ReadUInt32(string address)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<uint>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    return new OperateResult<uint>() { Content = Convert.ToUInt32(this.intRegs[addre]), ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<uint>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+
+        /// <summary>
+        /// 读取浮点小数
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public OperateResult<float> ReadFloat(string address)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<float>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    return new OperateResult<float>() { Content = Convert.ToSingle(this.intRegs[addre]), ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<float>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        public OperateResult<short> Write(string address,short Value)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<short>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    this.WriteR(new int[] { Value }, addre);
+                    return new OperateResult<short>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<short>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        public OperateResult<int> Write(string address, int Value)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<int>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    this.WriteR(new int[] { Value }, addre);
+                    return new OperateResult<int>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<int>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        public OperateResult<ushort> Write(string address, ushort Value)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<ushort>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    this.WriteR(new int[] { Value }, addre);
+                    return new OperateResult<ushort>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<ushort>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        public OperateResult<uint> Write(string address, uint Value)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<uint>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    this.WriteR(new int[] { Convert.ToInt32(Value) }, addre);
+                    return new OperateResult<uint>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<uint>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+        public OperateResult<float> Write(string address, float Value)
+        {
+            switch (Getfunction(address))
+            {
+                case "R":
+                    int addre = Convert.ToInt32(Getaddress(address));
+                    if (addre > 99)
+                        return new OperateResult<float>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                    this.WriteR(new int[] { Convert.ToInt32(Value) }, addre);
+                    return new OperateResult<float>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+                default:
+                    return new OperateResult<float>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
         /// <summary>
         /// 获取功能码
         /// </summary>
