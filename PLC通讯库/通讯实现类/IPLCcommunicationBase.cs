@@ -40,7 +40,8 @@ namespace PLC通讯库.通讯实现类
         /// <summary>
         /// PLC状态
         /// </summary>
-        bool  IPLC_interface.PLC_ready {
+        bool  IPLC_interface.PLC_ready
+        {
             get 
             {
                 return (bool)this.GetType().GetField("PLC_ready", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).GetValue(this);

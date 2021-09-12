@@ -3,7 +3,7 @@
 // 文件名称(File Name)：
 // 功能描述(Description)：
 // 作者(Author)：DAtoTA
-// 日期(Create Date)： 2021/9/5 17:36:00
+// 日期(Create Date)： 2021/9/12 20:49:21
 //
 //**********************************************************************
 using System;
@@ -11,38 +11,42 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.控件类基.PLC基础接口;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
+using Sunny.UI;
 
 namespace PLC通讯基础控件项目.基础控件
 {
     /// <summary>
-    /// 实现上位机底层控件 普通按钮类 -不再公共运行时
+    /// 实现上位机底层控件 指示灯类 -不再公共运行时
     /// 继承接口PLCBitClassBase,PLCBitproperty, ICloneable
     /// </summary>
-    public partial class DAButton
+    public partial  class DAUiLedBulb
     {
-        public DAButton()
+        public DAUiLedBulb()
         {
             Timerconfiguration.Tick += ((send, e) =>
-             {
-                 Timerconfiguration.Stop();
-                 //处理PLC通讯部分
-                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
-                 {
-                     ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
-                 }
-             });
+            {
+                Timerconfiguration.Stop();
+                //处理PLC通讯部分
+                if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
+                {
+                    ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
+                }
+            });
         }
     }
     [ToolboxItem(true)]
     [Browsable(true)]
-    [Description("实现上位机底层控件 普通按钮类 -不再公共运行时 ")]
-    public partial class DAButton:Button, PLCBitClassBase, PLCBitproperty, ICloneable
+    [Description("实现上位机底层控件 指示灯类 -不再公共运行时")]
+    public partial class DAUiLedBulb : UILedBulb, PLCBitClassBase, PLCBitproperty, ICloneable
     {
         #region 实现接口参数
         [Browsable(false)]
@@ -93,20 +97,20 @@ namespace PLC通讯基础控件项目.基础控件
         }
         private bool plc_Enable = false;
         [Browsable(false)]
-        public Color backgroundColor_0 { get => pLCBitselectRealize.backgroundColor_0; set => this.BackColor = value; }
+        public Color backgroundColor_0 { get => pLCBitselectRealize.backgroundColor_0; set => this.Color = value; }
         [Browsable(false)]
         public Color TextColor_0 { get => pLCBitselectRealize.TextColor_0; set => this.ForeColor = value; }
         [Browsable(false)]
         public string TextContent_0 { get => pLCBitselectRealize.TextContent_0; set => this.Text = value; }
         [Browsable(false)]
-        public Color backgroundColor_1 { get => pLCBitselectRealize.backgroundColor_1; set => this.BackColor = value; }
+        public Color backgroundColor_1 { get => pLCBitselectRealize.backgroundColor_1; set => this.Color = value; }
         [Browsable(false)]
         public Color TextColor_1 { get => pLCBitselectRealize.TextColor_1; set => this.ForeColor = value; }
         [Browsable(false)]
         public string TextContent_1 { get => pLCBitselectRealize.TextContent_1; set => this.Text = value; }
         [Browsable(false)]
         public System.Threading.Timer PLCTimer { get; set; }
-        public System.Windows.Forms.Timer Timerconfiguration { get; set; } = new System.Windows.Forms.Timer() { Enabled=true, Interval=100};
+        public System.Windows.Forms.Timer Timerconfiguration { get; set; } = new System.Windows.Forms.Timer() { Enabled = true, Interval = 100 };
 
         /// <summary>
         /// 修改参数界面窗口事件方法
@@ -123,7 +127,7 @@ namespace PLC通讯基础控件项目.基础控件
             for (int i = 0; i < Copy.Length; i++)
             {
                 //if (Copy[i].Name == CopyTo[i].Name)
-                    CopyTo[i] = Copy[i];
+                CopyTo[i] = Copy[i];
             }
             PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(this.pLCBitselectRealize);
             pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
@@ -147,5 +151,7 @@ namespace PLC通讯基础控件项目.基础控件
             return this;
         }
         #endregion
+
     }
+
 }

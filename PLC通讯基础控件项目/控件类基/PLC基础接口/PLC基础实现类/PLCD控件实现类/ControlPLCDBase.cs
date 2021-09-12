@@ -323,6 +323,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         }
         private string complement(string Name)//实现浮点小数自动补码
         {
+            if(pLCDClassBase.pLCDselectRealize.NumericaldigitMin<1) return Name;//返回数据
             string d = string.Empty;
             int minusInde = Name.IndexOf('-');//搜索数据是否有小数点
             int Inde = Name.IndexOf('.');//搜索数据是否有小数点

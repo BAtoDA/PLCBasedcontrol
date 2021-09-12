@@ -24,7 +24,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     {
         #region 实现基本接口
         public string description { get; set; } = "PLCDselectRealize";
-        public bool Dataentryfunction { get; set; } = false;
+        public bool Dataentryfunction { get; set; } = true;
         public bool ReadWrite { get; set; } = false;
         public PLC ReadWritePLC { get; set; } = PLC.Mitsubishi;
         public string ReadWriteFunction { get; set; } = "D";
@@ -37,7 +37,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public PLC InformPLC { get; set; } = PLC.Mitsubishi;
         public string InformFunction { get; set; } = "M";
         public string InformAddress { get; set; } = "0";
-        public bool Keyboard { get; set; } = false;
+        public bool Keyboard { get; set; } = true;
         public string KeyboardStyle { get; set; } = "keyboard";
         public numerical_format ShowFormat { get; set; } = numerical_format.Signed_32_Bit;
         public int NumericalFormat { get; set; } = 0;
@@ -45,9 +45,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public int NumericaldigitMin { get; set; } = 0;
         public int NumericalMax { get; set; } = 9999999;
         public int NumericalMin { get; set; } = -999999;
-        public int keyMinTime { get; set; } = 10;
+        public int keyMinTime { get; set; } = 0;
         public bool OperationAffirm { get; set; } = false;
-        public int AwaitTime { get; set; } = 10;
+        public int AwaitTime { get; set; } = 0;
         public PLC SafetyPLC { get; set; } = PLC.Mitsubishi;
         public string SafetyFunction { get; set; } = "M";
         public string WrSafetyAddress { get; set; } = "0";
