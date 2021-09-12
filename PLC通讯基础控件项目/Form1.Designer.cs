@@ -54,7 +54,7 @@ namespace PLC通讯基础控件项目
             // 
             this.plcPreferences1.IPEnd = "192.168.3.250";
             this.plcPreferences1.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.plcPreferences1.Point = 2000;
+            this.plcPreferences1.Point = 5000;
             this.plcPreferences1.Receptionovertime = 1000;
             this.plcPreferences1.Retain = " ";
             this.plcPreferences1.Sendovertime = 1000;

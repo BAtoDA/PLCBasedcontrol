@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Forms;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 
@@ -31,5 +32,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// 用于给用户选择PLC使用
         /// </summary>
         PLCSet APLC { get; set; }
+        /// <summary>
+        /// 用于加载配置使用
+        /// </summary>
+        Timer Timerconfiguration { get; set; }
     }
 }

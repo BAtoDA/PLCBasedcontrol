@@ -71,7 +71,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //---------处理控件与PLC通讯事件---------
             if (((dynamic)PlcControl).PLC_Enable)
             {
-                PlcControl.MouseDown += ClickPLC;
+                PlcControl.MouseClick += ClickPLC;
                 PlcControl.MouseUp += MouseUpPLC;
                 pLCBitproperty.PLCTimer = new System.Threading.Timer(new TimerCallback((s) =>
                 {
@@ -89,47 +89,60 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <param name="e"></param>
         private void ClickPLC(object send,EventArgs e)
         {
-            //语音播报系统
-            if(pLCBitClassBase.pLCBitselectRealize.Speech&& pLCBitClassBase.pLCBitselectRealize.OperationAffirm)
+            lock (this)
             {
-                Voicebroadcast($"{this.PlcControl.Name}已触发");
-            }
-            //判断改控件是否只读
-            if (pLCBitClassBase.pLCBitselectRealize.BitPattern||pLCBitClassBase.pLCBitselectRealize.LoosenOut|| PLCsafetypattern!=Safetypattern.Nooperation) return;
-            PLCoopErr(pLCBitClassBase, pLCBitproperty);
-            //根据设定的模式进行写入PLC操作
-            //判断对象池是否为空
-            if (ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>._objects == null) return;
-            //向对象池申请 
-            var Poss = ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.GetObject();
-            //开始测量定时
-            Poss.Item1.Start();
-            //获取控件鼠标松开事件
-            PlcControl.MouseUp += SafetyClick;
-            //开始定时处理委托任务
-            Poss.Item2.Enabled = true;
-            Poss.Item2.Interval = Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime+ (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0))<1?1: Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0));
-            Poss.Item2.Start();
-            //判断是否到达安全范围
-            Poss.Item2.Tick += SafetyTick;
-            //---------------安全处理方法---------------
-            void SafetyClick(object send,EventArgs e)
-            {
-                Poss.Item1.Stop();
-            }
-            void SafetyTick(object send, EventArgs e)
-            {
-                Poss.Item2.Stop();
-                Poss.Item1.Stop();
-                Poss.Item2.Enabled = false;
-                if (Poss.Item1.Elapsed.TotalMilliseconds >= Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0)))
+                //语音播报系统
+                if (pLCBitClassBase.pLCBitselectRealize.Speech && pLCBitClassBase.pLCBitselectRealize.OperationAffirm)
                 {
-                    PLCSwitch(pLCBitClassBase.pLCBitselectRealize.Pattern);
+                    Voicebroadcast($"{this.PlcControl.Name}已触发");
                 }
-                //处理完成归还对象
-                PlcControl.MouseUp -= SafetyClick;
-                Poss.Item2.Tick -= SafetyTick;
-                ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(Poss);
+                //判断改控件是否只读
+                if (pLCBitClassBase.pLCBitselectRealize.BitPattern || pLCBitClassBase.pLCBitselectRealize.LoosenOut || PLCsafetypattern != Safetypattern.Nooperation) return;
+                PLCoopErr(pLCBitClassBase, pLCBitproperty);
+                //根据设定的模式进行写入PLC操作
+                //判断对象池是否为空
+                if (ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>._objects == null) return;
+                //向对象池申请 
+                var Poss = ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.GetObject();
+                //开始测量定时
+                Poss.Item1.Start();
+                //获取控件鼠标松开事件
+                PlcControl.MouseUp += SafetyClick;
+                //开始定时处理委托任务
+                int Timeinc = Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0)) < 1 ? 1 : Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0));
+                if (Timeinc > 100)
+                {
+                    Poss.Item2.Enabled = true;
+                    Poss.Item2.Interval = Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0)) < 1 ? 1 : Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0));
+
+                    Poss.Item2.Start();
+                }
+                else
+                    SafetyTick(1, new EventArgs());
+                //判断是否到达安全范围
+                Poss.Item2.Tick += SafetyTick;
+                //---------------安全处理方法---------------
+                void SafetyClick(object send, EventArgs e)
+                {
+                    Poss.Item1.Stop();
+                }
+                void SafetyTick(object send, EventArgs e)
+                {
+                    //处理完成归还对象
+                    PlcControl.MouseUp -= SafetyClick;
+                    Poss.Item2.Tick -= SafetyTick;
+                    Poss.Item2.Stop();
+                    Poss.Item1.Stop();
+                    Poss.Item2.Enabled = false;
+                    if (Poss.Item1.Elapsed.TotalMilliseconds >= Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0)))
+                    {
+                        PLCSwitch(pLCBitClassBase.pLCBitselectRealize.Pattern);
+                    }
+                    //处理完成归还对象
+                    PlcControl.MouseUp -= SafetyClick;
+                    Poss.Item2.Tick -= SafetyTick;
+                    ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(Poss);
+                }
             }
         }
         private void MouseUpPLC(object send,EventArgs e)
@@ -155,13 +168,14 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     Poss.Item2.Tick += SafetyTick;
                     void SafetyTick(object send, EventArgs e)
                     {
+                        Poss.Item2.Tick -= SafetyTick;
                         //判断改控件是否只读
                         if (pLCBitClassBase.pLCBitselectRealize.BitPattern || pLCBitClassBase.pLCBitselectRealize.LoosenOut || PLCsafetypattern != Safetypattern.Nooperation) return;
                         PLCSwitch(Button_pattern.Set_as_off);
                         Poss.Item2.Stop();
                         //处理完成归还对象
                         Poss.Item2.Tick -= SafetyTick;
-                        ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(Poss);
+                        ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(new Tuple<Stopwatch, System.Windows.Forms.Timer>(new Stopwatch(), new System.Windows.Forms.Timer()));
                     }                
                 }
                 else

@@ -6,6 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>PLC通讯基础控件项目.Program</StartupObject>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <ApplicationIcon />
   </PropertyGroup>
 
   <ItemGroup>

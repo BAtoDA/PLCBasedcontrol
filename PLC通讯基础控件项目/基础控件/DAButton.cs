@@ -26,15 +26,27 @@ namespace PLC通讯基础控件项目.基础控件
     /// </summary>
     public partial class DAButton
     {
-        protected override void OnEnter(EventArgs e)
+        public DAButton()
         {
-            //处理PLC通讯部分
-            if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
-            {
-                ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
-            }
-            base.OnEnter(e);
+            Timerconfiguration.Tick += ((send, e) =>
+             {
+                 Timerconfiguration.Stop();
+                 //处理PLC通讯部分
+                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
+                 {
+                     ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
+                 }
+             });
         }
+        //protected override void OnEnter(EventArgs e)
+        //{
+        //    //处理PLC通讯部分
+        //    if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
+        //    {
+        //        ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
+        //    }
+        //    base.OnEnter(e);
+        //}
     }
     [ToolboxItem(true)]
     [Browsable(true)]
@@ -103,6 +115,8 @@ namespace PLC通讯基础控件项目.基础控件
         public string TextContent_1 { get => pLCBitselectRealize.TextContent_1; set => this.Text = value; }
         [Browsable(false)]
         public System.Threading.Timer PLCTimer { get; set; }
+        public System.Windows.Forms.Timer Timerconfiguration { get; set; } = new System.Windows.Forms.Timer() { Enabled=true, Interval=100};
+
         /// <summary>
         /// 修改参数界面窗口事件方法
         /// </summary>

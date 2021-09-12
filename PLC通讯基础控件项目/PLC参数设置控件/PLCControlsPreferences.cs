@@ -35,6 +35,7 @@ namespace PLC通讯基础控件项目
     /// PLC通讯参数控件设置
     /// 继承Timer定时器 
     /// </summary>
+    [ToolboxItem(true)]
     [ToolboxBitmap(typeof(PLCControlsPreferences), "ComponentTest.bmp")]
     [DesignTimeVisible(true)]
     [Designer(typeof(FrameworkComponentDesigner))]
@@ -87,7 +88,7 @@ namespace PLC通讯基础控件项目
                         return new Tuple<Stopwatch, System.Windows.Forms.Timer>(new Stopwatch(), new System.Windows.Forms.Timer());
                     });
                     ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>> objectPool = new ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>(
-             5, func);
+             10, func);
                     //------------设置语音播报对象池大小--------------
                     Func<Tuple<SpeechSynthesizer>> Voice = new Func<Tuple<SpeechSynthesizer>>(() =>
                     {
