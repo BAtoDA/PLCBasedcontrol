@@ -42,8 +42,7 @@ namespace PLC通讯基础控件项目
             this.uiImageButton1 = new Sunny.UI.UIImageButton();
             this.daUiLedBulb1 = new PLC通讯基础控件项目.基础控件.DAUiLedBulb();
             this.daUiTextBox1 = new PLC通讯基础控件项目.基础控件.DAUiTextBox();
-            this.plcBasement1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement();
-            this.plcFunction2 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcFunction();
+            this.plcFunction2 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             ((System.ComponentModel.ISupportInitialize)(this.uiImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -443,26 +442,20 @@ namespace PLC通讯基础控件项目
             this.daUiTextBox1.TextContent_0 = "PLCpropertyText";
             this.daUiTextBox1.TextContent_1 = null;
             // 
-            // plcBasement1
-            // 
-            this.plcBasement1.BackColor = System.Drawing.Color.DarkGray;
-            this.plcBasement1.Location = new System.Drawing.Point(324, 120);
-            this.plcBasement1.Name = "plcBasement1";
-            this.plcBasement1.Size = new System.Drawing.Size(496, 280);
-            this.plcBasement1.TabIndex = 10;
-            // 
             // plcFunction2
             // 
             this.plcFunction2.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.plcFunction2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.plcFunction2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.plcFunction2.FormName = "Form1";
             this.plcFunction2.FormPath = "PLC通讯基础控件项目.模板与控制界面";
             this.plcFunction2.Location = new System.Drawing.Point(161, 43);
+            this.plcFunction2.MinimumSize = new System.Drawing.Size(1, 1);
             this.plcFunction2.Name = "plcFunction2";
             this.plcFunction2.PLC_Enable = true;
             this.plcFunction2.Size = new System.Drawing.Size(75, 23);
             this.plcFunction2.TabIndex = 12;
             this.plcFunction2.Text = "plcFunction2";
-            this.plcFunction2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -470,7 +463,6 @@ namespace PLC通讯基础控件项目
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(814, 450);
             this.Controls.Add(this.plcFunction2);
-            this.Controls.Add(this.plcBasement1);
             this.Controls.Add(this.daUiTextBox1);
             this.Controls.Add(this.daUiLedBulb1);
             this.Controls.Add(this.uiImageButton1);
@@ -502,7 +494,6 @@ namespace PLC通讯基础控件项目
         private Sunny.UI.UIImageButton uiImageButton1;
         private 基础控件.DAUiLedBulb daUiLedBulb1;
         private 基础控件.DAUiTextBox daUiTextBox1;
-        private 基础控件.底层PLC状态监控控件.PlcBasement plcBasement1;
-        private 基础控件.底层PLC状态监控控件.PlcFunction plcFunction2;
+        private 基础控件.底层PLC状态监控控件.DAPlcFunction plcFunction2;
     }
 }

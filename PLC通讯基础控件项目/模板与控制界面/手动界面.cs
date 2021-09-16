@@ -5,12 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using PLC通讯基础控件项目.模板与控制界面.窗口底层;
 
 namespace PLC通讯基础控件项目.模板与控制界面
 {
-    public partial class Form1 : Form
+    public partial class 手动界面 : TemplateForm
     {
-        public Form1()
+        public 手动界面()
         {
             InitializeComponent();
         }

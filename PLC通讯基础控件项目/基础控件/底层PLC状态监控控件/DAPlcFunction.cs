@@ -18,6 +18,7 @@ using System.Threading;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.功能键参数设置窗口;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
+using Sunny.UI;
 
 namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
 {
@@ -25,7 +26,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
     /// PLC功能键
     /// 读取固定路径// 模板与控制界面命名空间
     /// </summary>
-    public partial class PlcFunction
+    public partial class DAPlcFunction
     {
         protected override void OnClick(EventArgs e)
         {
@@ -45,14 +46,27 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             if(Formoop!=null)
             {
                 Form FormShow = Activator.CreateInstance(Formoop) as Form;
+                FormShow.StartPosition = FormStartPosition.CenterScreen;
                 FormShow.Show();
             }
             //关闭当前窗口
             //获取所有运行中的窗口
             Regex r = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
+            //递归查找顶级窗口Form
+            object Oop= this;
+            while (true)
+            {
+                if ((((dynamic)Oop).Parent as Form)!=null)
+                {
+                    Oop = ((dynamic)Oop).Parent;
+                    break;
+                }
+                else
+                    Oop = ((dynamic)Oop).Parent;
+            }
             foreach (Form i in Application.OpenForms)
             {
-                if (r.IsMatch(i.GetType().FullName) &&i == (Form)this.Parent)
+                if (r.IsMatch(i.GetType().FullName) &&i == (Form)Oop)
                 {
                     i.Close();
                     return;
@@ -63,7 +77,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
 
     }
     [ToolboxItem(true)]
-    public partial class PlcFunction : Button
+    public partial class DAPlcFunction : UIButton
     {
         [Browsable(false)]
         public event EventHandler Modification;
