@@ -20,6 +20,7 @@ using PLC通讯库.PLC通讯设备类型表;
 using PLC通讯库.通讯实现类;
 using PLC通讯库.通讯枚举;
 using PLC通讯库.通讯基础接口;
+using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类
 {
@@ -95,6 +96,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 if (pLCBitClassBase.pLCBitselectRealize.Speech && pLCBitClassBase.pLCBitselectRealize.OperationAffirm)
                 {
                     string safet = PLCsafetypattern != Safetypattern.Nooperation ? "无权限触发" : "以触发";
+                    ControlDebug.Write($"开始加载：{this.PlcControl.Name}控件 归属PLC是：{this.pLCBitClassBase.pLCBitselectRealize.ReadWritePLC} 控件{safet}");
                     Voicebroadcast($"{this.PlcControl.Name}{safet}");
                 }
                 //判断改控件是否只读
@@ -135,6 +137,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     Poss.Item2.Stop();
                     Poss.Item1.Stop();
                     Poss.Item2.Enabled = false;
+                    ControlDebug.Write($"开始加载：{this.PlcControl.Name}控件 归属PLC是：{this.pLCBitClassBase.pLCBitselectRealize.ReadWritePLC} 安全控制当前值是：{Poss.Item1.Elapsed.TotalMilliseconds} 设置值是：{Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0))}");
                     Debug.WriteLine($"安全控制当前值是：{Poss.Item1.Elapsed.TotalMilliseconds} 设置值是：{Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0))}");
                     if (Poss.Item1.Elapsed.TotalMilliseconds >= Convert.ToInt32(pLCBitClassBase.pLCBitselectRealize.keyMinTime + (pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? pLCBitClassBase.pLCBitselectRealize.AwaitTime : 0)))
                     {
