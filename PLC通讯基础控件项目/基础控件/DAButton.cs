@@ -39,6 +39,13 @@ namespace PLC通讯基础控件项目.基础控件
                      ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
                      ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                  }
+                 //立马刷新状态
+                 this.SuspendLayout();
+                 this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+                 this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+                 this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+                 this.Refresh();
+                 this.ResumeLayout(false);
              });
         }
     }
@@ -96,6 +103,34 @@ namespace PLC通讯基础控件项目.基础控件
         }
         private bool plc_Enable = false;
         [Browsable(false)]
+        public string Textalign_0
+        {
+            get
+            {
+                if (pLCBitselectRealize.Textalign_0 != null)
+                    return pLCBitselectRealize.Textalign_0;
+                else
+                    return ContentAlignment.BottomCenter.ToString();
+            }
+            set => this.TextAlign = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), value);
+        }
+        [Browsable(false)]
+        public Font TextFont_0 { get => pLCBitselectRealize.TextFont_0; set => this.Font = value; }
+        [Browsable(false)]
+        public string Textalign_1
+        {
+            get
+            {
+                if (pLCBitselectRealize.Textalign_0 != null)
+                    return pLCBitselectRealize.Textalign_0;
+                else
+                    return ContentAlignment.BottomCenter.ToString();
+            }
+            set => this.TextAlign = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), value);
+        }
+        [Browsable(false)]
+        public Font TextFont_1 { get => pLCBitselectRealize.TextFont_0; set => this.Font = value; }
+        [Browsable(false)]
         public Color backgroundColor_0 { get => pLCBitselectRealize.backgroundColor_0; set => this.BackColor = value; }
         [Browsable(false)]
         public Color TextColor_0 { get => pLCBitselectRealize.TextColor_0; set => this.ForeColor = value; }
@@ -140,6 +175,13 @@ namespace PLC通讯基础控件项目.基础控件
                 }
                 //this.pLCBitselectRealize = bitselectRealize;
             }
+            //立马刷新状态
+            this.SuspendLayout();
+            this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+            this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+            this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+            this.Refresh();
+            this.ResumeLayout(false);
         }
         /// <summary>
         /// 复制控件方法

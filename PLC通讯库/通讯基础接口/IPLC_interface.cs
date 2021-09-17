@@ -12,6 +12,14 @@ namespace PLC通讯库.通讯基础接口
     public interface IPLC_interface//规范定义的方法名称
     {
         /// <summary>
+        /// 写入PLC次数
+        /// </summary>
+        long WriteContn { get; }
+        /// <summary>
+        /// 读取PLC次数
+        /// </summary>
+        long ReadContn { get; }
+        /// <summary>
         /// PLC IP与端口
         /// </summary>
         IPEndPoint IPEndPoint { get; set; }

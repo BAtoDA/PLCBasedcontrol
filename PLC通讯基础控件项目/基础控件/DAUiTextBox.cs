@@ -84,6 +84,12 @@ namespace PLC通讯基础控件项目.基础控件
                     ControlPLCDBase controlPLCDBase = new ControlPLCDBase(this);
                     ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCDselectRealize.ReadWritePLC}");
                 }
+                //立马刷新状态
+                this.SuspendLayout();
+                this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
+                this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
+                this.Refresh();
+                this.ResumeLayout(false);
             });
         }
     }
@@ -141,6 +147,34 @@ namespace PLC通讯基础控件项目.基础控件
         }
         private bool plc_Enable = false;
         [Browsable(false)]
+        public string Textalign_0
+        {
+            get
+            {
+                if (pLCDselectRealize.Textalign_0 != null)
+                    return pLCDselectRealize.Textalign_0;
+                else
+                    return ContentAlignment.BottomCenter.ToString();
+            }
+            set => this.TextAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), value);
+        }
+        [Browsable(false)]
+        public Font TextFont_0 { get => pLCDselectRealize.TextFont_0; set => this.Font = value; }
+        [Browsable(false)]
+        public string Textalign_1
+        {
+            get
+            {
+                if (pLCDselectRealize.Textalign_0 != null)
+                    return pLCDselectRealize.Textalign_0;
+                else
+                    return ContentAlignment.BottomCenter.ToString();
+            }
+            set => this.TextAlignment = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), value);
+        }
+        [Browsable(false)]
+        public Font TextFont_1 { get => pLCDselectRealize.TextFont_0; set => this.Font = value; }
+        [Browsable(false)]
         public Color TextColor_0 { get => pLCDselectRealize.TextColor_0; set => this.ForeColor = value; }
         [Browsable(false)]
         public string TextContent_0 { get => pLCDselectRealize.TextContent_0; set => this.Text = value; }
@@ -182,6 +216,12 @@ namespace PLC通讯基础控件项目.基础控件
                 }
                 //this.pLCBitselectRealize = bitselectRealize;
             }
+            //立马刷新状态
+            this.SuspendLayout();
+            this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
+            this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
+            this.Refresh();
+            this.ResumeLayout(false);
         }
         /// <summary>
         /// 复制控件方法

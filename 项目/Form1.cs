@@ -17,5 +17,9 @@ namespace 项目
             InitializeComponent();
         }
 
+        private void daPlcFunction1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

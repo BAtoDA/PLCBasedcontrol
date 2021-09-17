@@ -28,6 +28,8 @@ namespace PLC通讯库.通讯实现类
         private bool PLC_ready;//内部PLC状态
         private int PLCerr_code;//内部报警代码
         private string PLCerr_content;//内部报警内容
+        private long WriteContn;//内部写入次数
+        private long ReadContn;//内部读取次数
         /// <summary>
         /// PLC通讯类
         /// </summary>
@@ -37,6 +39,14 @@ namespace PLC通讯库.通讯实现类
         /// </summary>
         Mutex mutex= new Mutex();//实例化互斥锁(Mutex);//定义互斥锁名称
         //实现接口的属性
+        /// <summary>
+        /// 写入PLC次数
+        /// </summary>
+        long IPLC_interface.WriteContn { get => WriteContn; }
+        /// <summary>
+        /// 读取PLC次数
+        /// </summary>
+        long IPLC_interface.ReadContn { get => ReadContn; }
         /// <summary>
         /// PLC状态
         /// </summary>
@@ -81,33 +91,36 @@ namespace PLC通讯库.通讯实现类
         public string PLC_open()
         {
             if (melsec_net == null) return "链接PLC异常";
-            try
+            lock (this)
             {
-                PLCerr_content = null;
-                melsec_net.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
-                melsec_net.Port= IPEndPoint.Port;//获取设置的端口
-                melsec_net.ConnectClose();//切换通讯模式
-                melsec_net.ConnectTimeOut = 1000;
-                melsec_net.ConnectTimeOut = 1000;
-                OperateResult connect = melsec_net.ConnectServer();//获取操作结果
-                retry = 0;
-                if (connect.IsSuccess)//判断是否连接成功
+                try
                 {
-                    PLC_ready = true;//PLC开放正常
-                    return "已成功链接到" + this.IPEndPoint.Address;
+                    PLCerr_content = null;
+                    melsec_net.IpAddress = IPEndPoint.Address.ToString();//获取设置的IP
+                    melsec_net.Port = IPEndPoint.Port;//获取设置的端口
+                    melsec_net.ConnectClose();//切换通讯模式
+                    melsec_net.ConnectTimeOut = 4000;
+                    melsec_net.ReceiveTimeOut = 4000;
+                    OperateResult connect = melsec_net.ConnectServer();//获取操作结果
+                    retry = 0;
+                    if (connect.IsSuccess)//判断是否连接成功
+                    {
+                        PLC_ready = true;//PLC开放正常
+                        return "已成功链接到" + this.IPEndPoint.Address;
+                    }
+                    else
+                    {
+                        PLC_ready = false;//PLC开放异常
+                                          // 切断连接
+                        melsec_net.ConnectClose();
+                        return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    PLC_ready = false;//PLC开放异常
-                    // 切断连接
-                    melsec_net.ConnectClose();
+                    err(e);//异常处理
                     return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
-                }               
-            }
-            catch (Exception e)
-            {
-                err(e);//异常处理
-                return "链接PLC异常";//尝试连接PLC，如果连接成功则返回值为0
+                }
             }
         }
         /// <summary>
@@ -392,6 +405,7 @@ namespace PLC通讯库.通讯实现类
             {
 
             }
+            ReadContn += 1;
         }
 
         /// <summary>
@@ -406,6 +420,7 @@ namespace PLC通讯库.通讯实现类
                 PLC_ready = false;//读取异常
                 PLCerr_content = DateTime.Now.ToString("[HH:mm:ss] ") + $"[{address}] 写入失败{Environment.NewLine}原因：{result.ToMessageShowString()}";
             }
+            WriteContn += 1;
         }
         /// <summary>
         /// Err处理

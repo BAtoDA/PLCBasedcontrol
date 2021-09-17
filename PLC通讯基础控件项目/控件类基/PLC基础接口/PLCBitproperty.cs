@@ -11,6 +11,26 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
     /// </summary>
     public interface PLCBitproperty
     {
+        [Browsable(false)]
+        /// <summary>
+        /// 文字状态--0-字体对齐方式
+        /// </summary>
+        string Textalign_0 { get; set; }
+        [Browsable(false)]
+        /// <summary>
+        /// 文字属性--字体-尺寸-
+        /// </summary>
+        Font TextFont_0 { get; set; }
+        [Browsable(false)]
+        /// <summary>
+        /// 文字状态--0-字体对齐方式
+        /// </summary>
+        string Textalign_1 { get; set; }
+        [Browsable(false)]
+        /// <summary>
+        /// 文字属性--字体-尺寸-
+        /// </summary>
+        Font TextFont_1 { get; set; }
         /// <summary>
         /// 背景颜色
         /// </summary>

@@ -56,6 +56,8 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 this.uiTextBox1.Text = ((IPLCcommunicationBase)PLCoop.Value).IPEndPoint.Address.ToString();
                 this.uiTextBox2.Text= ((IPLCcommunicationBase)PLCoop.Value).IPEndPoint.Port.ToString();
                 this.uiLedBulb1.On = ((IPLC_interface)PLCoop.Value).PLC_ready;
+                this.uiTextBox4.Text = ((IPLC_interface)PLCoop.Value).ReadContn.ToString();
+                this.uiTextBox3.Text = ((IPLC_interface)PLCoop.Value).WriteContn.ToString();
             }
         }
 
@@ -67,6 +69,11 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 this.uiComboboxEx1.Items.Add(i.Key);
             if (this.uiComboboxEx1.Items.Count > 0)
                 this.uiComboboxEx1.SelectedIndex = 0;
+        }
+
+        private void uiLabel5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

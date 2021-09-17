@@ -34,6 +34,10 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.uiTabControl1 = new Sunny.UI.UITabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
+            this.uiTextBox3 = new Sunny.UI.UITextBox();
+            this.uiTextBox4 = new Sunny.UI.UITextBox();
+            this.uiLabel5 = new Sunny.UI.UILabel();
+            this.uiLabel6 = new Sunny.UI.UILabel();
             this.uiTextBox2 = new Sunny.UI.UITextBox();
             this.uiTextBox1 = new Sunny.UI.UITextBox();
             this.uiLabel4 = new Sunny.UI.UILabel();
@@ -79,18 +83,15 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.uiTabControl1.Controls.Add(this.tabPage2);
             this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTabControl1.HotTrack = true;
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 40);
             this.uiTabControl1.Location = new System.Drawing.Point(3, 3);
             this.uiTabControl1.MainPage = "";
             this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl1.Name = "uiTabControl1";
             this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.ShowActiveCloseButton = true;
             this.uiTabControl1.Size = new System.Drawing.Size(493, 274);
             this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTabControl1.StyleCustomMode = true;
             this.uiTabControl1.TabIndex = 0;
             this.uiTabControl1.TabUnSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             // 
@@ -107,6 +108,10 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             // 
             // uiGroupBox2
             // 
+            this.uiGroupBox2.Controls.Add(this.uiTextBox3);
+            this.uiGroupBox2.Controls.Add(this.uiTextBox4);
+            this.uiGroupBox2.Controls.Add(this.uiLabel5);
+            this.uiGroupBox2.Controls.Add(this.uiLabel6);
             this.uiGroupBox2.Controls.Add(this.uiTextBox2);
             this.uiGroupBox2.Controls.Add(this.uiTextBox1);
             this.uiGroupBox2.Controls.Add(this.uiLabel4);
@@ -128,12 +133,68 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.uiGroupBox2.TitleInterval = 0;
             this.uiGroupBox2.TitleTop = 0;
             // 
+            // uiTextBox3
+            // 
+            this.uiTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox3.FillColor = System.Drawing.Color.White;
+            this.uiTextBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiTextBox3.Location = new System.Drawing.Point(328, 111);
+            this.uiTextBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox3.Maximum = 2147483647D;
+            this.uiTextBox3.Minimum = -2147483648D;
+            this.uiTextBox3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiTextBox3.Name = "uiTextBox3";
+            this.uiTextBox3.Size = new System.Drawing.Size(150, 29);
+            this.uiTextBox3.Style = Sunny.UI.UIStyle.Custom;
+            this.uiTextBox3.TabIndex = 10;
+            this.uiTextBox3.Text = "uiTextBox3";
+            this.uiTextBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiTextBox4
+            // 
+            this.uiTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox4.FillColor = System.Drawing.Color.White;
+            this.uiTextBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiTextBox4.Location = new System.Drawing.Point(89, 110);
+            this.uiTextBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox4.Maximum = 2147483647D;
+            this.uiTextBox4.Minimum = -2147483648D;
+            this.uiTextBox4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiTextBox4.Name = "uiTextBox4";
+            this.uiTextBox4.Size = new System.Drawing.Size(150, 29);
+            this.uiTextBox4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiTextBox4.TabIndex = 9;
+            this.uiTextBox4.Text = "uiTextBox4";
+            this.uiTextBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel5
+            // 
+            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel5.Location = new System.Drawing.Point(245, 113);
+            this.uiLabel5.Name = "uiLabel5";
+            this.uiLabel5.Size = new System.Drawing.Size(127, 23);
+            this.uiLabel5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel5.TabIndex = 8;
+            this.uiLabel5.Text = "PLCWrite：";
+            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel6
+            // 
+            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel6.Location = new System.Drawing.Point(0, 114);
+            this.uiLabel6.Name = "uiLabel6";
+            this.uiLabel6.Size = new System.Drawing.Size(127, 23);
+            this.uiLabel6.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel6.TabIndex = 7;
+            this.uiLabel6.Text = "PLCRead：";
+            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // uiTextBox2
             // 
             this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.uiTextBox2.FillColor = System.Drawing.Color.White;
             this.uiTextBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTextBox2.Location = new System.Drawing.Point(318, 82);
+            this.uiTextBox2.Location = new System.Drawing.Point(326, 63);
             this.uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBox2.Maximum = 2147483647D;
             this.uiTextBox2.Minimum = -2147483648D;
@@ -150,7 +211,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.uiTextBox1.FillColor = System.Drawing.Color.White;
             this.uiTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTextBox1.Location = new System.Drawing.Point(74, 81);
+            this.uiTextBox1.Location = new System.Drawing.Point(87, 62);
             this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiTextBox1.Maximum = 2147483647D;
             this.uiTextBox1.Minimum = -2147483648D;
@@ -165,7 +226,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             // uiLabel4
             // 
             this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel4.Location = new System.Drawing.Point(255, 84);
+            this.uiLabel4.Location = new System.Drawing.Point(267, 65);
             this.uiLabel4.Name = "uiLabel4";
             this.uiLabel4.Size = new System.Drawing.Size(127, 23);
             this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
@@ -176,7 +237,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             // uiLabel3
             // 
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel3.Location = new System.Drawing.Point(13, 85);
+            this.uiLabel3.Location = new System.Drawing.Point(21, 65);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(127, 23);
             this.uiLabel3.Style = Sunny.UI.UIStyle.Custom;
@@ -186,7 +247,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             // 
             // uiLedBulb1
             // 
-            this.uiLedBulb1.Location = new System.Drawing.Point(233, 16);
+            this.uiLedBulb1.Location = new System.Drawing.Point(233, 8);
             this.uiLedBulb1.Name = "uiLedBulb1";
             this.uiLedBulb1.Size = new System.Drawing.Size(35, 34);
             this.uiLedBulb1.TabIndex = 0;
@@ -195,7 +256,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             // uiLabel2
             // 
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel2.Location = new System.Drawing.Point(157, 21);
+            this.uiLabel2.Location = new System.Drawing.Point(157, 13);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(127, 23);
             this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
@@ -253,7 +314,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.tabPage2.Controls.Add(this.uiRichTextBox1);
             this.tabPage2.Location = new System.Drawing.Point(0, 40);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(493, 234);
+            this.tabPage2.Size = new System.Drawing.Size(450, 230);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "底层日志";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -261,6 +322,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             // uiRichTextBox1
             // 
             this.uiRichTextBox1.AutoWordSelection = true;
+            this.uiRichTextBox1.DetectUrls = false;
             this.uiRichTextBox1.FillColor = System.Drawing.Color.White;
             this.uiRichTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiRichTextBox1.Location = new System.Drawing.Point(1, 0);
@@ -268,8 +330,10 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.uiRichTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiRichTextBox1.Name = "uiRichTextBox1";
             this.uiRichTextBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.uiRichTextBox1.ReadOnly = true;
             this.uiRichTextBox1.Size = new System.Drawing.Size(492, 237);
             this.uiRichTextBox1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiRichTextBox1.StyleCustomMode = true;
             this.uiRichTextBox1.TabIndex = 0;
             this.uiRichTextBox1.Text = " ";
             this.uiRichTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -289,8 +353,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             // 
             // PlcBasement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.Controls.Add(this.uiPanel1);
             this.Name = "PlcBasement";
@@ -324,5 +387,9 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
         private Sunny.UI.UIRichTextBox uiRichTextBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private Sunny.UI.UITextBox uiTextBox3;
+        private Sunny.UI.UITextBox uiTextBox4;
+        private Sunny.UI.UILabel uiLabel5;
+        private Sunny.UI.UILabel uiLabel6;
     }
 }

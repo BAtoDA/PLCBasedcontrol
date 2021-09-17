@@ -29,6 +29,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
             this.daPlcFunction5 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             this.daPlcFunction4 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
@@ -40,25 +41,27 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.uiGroupBox1.SuspendLayout();
+            this.plcBasement1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement();
+            this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
+            this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.uiContextMenuStrip1.SuspendLayout();
+            this.uiPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // uiGroupBox1
             // 
-            this.uiGroupBox1.Controls.Add(this.daPlcFunction5);
-            this.uiGroupBox1.Controls.Add(this.daPlcFunction4);
-            this.uiGroupBox1.Controls.Add(this.daPlcFunction3);
-            this.uiGroupBox1.Controls.Add(this.daPlcFunction2);
-            this.uiGroupBox1.Controls.Add(this.daPlcFunction1);
             this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox1.Location = new System.Drawing.Point(4, 381);
+            this.uiGroupBox1.Location = new System.Drawing.Point(3, 447);
             this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
             this.uiGroupBox1.Radius = 8;
-            this.uiGroupBox1.Size = new System.Drawing.Size(792, 64);
+            this.uiGroupBox1.Size = new System.Drawing.Size(889, 64);
             this.uiGroupBox1.StyleCustomMode = true;
             this.uiGroupBox1.TabIndex = 0;
             this.uiGroupBox1.Text = null;
@@ -73,7 +76,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.daPlcFunction5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcFunction5.FormName = "参数页面";
             this.daPlcFunction5.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction5.Location = new System.Drawing.Point(661, 13);
+            this.daPlcFunction5.Location = new System.Drawing.Point(746, 460);
             this.daPlcFunction5.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction5.Name = "daPlcFunction5";
             this.daPlcFunction5.PLC_Enable = true;
@@ -90,7 +93,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.daPlcFunction4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcFunction4.FormName = "生产页面";
             this.daPlcFunction4.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction4.Location = new System.Drawing.Point(504, 13);
+            this.daPlcFunction4.Location = new System.Drawing.Point(579, 460);
             this.daPlcFunction4.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction4.Name = "daPlcFunction4";
             this.daPlcFunction4.PLC_Enable = true;
@@ -107,7 +110,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.daPlcFunction3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcFunction3.FormName = "运转页面";
             this.daPlcFunction3.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction3.Location = new System.Drawing.Point(342, 13);
+            this.daPlcFunction3.Location = new System.Drawing.Point(401, 460);
             this.daPlcFunction3.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction3.Name = "daPlcFunction3";
             this.daPlcFunction3.PLC_Enable = true;
@@ -124,7 +127,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.daPlcFunction2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcFunction2.FormName = "手动界面";
             this.daPlcFunction2.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction2.Location = new System.Drawing.Point(181, 13);
+            this.daPlcFunction2.Location = new System.Drawing.Point(218, 460);
             this.daPlcFunction2.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction2.Name = "daPlcFunction2";
             this.daPlcFunction2.PLC_Enable = true;
@@ -141,7 +144,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.daPlcFunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcFunction1.FormName = "主页面";
             this.daPlcFunction1.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction1.Location = new System.Drawing.Point(30, 13);
+            this.daPlcFunction1.Location = new System.Drawing.Point(45, 460);
             this.daPlcFunction1.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction1.Name = "daPlcFunction1";
             this.daPlcFunction1.PLC_Enable = true;
@@ -186,35 +189,100 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.uiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiPanel1.Controls.Add(this.daPlcFunction5);
+            this.uiPanel1.Controls.Add(this.plcBasement1);
+            this.uiPanel1.Controls.Add(this.daPlcFunction4);
+            this.uiPanel1.Controls.Add(this.daPlcFunction3);
+            this.uiPanel1.Controls.Add(this.daPlcFunction1);
+            this.uiPanel1.Controls.Add(this.daPlcFunction2);
+            this.uiPanel1.Controls.Add(this.uiGroupBox1);
             this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiPanel1.Location = new System.Drawing.Point(1, 36);
             this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(800, 411);
+            this.uiPanel1.Size = new System.Drawing.Size(897, 520);
             this.uiPanel1.TabIndex = 2;
             this.uiPanel1.Text = null;
             this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // plcBasement1
+            // 
+            this.plcBasement1.BackColor = System.Drawing.Color.DarkGray;
+            this.plcBasement1.Location = new System.Drawing.Point(217, 93);
+            this.plcBasement1.Margin = new System.Windows.Forms.Padding(114, 26, 114, 26);
+            this.plcBasement1.Name = "plcBasement1";
+            this.plcBasement1.Size = new System.Drawing.Size(495, 277);
+            this.plcBasement1.TabIndex = 0;
+            this.plcBasement1.Visible = false;
+            this.plcBasement1.Load += new System.EventHandler(this.plcBasement1_Load);
+            // 
+            // plcControlsPreferences1
+            // 
+            this.plcControlsPreferences1.Enabled = true;
+            this.plcControlsPreferences1.Interval = 1000;
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences1);
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences2);
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences3);
+            // 
+            // plcPreferences1
+            // 
+            this.plcPreferences1.IPEnd = "127.0.0.1";
+            this.plcPreferences1.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.plcPreferences1.Point = 2000;
+            this.plcPreferences1.Receptionovertime = 1000;
+            this.plcPreferences1.Retain = "S1500";
+            this.plcPreferences1.Sendovertime = 1000;
+            // 
+            // plcPreferences2
+            // 
+            this.plcPreferences2.IPEnd = "127.0.0.1";
+            this.plcPreferences2.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.plcPreferences2.Point = 2000;
+            this.plcPreferences2.Receptionovertime = 1000;
+            this.plcPreferences2.Retain = "S1500";
+            this.plcPreferences2.Sendovertime = 1000;
+            // 
+            // plcPreferences3
+            // 
+            this.plcPreferences3.IPEnd = "192.168.0.11";
+            this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
+            this.plcPreferences3.Point = 102;
+            this.plcPreferences3.Receptionovertime = 1000;
+            this.plcPreferences3.Retain = "S1500";
+            this.plcPreferences3.Sendovertime = 1000;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(858, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 36);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // TemplateForm
             // 
             this.AllowAddControlOnTitle = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(897, 552);
             this.CloseAskString = "";
-            this.Controls.Add(this.uiGroupBox1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.uiPanel1);
             this.ExtendBox = true;
             this.ExtendMenu = this.uiContextMenuStrip1;
             this.HelpButton = true;
+            this.MaximizeBox = false;
             this.Name = "TemplateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TemplateForm";
-            this.TopMost = true;
+            this.ExtendBoxClick += new System.EventHandler(this.TemplateForm_ExtendBoxClick);
             this.Load += new System.EventHandler(this.TemplateForm_Load);
-            this.uiGroupBox1.ResumeLayout(false);
             this.uiContextMenuStrip1.ResumeLayout(false);
+            this.uiPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,7 +291,6 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
 
         private Sunny.UI.UIGroupBox uiGroupBox1;
         private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
-        private Sunny.UI.UIPanel uiPanel1;
         protected 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction5;
         protected 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction4;
         protected 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
@@ -232,5 +299,12 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        protected Sunny.UI.UIPanel uiPanel1;
+        private PLCControlsPreferences plcControlsPreferences1;
+        private PLC参数设置控件.PLCPreferences plcPreferences1;
+        private PLC参数设置控件.PLCPreferences plcPreferences2;
+        private PLC参数设置控件.PLCPreferences plcPreferences3;
+        private 基础控件.底层PLC状态监控控件.PlcBasement plcBasement1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -230,7 +230,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             if (!PLCselectTexte)
             {
                 //处理0--状态--
-                TextBase.TextFont_0 = new Font(FontText.Text, Convert.ToInt32(FontSize.Text), TextFont1.Checked & TextFont2.Checked ? FontStyle.Underline | FontStyle.Italic : TextFont1.Checked ? FontStyle.Italic : TextFont2.Checked ? FontStyle.Italic : FontStyle.Underline);
+                TextBase.TextFont_0 = GetFont();
                 TextBase.backgroundColor_0 = BackColor.Value;
                 TextBase.Textflicker_0 = Convert.ToInt32(Fontflicker.Text);
                 TextBase.Textalign_0 = Fontalign.Text;
@@ -242,7 +242,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             else
             {
                 //处理1--状态--
-                TextBase.TextFont_1 = new Font(FontText.Text, Convert.ToInt32(FontSize.Text), TextFont1.Checked & TextFont2.Checked ? FontStyle.Underline | FontStyle.Italic : TextFont1.Checked ? FontStyle.Italic : TextFont2.Checked ? FontStyle.Italic : FontStyle.Underline);
+                TextBase.TextFont_1 = GetFont();
                 TextBase.backgroundColor_1 =BackColor.Value;
                 TextBase.Textflicker_1 = Convert.ToInt32(Fontflicker.Text);
                 TextBase.Textalign_1 = Fontalign.Text;
@@ -253,7 +253,19 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             }
             PLCselectTexte = Convert.ToBoolean(Convert.ToInt16(Textstate.Text));
             TextSwitch(PLCselectTexte, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, BackColor, TextFont1, TextFont2);
-
+            Font GetFont()
+            {
+                FontStyle fontStyle = FontStyle.Underline;
+                if (TextFont1.Checked & !TextFont2.Checked)
+                    fontStyle = FontStyle.Italic;
+                if (!TextFont1.Checked & TextFont2.Checked)
+                    fontStyle = FontStyle.Underline;
+                if (TextFont1.Checked & TextFont2.Checked)
+                    fontStyle = FontStyle.Italic | FontStyle.Underline;
+                if (!TextFont1.Checked & !TextFont2.Checked)
+                    return new Font(FontText.Text, Convert.ToInt32(FontSize.Text));
+                return new Font(FontText.Text, Convert.ToInt32(FontSize.Text), fontStyle);
+            }
         }
         /// <summary>
         /// 处理0-1-状态切换时保存数据
@@ -274,7 +286,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             if (!PLCselectTexte)
             {
                 //处理0--状态--
-                TextBase.TextFont_0 = new Font(FontText.Text, Convert.ToInt32(FontSize.Text), TextFont1.Checked & TextFont2.Checked ? FontStyle.Underline | FontStyle.Italic : TextFont1.Checked ? FontStyle.Italic : TextFont2.Checked ? FontStyle.Italic : FontStyle.Underline);
+                TextBase.TextFont_0 = GetFont();
                 TextBase.Textflicker_0 = Convert.ToInt32(Fontflicker.Text);
                 TextBase.Textalign_0 = Fontalign.Text;
                 TextBase.TextColor_0 = TextColor.Value;
@@ -285,7 +297,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             else
             {
                 //处理1--状态--
-                TextBase.TextFont_1 = new Font(FontText.Text, Convert.ToInt32(FontSize.Text), TextFont1.Checked & TextFont2.Checked ? FontStyle.Underline | FontStyle.Italic : TextFont1.Checked ? FontStyle.Italic : TextFont2.Checked ? FontStyle.Italic : FontStyle.Underline);
+                TextBase.TextFont_1 = GetFont();
                 TextBase.Textflicker_1 = Convert.ToInt32(Fontflicker.Text);
                 TextBase.Textalign_1 = Fontalign.Text;
                 TextBase.TextColor_1 = TextColor.Value;
@@ -295,7 +307,19 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             }
             PLCselectTexte = Convert.ToBoolean(Convert.ToInt16(Textstate.Text));
             TextSwitch(PLCselectTexte, FontText, FontSize, Fontalign, Fontflicker, TextrichTextBox, TextColor, TextFont1, TextFont2);
-
+            Font GetFont()
+            {
+                FontStyle fontStyle = FontStyle.Underline;
+                if (TextFont1.Checked & !TextFont2.Checked)
+                    fontStyle = FontStyle.Italic;
+                if (!TextFont1.Checked & TextFont2.Checked)
+                    fontStyle = FontStyle.Underline;
+                if (TextFont1.Checked & TextFont2.Checked)
+                    fontStyle = FontStyle.Italic | FontStyle.Underline;
+                if (!TextFont1.Checked & !TextFont2.Checked)
+                    return new Font(FontText.Text, Convert.ToInt32(FontSize.Text));
+                return new Font(FontText.Text, Convert.ToInt32(FontSize.Text), fontStyle);
+            }
         }
         /// <summary>
         /// 获取系统全部字体
@@ -315,6 +339,17 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         private void GetTextdirection(UIComboBox comboBox)
         {
             foreach (var i in Enum.GetNames(typeof(ContentAlignment)))
+                comboBox.Items.Add(i);
+            comboBox.KeyPress += KeyPress;
+            comboBox.SelectedIndex = 0;
+        }
+        /// <summary>
+        /// 获取文字字体对齐方向
+        /// </summary>
+        /// <param name="comboBox"></param>
+        private void GetTextdirection(UIComboBox comboBox,int Value)
+        {
+            foreach (var i in Enum.GetNames(typeof(System.Windows.Forms.HorizontalAlignment)))
                 comboBox.Items.Add(i);
             comboBox.KeyPress += KeyPress;
             comboBox.SelectedIndex = 0;

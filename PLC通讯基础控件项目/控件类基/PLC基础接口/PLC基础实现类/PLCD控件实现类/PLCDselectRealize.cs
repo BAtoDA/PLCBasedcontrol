@@ -57,12 +57,12 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public bool NoAccessConceal { get; set; } = false;
         public bool NoAccessForm { get; set; } = false;
         public bool Speech { get; set; } = false;
-        public string Textalign_0 { get; set; }
+        public string Textalign_0 { get; set; }= ContentAlignment.BottomCenter.ToString();
         public Font TextFont_0 { get; set; } = new Font("黑体", 9);
         public int Textflicker_0 { get; set; } = 0;
         public bool TextItalic_0 { get; set; } = false;
         public bool TextUnderline_0 { get; set; } = false;
-        public string Textalign_1 { get; set; }
+        public string Textalign_1 { get; set; }= ContentAlignment.BottomCenter.ToString();
         public Font TextFont_1 { get; set; } = new Font("黑体", 9);
         public int Textflicker_1 { get; set; } = 0;
         public bool TextItalic_1 { get; set; } = false;

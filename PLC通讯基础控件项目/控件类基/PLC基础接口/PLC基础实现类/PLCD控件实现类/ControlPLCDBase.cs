@@ -287,7 +287,15 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             {
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCDClassBase.pLCDselectRealize.SafetyPLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                 if (PLCoop == null) return;
-                if (!PLCoop.PLC_ready) return;
+                if (!PLCoop.PLC_ready)
+                {
+                    //立马刷新状态
+                    this.PlcControl.SuspendLayout();
+                    this.PlcControl.Text ="00";
+                    this.PlcControl.Refresh();
+                    this.PlcControl.ResumeLayout(false);
+                    return;
+                }
                 var State = PLCoop.PLC_read_M_bit(pLCDClassBase.pLCDselectRealize.SafetyFunction, pLCDClassBase.pLCDselectRealize.WrSafetyAddress);
                 switch (pLCDClassBase.pLCDselectRealize.SafetyPattern)
                 {

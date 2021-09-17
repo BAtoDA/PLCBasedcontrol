@@ -49,24 +49,24 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public bool Speech { get; set; } = false;
         //基础文本控制---
         public int TextState { get; set; } = 0;
-        public Font TextFont_0 { get; set; } = new Font("黑体", 9);
+        public Font TextFont_0 { get; set; } = new Font("微软雅黑", 12);
         public int Textflicker_0 { get; set; } = 0;
         public bool TextItalic_0 { get; set; } = false;
         public bool TextUnderline_0 { get; set; } = false;
-        public Font TextFont_1 { get; set; } = new Font("黑体", 9);
+        public Font TextFont_1 { get; set; } = new Font("微软雅黑", 12);
         public int Textflicker_1 { get; set; } = 0;
         public bool TextItalic_1 { get; set; } = false;
         public bool TextUnderline_1 { get; set; } = false;
         //基础外部文本颜色 与 内容控制
-        public Color backgroundColor_0 { get; set; } = Color.Black;
+        public Color backgroundColor_0 { get; set; } = Color.Silver;
         public Color TextColor_0 { get; set; } = Color.White;
-        public string TextContent_0 { get; set; } = "0";
-        public Color backgroundColor_1 { get; set; } = Color.Black;
+        public string TextContent_0 { get; set; } = "OFF";
+        public Color backgroundColor_1 { get; set; } = Color.FromArgb(128, 255, 128);
         public Color TextColor_1 { get; set; } = Color.White;
-        public string TextContent_1 { get; set; } = "0";
+        public string TextContent_1 { get; set; } = "ON";
         public System.Threading.Timer PLCTimer { get; set; }
-        public string Textalign_0 { get; set; }
-        public string Textalign_1 { get; set; }
+        public string Textalign_0 { get; set; }= ContentAlignment.MiddleCenter.ToString();
+        public string Textalign_1 { get; set; }= ContentAlignment.MiddleCenter.ToString();
         #endregion
 
     }

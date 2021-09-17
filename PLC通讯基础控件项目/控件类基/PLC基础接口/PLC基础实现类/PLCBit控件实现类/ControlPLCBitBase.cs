@@ -254,7 +254,20 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 PLCsafety();
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p=>p.Key.Trim()==pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                 if (PLCoop==null) return;
-                if (!PLCoop.PLC_ready) return;
+                if (!PLCoop.PLC_ready)
+                {
+                    //PLC未准备好 控件自动归零状态
+                    PlcControl.Invoke((MethodInvoker)delegate
+                    {
+                        PlcControl.SuspendLayout();
+                        pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
+                        pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
+                        pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                        PlcControl.Refresh();
+                        PlcControl.ResumeLayout(false);
+                    });
+                    return;
+                }
                 var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
                 //---委托控件----处理状态颜色
                 PlcControl.BeginInvoke((MethodInvoker)delegate
