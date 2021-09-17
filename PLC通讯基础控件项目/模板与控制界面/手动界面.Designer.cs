@@ -29,10 +29,19 @@ namespace PLC通讯基础控件项目.模板与控制界面
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.uiPanel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // 手动界面
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(897, 679);
+            this.Name = "手动界面";
             this.Text = "手动界面";
+            this.uiPanel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

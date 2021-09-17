@@ -100,6 +100,7 @@ namespace PLC通讯基础控件项目
         private bool PlcLoad = false;
         protected async override void OnTick(EventArgs e)
         {
+            this.Stop();
             #region 分配对象池
             if(!PlcLoad)
             {
@@ -136,7 +137,7 @@ namespace PLC通讯基础控件项目
                         var PLClink = this.plclinkClasses.Where(p => p.PLC == i.PLCDevice).FirstOrDefault();
                         if (PLClink != null)
                         {
-                            //-----查找指定Dll并且按照路径进行反射获取Type命名空间-----
+                            //-----查找指定dll并且按照路径进行反射获取Type命名空间-----
                             Type PLCoop;
                             if (PLClink.Dllplace)
                               PLCoop = Assembly.LoadFrom(PLClink.Dll).GetType(PLClink.Link);
@@ -195,6 +196,7 @@ namespace PLC通讯基础控件项目
                 }
                 catch (Exception ex) { }
             }
+            this.Start();
             #endregion
             base.OnTick(e);
         }

@@ -286,7 +286,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (pLCDClassBase.pLCDselectRealize.OperationAffirm)
             {
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCDClassBase.pLCDselectRealize.SafetyPLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
-                if (PLCoop == null) return;
+                if (PLCoop == null || !PlcControl.IsHandleCreated || !PlcControl.IsDisposed || PlcControl.Created) return;
                 if (!PLCoop.PLC_ready)
                 {
                     //立马刷新状态

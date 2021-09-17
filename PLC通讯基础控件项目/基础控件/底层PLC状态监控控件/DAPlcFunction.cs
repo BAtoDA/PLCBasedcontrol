@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.功能键参数设置窗口;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
@@ -30,20 +31,21 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
     {
         protected override void OnClick(EventArgs e)
         {
+
             //用户是否启用该功能
             if (!this.plc_Enable) return;
             //获取所有运行中的窗口
-            foreach(Form i in Application.OpenForms)
+            foreach (Form i in Application.OpenForms)
             {
-                if (i.GetType().FullName==this.FormPath+"."+this.FormName)
+                if (i.GetType().FullName == this.FormPath + "." + this.FormName)
                 {
                     i.Activate();
                     return;
                 }
             }
             //找不到窗口--窗口新的窗口
-            var Formoop = Assembly.GetExecutingAssembly().GetType(this.FormPath +"."+ this.FormName);
-            if(Formoop!=null)
+            var Formoop = Assembly.GetExecutingAssembly().GetType(this.FormPath + "." + this.FormName);
+            if (Formoop != null)
             {
                 Form FormShow = Activator.CreateInstance(Formoop) as Form;
                 FormShow.StartPosition = FormStartPosition.CenterScreen;
@@ -53,10 +55,10 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             //获取所有运行中的窗口
             Regex r = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
             //递归查找顶级窗口Form
-            object Oop= this;
+            object Oop = this;
             while (true)
             {
-                if ((((dynamic)Oop).Parent as Form)!=null)
+                if ((((dynamic)Oop).Parent as Form) != null)
                 {
                     Oop = ((dynamic)Oop).Parent;
                     break;
@@ -66,15 +68,16 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             }
             foreach (Form i in Application.OpenForms)
             {
-                if (r.IsMatch(i.GetType().FullName) &&i == (Form)Oop)
+                if (r.IsMatch(i.GetType().FullName) && i == (Form)Oop)
                 {
                     i.Close();
                     return;
                 }
             }
-            base.OnClick(e);
-        }
 
+            base.OnClick(e);
+
+        }
     }
     [ToolboxItem(true)]
     public partial class DAPlcFunction : UIButton

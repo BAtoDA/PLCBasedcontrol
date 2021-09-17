@@ -27,6 +27,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 this.uiComboboxEx1.Items.Add(i.Key);
             ControlDebug.EventMessage += ((send, e) =>
               {
+                  if (!this.IsHandleCreated || !this.uiRichTextBox1.IsDisposed || this.uiRichTextBox1.Created) return;
                   this.uiRichTextBox1.BeginInvoke((MethodInvoker)delegate
                   {
                       this.uiRichTextBox1.AppendText($"{DateTime.Now} : {send}  \r\n");
@@ -37,6 +38,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (!this.IsDisposed || this.Created) return;
             var PLCoop = IPLCsurface.PLCDictionary.Where(P => P.Key == this.uiComboboxEx1.Text).FirstOrDefault();
             if (PLCoop.Value != null)
             {

@@ -29,9 +29,14 @@ namespace 项目
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiProgressIndicator1 = new Sunny.UI.UIProgressIndicator();
+            this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
+            this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.SuspendLayout();
             // 
             // daPlcFunction1
@@ -71,6 +76,41 @@ namespace 项目
             this.uiProgressIndicator1.TabIndex = 3;
             this.uiProgressIndicator1.Text = "uiProgressIndicator1";
             // 
+            // plcControlsPreferences1
+            // 
+            this.plcControlsPreferences1.Enabled = true;
+            this.plcControlsPreferences1.Interval = 1000;
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences1);
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences2);
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences3);
+            // 
+            // plcPreferences1
+            // 
+            this.plcPreferences1.IPEnd = "127.0.0.1";
+            this.plcPreferences1.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.plcPreferences1.Point = 2000;
+            this.plcPreferences1.Receptionovertime = 1000;
+            this.plcPreferences1.Retain = "S1500";
+            this.plcPreferences1.Sendovertime = 1000;
+            // 
+            // plcPreferences2
+            // 
+            this.plcPreferences2.IPEnd = "127.0.0.1";
+            this.plcPreferences2.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
+            this.plcPreferences2.Point = 2000;
+            this.plcPreferences2.Receptionovertime = 1000;
+            this.plcPreferences2.Retain = "S1500";
+            this.plcPreferences2.Sendovertime = 1000;
+            // 
+            // plcPreferences3
+            // 
+            this.plcPreferences3.IPEnd = "127.0.0.1";
+            this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.plcPreferences3.Point = 2000;
+            this.plcPreferences3.Receptionovertime = 1000;
+            this.plcPreferences3.Retain = "S1500";
+            this.plcPreferences3.Sendovertime = 1000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -94,6 +134,10 @@ namespace 项目
         private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UIProgressIndicator uiProgressIndicator1;
+        private PLC通讯基础控件项目.PLCControlsPreferences plcControlsPreferences1;
+        private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences1;
+        private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences2;
+        private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences3;
     }
 }
 

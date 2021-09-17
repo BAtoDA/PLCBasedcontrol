@@ -249,7 +249,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         {
             lock (this)
             {
-                if (PlcControl.IsDisposed || PlcControl.Created == false) return;
+                if (!PlcControl.IsHandleCreated||PlcControl.IsDisposed || PlcControl.Created == false) return;
                 PLCoopErr(pLCBitClassBase, pLCBitproperty);
                 PLCsafety();
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p=>p.Key.Trim()==pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
@@ -257,7 +257,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 if (!PLCoop.PLC_ready)
                 {
                     //PLC未准备好 控件自动归零状态
-                    PlcControl.Invoke((MethodInvoker)delegate
+                    PlcControl.BeginInvoke((MethodInvoker)delegate
                     {
                         PlcControl.SuspendLayout();
                         pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
