@@ -35,9 +35,9 @@ namespace PLC通讯基础控件项目.基础控件
                  //处理PLC通讯部分
                  if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
                  {
-                     ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
+                     //ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                      ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
-                     ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
+                     //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                  }
                  //立马刷新状态
                  this.SuspendLayout();

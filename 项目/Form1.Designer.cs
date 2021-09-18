@@ -30,59 +30,53 @@ namespace 项目
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.uiProgressIndicator1 = new Sunny.UI.UIProgressIndicator();
             this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
-            this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // daPlcFunction1
             // 
             this.daPlcFunction1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
             this.daPlcFunction1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daPlcFunction1.FillColor = System.Drawing.Color.Gray;
             this.daPlcFunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcFunction1.FormName = "主页面";
             this.daPlcFunction1.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction1.Location = new System.Drawing.Point(163, 180);
+            this.daPlcFunction1.Location = new System.Drawing.Point(227, 249);
             this.daPlcFunction1.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction1.Name = "daPlcFunction1";
             this.daPlcFunction1.PLC_Enable = true;
-            this.daPlcFunction1.Size = new System.Drawing.Size(124, 59);
+            this.daPlcFunction1.Size = new System.Drawing.Size(172, 74);
+            this.daPlcFunction1.Style = Sunny.UI.UIStyle.Custom;
             this.daPlcFunction1.TabIndex = 0;
             this.daPlcFunction1.Text = "进入主界面";
             this.daPlcFunction1.Click += new System.EventHandler(this.daPlcFunction1_Click);
-            // 
-            // uiLabel1
-            // 
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel1.ForeColor = System.Drawing.Color.White;
-            this.uiLabel1.Location = new System.Drawing.Point(140, 2);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(200, 60);
-            this.uiLabel1.TabIndex = 1;
-            this.uiLabel1.Text = "系统界面";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // uiProgressIndicator1
-            // 
-            this.uiProgressIndicator1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiProgressIndicator1.Location = new System.Drawing.Point(169, 59);
-            this.uiProgressIndicator1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiProgressIndicator1.Name = "uiProgressIndicator1";
-            this.uiProgressIndicator1.Size = new System.Drawing.Size(100, 100);
-            this.uiProgressIndicator1.TabIndex = 3;
-            this.uiProgressIndicator1.Text = "uiProgressIndicator1";
             // 
             // plcControlsPreferences1
             // 
             this.plcControlsPreferences1.Enabled = true;
             this.plcControlsPreferences1.Interval = 1000;
-            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences1);
             this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences2);
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences1);
             this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences3);
+            // 
+            // plcPreferences2
+            // 
+            this.plcPreferences2.IPEnd = "192.168.0.11";
+            this.plcPreferences2.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
+            this.plcPreferences2.Point = 102;
+            this.plcPreferences2.Receptionovertime = 1000;
+            this.plcPreferences2.Retain = "S1500";
+            this.plcPreferences2.Sendovertime = 1000;
             // 
             // plcPreferences1
             // 
@@ -93,38 +87,68 @@ namespace 项目
             this.plcPreferences1.Retain = "S1500";
             this.plcPreferences1.Sendovertime = 1000;
             // 
-            // plcPreferences2
-            // 
-            this.plcPreferences2.IPEnd = "127.0.0.1";
-            this.plcPreferences2.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
-            this.plcPreferences2.Point = 2000;
-            this.plcPreferences2.Receptionovertime = 1000;
-            this.plcPreferences2.Retain = "S1500";
-            this.plcPreferences2.Sendovertime = 1000;
-            // 
             // plcPreferences3
             // 
-            this.plcPreferences3.IPEnd = "127.0.0.1";
+            this.plcPreferences3.IPEnd = "192.168.1.10";
             this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
-            this.plcPreferences3.Point = 2000;
+            this.plcPreferences3.Point = 8000;
             this.plcPreferences3.Receptionovertime = 1000;
             this.plcPreferences3.Retain = "S1500";
             this.plcPreferences3.Sendovertime = 1000;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel2.ForeColor = System.Drawing.Color.White;
+            this.uiLabel2.Location = new System.Drawing.Point(142, 326);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(379, 23);
+            this.uiLabel2.TabIndex = 5;
+            this.uiLabel2.Text = "虽然没本事做高级启动界面但是有本事去偷图！！！";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(644, 357);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "c443eb6298f8c3b19ca5a16ac782ca3f.jpeg");
+            this.imageList1.Images.SetKeyName(1, "3b31a8d12f1bd16f60085c8d2fa6a611.jpeg");
+            this.imageList1.Images.SetKeyName(2, "170a7e99e7ede025490fdd412056699f.jpeg");
+            this.imageList1.Images.SetKeyName(3, "71093f82045f191894b7071960fb473c.jpeg");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            this.ClientSize = new System.Drawing.Size(425, 255);
+            this.ClientSize = new System.Drawing.Size(647, 360);
             this.ControlBox = false;
-            this.Controls.Add(this.uiProgressIndicator1);
-            this.Controls.Add(this.uiLabel1);
+            this.Controls.Add(this.uiLabel2);
             this.Controls.Add(this.daPlcFunction1);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,12 +156,14 @@ namespace 项目
         #endregion
 
         private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
-        private Sunny.UI.UILabel uiLabel1;
-        private Sunny.UI.UIProgressIndicator uiProgressIndicator1;
         private PLC通讯基础控件项目.PLCControlsPreferences plcControlsPreferences1;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences1;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences2;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences3;
+        private Sunny.UI.UILabel uiLabel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

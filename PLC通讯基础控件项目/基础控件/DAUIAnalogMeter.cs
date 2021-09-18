@@ -3,7 +3,7 @@
 // 文件名称(File Name)：
 // 功能描述(Description)：
 // 作者(Author)：DAtoTA
-// 日期(Create Date)： 2021/9/12 18:13:15
+// 日期(Create Date)： 2021/9/18 14:35:07
 //
 //**********************************************************************
 using System;
@@ -19,7 +19,8 @@ using System.Threading;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件;
 using PLC通讯基础控件项目.控件类基.PLC基础接口;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using Sunny.UI;
@@ -27,12 +28,11 @@ using Sunny.UI;
 namespace PLC通讯基础控件项目.基础控件
 {
     /// <summary>
-    /// 实现上位机底层控件 优化UI类按钮类 -不再公共运行时
+    /// 表盘控件
     /// </summary>
-    public partial class DAUiButton
+    public partial  class DAUIAnalogMeter
     {
-
-        public DAUiButton()
+        public DAUIAnalogMeter()
         {
             Timerconfiguration.Tick += ((send, e) =>
             {
@@ -40,24 +40,23 @@ namespace PLC通讯基础控件项目.基础控件
                 //处理PLC通讯部分
                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
                 {
-                    //ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
-                    ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
-                    //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
+                    //ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCDselectRealize.ReadWritePLC}");
+                    ControlPLCDonlyBase controlPLCDBase = new ControlPLCDonlyBase(this);
+                    //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCDselectRealize.ReadWritePLC}");
                 }
                 //立马刷新状态
                 this.SuspendLayout();
-                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
-                this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
-                this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+                this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
+                this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
                 this.Refresh();
                 this.ResumeLayout(false);
             });
         }
+
     }
     [ToolboxItem(true)]
     [Browsable(true)]
-    [Description("实现上位机底层控件 优化UI类按钮类 -不再公共运行时")]
-    public partial class DAUiButton : UIButton, PLCBitClassBase, PLCBitproperty, ICloneable
+    public partial class DAUIAnalogMeter : UIAnalogMeter, PLCDClassBase, PLCDproperty, ICloneable
     {
         #region 实现接口参数
         [Browsable(false)]
@@ -65,7 +64,7 @@ namespace PLC通讯基础控件项目.基础控件
         [Browsable(false)]
         [Description("PLC保存参数"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public PLCBitselectRealize pLCBitselectRealize
+        public PLCDselectRealize pLCDselectRealize
         {
             get => pLCBitselectsq;
             set => pLCBitselectsq = value;
@@ -73,7 +72,7 @@ namespace PLC通讯基础控件项目.基础控件
         /// <summary>
         /// 私有保存参数 自动添加
         /// </summary>
-        private PLCBitselectRealize pLCBitselectsq { get; set; } = new PLCBitselectRealize();
+        private PLCDselectRealize pLCBitselectsq { get; set; } = new PLCDselectRealize();
         [Description("选择PLC类型\r\n默认三菱PLC"), Category("PLC类型")]
         [Browsable(true)]
         public PLCSet APLC
@@ -108,48 +107,44 @@ namespace PLC通讯基础控件项目.基础控件
         }
         private bool plc_Enable = false;
         [Browsable(false)]
-        public string Textalign_0 
-        {
-            get
+        public bool ReadOnly { get; set; }
+        [Browsable(false)]
+        public string Textalign_0 { get; set; }
+        [Browsable(false)]
+        public Font TextFont_0 { get => pLCDselectRealize.TextFont_0; set => this.Font = value; }
+        [Browsable(false)]
+        public string Textalign_1 { get; set; }
+        [Browsable(false)]
+        public Font TextFont_1 { get => pLCDselectRealize.TextFont_0; set => this.Font = value; }
+        [Browsable(false)]
+        public Color TextColor_0 { get => pLCDselectRealize.TextColor_0; set => this.ForeColor = value; }
+        [Browsable(false)]
+        public string TextContent_0 
+        { 
+            get => pLCDselectRealize.TextContent_0;
+            set
             {
-                if (pLCBitselectRealize.Textalign_0 != null)
-                    return pLCBitselectRealize.Textalign_0;
-                else
-                    return ContentAlignment.BottomCenter.ToString();
+                int Data = 0;
+                if (int.TryParse(value, out Data))
+                    this.Value = Data;
             }
-            set => this.TextAlign = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), value);
         }
         [Browsable(false)]
-        public Font TextFont_0 { get => pLCBitselectRealize.TextFont_0; set => this.Font=value; }
+        public Color TextColor_1 { get => pLCDselectRealize.TextColor_1; set => this.ForeColor = value; }
         [Browsable(false)]
-        public string Textalign_1
+        public string TextContent_1 
         {
-            get
+            get => pLCDselectRealize.TextContent_1;
+            set
             {
-                if (pLCBitselectRealize.Textalign_0 != null)
-                    return pLCBitselectRealize.Textalign_0;
-                else
-                    return ContentAlignment.BottomCenter.ToString();
+                int Data = 0;
+                if (int.TryParse(value, out Data))
+                    this.Value = Data;
             }
-            set => this.TextAlign = (ContentAlignment)Enum.Parse(typeof(ContentAlignment), value);
         }
-        [Browsable(false)]
-        public Font TextFont_1 { get => pLCBitselectRealize.TextFont_0; set => this.Font = value; }
-        [Browsable(false)]
-        public Color backgroundColor_0 { get => pLCBitselectRealize.backgroundColor_0; set { this.fillColor = value; this.fillHoverColor = value; } }
-        [Browsable(false)]
-        public Color TextColor_0 { get => pLCBitselectRealize.TextColor_0; set => this.ForeColor = value;  }
-        [Browsable(false)]
-        public string TextContent_0 { get => pLCBitselectRealize.TextContent_0; set => this.Text = value; }
-        [Browsable(false)]
-        public Color backgroundColor_1 { get => pLCBitselectRealize.backgroundColor_1; set { this.fillColor = value; this.fillHoverColor = value; } }
-        [Browsable(false)]
-        public Color TextColor_1 { get => pLCBitselectRealize.TextColor_1; set => this.ForeColor = value; }
-        [Browsable(false)]
-        public string TextContent_1 { get => pLCBitselectRealize.TextContent_1; set => this.Text = value; }
         [Browsable(false)]
         public System.Threading.Timer PLCTimer { get; set; }
-        public System.Windows.Forms.Timer Timerconfiguration { get; set; } = new System.Windows.Forms.Timer() { Enabled = true, Interval = 100 };
+        public System.Windows.Forms.Timer Timerconfiguration { get; set; } = new System.Windows.Forms.Timer() { Enabled = true, Interval = 300 };
 
         /// <summary>
         /// 修改参数界面窗口事件方法
@@ -159,18 +154,18 @@ namespace PLC通讯基础控件项目.基础控件
 
         public void Modifications_Eeve(object send, EventArgs e)
         {
-            this.SuspendLayout();
             this.Modification -= new EventHandler(Modifications_Eeve);
-            var Copy = this.pLCBitselectRealize.GetType().GetProperties();
-            PLCBitselectRealize bitselectRealize = new PLCBitselectRealize();
+            var Copy = this.pLCDselectRealize.GetType().GetProperties();
+            PLCDselectRealize bitselectRealize = new PLCDselectRealize();
             var CopyTo = bitselectRealize.GetType().GetProperties();
             for (int i = 0; i < Copy.Length; i++)
             {
                 //if (Copy[i].Name == CopyTo[i].Name)
                 CopyTo[i] = Copy[i];
             }
-            PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(this.pLCBitselectRealize);
+            PLCpropertyD pLCpropertyBit = new PLCpropertyD(this.pLCDselectRealize);
             pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+
             pLCpropertyBit.ShowDialog();
             if (!pLCpropertyBit.Save)
             {
@@ -182,9 +177,9 @@ namespace PLC通讯基础控件项目.基础控件
                 //this.pLCBitselectRealize = bitselectRealize;
             }
             //立马刷新状态
-            this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
-            this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
-            this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+            this.SuspendLayout();
+            this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
+            this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
             this.Refresh();
             this.ResumeLayout(false);
         }
@@ -197,5 +192,6 @@ namespace PLC通讯基础控件项目.基础控件
             return this;
         }
         #endregion
+
     }
 }

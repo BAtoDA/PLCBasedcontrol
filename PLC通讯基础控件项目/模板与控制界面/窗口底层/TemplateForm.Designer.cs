@@ -43,8 +43,10 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.uiPanel1 = new Sunny.UI.UIPanel();
             this.plcBasement1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.uiContextMenuStrip1.SuspendLayout();
             this.uiPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // uiGroupBox1
@@ -212,6 +214,16 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.plcBasement1.Visible = false;
             this.plcBasement1.Load += new System.EventHandler(this.plcBasement1_Load);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(859, -1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 34);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
+            // 
             // TemplateForm
             // 
             this.AllowAddControlOnTitle = true;
@@ -219,6 +231,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 679);
             this.CloseAskString = "";
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.uiPanel1);
             this.ExtendBox = true;
             this.ExtendMenu = this.uiContextMenuStrip1;
@@ -231,6 +244,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.Load += new System.EventHandler(this.TemplateForm_Load);
             this.uiContextMenuStrip1.ResumeLayout(false);
             this.uiPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,5 +263,6 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         protected Sunny.UI.UIPanel uiPanel1;
         private 基础控件.底层PLC状态监控控件.PlcBasement plcBasement1;
+        private PictureBox pictureBox1;
     }
 }

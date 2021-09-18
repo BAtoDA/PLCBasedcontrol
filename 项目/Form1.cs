@@ -19,7 +19,24 @@ namespace 项目
 
         private void daPlcFunction1_Click(object sender, EventArgs e)
         {
+            this.timer1.Stop();
             this.Hide();
+        }
+        int ImgeIndex = 0;
+        /// <summary>
+        /// 启动界面UI 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if ( ImgeIndex >= this.imageList1.Images.Count)
+            {
+                ImgeIndex = 0;
+                return;
+            }
+            this.pictureBox1.Image = this.imageList1.Images[ImgeIndex];
+            ImgeIndex += 1;
         }
     }
 }

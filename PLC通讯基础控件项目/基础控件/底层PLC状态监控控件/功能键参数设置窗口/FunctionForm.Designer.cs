@@ -83,6 +83,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
             this.uiComboBox1.TabIndex = 3;
             this.uiComboBox1.Text = "uiComboBox1";
             this.uiComboBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.uiComboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uiComboBox1_KeyPress);
             // 
             // uiTextBox1
             // 
@@ -95,6 +96,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
             this.uiTextBox1.Minimum = -2147483648D;
             this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiTextBox1.Name = "uiTextBox1";
+            this.uiTextBox1.ReadOnly = true;
             this.uiTextBox1.Size = new System.Drawing.Size(220, 29);
             this.uiTextBox1.TabIndex = 2;
             this.uiTextBox1.Text = "uiTextBox1";

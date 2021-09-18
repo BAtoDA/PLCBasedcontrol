@@ -44,13 +44,30 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 }
             }
             //找不到窗口--窗口新的窗口
-            var Formoop = Assembly.GetExecutingAssembly().GetType(this.FormPath + "." + this.FormName);
+            //var Formoop = Assembly.GetExecutingAssembly().GetTypes(this.FormPath + "." + this.FormName);
+            var Formoop = Assembly.GetExecutingAssembly().GetTypes();
+            //获取所有运行中的窗口
+            Regex rq = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
             if (Formoop != null)
             {
-                Form FormShow = Activator.CreateInstance(Formoop) as Form;
-                FormShow.StartPosition = FormStartPosition.CenterScreen;
-                FormShow.Show();
+                foreach(var i in Formoop)
+                {
+                    if(rq.IsMatch(i.FullName))
+                    {
+                        Regex regex = new Regex(this.FormName);
+                        if(regex.IsMatch(i.FullName))
+                        {
+                            Form FormShow = Activator.CreateInstance(i) as Form;
+                            FormShow.StartPosition = FormStartPosition.CenterScreen;
+                            FormShow.Show();
+                            break;
+                        }
+                    }
+                }
+               
             }
+            else
+                return;
             //关闭当前窗口
             //获取所有运行中的窗口
             Regex r = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");

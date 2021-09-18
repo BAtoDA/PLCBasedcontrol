@@ -49,5 +49,10 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
             FormName = this.uiComboBox1.Text;
             this.Close();
         }
+
+        private void uiComboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

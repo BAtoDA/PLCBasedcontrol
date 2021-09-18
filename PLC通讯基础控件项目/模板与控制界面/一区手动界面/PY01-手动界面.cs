@@ -7,18 +7,13 @@ using System.Text;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.模板与控制界面.窗口底层;
 
-namespace PLC通讯基础控件项目.模板与控制界面
+namespace PLC通讯基础控件项目.模板与控制界面.一区手动界面
 {
-    public partial class 主页面 : TemplateForm
+    public partial class PY01_手动界面 : TemplateForm
     {
-        public 主页面()
+        public PY01_手动界面()
         {
             InitializeComponent();
-        }
-
-        private void daUiButton65_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

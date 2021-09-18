@@ -53,9 +53,9 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             MessageBox.Show("d");
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            Application.ExitThread();
+            Application.Exit();
         }
     }
 }

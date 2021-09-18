@@ -25,26 +25,19 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.uiComboboxEx1.Items.Clear();
             foreach (var i in IPLCsurface.PLCDictionary)
                 this.uiComboboxEx1.Items.Add(i.Key);
-            ControlDebug.EventMessage += ((send, e) =>
-              {
-                  if (!this.IsHandleCreated || !this.uiRichTextBox1.IsDisposed || this.uiRichTextBox1.Created) return;
-                  this.uiRichTextBox1.BeginInvoke((MethodInvoker)delegate
-                  {
-                      this.uiRichTextBox1.AppendText($"{DateTime.Now} : {send}  \r\n");
-                  });
-              });
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (!this.IsDisposed || this.Created) return;
             var PLCoop = IPLCsurface.PLCDictionary.Where(P => P.Key == this.uiComboboxEx1.Text).FirstOrDefault();
             if (PLCoop.Value != null)
             {
                 this.uiTextBox1.Text = ((IPLCcommunicationBase)PLCoop.Value).IPEndPoint.Address.ToString();
                 this.uiTextBox2.Text = ((IPLCcommunicationBase)PLCoop.Value).IPEndPoint.Port.ToString();
                 this.uiLedBulb1.On = ((IPLC_interface)PLCoop.Value).PLC_ready;
+                this.uiTextBox4.Text = ((IPLC_interface)PLCoop.Value).ReadContn.ToString();
+                this.uiTextBox3.Text = ((IPLC_interface)PLCoop.Value).WriteContn.ToString();
             }
         }
 
@@ -71,6 +64,17 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 this.uiComboboxEx1.Items.Add(i.Key);
             if (this.uiComboboxEx1.Items.Count > 0)
                 this.uiComboboxEx1.SelectedIndex = 0;
+            ControlDebug.EventMessage += ((send, e) =>
+            {
+                try
+                {
+                    this.uiRichTextBox1.BeginInvoke((MethodInvoker)delegate
+                    {
+                        this.uiRichTextBox1.AppendText($"{DateTime.Now} : {send}  \r\n");
+                    });
+                }
+                catch { }
+            });
         }
 
         private void uiLabel5_Click(object sender, EventArgs e)

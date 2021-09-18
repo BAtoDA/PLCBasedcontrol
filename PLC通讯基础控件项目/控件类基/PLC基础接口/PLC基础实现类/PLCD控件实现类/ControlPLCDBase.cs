@@ -118,7 +118,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 pLCDproperty.PLCTimer.Change(500, 300);
             }
             this.PlcControl.Text = "0";
-            ((dynamic)this.PlcControl).ReadOnly = pLCDClassBase.pLCDselectRealize.Keyboard;
+            try
+            {
+                ((dynamic)this.PlcControl).ReadOnly = pLCDClassBase.pLCDselectRealize.Keyboard;
+            }
+            catch { }
             //---------安全操作模式----------
             PLCsafetypattern = pLCDClassBase.pLCDselectRealize.OperationAffirm ? Getsafetypattern(pLCDClassBase.pLCDselectRealize.SafetyBehaviorPattern) : Safetypattern.Nooperation;
             //---------是否锁死物理键盘-----
@@ -260,23 +264,28 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         private void PLCrefresh()
         {
-            lock(this)
+            //lock(this)
+            //{
+            try
             {
-                if (PlcControl.IsDisposed || PlcControl.Created == false|| Focused) return;
+                if (PlcControl.IsDisposed || PlcControl.Created == false || Focused) return;
                 PLCoopErr(pLCDClassBase, pLCDproperty);
                 PLCsafety();
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCDClassBase.pLCDselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                 if (PLCoop == null) return;
                 if (!PLCoop.PLC_ready) return;
-                var State = PLCoop.PLC_read_D_register(pLCDClassBase.pLCDselectRealize.ReadWriteFunction, pLCDClassBase.pLCDselectRealize.ReadWriteAddress,pLCDClassBase.pLCDselectRealize.ShowFormat);
+                var State = PLCoop.PLC_read_D_register(pLCDClassBase.pLCDselectRealize.ReadWriteFunction, pLCDClassBase.pLCDselectRealize.ReadWriteAddress, pLCDClassBase.pLCDselectRealize.ShowFormat);
                 //---委托控件----处理状态颜色
                 PlcControl.BeginInvoke((MethodInvoker)delegate
                 {
                     //处理安全控制---是否要隐藏控件
+                    if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
                     this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
                     this.PlcControl.Text = complement(State ?? "0");
                 });
             }
+            catch { }
+            //}
         }
         /// <summary>
         /// PLC安全控制

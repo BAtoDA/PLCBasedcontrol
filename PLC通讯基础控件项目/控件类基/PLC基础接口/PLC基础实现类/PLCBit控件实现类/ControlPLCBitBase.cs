@@ -241,53 +241,68 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (PLCoop.PLC_ready)
                 PLCoop.PLC_write_M_bit(Id, Addary, (Button_state)Enum.Parse(typeof(Button_state), Value ? "ON" : "Off"));
         }
-   
+        /// <summary>
+        /// 互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制
+        /// </summary>
+        Mutex mutex = new Mutex();//实例化互斥锁(Mutex);//定义互斥锁名称
         /// <summary>
         /// PLC刷新处理
         /// </summary>
         public  void PLCrefresh()
         {
-            lock (this)
-            {
-                if (!PlcControl.IsHandleCreated||PlcControl.IsDisposed || PlcControl.Created == false) return;
-                PLCoopErr(pLCBitClassBase, pLCBitproperty);
-                PLCsafety();
-                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p=>p.Key.Trim()==pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
-                if (PLCoop==null) return;
-                if (!PLCoop.PLC_ready)
+            //mutex.WaitOne(50);
+            //{
+                try
                 {
-                    //PLC未准备好 控件自动归零状态
+                    if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
+                    PLCoopErr(pLCBitClassBase, pLCBitproperty);
+                    PLCsafety();
+                    IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                    if (PLCoop == null) return;
+                    if (!PLCoop.PLC_ready)
+                    {
+                        //推出日志
+                        //ControlDebug.Write(this.PlcControl.Name + $"{pLCBitClassBase.pLCBitselectRealize.ReadWrite}PLC未准备好");
+                        //PLC未准备好 控件自动归零状态
+                        PlcControl.BeginInvoke((MethodInvoker)delegate
+                        {
+                            PlcControl.SuspendLayout();
+                            pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
+                            pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
+                            pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                            PlcControl.Refresh();
+                            PlcControl.ResumeLayout(false);
+                        });
+                        return;
+                    }
+                    var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                    //---委托控件----处理状态颜色
                     PlcControl.BeginInvoke((MethodInvoker)delegate
                     {
+                    //处理安全控制---是否要隐藏控件
+                    this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
+                        if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
                         PlcControl.SuspendLayout();
-                        pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
-                        pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
-                        pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                        if (!State)
+                        {
+                            pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
+                            pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
+                            pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                        }
+                        else
+                        {
+                            pLCBitproperty.backgroundColor_1 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_1;
+                            pLCBitproperty.TextContent_1 = pLCBitClassBase.pLCBitselectRealize.TextContent_1;
+                            pLCBitproperty.TextColor_1 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_1;
+                        }
                         PlcControl.Refresh();
                         PlcControl.ResumeLayout(false);
                     });
-                    return;
+                    //ControlDebug.Write(this.PlcControl.Name + $"刷新值为：{State}");
                 }
-                var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
-                //---委托控件----处理状态颜色
-                PlcControl.BeginInvoke((MethodInvoker)delegate
-                {
-                    //处理安全控制---是否要隐藏控件
-                    this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
-                    if (!State)
-                    {
-                        pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
-                        pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
-                        pLCBitproperty.TextColor_0 =PLCsafetypattern==Safetypattern.Gray?Color.FromName("DarkGray") :pLCBitClassBase.pLCBitselectRealize.TextColor_0;
-                    }
-                    else
-                    {
-                        pLCBitproperty.backgroundColor_1 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_1;
-                        pLCBitproperty.TextContent_1 = pLCBitClassBase.pLCBitselectRealize.TextContent_1;
-                        pLCBitproperty.TextColor_1 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray"):pLCBitClassBase.pLCBitselectRealize.TextColor_1;
-                    }
-                });
-            }
+                catch(Exception e) { //ControlDebug.Write(this.PlcControl.Name + e.Message);
+                                     }
+            //mutex.ReleaseMutex();
         }
         /// <summary>
         /// PLC安全控制
