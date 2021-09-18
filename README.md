@@ -4,7 +4,8 @@
 # 项目要求：
    本项目主要是开发以及封装对应接口类让开发人员去定制封装控件 其实对PLC来说他不是：位访问模式，寄存器字访问模式，批量位访问模式，批量寄存器字模式 四种模式。就看开发人员如何去继承相应接口去使用
    如果有开发人员需要添加对应PLC以及其他PLC协议类型后期我会出一期路线图；
-   
+ # 项目控件视频：
+ https://pan.baidu.com/s/1ap2zkjWe8ORIAOHKnxRL6w 提取码：4z8d
 # 底层控件使用说明：   
  ![OK$TVDKKT{ 05_2RZRM4MWT](https://user-images.githubusercontent.com/60955669/132943726-6ff58945-6766-4f99-a40f-403cd41b0dba.png)
 # 控件继承以及实现路线
