@@ -117,7 +117,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 }));
                 pLCDproperty.PLCTimer.Change(500, 300);
             }
-            this.PlcControl.Text = "0";
+            pLCDClassBase.pLCDselectRealize.TextContent_0 = "0";
+            pLCDClassBase.pLCDselectRealize.TextContent_1 = "0";
             try
             {
                 ((dynamic)this.PlcControl).ReadOnly = pLCDClassBase.pLCDselectRealize.Keyboard;
@@ -172,6 +173,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     KeyTime.Start();
                 }
             });
+            this.PlcControl.Text = "0";
         }
         /// <summary>
         /// 处理鼠标点击事件
@@ -217,26 +219,30 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 Poss.Item2.Enabled = false;
                 if (Poss.Item1.Elapsed.TotalMilliseconds >= Convert.ToInt32(pLCDClassBase.pLCDselectRealize.keyMinTime + (pLCDClassBase.pLCDselectRealize.OperationAffirm ? pLCDClassBase.pLCDselectRealize.AwaitTime : 0)))
                 {
+                    string O_Text = this.PlcControl.Text;
                     try
                     {
                         //判断用户选择的键盘
-                        var Keytype = Assembly.GetEntryAssembly().GetType("PLC通讯基础控件项目.控件类基.控件文本键盘." + pLCDClassBase.pLCDselectRealize.KeyboardStyle);
+                        var Keytype = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件文本键盘." + pLCDClassBase.pLCDselectRealize.KeyboardStyle);
                         object[] Value = new object[] { this.PlcControl.Text, this.pLCDClassBase.pLCDselectRealize };
                         dynamic Keyoop = Activator.CreateInstance(Keytype, Value);
                         Keyoop.ShowDialog();
                         this.PlcControl.Text = Keyoop.O_Text;
+                        O_Text= Keyoop.O_Text;
                     }
                     catch(Exception e1)
                     {
                         //异常处理键盘
                         keyboard keyboard = new keyboard(this.PlcControl.Text, this.pLCDClassBase.pLCDselectRealize);
                         keyboard.ShowDialog();
+                        this.PlcControl.Text = keyboard.O_Text;
+                        O_Text = keyboard.O_Text;
                     }
                     finally
                     {
                         Debug.WriteLine($"安全控制当前值是：{Poss.Item1.Elapsed.TotalMilliseconds} 设置值是：{Convert.ToInt32(pLCDClassBase.pLCDselectRealize.keyMinTime + (pLCDClassBase.pLCDselectRealize.OperationAffirm ? pLCDClassBase.pLCDselectRealize.AwaitTime : 0))}");
                         //写入当前控件值
-                        PLCWrite(this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WritePLC : this.pLCDClassBase.pLCDselectRealize.ReadWritePLC, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteFunction : this.pLCDClassBase.pLCDselectRealize.ReadWriteFunction, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteAddress : this.pLCDClassBase.pLCDselectRealize.ReadWriteAddress, this.PlcControl.Text, this.pLCDClassBase.pLCDselectRealize.ShowFormat);
+                        PLCWrite(this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WritePLC : this.pLCDClassBase.pLCDselectRealize.ReadWritePLC, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteFunction : this.pLCDClassBase.pLCDselectRealize.ReadWriteFunction, this.pLCDClassBase.pLCDselectRealize.ReadWrite ? this.pLCDClassBase.pLCDselectRealize.WriteAddress : this.pLCDClassBase.pLCDselectRealize.ReadWriteAddress, O_Text, this.pLCDClassBase.pLCDselectRealize.ShowFormat);
                     }
                 }
                 //处理完成归还对象

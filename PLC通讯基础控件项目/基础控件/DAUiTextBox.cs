@@ -91,6 +91,7 @@ namespace PLC通讯基础控件项目.基础控件
                 this.Refresh();
                 this.ResumeLayout(false);
             });
+            this.Text = "0";
         }
     }
     [ToolboxItem(true)]

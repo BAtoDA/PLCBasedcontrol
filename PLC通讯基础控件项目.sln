@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLC通讯基础控件项目
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLC通讯库", "PLC通讯库\PLC通讯库.csproj", "{31BAB9B3-AFE9-4858-BE23-628CEE72DBA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "项目", "项目\项目.csproj", "{5CB95626-5142-4C3C-BF34-0970CB1F0EDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "项目", "项目\项目.csproj", "{5CB95626-5142-4C3C-BF34-0970CB1F0EDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
