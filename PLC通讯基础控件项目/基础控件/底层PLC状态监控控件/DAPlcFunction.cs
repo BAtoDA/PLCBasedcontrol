@@ -45,26 +45,19 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             }
             //找不到窗口--窗口新的窗口
             //var Formoop = Assembly.GetExecutingAssembly().GetTypes(this.FormPath + "." + this.FormName);
-            var Formoop = Assembly.GetExecutingAssembly().GetTypes();
             //获取所有运行中的窗口
             Regex rq = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
+            var Formoop = Assembly.GetExecutingAssembly().GetTypes().Where(p=> rq.IsMatch(p.FullName)).ToList();
             if (Formoop != null)
             {
-                foreach(var i in Formoop)
+                Regex regex = new Regex(this.FormName);
+                var Form = Formoop.Where(p => regex.IsMatch(p.FullName)).FirstOrDefault();
+                if (Form != null)
                 {
-                    if(rq.IsMatch(i.FullName))
-                    {
-                        Regex regex = new Regex(this.FormName);
-                        if(regex.IsMatch(i.FullName))
-                        {
-                            Form FormShow = Activator.CreateInstance(i) as Form;
-                            FormShow.StartPosition = FormStartPosition.CenterScreen;
-                            FormShow.Show();
-                            break;
-                        }
-                    }
+                    Form FormShow = Activator.CreateInstance(Form) as Form;
+                    FormShow.StartPosition = FormStartPosition.CenterScreen;
+                    FormShow.Show();
                 }
-               
             }
             else
                 return;

@@ -26,8 +26,8 @@ namespace PLC通讯基础控件项目.控件类基.控件安全对象池
 
 
         static object  objlock = new object();
-        private int instenceLimit;
-        private Func<Tuple<SpeechSynthesizer>> objectGenerator;
+        //private int instenceLimit;
+        //private Func<Tuple<SpeechSynthesizer>> objectGenerator;
 
         public VoiceObjectPool(uint instenceLimit, Func<T> objectGenerator)
         {

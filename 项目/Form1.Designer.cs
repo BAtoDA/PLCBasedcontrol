@@ -36,7 +36,6 @@ namespace 项目
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
-            this.uiLabel2 = new Sunny.UI.UILabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -51,7 +50,7 @@ namespace 项目
             this.daPlcFunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcFunction1.FormName = "主页面";
             this.daPlcFunction1.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction1.Location = new System.Drawing.Point(227, 249);
+            this.daPlcFunction1.Location = new System.Drawing.Point(240, 274);
             this.daPlcFunction1.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction1.Name = "daPlcFunction1";
             this.daPlcFunction1.PLC_Enable = true;
@@ -96,18 +95,6 @@ namespace 项目
             this.plcPreferences3.Retain = "S1500";
             this.plcPreferences3.Sendovertime = 1000;
             // 
-            // uiLabel2
-            // 
-            this.uiLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel2.ForeColor = System.Drawing.Color.White;
-            this.uiLabel2.Location = new System.Drawing.Point(142, 326);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(379, 23);
-            this.uiLabel2.TabIndex = 5;
-            this.uiLabel2.Text = "虽然没本事做高级启动界面但是有本事去偷图！！！";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -141,7 +128,6 @@ namespace 项目
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(647, 360);
             this.ControlBox = false;
-            this.Controls.Add(this.uiLabel2);
             this.Controls.Add(this.daPlcFunction1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -160,7 +146,6 @@ namespace 项目
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences1;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences2;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences3;
-        private Sunny.UI.UILabel uiLabel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ImageList imageList1;

@@ -449,7 +449,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.一区手动界面
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyFunction = "M";
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyPattern = 1;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.dauiAnalogMeter1.pLCDselectRealize.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Unsigned_16_Bit;
+            this.dauiAnalogMeter1.pLCDselectRealize.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
             this.dauiAnalogMeter1.pLCDselectRealize.Speech = false;
             this.dauiAnalogMeter1.pLCDselectRealize.Textalign_0 = "BottomCenter";
             this.dauiAnalogMeter1.pLCDselectRealize.Textalign_1 = "BottomCenter";

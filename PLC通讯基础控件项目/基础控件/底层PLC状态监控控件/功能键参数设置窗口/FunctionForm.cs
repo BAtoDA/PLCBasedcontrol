@@ -39,6 +39,9 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
             if (this.uiComboBox1.Items.Count > 0)
                 this.uiComboBox1.SelectedIndex = 0;
             this.uiTextBox1.Text = Formpthan;
+            //显示之前选中的参数
+            this.uiComboBox1.Text = FormName;
+
         }
 
         private void uiButton1_Click(object sender, EventArgs e)

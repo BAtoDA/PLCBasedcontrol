@@ -1352,7 +1352,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.一区手动界面
             this.daUiButton20.pLCBitselectRealize.NoAccessForm = false;
             this.daUiButton20.pLCBitselectRealize.OperationAffirm = false;
             this.daUiButton20.pLCBitselectRealize.OutReverse = false;
-            this.daUiButton20.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.Regression;
+            this.daUiButton20.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton20.pLCBitselectRealize.PLCTimer = null;
             this.daUiButton20.pLCBitselectRealize.ReadWrite = false;
             this.daUiButton20.pLCBitselectRealize.ReadWriteAddress = "8103.2";

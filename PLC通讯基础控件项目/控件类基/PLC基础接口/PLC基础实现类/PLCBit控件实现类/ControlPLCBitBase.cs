@@ -21,6 +21,7 @@ using PLC通讯库.通讯实现类;
 using PLC通讯库.通讯枚举;
 using PLC通讯库.通讯基础接口;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件;
+using Sunny.UI;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类
 {
@@ -214,7 +215,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     return;
                 case Button_pattern.selector_witch:
                     IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC.ToString() : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) as IPLCcommunicationBase;
-                    if (!PLCoop.PLC_ready) return;
+                    if (!PLCoop.PLC_ready)
+                    {
+                        UINotifierHelper.ShowNotifier("未连接设备：" + (pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC.ToString() : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                        return;
+                    }
                     var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteFunction : pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction,
                pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteAddress : pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
 
@@ -240,6 +245,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
             if (PLCoop.PLC_ready)
                 PLCoop.PLC_write_M_bit(Id, Addary, (Button_state)Enum.Parse(typeof(Button_state), Value ? "ON" : "Off"));
+            else UINotifierHelper.ShowNotifier("未连接设备：" + IPLC + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
         }
         /// <summary>
         /// 互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制

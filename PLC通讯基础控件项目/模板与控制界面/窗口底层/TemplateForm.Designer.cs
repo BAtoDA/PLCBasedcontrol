@@ -212,7 +212,6 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.plcBasement1.Size = new System.Drawing.Size(495, 277);
             this.plcBasement1.TabIndex = 0;
             this.plcBasement1.Visible = false;
-            this.plcBasement1.Load += new System.EventHandler(this.plcBasement1_Load);
             // 
             // pictureBox1
             // 
@@ -240,7 +239,6 @@ namespace PLC通讯基础控件项目.模板与控制界面.窗口底层
             this.Name = "TemplateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TemplateForm";
-            this.ExtendBoxClick += new System.EventHandler(this.TemplateForm_ExtendBoxClick);
             this.Load += new System.EventHandler(this.TemplateForm_Load);
             this.uiContextMenuStrip1.ResumeLayout(false);
             this.uiPanel1.ResumeLayout(false);

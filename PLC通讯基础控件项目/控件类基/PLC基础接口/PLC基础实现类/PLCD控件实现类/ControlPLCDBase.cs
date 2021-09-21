@@ -52,7 +52,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 复归型按钮标志位
         /// </summary>
-        private volatile bool State = false;
+        //private volatile bool State = false;
         /// <summary>
         /// PLC安全操作模式
         /// </summary>

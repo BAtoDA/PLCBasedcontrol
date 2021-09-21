@@ -36,10 +36,6 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton1 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
-            this.daPlcFunction12 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
-            this.daPlcFunction11 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
-            this.daPlcFunction10 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
-            this.daPlcFunction9 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             this.daPlcFunction8 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             this.daPlcFunction7 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             this.daPlcFunction6 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
@@ -94,9 +90,9 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton3.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton3.pLCBitselectRealize.PLCTimer = null;
             this.daUiButton3.pLCBitselectRealize.ReadWrite = false;
-            this.daUiButton3.pLCBitselectRealize.ReadWriteAddress = "0";
+            this.daUiButton3.pLCBitselectRealize.ReadWriteAddress = "510.2";
             this.daUiButton3.pLCBitselectRealize.ReadWriteFunction = "M";
-            this.daUiButton3.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton3.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
             this.daUiButton3.pLCBitselectRealize.SafetyBehaviorPattern = 0;
             this.daUiButton3.pLCBitselectRealize.SafetyCategory = 0;
             this.daUiButton3.pLCBitselectRealize.SafetyFunction = "M";
@@ -107,8 +103,8 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton3.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
             this.daUiButton3.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
             this.daUiButton3.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton3.pLCBitselectRealize.TextContent_0 = "段1-手动";
-            this.daUiButton3.pLCBitselectRealize.TextContent_1 = "段1-自动";
+            this.daUiButton3.pLCBitselectRealize.TextContent_0 = "段3-手动";
+            this.daUiButton3.pLCBitselectRealize.TextContent_1 = "段3-自动";
             this.daUiButton3.pLCBitselectRealize.Textflicker_0 = 0;
             this.daUiButton3.pLCBitselectRealize.Textflicker_1 = 0;
             this.daUiButton3.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -124,13 +120,13 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton3.pLCBitselectRealize.WrSafetyAddress = "0";
             this.daUiButton3.Size = new System.Drawing.Size(201, 73);
             this.daUiButton3.TabIndex = 16;
-            this.daUiButton3.Text = "段1-手动";
+            this.daUiButton3.Text = "段3-手动";
             this.daUiButton3.Textalign_0 = "MiddleCenter";
             this.daUiButton3.Textalign_1 = "MiddleCenter";
             this.daUiButton3.TextColor_0 = System.Drawing.Color.White;
             this.daUiButton3.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton3.TextContent_0 = "段1-手动";
-            this.daUiButton3.TextContent_1 = "段1-自动";
+            this.daUiButton3.TextContent_0 = "段3-手动";
+            this.daUiButton3.TextContent_1 = "段3-自动";
             this.daUiButton3.TextFont_0 = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton3.TextFont_1 = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
@@ -168,15 +164,15 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.dauiAnalogMeter1.pLCDselectRealize.OperationAffirm = false;
             this.dauiAnalogMeter1.pLCDselectRealize.PLCTimer = null;
             this.dauiAnalogMeter1.pLCDselectRealize.ReadWrite = false;
-            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteAddress = "0";
-            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteFunction = "D";
-            this.dauiAnalogMeter1.pLCDselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteAddress = "254";
+            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteFunction = "M";
+            this.dauiAnalogMeter1.pLCDselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyBehaviorPattern = 1;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyCategory = 0;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyFunction = "M";
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyPattern = 1;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.dauiAnalogMeter1.pLCDselectRealize.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_32_Bit;
+            this.dauiAnalogMeter1.pLCDselectRealize.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
             this.dauiAnalogMeter1.pLCDselectRealize.Speech = false;
             this.dauiAnalogMeter1.pLCDselectRealize.Textalign_0 = "BottomCenter";
             this.dauiAnalogMeter1.pLCDselectRealize.Textalign_1 = "BottomCenter";
@@ -242,9 +238,9 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton2.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton2.pLCBitselectRealize.PLCTimer = null;
             this.daUiButton2.pLCBitselectRealize.ReadWrite = false;
-            this.daUiButton2.pLCBitselectRealize.ReadWriteAddress = "0";
+            this.daUiButton2.pLCBitselectRealize.ReadWriteAddress = "610.7";
             this.daUiButton2.pLCBitselectRealize.ReadWriteFunction = "M";
-            this.daUiButton2.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton2.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
             this.daUiButton2.pLCBitselectRealize.SafetyBehaviorPattern = 0;
             this.daUiButton2.pLCBitselectRealize.SafetyCategory = 0;
             this.daUiButton2.pLCBitselectRealize.SafetyFunction = "M";
@@ -255,8 +251,8 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton2.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
             this.daUiButton2.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
             this.daUiButton2.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton2.pLCBitselectRealize.TextContent_0 = "一区安全门异常";
-            this.daUiButton2.pLCBitselectRealize.TextContent_1 = "一区安全门正常";
+            this.daUiButton2.pLCBitselectRealize.TextContent_0 = "三区安全门异常";
+            this.daUiButton2.pLCBitselectRealize.TextContent_1 = "三区安全门正常";
             this.daUiButton2.pLCBitselectRealize.Textflicker_0 = 0;
             this.daUiButton2.pLCBitselectRealize.Textflicker_1 = 0;
             this.daUiButton2.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -272,13 +268,13 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton2.pLCBitselectRealize.WrSafetyAddress = "0";
             this.daUiButton2.Size = new System.Drawing.Size(124, 29);
             this.daUiButton2.TabIndex = 15;
-            this.daUiButton2.Text = "一区安全门异常";
+            this.daUiButton2.Text = "三区安全门异常";
             this.daUiButton2.Textalign_0 = "MiddleCenter";
             this.daUiButton2.Textalign_1 = "MiddleCenter";
             this.daUiButton2.TextColor_0 = System.Drawing.Color.White;
             this.daUiButton2.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton2.TextContent_0 = "一区安全门异常";
-            this.daUiButton2.TextContent_1 = "一区安全门正常";
+            this.daUiButton2.TextContent_0 = "三区安全门异常";
+            this.daUiButton2.TextContent_1 = "三区安全门正常";
             this.daUiButton2.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton2.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
@@ -309,9 +305,9 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton1.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton1.pLCBitselectRealize.PLCTimer = null;
             this.daUiButton1.pLCBitselectRealize.ReadWrite = false;
-            this.daUiButton1.pLCBitselectRealize.ReadWriteAddress = "0";
+            this.daUiButton1.pLCBitselectRealize.ReadWriteAddress = "9.6";
             this.daUiButton1.pLCBitselectRealize.ReadWriteFunction = "M";
-            this.daUiButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
             this.daUiButton1.pLCBitselectRealize.SafetyBehaviorPattern = 0;
             this.daUiButton1.pLCBitselectRealize.SafetyCategory = 0;
             this.daUiButton1.pLCBitselectRealize.SafetyFunction = "M";
@@ -322,8 +318,8 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton1.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
             this.daUiButton1.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
             this.daUiButton1.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton1.pLCBitselectRealize.TextContent_0 = "一区急停异常";
-            this.daUiButton1.pLCBitselectRealize.TextContent_1 = "一区急停正常";
+            this.daUiButton1.pLCBitselectRealize.TextContent_0 = "三区急停异常";
+            this.daUiButton1.pLCBitselectRealize.TextContent_1 = "三区急停正常";
             this.daUiButton1.pLCBitselectRealize.Textflicker_0 = 0;
             this.daUiButton1.pLCBitselectRealize.Textflicker_1 = 0;
             this.daUiButton1.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -339,13 +335,13 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daUiButton1.pLCBitselectRealize.WrSafetyAddress = "0";
             this.daUiButton1.Size = new System.Drawing.Size(124, 29);
             this.daUiButton1.TabIndex = 14;
-            this.daUiButton1.Text = "一区急停异常";
+            this.daUiButton1.Text = "三区急停异常";
             this.daUiButton1.Textalign_0 = "MiddleCenter";
             this.daUiButton1.Textalign_1 = "MiddleCenter";
             this.daUiButton1.TextColor_0 = System.Drawing.Color.White;
             this.daUiButton1.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton1.TextContent_0 = "一区急停异常";
-            this.daUiButton1.TextContent_1 = "一区急停正常";
+            this.daUiButton1.TextContent_0 = "三区急停异常";
+            this.daUiButton1.TextContent_1 = "三区急停正常";
             this.daUiButton1.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton1.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
@@ -361,10 +357,6 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             // 
             // uiGroupBox2
             // 
-            this.uiGroupBox2.Controls.Add(this.daPlcFunction12);
-            this.uiGroupBox2.Controls.Add(this.daPlcFunction11);
-            this.uiGroupBox2.Controls.Add(this.daPlcFunction10);
-            this.uiGroupBox2.Controls.Add(this.daPlcFunction9);
             this.uiGroupBox2.Controls.Add(this.daPlcFunction8);
             this.uiGroupBox2.Controls.Add(this.daPlcFunction7);
             this.uiGroupBox2.Controls.Add(this.daPlcFunction6);
@@ -380,102 +372,42 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox2.TitleAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // daPlcFunction12
-            // 
-            this.daPlcFunction12.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daPlcFunction12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daPlcFunction12.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction12.FormName = null;
-            this.daPlcFunction12.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction12.Location = new System.Drawing.Point(52, 237);
-            this.daPlcFunction12.MinimumSize = new System.Drawing.Size(1, 1);
-            this.daPlcFunction12.Name = "daPlcFunction12";
-            this.daPlcFunction12.PLC_Enable = false;
-            this.daPlcFunction12.Size = new System.Drawing.Size(111, 49);
-            this.daPlcFunction12.TabIndex = 6;
-            this.daPlcFunction12.Text = "daPlcFunction12";
-            // 
-            // daPlcFunction11
-            // 
-            this.daPlcFunction11.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daPlcFunction11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daPlcFunction11.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction11.FormName = null;
-            this.daPlcFunction11.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction11.Location = new System.Drawing.Point(402, 159);
-            this.daPlcFunction11.MinimumSize = new System.Drawing.Size(1, 1);
-            this.daPlcFunction11.Name = "daPlcFunction11";
-            this.daPlcFunction11.PLC_Enable = false;
-            this.daPlcFunction11.Size = new System.Drawing.Size(111, 49);
-            this.daPlcFunction11.TabIndex = 5;
-            this.daPlcFunction11.Text = "daPlcFunction11";
-            // 
-            // daPlcFunction10
-            // 
-            this.daPlcFunction10.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daPlcFunction10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daPlcFunction10.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction10.FormName = null;
-            this.daPlcFunction10.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction10.Location = new System.Drawing.Point(238, 159);
-            this.daPlcFunction10.MinimumSize = new System.Drawing.Size(1, 1);
-            this.daPlcFunction10.Name = "daPlcFunction10";
-            this.daPlcFunction10.PLC_Enable = false;
-            this.daPlcFunction10.Size = new System.Drawing.Size(111, 49);
-            this.daPlcFunction10.TabIndex = 4;
-            this.daPlcFunction10.Text = "daPlcFunction10";
-            // 
-            // daPlcFunction9
-            // 
-            this.daPlcFunction9.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daPlcFunction9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daPlcFunction9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction9.FormName = null;
-            this.daPlcFunction9.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            this.daPlcFunction9.Location = new System.Drawing.Point(52, 159);
-            this.daPlcFunction9.MinimumSize = new System.Drawing.Size(1, 1);
-            this.daPlcFunction9.Name = "daPlcFunction9";
-            this.daPlcFunction9.PLC_Enable = false;
-            this.daPlcFunction9.Size = new System.Drawing.Size(111, 49);
-            this.daPlcFunction9.TabIndex = 3;
-            this.daPlcFunction9.Text = "daPlcFunction9";
-            // 
             // daPlcFunction8
             // 
             this.daPlcFunction8.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
             this.daPlcFunction8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.daPlcFunction8.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction8.FormName = null;
+            this.daPlcFunction8.FormName = "ZDP2手动界面";
             this.daPlcFunction8.FormPath = "PLC通讯基础控件项目.模板与控制界面";
             this.daPlcFunction8.Location = new System.Drawing.Point(402, 71);
             this.daPlcFunction8.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction8.Name = "daPlcFunction8";
-            this.daPlcFunction8.PLC_Enable = false;
+            this.daPlcFunction8.PLC_Enable = true;
             this.daPlcFunction8.Size = new System.Drawing.Size(111, 49);
             this.daPlcFunction8.TabIndex = 2;
-            this.daPlcFunction8.Text = "daPlcFunction8";
+            this.daPlcFunction8.Text = "ZDP2手动界面";
             // 
             // daPlcFunction7
             // 
             this.daPlcFunction7.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
             this.daPlcFunction7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.daPlcFunction7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction7.FormName = null;
+            this.daPlcFunction7.FormName = "新ZDP手动界面";
             this.daPlcFunction7.FormPath = "PLC通讯基础控件项目.模板与控制界面";
             this.daPlcFunction7.Location = new System.Drawing.Point(238, 71);
             this.daPlcFunction7.MinimumSize = new System.Drawing.Size(1, 1);
             this.daPlcFunction7.Name = "daPlcFunction7";
-            this.daPlcFunction7.PLC_Enable = false;
+            this.daPlcFunction7.PLC_Enable = true;
             this.daPlcFunction7.Size = new System.Drawing.Size(111, 49);
             this.daPlcFunction7.TabIndex = 1;
-            this.daPlcFunction7.Text = "daPlcFunction7";
+            this.daPlcFunction7.Text = "新ZDP手动界面";
             // 
             // daPlcFunction6
             // 
             this.daPlcFunction6.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
             this.daPlcFunction6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.daPlcFunction6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction6.FormName = "FL1手动界面";
+            this.daPlcFunction6.FormName = "PY05手动界面";
             this.daPlcFunction6.FormPath = "PLC通讯基础控件项目.模板与控制界面";
             this.daPlcFunction6.Location = new System.Drawing.Point(52, 71);
             this.daPlcFunction6.MinimumSize = new System.Drawing.Size(1, 1);
@@ -483,7 +415,7 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
             this.daPlcFunction6.PLC_Enable = true;
             this.daPlcFunction6.Size = new System.Drawing.Size(111, 49);
             this.daPlcFunction6.TabIndex = 0;
-            this.daPlcFunction6.Text = "FL1-手动界面";
+            this.daPlcFunction6.Text = "PY05手动界面";
             // 
             // 三区手动主界面
             // 
@@ -506,10 +438,6 @@ namespace PLC通讯基础控件项目.模板与控制界面.三区手动界面
         private 基础控件.DAUiButton daUiButton1;
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UIGroupBox uiGroupBox2;
-        private 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction12;
-        private 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction11;
-        private 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction10;
-        private 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction9;
         private 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction8;
         private 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction7;
         private 基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction6;
