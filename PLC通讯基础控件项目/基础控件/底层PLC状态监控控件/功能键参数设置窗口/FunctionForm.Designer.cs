@@ -128,6 +128,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 274);
             this.Controls.Add(this.uiGroupBox1);
+            this.MaximizeBox = false;
             this.Name = "FunctionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FunctionForm";

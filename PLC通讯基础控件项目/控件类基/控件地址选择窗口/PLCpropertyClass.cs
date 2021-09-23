@@ -55,6 +55,31 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 pattern.Items.Add(s);
             });
             pattern.SelectedIndex = 0;
+            ///处理事件
+            readwriteaddress.KeyPress += ((send, e) =>
+             {
+                //不允许输入特殊字符
+                if (e.KeyChar != '\b')//这是允许输入退格键  
+                {
+                     if (e.KeyChar == '.') return;
+                     if ((e.KeyChar < '0') || (e.KeyChar > 'F') & (e.KeyChar != '.'))
+                      {
+                          e.Handled = true;
+                      }
+                  }
+              });
+            writeaddress.KeyPress += ((send, e) =>
+            {
+                //不允许输入特殊字符
+                if (e.KeyChar != '\b')//这是允许输入退格键  
+                {
+                    if (e.KeyChar == '.') return;
+                    if ((e.KeyChar < '0') || (e.KeyChar > 'F') & (e.KeyChar != '.'))
+                    {
+                        e.Handled = true;
+                    }
+                }
+            });
             //处理UI特效部分
             //位状态指示灯特效
             Aswitch.CheckedChanged += ((sendq, s1) =>
@@ -175,6 +200,29 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 inforplc.Items.Add(s);
             });
             inforplc.SelectedIndex = 0;
+            ///处理事件
+            readwriteaddress.KeyPress += ((send, e) =>
+            {
+                //不允许输入特殊字符
+                if (e.KeyChar != '\b')//这是允许输入退格键  
+                {
+                    if ((e.KeyChar < '0') || (e.KeyChar > 'F') & (e.KeyChar != '.'))
+                    {
+                        e.Handled = true;
+                    }
+                }
+            });
+            writeaddress.KeyPress += ((send, e) =>
+            {
+                //不允许输入特殊字符
+                if (e.KeyChar != '\b')//这是允许输入退格键  
+                {
+                    if ((e.KeyChar < '0') || (e.KeyChar > 'F') & (e.KeyChar != '.'))
+                    {
+                        e.Handled = true;
+                    }
+                }
+            });
             inforplc.TextChanged += ((sendq, s1) =>
             {
                 informPLCfunction.Items.Clear();

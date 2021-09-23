@@ -48,8 +48,9 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
         {
             //保存参数
             Save = true;
-            Formpthan = this.uiTextBox1.Text;
-            FormName = this.uiComboBox1.Text;
+            Formpthan = this.uiTextBox1.Text?? "PLC通讯基础控件项目.模板与控制界面";
+            FormName = this.uiComboBox1.Text??"主页面";
+
             this.Close();
         }
 

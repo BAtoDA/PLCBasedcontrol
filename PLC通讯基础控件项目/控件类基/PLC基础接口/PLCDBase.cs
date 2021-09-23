@@ -35,7 +35,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// <summary>
         /// 读取或者写入PLC类型
         /// </summary>
-
         PLC ReadWritePLC { get; set; }
         /// <summary>
         /// 读取或者写入PLC的功能码
@@ -48,7 +47,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// <summary>
         /// 写入PLC类型
         /// </summary>
-
         PLC WritePLC { get; set; }
         /// <summary>
         /// 写入PLC的功能码
@@ -69,7 +67,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// <summary>
         /// 写入通知完成PLC类型
         /// </summary>
-
         PLC InformPLC { get; set; }
         /// <summary>
         /// 写入通知完成PLC的功能码

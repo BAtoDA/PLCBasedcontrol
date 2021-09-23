@@ -117,7 +117,7 @@ namespace PLC通讯基础控件项目.基础控件
         [Browsable(false)]
         public Font TextFont_1 { get => pLCDselectRealize.TextFont_0; set => this.Font = value; }
         [Browsable(false)]
-        public Color TextColor_0 { get => pLCDselectRealize.TextColor_0; set => this.ForeColor = value; }
+        public Color TextColor_0 { get; set; }
         [Browsable(false)]
         public string TextContent_0 
         { 
@@ -130,7 +130,7 @@ namespace PLC通讯基础控件项目.基础控件
             }
         }
         [Browsable(false)]
-        public Color TextColor_1 { get => pLCDselectRealize.TextColor_1; set => this.ForeColor = value; }
+        public Color TextColor_1 { get; set; }
         [Browsable(false)]
         public string TextContent_1 
         {

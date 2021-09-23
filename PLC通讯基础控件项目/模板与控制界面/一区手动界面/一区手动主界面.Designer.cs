@@ -441,9 +441,9 @@ namespace PLC通讯基础控件项目.模板与控制界面.一区手动界面
             this.dauiAnalogMeter1.pLCDselectRealize.OperationAffirm = false;
             this.dauiAnalogMeter1.pLCDselectRealize.PLCTimer = null;
             this.dauiAnalogMeter1.pLCDselectRealize.ReadWrite = false;
-            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteAddress = "0";
-            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteFunction = "D";
-            this.dauiAnalogMeter1.pLCDselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteAddress = "250";
+            this.dauiAnalogMeter1.pLCDselectRealize.ReadWriteFunction = "M";
+            this.dauiAnalogMeter1.pLCDselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyBehaviorPattern = 1;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyCategory = 0;
             this.dauiAnalogMeter1.pLCDselectRealize.SafetyFunction = "M";

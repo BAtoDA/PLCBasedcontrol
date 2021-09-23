@@ -146,7 +146,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
         [Browsable(false)]
         [Description("Form窗口路径"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public string FormName { get; set; }
+        public string FormName { get; set; } = "TemplateForm";
         /// <summary>
         /// 修改参数界面窗口事件方法
         /// </summary>
