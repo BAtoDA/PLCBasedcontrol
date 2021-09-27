@@ -30,6 +30,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_
         /// </summary>
         numerical_format[] DataGridView_numerical { get; set; }
         /// <summary>
+        /// SQL数据列类型
+        /// 非常重要一定要注意类型否则SQL功能变无效
+        /// </summary>
+        string[] SQLsurfaceType { get; set; }
+        /// <summary>
         /// 是否显示读取时间
         /// </summary>
         bool DataGridViewPLC_Time { get; set; }
@@ -60,6 +65,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_
         /// SQL链接字符串
         /// </summary>
         string SQLCharacter { get; set; }
+        /// <summary>
+        /// SQL数据库表名
+        /// </summary>
+        string SQLsurface { get; set; }
 
     }
 }

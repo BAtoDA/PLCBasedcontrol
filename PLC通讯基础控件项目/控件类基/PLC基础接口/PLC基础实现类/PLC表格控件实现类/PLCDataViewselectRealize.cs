@@ -31,6 +31,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_
         public string[] PLC_address { get; set; } = new string[] { "0", "0", "0" ,"0"};
         public string[] DataGridView_Name { get; set; } = new string[] { "Name", "Valeu1", "Valeu2", "Valeu3" };
         public numerical_format[] DataGridView_numerical { get; set; } = new numerical_format[] { numerical_format.Signed_32_Bit, numerical_format.Signed_32_Bit, numerical_format.Signed_32_Bit, numerical_format.Signed_32_Bit };
+        public string[] SQLsurfaceType { get; set; } = new string[] { "String", "String", "String", "String" };
         public bool DataGridViewPLC_Time { get; set; } = false;
         public bool ReadCommand { get; set; } = false;
         public bool BindingOpen { get; set; } = false;
@@ -38,5 +39,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_
         public bool SQLOpen { get; set; } = false;
         public bool SQLServer_SQLinte { get; set; } = false;
         public string SQLCharacter { get; set; }
+        public string SQLsurface { get; set; }
     }
 }

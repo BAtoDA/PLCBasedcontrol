@@ -36,5 +36,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_
         /// 用于加载配置使用
         /// </summary>
         Timer Timerconfiguration { get; set; }
+        /// <summary>
+        /// 读取控制
+        /// </summary>
+        bool ReadCommand { get; set; }
     }
 }

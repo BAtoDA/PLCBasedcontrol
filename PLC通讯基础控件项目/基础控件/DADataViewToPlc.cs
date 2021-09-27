@@ -14,6 +14,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
@@ -31,13 +32,14 @@ namespace PLC通讯基础控件项目.基础控件
             Timerconfiguration.Tick += ((send, e) =>
               {
                   Timerconfiguration.Stop();
-                  //PLC_Enable = true;
                   //处理PLC通讯部分
                   if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
+                  else
                   {
-                      PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this);
-                      pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
-                      pLCpropertyBit.ShowDialog();
+                       controlPLCDataViewBase = new ControlPLCDataViewBase(this);
+                      //PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this);
+                      //pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                      //pLCpropertyBit.ShowDialog();
                   }
               });
         }
@@ -48,6 +50,21 @@ namespace PLC通讯基础控件项目.基础控件
     [ToolboxItem(true)]
     public partial class DADataViewToPlc : UIDataGridView, PLCDataViewClassBase
     {
+        ControlPLCDataViewBase controlPLCDataViewBase;
+        /// <summary>
+        /// 读取控制
+        /// </summary>
+        public bool ReadCommand
+        {
+            get => readCommand;
+            set
+            {
+                //代码底层触发事件
+                if (controlPLCDataViewBase != null)
+                    controlPLCDataViewBase.GetPLC();
+            }
+        }
+        bool readCommand;
         [Browsable(false)]
         [Description("PLC保存参数"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -91,6 +108,7 @@ namespace PLC通讯基础控件项目.基础控件
         private bool plc_Enable = false;
         [Browsable(false)]
         public Timer Timerconfiguration { get; set; } = new Timer() { Enabled = true, Interval = 300 };
+        System.Threading.Timer PLCTimer { get; set; }
         [Browsable(false)]
         public event EventHandler Modification;
 
@@ -114,7 +132,26 @@ namespace PLC通讯基础控件项目.基础控件
                     Copy[i] = CopyTo[i];
                 }
             }
-
+            //参数修改完成--行列进行显示更新--
+            this.Rows.Clear();
+            this.Columns.Clear();
+            for(int i=0;i< this.pLCDataViewselectRealize.DataGridView_Name.Length;i++)
+            {
+                DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
+                textboxcell.HeaderText = this.pLCDataViewselectRealize.DataGridView_Name[i];
+                textboxcell.ToolTipText = this.pLCDataViewselectRealize.DataGridView_Name[i];
+                textboxcell.ReadOnly = true;
+                this.Columns.Add(textboxcell);
+            }
+            if(this.pLCDataViewselectRealize.DataGridViewPLC_Time)
+            {
+                //用户开启了 时间显示
+                DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
+                textboxcell.HeaderText = "更新时间";
+                textboxcell.ToolTipText = "更新时间";
+                textboxcell.ReadOnly = true;
+                this.Columns.Add(textboxcell);
+            }
         }
     }
 }

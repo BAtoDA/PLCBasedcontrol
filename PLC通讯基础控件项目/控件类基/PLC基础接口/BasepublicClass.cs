@@ -15,6 +15,8 @@ using PLC通讯基础控件项目.控件类基.控件数据结构;
 using PLC通讯基础控件项目.控件类基.控件安全对象池;
 using PLC通讯库.PLC通讯设备类型表;
 using System.Diagnostics;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
+using System.Windows.Forms;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口
 {
@@ -91,6 +93,87 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
             catch (Exception E)
             {
                 Debug.WriteLine(E.Message);
+            }
+        }
+        /// <summary>
+        /// 用于表格校验PLC对象
+        /// </summary>
+        protected void PLCoopErr(PLCDataViewClassBase pLCViewClassBase)
+        {
+            try
+            {
+                if (pLCViewClassBase == null) throw new Exception($" 不实现：PLCDataViewClassBase接口");
+                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+            }
+            catch (Exception E)
+            {
+                Debug.WriteLine(E.Message);
+            }
+        }
+        /// <summary>
+        /// 获取控件归属的窗口
+        /// </summary>
+        /// <param name="OopContr"></param>
+        /// <returns></returns>
+        protected Form GetContrForm(dynamic OopContr)
+        {
+            //递归查找顶级窗口Form
+            object Oop = OopContr;
+            while (true)
+            {
+                if ((((dynamic)Oop).Parent as Form) != null)
+                {
+                    return (Form)((dynamic)Oop).Parent;
+
+                }
+                else
+                    Oop = ((dynamic)Oop).Parent;
+            }
+        }
+        protected dynamic GetSQLType(string Type,string Value)
+        {
+            dynamic reval = string.Empty;
+            switch (Type.ToLower())
+            {
+                case "int":
+                   return Convert.ToInt32(Value);
+                default:
+                case "varchar":
+                case "nvarchar":
+                case "ntext":
+                case "nchar":
+                case "char":
+                case "text":
+                    return $" '  {Value}  '";
+                case "bigint":
+                    return Convert.ToInt64(Value);
+                case "binary":
+                case "image":
+                case "varbinary":
+                    return Encoding.UTF8.GetBytes(Value);
+                case "bit":
+                    return Convert.ToBoolean(Value);
+                case "smalldatetime":
+                case "datetime":
+                case "timestamp":
+                    return DateTime.Parse(Value);
+                case "numeric":
+                case "money":
+                case "decimal":
+                case "smallmoney":
+                    return Decimal.Parse(Value);
+                case "float":
+                    return Convert.ToDouble(Value);
+                case "real":
+                    return Convert.ToSingle(Value);
+                case "smallint":
+                    return Convert.ToInt16(Value);
+                case "tinyint":
+                    return Convert.ToByte(Value);
+                case "uniqueidentifier":
+                   return Guid.Parse(Value);
+                case "Variant":
+                    return (Object)Value;
             }
         }
     }
