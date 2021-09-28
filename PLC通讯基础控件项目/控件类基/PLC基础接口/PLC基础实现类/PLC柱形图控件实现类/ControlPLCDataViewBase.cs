@@ -22,13 +22,14 @@ using PLC通讯基础控件项目.控件类基.控件数据结构;
 using PLC通讯库.PLC通讯设备类型表;
 using PLC通讯库.通讯基础接口;
 using PLC通讯库.通讯实现类;
+using Sunny.UI;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类
 {
     /// <summary>
     /// 实现基本表格控件类--读取数据--刷新到SQL
     /// </summary>
-    public partial class ControlPLCBarChartBase : BasepublicClass
+    public partial class ControlPLCDataViewBase: BasepublicClass
     {
         #region 实现基本接口  
         //基础外部文本颜色 与 内容控制
@@ -43,7 +44,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 控件对象
         /// </summary>
-        DataGridView PlcControl;
+        UIBarChart PlcControl;
         /// <summary>
         /// SQL事务表
         /// </summary>
@@ -61,7 +62,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
         #endregion
-        public ControlPLCBarChartBase(DataGridView PLCcontrol)
+        public ControlPLCDataViewBase(UIBarChart PLCcontrol)
         {
             if(!(PLCcontrol is PLCDataViewClassBase))throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCDataViewClassBase接口");
             this.pLCViewClassBase = PLCcontrol as PLCDataViewClassBase;

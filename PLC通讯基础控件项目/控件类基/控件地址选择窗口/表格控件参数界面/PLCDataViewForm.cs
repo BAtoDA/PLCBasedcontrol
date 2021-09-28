@@ -308,9 +308,12 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
         {
             this.uiDataGridView1.Rows.Add(new object[]
                {
-                   PLC.Mitsubishi,
+                   "Mitsubishi",
                    "D",
-                   "0"
+                   "0",
+                   "Signed_32_Bit",
+                   "Name"+this.uiDataGridView1.Rows.Count,
+                   "varchar"
                });
         }
         //修改操作

@@ -50,6 +50,7 @@ namespace PLC通讯基础控件项目.基础控件
     [ToolboxItem(true)]
     public partial class DADataViewToPlc : UIDataGridView, PLCDataViewClassBase
     {
+        #region 实现接口参数
         ControlPLCDataViewBase controlPLCDataViewBase;
         /// <summary>
         /// 读取控制
@@ -111,7 +112,7 @@ namespace PLC通讯基础控件项目.基础控件
         System.Threading.Timer PLCTimer { get; set; }
         [Browsable(false)]
         public event EventHandler Modification;
-
+        #endregion
         public void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);

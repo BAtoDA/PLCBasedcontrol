@@ -39,6 +39,7 @@ namespace 控件测试项目
             this.uiButton1 = new Sunny.UI.UIButton();
             this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
             this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
+            this.uiBarChart1 = new Sunny.UI.UIBarChart();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlc1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,10 +47,11 @@ namespace 控件测试项目
             // 
             this.uiBattery1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.uiBattery1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiBattery1.Location = new System.Drawing.Point(158, 123);
+            this.uiBattery1.Location = new System.Drawing.Point(203, 145);
+            this.uiBattery1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uiBattery1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiBattery1.Name = "uiBattery1";
-            this.uiBattery1.Size = new System.Drawing.Size(48, 24);
+            this.uiBattery1.Size = new System.Drawing.Size(62, 28);
             this.uiBattery1.TabIndex = 1;
             this.uiBattery1.Text = "uiBattery1";
             // 
@@ -73,7 +75,8 @@ namespace 控件测试项目
             this.daDataViewToPlc1.EnableHeadersVisualStyles = false;
             this.daDataViewToPlc1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daDataViewToPlc1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.daDataViewToPlc1.Location = new System.Drawing.Point(390, 212);
+            this.daDataViewToPlc1.Location = new System.Drawing.Point(266, 196);
+            this.daDataViewToPlc1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.daDataViewToPlc1.Name = "daDataViewToPlc1";
             this.daDataViewToPlc1.PLC_Enable = true;
             this.daDataViewToPlc1.pLCDataViewselectRealize.BindingName = "uiButton1";
@@ -105,23 +108,25 @@ namespace 控件测试项目
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.daDataViewToPlc1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.daDataViewToPlc1.RowHeadersWidth = 51;
             this.daDataViewToPlc1.RowHeight = 25;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.daDataViewToPlc1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.daDataViewToPlc1.RowTemplate.Height = 25;
             this.daDataViewToPlc1.SelectedIndex = -1;
             this.daDataViewToPlc1.ShowGridLine = true;
-            this.daDataViewToPlc1.Size = new System.Drawing.Size(303, 150);
+            this.daDataViewToPlc1.Size = new System.Drawing.Size(390, 176);
             this.daDataViewToPlc1.TabIndex = 2;
             // 
             // uiButton1
             // 
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiButton1.Location = new System.Drawing.Point(390, 56);
+            this.uiButton1.Location = new System.Drawing.Point(501, 66);
+            this.uiButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
-            this.uiButton1.Size = new System.Drawing.Size(100, 35);
+            this.uiButton1.Size = new System.Drawing.Size(129, 41);
             this.uiButton1.TabIndex = 3;
             this.uiButton1.Text = "uiButton1";
             // 
@@ -140,14 +145,28 @@ namespace 控件测试项目
             this.plcPreferences1.Retain = "S1500";
             this.plcPreferences1.Sendovertime = 1000;
             // 
+            // uiBarChart1
+            // 
+            this.uiBarChart1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.uiBarChart1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiBarChart1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.uiBarChart1.Location = new System.Drawing.Point(314, 51);
+            this.uiBarChart1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiBarChart1.Name = "uiBarChart1";
+            this.uiBarChart1.Size = new System.Drawing.Size(500, 375);
+            this.uiBarChart1.TabIndex = 4;
+            this.uiBarChart1.Text = "uiBarChart1";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1029, 529);
+            this.Controls.Add(this.uiBarChart1);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.daDataViewToPlc1);
             this.Controls.Add(this.uiBattery1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlc1)).EndInit();
@@ -161,6 +180,7 @@ namespace 控件测试项目
         private Sunny.UI.UIButton uiButton1;
         private PLC通讯基础控件项目.PLCControlsPreferences plcControlsPreferences1;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences1;
+        private Sunny.UI.UIBarChart uiBarChart1;
     }
 }
 
