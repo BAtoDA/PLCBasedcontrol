@@ -12,11 +12,13 @@ using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using PLC通讯库.PLC通讯设备类型表;
@@ -29,7 +31,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     /// <summary>
     /// 实现基本表格控件类--读取数据--刷新到SQL
     /// </summary>
-    public partial class ControlPLCDataViewBase: BasepublicClass
+    public partial class ControlPLCBarChartBase : BasepublicClass
     {
         #region 实现基本接口  
         //基础外部文本颜色 与 内容控制
@@ -37,6 +39,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 控件保存的参数
         /// </summary>
         PLCDataViewClassBase pLCViewClassBase;
+        /// <summary>
+        /// 控件基础接口参数
+        /// </summary>
+        PLCBarCharttClassBase pLCBarCharttClassBase;
         /// <summary>
         /// 安全控制状态--true正确 false 异常
         /// </summary>
@@ -62,10 +68,12 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
         #endregion
-        public ControlPLCDataViewBase(UIBarChart PLCcontrol)
+        public ControlPLCBarChartBase(UIBarChart PLCcontrol)
         {
             if(!(PLCcontrol is PLCDataViewClassBase))throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCDataViewClassBase接口");
+            if (!(PLCcontrol is PLCBarCharttClassBase)) throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCBarCharttClassBase接口");
             this.pLCViewClassBase = PLCcontrol as PLCDataViewClassBase;
+            this.pLCBarCharttClassBase = PLCcontrol as PLCBarCharttClassBase;
             //----------处理控件PLC--自动获取PLC类型对象----------
             PLCoopErr(pLCViewClassBase);
             this.PlcControl = PLCcontrol;
@@ -83,27 +91,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                       }
                   });
 
-            }
-            //----------注入设置好的列----------
-            for (int i = 0; i < this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name.Length; i++)
-            {
-                DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
-                textboxcell.HeaderText = this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i];
-                textboxcell.ToolTipText = this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i];
-                textboxcell.ReadOnly = true;
-                this.PlcControl.Columns.Add(textboxcell);
-            }
-            if (this.pLCViewClassBase.pLCDataViewselectRealize.DataGridViewPLC_Time)
-            {
-                //用户开启了 时间显示
-                DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
-                textboxcell.HeaderText = "更新时间";
-                textboxcell.ToolTipText = "更新时间";
-                textboxcell.ReadOnly = true;
-                this.PlcControl.Columns.Add(textboxcell);
-            }
-
-
+            }          
         }
         /// <summary>
         /// 读取PLC数据
@@ -129,7 +117,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     }
                     var PLCdata = PLCoop.PLC_read_D_register(this.pLCViewClassBase.pLCDataViewselectRealize.ReadWriteFunction[i], this.pLCViewClassBase.pLCDataViewselectRealize.PLC_address[i], this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_numerical[i]);
                     SQLoperation.Add($" INSERT INTO {this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface} ({this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]}) VALUES ( { GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata)} )");
-                    PLCValue.Add(GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata).ToString());
+                    PLCValue.Add(PLCdata);
                 }
             }
             //---处理SQL数据事务---
@@ -137,14 +125,44 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             {
                 SetSQL(this.pLCViewClassBase.pLCDataViewselectRealize.SQLCharacter, this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface, SQLoperation.ToArray(), this.pLCViewClassBase.pLCDataViewselectRealize.SQLServer_SQLinte);
             }
-            //--处理添加后的事务--
-            if (this.pLCViewClassBase.pLCDataViewselectRealize.DataGridViewPLC_Time)
-                PLCValue.Add(DateTime.Now.ToString("g"));
-            for (int i = 0; i < PLCValue.Count; i++)
-            {
-                this.PlcControl.Rows.Add(PLCValue.ToArray());
-            }
+            //--处理添加后的事务--修改当前
 
+            UIBarOption option = new UIBarOption();
+            option.Title = new UITitle();
+            option.Title.Text = this.pLCBarCharttClassBase.TitleText;
+            option.Title.SubText = this.pLCBarCharttClassBase.TitleSubText;
+
+            //设置Legend
+            option.Legend = new UILegend();
+            option.Legend.Orient = UIOrient.Horizontal;
+            option.Legend.Top = UITopAlignment.Top;
+            option.Legend.Left = UILeftAlignment.Left;
+
+            option.Legend.AddData("Bar1");
+
+            var series = new UIBarSeries();
+            series.Name = "Bar1";
+
+            for (int i = 0; i < this.PLCValue.Count; i++)
+            {
+                option.XAxis.Data.Add(pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]);
+                series.AddData(Convert.ToDouble(this.PLCValue[i]));
+            }
+            option.Series.Add(series);
+
+            option.ToolTip.Visible = true;
+            option.YAxis.Scale = true;
+
+            option.XAxis.Name = this.pLCBarCharttClassBase.XAxisName;
+            option.YAxis.Name = this.pLCBarCharttClassBase.YAxisName;
+
+            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = this.pLCBarCharttClassBase.YAxisMax });
+            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = this.pLCBarCharttClassBase.YAxisMin });
+
+            option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = this.pLCBarCharttClassBase.XAxisMax });
+            option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = this.pLCBarCharttClassBase.XAxisMin });
+
+            this.PlcControl.SetOption(option);
         }
         /// <summary>
         /// 使用事务把数据
@@ -194,6 +212,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 myTran.Commit();
             }
         }
+     
     }
 
 }

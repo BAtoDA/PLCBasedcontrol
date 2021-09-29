@@ -28,7 +28,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     /// <summary>
     /// 实现基本表格控件类--读取数据--刷新到SQL
     /// </summary>
-    public partial class ControlPLCBarChartBase : BasepublicClass
+    public partial class ControlPLCDataViewBase : BasepublicClass
     {
         #region 实现基本接口  
         //基础外部文本颜色 与 内容控制
@@ -61,7 +61,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
         #endregion
-        public ControlPLCBarChartBase(DataGridView PLCcontrol)
+        public ControlPLCDataViewBase(DataGridView PLCcontrol)
         {
             if(!(PLCcontrol is PLCDataViewClassBase))throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCDataViewClassBase接口");
             this.pLCViewClassBase = PLCcontrol as PLCDataViewClassBase;
@@ -78,7 +78,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                   {
                       lock (this)
                       {
-                          GetPLC();
+                          this.PlcControl.BeginInvoke((EventHandler)delegate
+                          {
+                              GetPLC();
+                          });
                       }
                   });
 
@@ -128,7 +131,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     }
                     var PLCdata = PLCoop.PLC_read_D_register(this.pLCViewClassBase.pLCDataViewselectRealize.ReadWriteFunction[i], this.pLCViewClassBase.pLCDataViewselectRealize.PLC_address[i], this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_numerical[i]);
                     SQLoperation.Add($" INSERT INTO {this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface} ({this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]}) VALUES ( { GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata)} )");
-                    PLCValue.Add(GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata).ToString());
+                    PLCValue.Add(PLCdata);
                 }
             }
             //---处理SQL数据事务---

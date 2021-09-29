@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
@@ -14,10 +16,25 @@ namespace PLC通讯基础控件项目.基础控件
     /// <summary>
     /// 柱形图控件
     /// </summary>
-    public partial class DAuiBarChart
+    public partial class DAuiBarChart : PLCDataViewClassBase
     {
+       public DAuiBarChart()
+        {
+            Timerconfiguration.Tick += ((send, e) =>
+            {
+                Timerconfiguration.Stop();
+                //处理PLC通讯部分
+                if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
+                else
+                {
+                    uiRefresh();
+                    ControlPLCBarChartBase controlPLCDataViewBase = new ControlPLCBarChartBase(this);
+                }
+            });
+        }
     }
-    public partial class DAuiBarChart:UIBarChart, PLCDataViewClassBase
+    [ToolboxItem(true)]
+    public partial class DAuiBarChart:UIBarChart, PLCDataViewClassBase, PLCBarCharttClassBase
     {
         #region 新增属性
         /// <summary>
@@ -33,7 +50,7 @@ namespace PLC通讯基础控件项目.基础控件
             set
             {
                 titleText = value;
-                Refresh();
+                uiRefresh();
             }
 
         }
@@ -51,7 +68,7 @@ namespace PLC通讯基础控件项目.基础控件
             set
             {
                 titleSubText = value;
-                Refresh();
+                uiRefresh();
             }
 
         }
@@ -69,11 +86,47 @@ namespace PLC通讯基础控件项目.基础控件
             set
             {
                 xAxisName = value;
-                Refresh();
+                uiRefresh();
             }
 
         }
         private string xAxisName = "标题";
+        /// <summary>
+        /// 柱形图X坐标最大值
+        /// </summary>
+        [Browsable(true)]
+        [ToolboxItem(true)]
+        [Description("柱形图属性"), Category("X坐标最大值")]
+        [DefaultValue(typeof(long), "9999999")]
+        public long XAxisMax
+        {
+            get => xAxisMax;
+            set
+            {
+                xAxisMax = value;
+                uiRefresh();
+            }
+
+        }
+        private long xAxisMax =9999999;
+        /// <summary>
+        /// 柱形图X坐标最小值
+        /// </summary>
+        [Browsable(true)]
+        [ToolboxItem(true)]
+        [Description("柱形图属性"), Category("X坐标最小值")]
+        [DefaultValue(typeof(long), "0")]
+        public long XAxisMin
+        {
+            get => xAxisMin;
+            set
+            {
+                xAxisMin = value;
+                uiRefresh();
+            }
+
+        }
+        private long xAxisMin = 0;
         /// <summary>
         /// 柱形图Y坐标标题
         /// </summary>
@@ -87,11 +140,48 @@ namespace PLC通讯基础控件项目.基础控件
             set
             {
                 yAxisName = value;
-                Refresh();
+                uiRefresh();
             }
 
         }
         private string yAxisName = "标题";
+        /// <summary>
+        /// 柱形图Y坐标最大值
+        /// </summary>
+        [Browsable(true)]
+        [ToolboxItem(true)]
+        [Description("柱形图属性"), Category("Y坐标最大值")]
+        [DefaultValue(typeof(long), "9999999")]
+        public long YAxisMax
+        {
+            get => yAxisMax;
+            set
+            {
+                yAxisMax = value;
+                uiRefresh();
+            }
+
+        }
+        private long yAxisMax = 9999999;
+        /// <summary>
+        /// 柱形图Y坐标最小值
+        /// </summary>
+        [Browsable(true)]
+        [ToolboxItem(true)]
+        [Description("柱形图属性"), Category("Y坐标最小值")]
+        [DefaultValue(typeof(long), "0")]
+        public long YAxisMin
+        {
+            get => yAxisMin;
+            set
+            {
+                yAxisMin = value;
+                uiRefresh();
+            }
+
+        }
+        private long yAxisMin = 0;
+
         #endregion
         #region 实现接口参数
         /// <summary>
@@ -166,12 +256,12 @@ namespace PLC通讯基础控件项目.基础控件
                 }
             }
             //参数修改完成--行列进行显示更新--
-
+            uiRefresh();
         }
         /// <summary>
         /// 刷新UI
         /// </summary>
-        private void Refresh()
+        private void uiRefresh()
         {
             UIBarOption option = new UIBarOption();
             option.Title = new UITitle();
@@ -204,8 +294,12 @@ namespace PLC通讯基础控件项目.基础控件
             option.XAxis.Name = this.XAxisName;
             option.YAxis.Name = this.YAxisName;
 
-            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = 9999 });
-            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = 0 });
+            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value =this.YAxisMax });
+            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value =this.YAxisMin });
+
+            option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = this.XAxisMax });
+            option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = this.XAxisMin });
+
 
             this.SetOption(option);
         }
