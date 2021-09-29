@@ -71,7 +71,7 @@ namespace 控件测试项目
             this.daDataViewToPlc1.pLCDataViewselectRealize.DataGridView_Name = new string[] {
         "Data"};
             this.daDataViewToPlc1.pLCDataViewselectRealize.DataGridView_numerical = new PLC通讯库.通讯枚举.numerical_format[] {
-        PLC通讯库.通讯枚举.numerical_format.Signed_32_Bit};
+        PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit};
             this.daDataViewToPlc1.pLCDataViewselectRealize.DataGridViewPLC_Time = false;
             this.daDataViewToPlc1.pLCDataViewselectRealize.PLC_address = new string[] {
         "0"};
@@ -81,8 +81,8 @@ namespace 控件测试项目
             this.daDataViewToPlc1.pLCDataViewselectRealize.ReadWritePLC = new PLC通讯基础控件项目.控件类基.控件数据结构.PLC[] {
         PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP};
             this.daDataViewToPlc1.pLCDataViewselectRealize.SQLCharacter = "Data Source=LAPTOP-INNCV6MO;Initial Catalog=Test;Integrated Security=True";
-            this.daDataViewToPlc1.pLCDataViewselectRealize.SQLOpen = true;
-            this.daDataViewToPlc1.pLCDataViewselectRealize.SQLServer_SQLinte = true;
+            this.daDataViewToPlc1.pLCDataViewselectRealize.SQLOpen = false;
+            this.daDataViewToPlc1.pLCDataViewselectRealize.SQLServer_SQLinte = false;
             this.daDataViewToPlc1.pLCDataViewselectRealize.SQLsurface = "NAME";
             this.daDataViewToPlc1.pLCDataViewselectRealize.SQLsurfaceType = new string[] {
         "varchar"};
@@ -145,27 +145,35 @@ namespace 控件测试项目
             this.dAuiBarChart2.pLCDataViewselectRealize.BindingName = "uiButton2";
             this.dAuiBarChart2.pLCDataViewselectRealize.BindingOpen = true;
             this.dAuiBarChart2.pLCDataViewselectRealize.DataGridView_Name = new string[] {
-        "Valeu1"};
+        "Valeu1",
+        "Name2"};
             this.dAuiBarChart2.pLCDataViewselectRealize.DataGridView_numerical = new PLC通讯库.通讯枚举.numerical_format[] {
+        PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit,
         PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit};
             this.dAuiBarChart2.pLCDataViewselectRealize.DataGridViewPLC_Time = false;
             this.dAuiBarChart2.pLCDataViewselectRealize.PLC_address = new string[] {
-        "0"};
+        "0",
+        "1"};
             this.dAuiBarChart2.pLCDataViewselectRealize.ReadCommand = false;
             this.dAuiBarChart2.pLCDataViewselectRealize.ReadWriteFunction = new string[] {
+        "D",
         "D"};
             this.dAuiBarChart2.pLCDataViewselectRealize.ReadWritePLC = new PLC通讯基础控件项目.控件类基.控件数据结构.PLC[] {
+        PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP,
         PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP};
             this.dAuiBarChart2.pLCDataViewselectRealize.SQLCharacter = "uiTextBox2";
             this.dAuiBarChart2.pLCDataViewselectRealize.SQLOpen = false;
             this.dAuiBarChart2.pLCDataViewselectRealize.SQLServer_SQLinte = false;
             this.dAuiBarChart2.pLCDataViewselectRealize.SQLsurface = "";
             this.dAuiBarChart2.pLCDataViewselectRealize.SQLsurfaceType = new string[] {
+        "varchar",
         "varchar"};
             this.dAuiBarChart2.ReadCommand = false;
             this.dAuiBarChart2.Size = new System.Drawing.Size(389, 319);
             this.dAuiBarChart2.TabIndex = 4;
             this.dAuiBarChart2.Text = "dAuiBarChart2";
+            this.dAuiBarChart2.TitleSubText = "柱形图";
+            this.dAuiBarChart2.TitleText = "PLC监控图形";
             this.dAuiBarChart2.XAxisName = "标题";
             this.dAuiBarChart2.YAxisName = "标题";
             // 

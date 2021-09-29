@@ -87,7 +87,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                   {
                       lock (this)
                       {
-                          GetPLC();
+                          this.PlcControl.BeginInvoke((EventHandler)delegate
+                          {
+                              GetPLC();
+                          });
                       }
                   });
 
@@ -125,44 +128,23 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             {
                 SetSQL(this.pLCViewClassBase.pLCDataViewselectRealize.SQLCharacter, this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface, SQLoperation.ToArray(), this.pLCViewClassBase.pLCDataViewselectRealize.SQLServer_SQLinte);
             }
-            //--处理添加后的事务--修改当前
+            //--处理添加后的事务--修改当
+            var option = this.PlcControl.Option;
 
-            UIBarOption option = new UIBarOption();
-            option.Title = new UITitle();
-            option.Title.Text = this.pLCBarCharttClassBase.TitleText;
-            option.Title.SubText = this.pLCBarCharttClassBase.TitleSubText;
-
-            //设置Legend
-            option.Legend = new UILegend();
-            option.Legend.Orient = UIOrient.Horizontal;
-            option.Legend.Top = UITopAlignment.Top;
-            option.Legend.Left = UILeftAlignment.Left;
-
-            option.Legend.AddData("Bar1");
-
-            var series = new UIBarSeries();
-            series.Name = "Bar1";
+            var series = option.Series[0];
 
             for (int i = 0; i < this.PLCValue.Count; i++)
             {
-                option.XAxis.Data.Add(pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]);
-                series.AddData(Convert.ToDouble(this.PLCValue[i]));
+                series.Data[i]=(Convert.ToDouble(this.PLCValue[i]));
             }
-            option.Series.Add(series);
-
-            option.ToolTip.Visible = true;
-            option.YAxis.Scale = true;
-
-            option.XAxis.Name = this.pLCBarCharttClassBase.XAxisName;
-            option.YAxis.Name = this.pLCBarCharttClassBase.YAxisName;
-
             option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = this.pLCBarCharttClassBase.YAxisMax });
             option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = this.pLCBarCharttClassBase.YAxisMin });
 
             option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = this.pLCBarCharttClassBase.XAxisMax });
             option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = this.pLCBarCharttClassBase.XAxisMin });
 
-            this.PlcControl.SetOption(option);
+            for (int i = 0; i < 3; i++)
+                this.PlcControl.SetOption(option);
         }
         /// <summary>
         /// 使用事务把数据
