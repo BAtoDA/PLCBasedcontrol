@@ -23,6 +23,7 @@ using PLC通讯库.PLC通讯设备类型表;
 using PLC通讯库.通讯实现类;
 using System.Text.RegularExpressions;
 using PLC通讯库.通讯枚举;
+using System.Threading.Tasks;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类
 {
@@ -258,11 +259,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         private void PLCWrite(PLC IPLC, string Id, string Addary, string Value,PLC通讯库.通讯枚举.numerical_format numerical_Format)
         {
             IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
-            //bool OopType = (bool)PLCoop.GetType().GetField("PLC_ready", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance).GetValue(PLCoop);
             if (PLCoop.PLC_ready)
             {
-                PLCoop.PLC_write_D_register(Id, Addary, Value, numerical_Format);
-                PLCinform();
+                Task.Run(() =>
+                {
+                    PLCoop.PLC_write_D_register(Id, Addary, Value, numerical_Format);
+                    PLCinform();
+                });
             }
         }
         /// <summary>

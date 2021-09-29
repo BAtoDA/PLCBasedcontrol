@@ -36,8 +36,8 @@ namespace FanucRobot
             if (!connnected)
             {
                 _sc = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                _sc.ReceiveTimeout = 2000;
-                _sc.SendTimeout = 2000;
+                _sc.ReceiveTimeout = 1000;
+                _sc.SendTimeout = 1000;
                 var ar = _sc.BeginConnect(ipAddr, port, null, null);
                 if (ar.AsyncWaitHandle.WaitOne(5000))
                 {
@@ -119,7 +119,11 @@ namespace FanucRobot
         protected void Close()
         {
             this._sc?.Close();
-            this._sc.Dispose();
+            if (_sc != null)
+            {
+                this._sc?.Close();
+                this._sc.Dispose();
+            }
             this.connnected = false;
         }
     }

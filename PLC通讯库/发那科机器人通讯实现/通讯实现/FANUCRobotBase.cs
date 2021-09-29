@@ -20,8 +20,9 @@ namespace PLC通讯库.发那科机器人通讯实现.通讯实现
         public string IpAddress { get => this.ipAddr; set => this.ipAddr = value; }
         public int Port { get => this.port; set => Ports = value; }
         private int Ports;
-        public int ConnectTimeOut { get => this._sc.ReceiveTimeout; set { this._sc.ReceiveTimeout = value; this._sc.SendTimeout = value; } }
-
+        public int ConnectTimeOut { get; set; }
+        public int ReceiveTimeOut { get; set; }
+        //{ get => this._sc.ReceiveTimeout; set { this._sc.ReceiveTimeout = value; this._sc.SendTimeout = value; } }
         /// <summary>
         /// 构造函数
         /// </summary>

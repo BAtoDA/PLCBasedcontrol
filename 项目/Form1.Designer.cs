@@ -39,6 +39,7 @@ namespace 项目
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.plcPreferences4 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@ namespace 项目
             this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences2);
             this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences1);
             this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences3);
+            this.plcControlsPreferences1.PLCPreferences.Add(this.plcPreferences4);
             // 
             // plcPreferences2
             // 
@@ -121,6 +123,15 @@ namespace 项目
             this.imageList1.Images.SetKeyName(2, "170a7e99e7ede025490fdd412056699f.jpeg");
             this.imageList1.Images.SetKeyName(3, "71093f82045f191894b7071960fb473c.jpeg");
             // 
+            // plcPreferences4
+            // 
+            this.plcPreferences4.IPEnd = "192.168.3.34";
+            this.plcPreferences4.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Fanuc;
+            this.plcPreferences4.Point = 2000;
+            this.plcPreferences4.Receptionovertime = 1000;
+            this.plcPreferences4.Retain = "S1500";
+            this.plcPreferences4.Sendovertime = 1000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -149,6 +160,7 @@ namespace 项目
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ImageList imageList1;
+        private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences4;
     }
 }
 
