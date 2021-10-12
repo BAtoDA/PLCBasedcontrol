@@ -64,7 +64,6 @@ namespace PLC通讯基础控件项目
     }
     public partial class PLCControlsPreferences : Timer
     {
-
         //窗体设计器的接口引用，当拖拉组件到窗体上，值由构造器传入．
         [Browsable(true)]
         [Description("设置PLC参数"), Category("PLC参数")]

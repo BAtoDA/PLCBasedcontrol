@@ -17,5 +17,9 @@ namespace 控件测试项目
             InitializeComponent();
         }
 
+        private void daUiTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

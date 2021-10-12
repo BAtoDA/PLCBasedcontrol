@@ -80,30 +80,12 @@ namespace PLC通讯基础控件项目.控件类基.控件文本键盘
         private string complement(string Name)//实现浮点小数自动补码
         {
             string d = string.Empty;
-            int minusInde = Name.IndexOf('-');//搜索数据是否有小数点
-            int Inde = Name.IndexOf('.');//搜索数据是否有小数点
-            //如果有小数点 先移除
-            if (Inde > -1)
-                Name=Name.Remove(Inde, 1);
-            //如果是否负数 先移除符号位
-            if (minusInde > -1)
-                Name = Name.Remove(minusInde, 1);
-            if (textBox.NumericaldigitMin > (Inde>-1?Name.Length: Name.Length-1))
+            try
             {
-                int forindex = (textBox.NumericaldigitMin - Name.Length) + 1;
-                for (int i=0;i< forindex; i++)
-                  Name = Name.Insert(0, "0");//填充数据
+                return Convert.ToSingle(Name).ToString($"F{textBox.NumericaldigitMin}");
             }
-            if (Inde == -1)
-            {
-                if (textBox.NumericaldigitMin < Name.Length)
-                {
-                    Name = Name.Insert(Name.Length- textBox.NumericaldigitMin, ".");//填充数据
-                }
-            }
-            //补码
-            if (minusInde > -1)
-                Name=Name = Name.Insert(0, "-");//填充数据
+            catch { }
+           
             return Name;//返回数据
         }
         /// <方法重写实现获取用户输入的文本-与参数中的格式-判断输入是否正确-控件文本写入与约束>

@@ -42,7 +42,6 @@ namespace PLC通讯基础控件项目.控件类基
         /// <summary>
         /// 写入PLC类型
         /// </summary>
-
         PLC WritePLC { get; set; }
         /// <summary>
         /// 写入PLC的功能码

@@ -290,7 +290,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     //处理安全控制---是否要隐藏控件
                     if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
                     this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
-                    this.PlcControl.Text = complement(State ?? "0");
+                    this.PlcControl.Text =this.pLCDClassBase.pLCDselectRealize.ShowFormat!=numerical_format.Float_32_Bit?complement(State ?? "0"): complemfol(State??"0");
                 });
             }
             catch { }
@@ -346,6 +346,16 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 if (!PLCoop.PLC_ready) return;
                 var State = PLCoop.PLC_write_M_bit(pLCDClassBase.pLCDselectRealize.InformFunction, pLCDClassBase.pLCDselectRealize.InformAddress, pLCDClassBase.pLCDselectRealize.Informpattern>0? Button_state .ON: Button_state.Off);
             }
+        }
+        private string complemfol(string Name)//实现浮点小数自动补码
+        {
+            if (pLCDClassBase.pLCDselectRealize.NumericaldigitMin < 1) return Name;//返回数据
+            try
+            {
+                return Convert.ToSingle(Name).ToString($"F{pLCDClassBase.pLCDselectRealize.NumericaldigitMin}");
+            }
+            catch { }
+            return Name;//返回数据
         }
         private string complement(string Name)//实现浮点小数自动补码
         {
