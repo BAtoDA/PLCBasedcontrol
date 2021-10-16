@@ -36,7 +36,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 控件对象
         /// </summary>
-        UITitlePage PlcControl;
+        UIChart PlcControl;
         /// <summary>
         /// SQL事务表
         /// </summary>
@@ -44,7 +44,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// PLC当前值表
         /// </summary>
-        volatile List<string> PLCValue = new List<string>();
+        volatile List<Tuple<string, string>> PLCValue = new List<Tuple<string, string>>();
         /// <summary>
         /// 复归型按钮标志位
         /// </summary>
@@ -54,7 +54,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
         #endregion
-        public ControlPLCDoughnutChartBase(UITitlePage PLCcontrol)
+        public ControlPLCDoughnutChartBase(UIChart PLCcontrol)
         {
             if (!(PLCcontrol is PLCDataViewClassBase)) throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCDataViewClassBase接口");
             if (!(PLCcontrol is ControlDoughnutChartClassBase)) throw new Exception($"{PLCcontrol.GetType().Name} 不实现：ControlDoughnutChartClassBase接口");
@@ -106,7 +106,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     }
                     var PLCdata = PLCoop.PLC_read_D_register(this.pLCViewClassBase.pLCDataViewselectRealize.ReadWriteFunction[i], this.pLCViewClassBase.pLCDataViewselectRealize.PLC_address[i], this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_numerical[i]);
                     SQLoperation.Add($" INSERT INTO {this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface} ({this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]}) VALUES ( { GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata)} )");
-                    PLCValue.Add(PLCdata);
+                    PLCValue.Add(new Tuple<string, string>(this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i], PLCdata));
                 }
             }
             //---处理SQL数据事务---
@@ -115,7 +115,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 SetSQL(this.pLCViewClassBase.pLCDataViewselectRealize.SQLCharacter, this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface, SQLoperation.ToArray(), this.pLCViewClassBase.pLCDataViewselectRealize.SQLServer_SQLinte);
             }
             //--处理添加后的事务--修改当
-            //var option = this.PlcControl.BaseOption;
+            SetOption();
 
             //var series = option.Series[0];
 
@@ -126,6 +126,51 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
 
             //for (int i = 0; i < 3; i++)
             //    this.PlcControl.SetOption(option);
+        }
+        /// <summary>
+        /// 设置表格的数据
+        /// </summary>
+        private void SetOption()
+        {
+            this.PlcControl.SuspendLayout();
+            var option = new UIDoughnutOption();
+            //设置Title
+            option.Title = new UITitle();
+            option.Title.Text = pLCBarCharttClassBase.TitleText;
+            option.Title.SubText = pLCBarCharttClassBase.TitleSubText;
+            option.Title.Left = UILeftAlignment.Center;
+
+            //设置ToolTip
+            option.ToolTip.Visible = true;
+
+            //设置Legend
+            option.Legend = new UILegend();
+            option.Legend.Orient = UIOrient.Vertical;
+            option.Legend.Top = UITopAlignment.Top;
+            option.Legend.Left = UILeftAlignment.Left;
+            foreach (var i in PLCValue)
+                option.Legend.AddData(i.Item1);
+
+            //设置Series
+            var series = new UIDoughnutSeries();
+            series.Name = "Star count";
+            series.Center = new UICenter(50, 55);
+            series.Radius.Inner = 40;
+            series.Radius.Outer = 70;
+            series.Label.Show = true;
+            series.Label.Position = UIPieSeriesLabelPosition.Center;
+
+            //增加数据
+            foreach (var i in PLCValue)
+                series.AddData(i.Item1,Convert.ToInt32(i.Item2));
+
+            //增加Series
+            option.Series.Add(series);
+
+            //设置Option
+            this.PlcControl.SetOption(option);
+            this.PlcControl.Refresh();
+            this.PlcControl.ResumeLayout();
         }
         /// <summary>
         /// 使用事务把数据
