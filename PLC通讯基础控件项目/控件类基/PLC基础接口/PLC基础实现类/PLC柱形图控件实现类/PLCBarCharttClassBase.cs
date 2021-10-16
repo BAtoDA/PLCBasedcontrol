@@ -14,7 +14,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         public string TitleText { get; set; }
         /// <summary>
-        /// 图形标题
+        /// 图形图标题
         /// </summary>
         public string TitleSubText { get; set; }
         /// <summary>

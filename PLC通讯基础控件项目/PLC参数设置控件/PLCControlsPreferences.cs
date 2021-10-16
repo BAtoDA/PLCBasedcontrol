@@ -99,6 +99,8 @@ namespace PLC通讯基础控件项目
         private bool PlcLoad = false;
         protected async override void OnTick(EventArgs e)
         {
+            //判定改控件是否在窗口设计期
+            if (DesignMode) return;
             this.Stop();
             #region 分配对象池
             if(!PlcLoad)

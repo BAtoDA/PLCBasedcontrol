@@ -1,37 +1,23 @@
-﻿//**********************************************************************
-//
-// 文件名称(File Name)：
-// 功能描述(Description)：
-// 作者(Author)：DAtoTA
-// 日期(Create Date)： 2021/9/24 21:10:00
-//
-//**********************************************************************
+﻿using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
+using PLC通讯基础控件项目.控件类基.控件数据结构;
+using Sunny.UI;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Text;
+using System.Windows.Forms;
+using System.Linq;
+using PLC通讯库.通讯基础接口;
+using PLC通讯库.PLC通讯设备类型表;
 using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Windows.Forms;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
-using PLC通讯基础控件项目.控件类基.控件数据结构;
-using PLC通讯库.PLC通讯设备类型表;
-using PLC通讯库.通讯基础接口;
 using PLC通讯库.通讯实现类;
-using Sunny.UI;
 
-namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类
+namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类
 {
     /// <summary>
-    /// 实现基本柱形图控件类--读取数据--刷新到SQL
+    /// 
     /// </summary>
-    public partial class ControlPLCBarChartBase : BasepublicClass
+    class ControlPLCDoughnutChartBase:BasepublicClass
     {
         #region 实现基本接口  
         //基础外部文本颜色 与 内容控制
@@ -42,7 +28,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 控件基础接口参数
         /// </summary>
-        PLCBarCharttClassBase pLCBarCharttClassBase;
+        ControlDoughnutChartClassBase pLCBarCharttClassBase;
         /// <summary>
         /// 安全控制状态--true正确 false 异常
         /// </summary>
@@ -50,7 +36,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 控件对象
         /// </summary>
-        UIBarChart PlcControl;
+        UITitlePage PlcControl;
         /// <summary>
         /// SQL事务表
         /// </summary>
@@ -68,33 +54,33 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
         #endregion
-        public ControlPLCBarChartBase(UIBarChart PLCcontrol)
+        public ControlPLCDoughnutChartBase(UITitlePage PLCcontrol)
         {
-            if(!(PLCcontrol is PLCDataViewClassBase))throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCDataViewClassBase接口");
-            if (!(PLCcontrol is PLCBarCharttClassBase)) throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCBarCharttClassBase接口");
+            if (!(PLCcontrol is PLCDataViewClassBase)) throw new Exception($"{PLCcontrol.GetType().Name} 不实现：PLCDataViewClassBase接口");
+            if (!(PLCcontrol is ControlDoughnutChartClassBase)) throw new Exception($"{PLCcontrol.GetType().Name} 不实现：ControlDoughnutChartClassBase接口");
             this.pLCViewClassBase = PLCcontrol as PLCDataViewClassBase;
-            this.pLCBarCharttClassBase = PLCcontrol as PLCBarCharttClassBase;
+            this.pLCBarCharttClassBase = PLCcontrol as ControlDoughnutChartClassBase;
             //----------处理控件PLC--自动获取PLC类型对象----------
             PLCoopErr(pLCViewClassBase);
             this.PlcControl = PLCcontrol;
             //----------判断是否绑定了触发控件--------------------
-            if(this.pLCViewClassBase.pLCDataViewselectRealize.BindingOpen)
+            if (this.pLCViewClassBase.pLCDataViewselectRealize.BindingOpen)
             {
                 var FormContr = (from Control p in GetContrForm(PLCcontrol).Controls where p.Name == this.pLCViewClassBase.pLCDataViewselectRealize.BindingName select p).FirstOrDefault();
                 if (FormContr == null) throw new Exception($"查找{this.pLCViewClassBase.pLCDataViewselectRealize.BindingOpen}控件失败 \r\n 归属窗口是{GetContrForm(PLCcontrol).Parent.GetType().Name}");
                 //-----绑定提前触发更新事件 不绑定表示代码层面刷新-----
                 FormContr.Click += ((send, e) =>
-                  {
-                      lock (this)
-                      {
-                          this.PlcControl.BeginInvoke((EventHandler)delegate
-                          {
-                              GetPLC();
-                          });
-                      }
-                  });
+                {
+                    lock (this)
+                    {
+                        this.PlcControl.BeginInvoke((EventHandler)delegate
+                        {
+                            GetPLC();
+                        });
+                    }
+                });
 
-            }          
+            }
         }
         /// <summary>
         /// 读取PLC数据
@@ -109,7 +95,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 SQLoperation.Clear();
                 PLCValue.Clear();
                 //循环遍历---获取PLC对象名---
-                for (int i=0;i< this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC.Length;i++)
+                for (int i = 0; i < this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC.Length; i++)
                 {
                     IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC[i].ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                     if (PLCoop == null) return;
@@ -124,27 +110,22 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 }
             }
             //---处理SQL数据事务---
-            if(this.pLCViewClassBase.pLCDataViewselectRealize.SQLOpen)
+            if (this.pLCViewClassBase.pLCDataViewselectRealize.SQLOpen)
             {
                 SetSQL(this.pLCViewClassBase.pLCDataViewselectRealize.SQLCharacter, this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface, SQLoperation.ToArray(), this.pLCViewClassBase.pLCDataViewselectRealize.SQLServer_SQLinte);
             }
             //--处理添加后的事务--修改当
-            var option = this.PlcControl.Option;
+            //var option = this.PlcControl.BaseOption;
 
-            var series = option.Series[0];
+            //var series = option.Series[0];
 
-            for (int i = 0; i < this.PLCValue.Count; i++)
-            {
-                series.Data[i]=(Convert.ToDouble(this.PLCValue[i]));
-            }
-            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = this.pLCBarCharttClassBase.YAxisMax });
-            option.YAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = this.pLCBarCharttClassBase.YAxisMin });
+            //for (int i = 0; i < this.PLCValue.Count; i++)
+            //{
+            //    series.Data[i] = (Convert.ToDouble(this.PLCValue[i]));
+            //}
 
-            option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Red, Name = "上限", Value = this.pLCBarCharttClassBase.XAxisMax });
-            option.XAxisScaleLines.Add(new UIScaleLine() { Color = Color.Gold, Name = "下限", Value = this.pLCBarCharttClassBase.XAxisMin });
-
-            for (int i = 0; i < 3; i++)
-                this.PlcControl.SetOption(option);
+            //for (int i = 0; i < 3; i++)
+            //    this.PlcControl.SetOption(option);
         }
         /// <summary>
         /// 使用事务把数据
@@ -153,7 +134,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <param name="SQLlink">SQL链接字符串</param>
         /// <param name="SQLsurface">SQL表名</param>
         /// <param name="SQLstatement">SQL需要执行的语句</param>
-        private void SetSQL(string SQLlink,string SQLsurface,string[] SQLstatement,bool SLQServer_SLQLite)
+        private void SetSQL(string SQLlink, string SQLsurface, string[] SQLstatement, bool SLQServer_SLQLite)
         {
             if (SLQServer_SLQLite)
             {
@@ -198,7 +179,5 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 }
             }
         }
-     
     }
-
 }

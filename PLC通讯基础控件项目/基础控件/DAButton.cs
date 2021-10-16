@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件;
 using PLC通讯基础控件项目.控件类基.PLC基础接口;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.判定控件是否在设计期;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 
@@ -33,7 +34,7 @@ namespace PLC通讯基础控件项目.基础控件
              {
                  Timerconfiguration.Stop();
                  //处理PLC通讯部分
-                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false) return;//用户不开启PLC功能
+                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false|| DesignMode) return;//用户不开启PLC功能
                  {
                      //ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                      ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
