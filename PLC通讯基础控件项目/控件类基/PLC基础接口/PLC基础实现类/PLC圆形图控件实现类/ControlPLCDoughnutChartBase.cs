@@ -132,7 +132,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         private void SetOption()
         {
-            this.PlcControl.SuspendLayout();
             var option = new UIDoughnutOption();
             //设置Title
             option.Title = new UITitle();
@@ -169,8 +168,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
 
             //设置Option
             this.PlcControl.SetOption(option);
-            this.PlcControl.Refresh();
-            this.PlcControl.ResumeLayout();
         }
         /// <summary>
         /// 使用事务把数据
