@@ -32,9 +32,16 @@ namespace PLC通讯基础控件项目.基础控件
     {
 
         public DAUiButton()
-        {
+        {       
             Timerconfiguration.Tick += ((send, e) =>
             {
+                //立马刷新状态
+                this.SuspendLayout();
+                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+                this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+                this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+                this.Refresh();
+                this.ResumeLayout(false);
                 Timerconfiguration.Stop();
                 //处理PLC通讯部分
                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false|| DesignMode) return;//用户不开启PLC功能
@@ -44,13 +51,6 @@ namespace PLC通讯基础控件项目.基础控件
                     //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                 }
             });
-            //立马刷新状态
-            this.SuspendLayout();
-            this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
-            this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
-            this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
-            this.Refresh();
-            this.ResumeLayout(false);
         }
     }
     [ToolboxItem(true)]

@@ -40,6 +40,7 @@ namespace PLC通讯基础控件项目.PLC参数设置控件.控件状态切换�
 
         [Description("切换Bit位控件的状态"), Category("控件")]
         [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Switch ControlSwitch
         {
             get => PLCsz;

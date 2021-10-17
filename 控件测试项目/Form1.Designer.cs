@@ -36,8 +36,8 @@ namespace 控件测试项目
             this.dAuiBarChart2 = new PLC通讯基础控件项目.基础控件.DAuiBarChart();
             this.daUiButton1 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daTextBox1 = new PLC通讯基础控件项目.基础控件.DATextBox();
-            this.daButton1 = new PLC通讯基础控件项目.基础控件.DAButton();
             this.plcControlSwitch1 = new PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch(this.components);
+            this.daButton1 = new PLC通讯基础控件项目.基础控件.DAButton();
             this.SuspendLayout();
             // 
             // plcControlsPreferences1
@@ -108,8 +108,8 @@ namespace 控件测试项目
             this.daUiButton1.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daUiButton1.FillColor = System.Drawing.Color.Silver;
-            this.daUiButton1.FillHoverColor = System.Drawing.Color.Silver;
+            this.daUiButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton1.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton1.Location = new System.Drawing.Point(504, 418);
             this.daUiButton1.MinimumSize = new System.Drawing.Size(1, 1);
@@ -161,7 +161,7 @@ namespace 控件测试项目
             this.daUiButton1.Size = new System.Drawing.Size(100, 35);
             this.daUiButton1.Style = Sunny.UI.UIStyle.Custom;
             this.daUiButton1.TabIndex = 7;
-            this.daUiButton1.Text = "OFF";
+            this.daUiButton1.Text = "ON";
             this.daUiButton1.Textalign_0 = "MiddleCenter";
             this.daUiButton1.Textalign_1 = "MiddleCenter";
             this.daUiButton1.TextColor_0 = System.Drawing.Color.White;
@@ -245,12 +245,12 @@ namespace 控件测试项目
             // daButton1
             // 
             this.daButton1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daButton1.BackColor = System.Drawing.Color.Silver;
+            this.daButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daButton1.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daButton1.ForeColor = System.Drawing.Color.White;
-            this.daButton1.Location = new System.Drawing.Point(675, 135);
+            this.daButton1.Location = new System.Drawing.Point(625, 139);
             this.daButton1.Name = "daButton1";
             this.daButton1.PLC_Enable = false;
             this.daButton1.pLCBitselectRealize.AwaitTime = 0;
@@ -296,9 +296,9 @@ namespace 控件测试项目
             this.daButton1.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daButton1.pLCBitselectRealize.WrSafetyAddress = "0";
             this.daButton1.PLCTimer = null;
-            this.daButton1.Size = new System.Drawing.Size(206, 75);
+            this.daButton1.Size = new System.Drawing.Size(158, 96);
             this.daButton1.TabIndex = 9;
-            this.daButton1.Text = "OFF";
+            this.daButton1.Text = "ON";
             this.daButton1.Textalign_0 = "MiddleCenter";
             this.daButton1.Textalign_1 = "MiddleCenter";
             this.daButton1.TextColor_0 = System.Drawing.Color.White;
@@ -308,10 +308,6 @@ namespace 控件测试项目
             this.daButton1.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daButton1.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daButton1.UseVisualStyleBackColor = false;
-            // 
-            // plcControlSwitch1
-            // 
-            this.plcControlSwitch1.ControlSwitch = PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch.Switch.Bit0;
             // 
             // Form1
             // 
@@ -337,8 +333,8 @@ namespace 控件测试项目
         private PLC通讯基础控件项目.基础控件.DAuiBarChart dAuiBarChart2;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton1;
         private PLC通讯基础控件项目.基础控件.DATextBox daTextBox1;
-        private PLC通讯基础控件项目.基础控件.DAButton daButton1;
         private PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch plcControlSwitch1;
+        private PLC通讯基础控件项目.基础控件.DAButton daButton1;
     }
 }
 
