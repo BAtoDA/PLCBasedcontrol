@@ -19,7 +19,12 @@
 
 # 控件参数持久化以及对应类：
 ![image](https://user-images.githubusercontent.com/60955669/132943851-d847107d-4833-450c-b8a3-88a4ed8ebab5.png)
-
+# 项目更新展示：
+1：新增全局位控件状态切换 方便用户在IDE编辑设计模式下快速的切换控件状态 在需要的设计窗口添加PlcControlSwitch控件 找到参数ControlSwitch点击切换状态即可。  
+  状态0：
+ ![image](https://user-images.githubusercontent.com/60955669/137632715-0c74c336-2ba8-4968-9866-09ac33693cde.png)
+  状态1：
+ ![image](https://user-images.githubusercontent.com/60955669/137632738-238bb3f4-0f05-4a79-8a52-28cb7f9c7e2c.png)
 # 更新计划：
 1：计划更新图形控件-柱形图-圆形图-折线图等。   
 2：开发表格控件搭配PLC进行显示，并且支持和数据库链接读取-更新-写入等操作。    
