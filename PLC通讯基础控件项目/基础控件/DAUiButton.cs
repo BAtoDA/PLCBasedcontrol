@@ -14,7 +14,6 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件;
@@ -44,14 +43,14 @@ namespace PLC通讯基础控件项目.基础控件
                     ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
                     //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                 }
-                //立马刷新状态
-                this.SuspendLayout();
-                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
-                this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
-                this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
-                this.Refresh();
-                this.ResumeLayout(false);
             });
+            //立马刷新状态
+            this.SuspendLayout();
+            this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+            this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+            this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+            this.Refresh();
+            this.ResumeLayout(false);
         }
     }
     [ToolboxItem(true)]
@@ -195,6 +194,22 @@ namespace PLC通讯基础控件项目.基础控件
         public object Clone()
         {
             return this;
+        }
+        #endregion
+        #region 编辑模式刷新状态
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if(DesignMode)
+            {
+                //立马刷新状态
+                this.SuspendLayout();
+                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+                this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+                this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+                this.Refresh();
+                this.ResumeLayout(false);
+            }
+            base.OnPaint(e);
         }
         #endregion
     }
