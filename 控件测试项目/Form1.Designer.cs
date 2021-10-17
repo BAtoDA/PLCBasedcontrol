@@ -160,7 +160,7 @@ namespace 控件测试项目
             this.daUiButton1.Size = new System.Drawing.Size(100, 35);
             this.daUiButton1.Style = Sunny.UI.UIStyle.Custom;
             this.daUiButton1.TabIndex = 7;
-            this.daUiButton1.Text = "ON";
+            this.daUiButton1.Text = "OFF";
             this.daUiButton1.Textalign_0 = "MiddleCenter";
             this.daUiButton1.Textalign_1 = "MiddleCenter";
             this.daUiButton1.TextColor_0 = System.Drawing.Color.White;
@@ -249,7 +249,7 @@ namespace 控件测试项目
             this.daButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daButton1.ForeColor = System.Drawing.Color.White;
-            this.daButton1.Location = new System.Drawing.Point(720, 418);
+            this.daButton1.Location = new System.Drawing.Point(675, 135);
             this.daButton1.Name = "daButton1";
             this.daButton1.PLC_Enable = false;
             this.daButton1.pLCBitselectRealize.AwaitTime = 0;

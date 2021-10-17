@@ -29,6 +29,7 @@ using System.Diagnostics;
 using PLC通讯基础控件项目.控件类基.控件安全对象池;
 using System.Speech.Synthesis;
 using HslCommunication.Profinet.Siemens;
+using PLC通讯基础控件项目.第三方通信互交底层;
 
 namespace PLC通讯基础控件项目
 {
@@ -102,8 +103,15 @@ namespace PLC通讯基础控件项目
             //判定改控件是否在窗口设计期
             if (DesignMode) return;
             this.Stop();
+            #region 处理第三方通信互交
+            if (!PlcLoad)
+            {
+                SocketServer socketServer = new SocketServer();
+                socketServer.SocketLoad();
+            }
+            #endregion
             #region 分配对象池
-            if(!PlcLoad)
+            if (!PlcLoad)
             {
                 try
                 {
@@ -141,17 +149,17 @@ namespace PLC通讯基础控件项目
                             //-----查找指定dll并且按照路径进行反射获取Type命名空间-----
                             Type PLCoop;
                             if (PLClink.Dllplace)
-                              PLCoop = Assembly.LoadFrom(PLClink.Dll).GetType(PLClink.Link);
+                                PLCoop = Assembly.LoadFrom(PLClink.Dll).GetType(PLClink.Link);
                             else
                                 PLCoop = Assembly.GetExecutingAssembly().GetType(PLClink.Link);
                             if (PLCoop != null && !IPLCsurface.PLCDictionary.ContainsKey(PLClink.PLC.ToString()))
                             {
                                 Object[] constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
-                                Object obj=new object();
+                                Object obj = new object();
                                 switch (i.PLCDevice)
                                 {
                                     case PLC.Siemens:
-                                        constructParms = new object[] { (SiemensPLCS)(Enum.Parse(typeof(HslCommunication.Profinet.Siemens.SiemensPLCS), i.Retain) ?? HslCommunication.Profinet.Siemens.SiemensPLCS.S1500 )};  //构造器参数 
+                                        constructParms = new object[] { (SiemensPLCS)(Enum.Parse(typeof(HslCommunication.Profinet.Siemens.SiemensPLCS), i.Retain) ?? HslCommunication.Profinet.Siemens.SiemensPLCS.S1500) };  //构造器参数 
                                         SiemensS7Net obj1 = (SiemensS7Net)Activator.CreateInstance(PLCoop, constructParms);
                                         IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj1));
                                         break;
@@ -166,7 +174,7 @@ namespace PLC通讯基础控件项目
                                         IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj));
                                         break;
                                 }
-                             
+
                             }
                         }
                     }
