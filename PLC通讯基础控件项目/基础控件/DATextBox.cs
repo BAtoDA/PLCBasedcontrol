@@ -168,7 +168,7 @@ namespace PLC通讯基础控件项目.基础控件
         }
         #endregion
         #region 编辑模式刷新状态
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnLayout(LayoutEventArgs levent)
         {
             if (DesignMode)
             {
@@ -180,7 +180,7 @@ namespace PLC通讯基础控件项目.基础控件
                 this.Refresh();
                 this.ResumeLayout(false);
             }
-            base.OnPaint(e);
+            base.OnLayout(levent);
         }
         #endregion
     }

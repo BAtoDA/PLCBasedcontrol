@@ -78,6 +78,7 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton62 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daUiButton63 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daUiButton64 = new PLC通讯基础控件项目.基础控件.DAUiButton();
+            this.plcControlSwitch1 = new PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch(this.components);
             this.uiPanel1.SuspendLayout();
             this.uiGroupBox3.SuspendLayout();
             this.uiGroupBox2.SuspendLayout();
@@ -200,6 +201,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton9.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton9.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton9.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton9.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton9.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton9.Location = new System.Drawing.Point(19, 164);
             this.daUiButton9.MinimumSize = new System.Drawing.Size(1, 1);
@@ -266,6 +269,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton6.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton6.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton6.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton6.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton6.Location = new System.Drawing.Point(310, 95);
             this.daUiButton6.MinimumSize = new System.Drawing.Size(1, 1);
@@ -332,6 +337,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton7.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton7.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton7.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton7.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton7.Location = new System.Drawing.Point(214, 95);
             this.daUiButton7.MinimumSize = new System.Drawing.Size(1, 1);
@@ -398,6 +405,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton3.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton3.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton3.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton3.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton3.Location = new System.Drawing.Point(310, 32);
             this.daUiButton3.MinimumSize = new System.Drawing.Size(1, 1);
@@ -448,7 +457,7 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton3.PLCTimer = null;
             this.daUiButton3.Size = new System.Drawing.Size(83, 47);
             this.daUiButton3.TabIndex = 4;
-            this.daUiButton3.Text = "  PY02前\n原点回归";
+            this.daUiButton3.Text = " PY02前\n原点回归";
             this.daUiButton3.Textalign_0 = "MiddleCenter";
             this.daUiButton3.Textalign_1 = "MiddleCenter";
             this.daUiButton3.TextColor_0 = System.Drawing.Color.White;
@@ -464,6 +473,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton2.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton2.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton2.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton2.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton2.Location = new System.Drawing.Point(214, 32);
             this.daUiButton2.MinimumSize = new System.Drawing.Size(1, 1);
@@ -530,6 +541,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton5.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton5.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton5.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton5.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton5.Location = new System.Drawing.Point(19, 95);
             this.daUiButton5.MinimumSize = new System.Drawing.Size(1, 1);
@@ -596,6 +609,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton4.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton4.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton4.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton4.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton4.Location = new System.Drawing.Point(116, 95);
             this.daUiButton4.MinimumSize = new System.Drawing.Size(1, 1);
@@ -662,6 +677,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton1.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton1.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton1.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton1.Location = new System.Drawing.Point(19, 32);
             this.daUiButton1.MinimumSize = new System.Drawing.Size(1, 1);
@@ -728,6 +745,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton29.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton29.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton29.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton29.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton29.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton29.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton29.Location = new System.Drawing.Point(116, 32);
             this.daUiButton29.MinimumSize = new System.Drawing.Size(1, 1);
@@ -824,6 +843,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton8.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
             this.daUiButton8.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
+            this.daUiButton8.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
             this.daUiButton8.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton8.Location = new System.Drawing.Point(301, 213);
             this.daUiButton8.MinimumSize = new System.Drawing.Size(1, 1);
@@ -874,7 +895,7 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton8.PLCTimer = null;
             this.daUiButton8.Size = new System.Drawing.Size(91, 65);
             this.daUiButton8.TabIndex = 11;
-            this.daUiButton8.Text = "段1-自动";
+            this.daUiButton8.Text = "段1-手动";
             this.daUiButton8.Textalign_0 = "MiddleCenter";
             this.daUiButton8.Textalign_1 = "MiddleCenter";
             this.daUiButton8.TextColor_0 = System.Drawing.Color.White;
@@ -890,6 +911,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton17.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton17.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton17.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton17.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton17.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton17.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton17.Location = new System.Drawing.Point(212, 222);
             this.daUiButton17.MinimumSize = new System.Drawing.Size(1, 1);
@@ -956,6 +979,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton18.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton18.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton18.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton18.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton18.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton18.Location = new System.Drawing.Point(113, 222);
             this.daUiButton18.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1022,6 +1047,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton19.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton19.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton19.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton19.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton19.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton19.Location = new System.Drawing.Point(17, 222);
             this.daUiButton19.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1088,6 +1115,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton20.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton20.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton20.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton20.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton20.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton20.Location = new System.Drawing.Point(309, 158);
             this.daUiButton20.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1154,6 +1183,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton21.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton21.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton21.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton21.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton21.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton21.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton21.Location = new System.Drawing.Point(212, 158);
             this.daUiButton21.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1220,6 +1251,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton22.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton22.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton22.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton22.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton22.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton22.Location = new System.Drawing.Point(113, 158);
             this.daUiButton22.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1286,6 +1319,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton23.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton23.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton23.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton23.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton23.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton23.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton23.Location = new System.Drawing.Point(17, 158);
             this.daUiButton23.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1352,6 +1387,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton24.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton24.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton24.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton24.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton24.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton24.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton24.Location = new System.Drawing.Point(309, 95);
             this.daUiButton24.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1418,6 +1455,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton25.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton25.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton25.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton25.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton25.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton25.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton25.Location = new System.Drawing.Point(212, 95);
             this.daUiButton25.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1484,6 +1523,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton26.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton26.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton26.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton26.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton26.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton26.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton26.Location = new System.Drawing.Point(309, 32);
             this.daUiButton26.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1550,6 +1591,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton27.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton27.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton27.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton27.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton27.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton27.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton27.Location = new System.Drawing.Point(212, 32);
             this.daUiButton27.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1616,6 +1659,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton28.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton28.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton28.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton28.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton28.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton28.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton28.Location = new System.Drawing.Point(17, 95);
             this.daUiButton28.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1682,6 +1727,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton30.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton30.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton30.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton30.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton30.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton30.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton30.Location = new System.Drawing.Point(113, 95);
             this.daUiButton30.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1748,6 +1795,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton31.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton31.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton31.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton31.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton31.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton31.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton31.Location = new System.Drawing.Point(17, 32);
             this.daUiButton31.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1814,6 +1863,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton32.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton32.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton32.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton32.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton32.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton32.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton32.Location = new System.Drawing.Point(113, 32);
             this.daUiButton32.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1903,6 +1954,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton11.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
             this.daUiButton11.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
+            this.daUiButton11.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
             this.daUiButton11.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton11.Location = new System.Drawing.Point(113, 199);
             this.daUiButton11.MinimumSize = new System.Drawing.Size(1, 1);
@@ -1953,7 +2006,7 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton11.PLCTimer = null;
             this.daUiButton11.Size = new System.Drawing.Size(201, 73);
             this.daUiButton11.TabIndex = 17;
-            this.daUiButton11.Text = "段3-自动";
+            this.daUiButton11.Text = "段3-手动";
             this.daUiButton11.Textalign_0 = "MiddleCenter";
             this.daUiButton11.Textalign_1 = "MiddleCenter";
             this.daUiButton11.TextColor_0 = System.Drawing.Color.White;
@@ -1969,6 +2022,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton41.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton41.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton41.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton41.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton41.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton41.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton41.Location = new System.Drawing.Point(309, 95);
             this.daUiButton41.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2035,6 +2090,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton42.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton42.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton42.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton42.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton42.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton42.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton42.Location = new System.Drawing.Point(212, 95);
             this.daUiButton42.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2101,6 +2158,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton43.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton43.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton43.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton43.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton43.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton43.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton43.Location = new System.Drawing.Point(309, 32);
             this.daUiButton43.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2167,6 +2226,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton44.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton44.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton44.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton44.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton44.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton44.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton44.Location = new System.Drawing.Point(212, 32);
             this.daUiButton44.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2233,6 +2294,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton45.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton45.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton45.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton45.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton45.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton45.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton45.Location = new System.Drawing.Point(17, 95);
             this.daUiButton45.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2299,6 +2362,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton46.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton46.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton46.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton46.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton46.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton46.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton46.Location = new System.Drawing.Point(113, 95);
             this.daUiButton46.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2365,6 +2430,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton47.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton47.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton47.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton47.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton47.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton47.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton47.Location = new System.Drawing.Point(17, 32);
             this.daUiButton47.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2431,6 +2498,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton48.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton48.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton48.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton48.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton48.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton48.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton48.Location = new System.Drawing.Point(113, 32);
             this.daUiButton48.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2520,6 +2589,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton12.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
             this.daUiButton12.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton12.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
+            this.daUiButton12.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(88)))));
             this.daUiButton12.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton12.Location = new System.Drawing.Point(131, 199);
             this.daUiButton12.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2570,7 +2641,7 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton12.PLCTimer = null;
             this.daUiButton12.Size = new System.Drawing.Size(201, 73);
             this.daUiButton12.TabIndex = 18;
-            this.daUiButton12.Text = "段4-自动";
+            this.daUiButton12.Text = "段4-手动";
             this.daUiButton12.Textalign_0 = "MiddleCenter";
             this.daUiButton12.Textalign_1 = "MiddleCenter";
             this.daUiButton12.TextColor_0 = System.Drawing.Color.White;
@@ -2586,6 +2657,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton57.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton57.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton57.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton57.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton57.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton57.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton57.Location = new System.Drawing.Point(310, 95);
             this.daUiButton57.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2652,6 +2725,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton58.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton58.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton58.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton58.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton58.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton58.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton58.Location = new System.Drawing.Point(214, 95);
             this.daUiButton58.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2718,6 +2793,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton59.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton59.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton59.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton59.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton59.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton59.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton59.Location = new System.Drawing.Point(310, 32);
             this.daUiButton59.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2784,6 +2861,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton60.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton60.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton60.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton60.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton60.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton60.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton60.Location = new System.Drawing.Point(214, 32);
             this.daUiButton60.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2850,6 +2929,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton61.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton61.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton61.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton61.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton61.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton61.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton61.Location = new System.Drawing.Point(19, 95);
             this.daUiButton61.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2916,6 +2997,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton62.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton62.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton62.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton62.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton62.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton62.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton62.Location = new System.Drawing.Point(116, 95);
             this.daUiButton62.MinimumSize = new System.Drawing.Size(1, 1);
@@ -2982,6 +3065,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton63.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton63.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton63.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton63.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton63.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton63.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton63.Location = new System.Drawing.Point(19, 32);
             this.daUiButton63.MinimumSize = new System.Drawing.Size(1, 1);
@@ -3048,6 +3133,8 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton64.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton64.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton64.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton64.FillColor = System.Drawing.Color.Silver;
+            this.daUiButton64.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton64.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton64.Location = new System.Drawing.Point(116, 32);
             this.daUiButton64.MinimumSize = new System.Drawing.Size(1, 1);
@@ -3107,6 +3194,10 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton64.TextContent_1 = "  ROB15\n原点回归";
             this.daUiButton64.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton64.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
+            // plcControlSwitch1
+            // 
+            this.plcControlSwitch1.ControlSwitch = PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch.Switch.Bit0;
             // 
             // 主页面
             // 
@@ -3173,5 +3264,6 @@ namespace PLC通讯基础控件项目.模板与控制界面
         private 基础控件.DAUiButton daUiButton10;
         private 基础控件.DAUiButton daUiButton11;
         private 基础控件.DAUiButton daUiButton12;
+        private PLC参数设置控件.控件状态切换控件.PLCControlSwitch plcControlSwitch1;
     }
 }

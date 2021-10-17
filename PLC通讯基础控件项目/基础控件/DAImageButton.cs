@@ -205,6 +205,46 @@ namespace PLC通讯基础控件项目.基础控件
         {
             return this;
         }
+
+        public void ControlSwitch(bool switchover)
+        {
+            if (switchover)
+            {
+                //立马刷新状态
+                this.SuspendLayout();
+                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_1;
+                this.TextContent_0 = this.pLCBitselectRealize.TextContent_1;
+                this.TextColor_0 = this.pLCBitselectRealize.TextColor_1;
+                this.Refresh();
+                this.ResumeLayout(false);
+            }
+            else
+            {
+                //立马刷新状态
+                this.SuspendLayout();
+                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+                this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+                this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+                this.Refresh();
+                this.ResumeLayout(false);
+            }
+        }
+        #endregion
+        #region 编辑模式刷新状态
+        protected override void OnLayout(LayoutEventArgs levent)
+        {
+            if (DesignMode)
+            {
+                //立马刷新状态
+                this.SuspendLayout();
+                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+                this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+                this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+                this.Refresh();
+                this.ResumeLayout(false);
+            }
+            base.OnLayout(levent);
+        }
         #endregion
     }
     public partial class DAImageButton
@@ -479,16 +519,6 @@ namespace PLC通讯基础控件项目.基础控件
 
         protected override void OnPaint(PaintEventArgs pe)
         {
-            if (DesignMode)
-            {
-                //立马刷新状态
-                this.SuspendLayout();
-                this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
-                this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
-                this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
-                this.Refresh();
-                this.ResumeLayout(false);
-            }
             Image image = base.Image;
             if (!base.Enabled)
             {

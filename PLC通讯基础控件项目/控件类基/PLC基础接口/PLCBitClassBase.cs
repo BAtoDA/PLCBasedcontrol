@@ -36,5 +36,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// 用于加载配置使用
         /// </summary>
         Timer Timerconfiguration { get; set; }
+        /// <summary>
+        /// 切换控件状态方法
+        /// 该方法必须实现
+        /// </summary>
+        void ControlSwitch(bool switchover);
     }
 }

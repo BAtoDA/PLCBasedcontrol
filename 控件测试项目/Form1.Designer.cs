@@ -37,6 +37,7 @@ namespace 控件测试项目
             this.daUiButton1 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daTextBox1 = new PLC通讯基础控件项目.基础控件.DATextBox();
             this.daButton1 = new PLC通讯基础控件项目.基础控件.DAButton();
+            this.plcControlSwitch1 = new PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch(this.components);
             this.SuspendLayout();
             // 
             // plcControlsPreferences1
@@ -244,7 +245,7 @@ namespace 控件测试项目
             // daButton1
             // 
             this.daButton1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daButton1.BackColor = System.Drawing.Color.Silver;
             this.daButton1.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -297,7 +298,7 @@ namespace 控件测试项目
             this.daButton1.PLCTimer = null;
             this.daButton1.Size = new System.Drawing.Size(206, 75);
             this.daButton1.TabIndex = 9;
-            this.daButton1.Text = "ON";
+            this.daButton1.Text = "OFF";
             this.daButton1.Textalign_0 = "MiddleCenter";
             this.daButton1.Textalign_1 = "MiddleCenter";
             this.daButton1.TextColor_0 = System.Drawing.Color.White;
@@ -306,7 +307,11 @@ namespace 控件测试项目
             this.daButton1.TextContent_1 = "ON";
             this.daButton1.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daButton1.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daButton1.UseVisualStyleBackColor = true;
+            this.daButton1.UseVisualStyleBackColor = false;
+            // 
+            // plcControlSwitch1
+            // 
+            this.plcControlSwitch1.ControlSwitch = PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch.Switch.Bit0;
             // 
             // Form1
             // 
@@ -333,6 +338,7 @@ namespace 控件测试项目
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton1;
         private PLC通讯基础控件项目.基础控件.DATextBox daTextBox1;
         private PLC通讯基础控件项目.基础控件.DAButton daButton1;
+        private PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch plcControlSwitch1;
     }
 }
 
