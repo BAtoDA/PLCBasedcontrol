@@ -233,22 +233,6 @@ namespace PLC通讯基础控件项目.基础控件
             return this;
         }
         #endregion
-        #region 编辑模式刷新状态
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            if (DesignMode)
-            {
-                //立马刷新状态
-                this.SuspendLayout();
-                this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
-                this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
-                this.Text = "0";
-                this.Refresh();
-                this.ResumeLayout(false);
-            }
-            base.OnPaint(e);
-        }
-        #endregion
     }
 
     public partial class DAUiTextBox
@@ -1359,6 +1343,16 @@ namespace PLC通讯基础控件项目.基础控件
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (DesignMode)
+            {
+                //立马刷新状态
+                this.SuspendLayout();
+                this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
+                this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
+                this.Text = "0";
+                this.Refresh();
+                this.ResumeLayout(false);
+            }
             base.OnPaint(e);
             if (!multiline)
             {
