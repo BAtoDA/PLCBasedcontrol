@@ -12,6 +12,8 @@ using PLC通讯库.通讯基础接口;
 using PLC通讯库.PLC通讯设备类型表;
 using PLC通讯库.通讯实现类;
 using System.Collections.Concurrent;
+using Sunny.UI;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类
 {
@@ -94,7 +96,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     lock (obj)
                     {
                         PLCErrTimer.Stop();
-                        PLCrefresh();
+                        _ = PLCrefresh();
                         PLCErrTimer.Start();
                     }
                 });
@@ -104,6 +106,25 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //-------自动填充报警历史--------
             if (pLCViewClassBase.Save)
                 pLCEventAutoContent.TextCreate();
+            //-------添加右键报警监控窗口----
+            UIContextMenuStrip uIContextMenuStrip = new UIContextMenuStrip();
+            uIContextMenuStrip.Name = "contextMenuStrip1";
+            uIContextMenuStrip.Size = new System.Drawing.Size(193, 48);
+
+            ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem.Name = "toolStripMenuItem1";
+            toolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            toolStripMenuItem.Text = "报警历史监控窗口";
+            //-------注册事件打开报警历史监控窗口-------
+            toolStripMenuItem.Click += ((Send, e1) =>
+              {
+                  new PLCErrhistoryForm(pLCViewClassBase).Show();
+              });
+
+            uIContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStripMenuItem});
+
+            this.PlcControl.ContextMenuStrip = uIContextMenuStrip;
         }
         /// <summary>
         /// 异步读取用户设定内容
@@ -165,6 +186,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 this.PlcControl.BeginInvoke((EventHandler)delegate { this.PlcControl.Rows.Clear(); });
                 register_Event.ForEach(s1 =>
                 {
+                    s1.报警发生时间= DateTime.Now;
                     Event_quantity.Add(s1);                
                     //遍历完成开始填充数据
                     this.PlcControl.BeginInvoke((EventHandler)delegate
@@ -173,12 +195,14 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     });
                 });//记录保持
 
-
                 if (!pLCViewClassBase.Save) return;
                 if (pLCEventAutoContent.IsText())
                 {
-                    foreach (var i in diffArr)
-                       await pLCEventAutoContent.TextWrite(new JavaScriptSerializer().Serialize(i));
+                foreach (var i in diffArr1)
+                {
+                    i.报警处理时间 = DateTime.Now;
+                    await pLCEventAutoContent.TextWrite(new JavaScriptSerializer().Serialize(i));
+                }
                 }
             //}
             //catch { }

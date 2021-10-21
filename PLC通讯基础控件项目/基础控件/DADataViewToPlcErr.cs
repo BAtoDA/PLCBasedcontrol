@@ -128,6 +128,8 @@ namespace PLC通讯基础控件项目.基础控件
             {
                 if (DesignMode)
                     eventAddress = System.IO.Directory.GetCurrentDirectory();
+                else
+                    eventAddress = value;
             } 
         }
         private string eventAddress = System.IO.Directory.GetCurrentDirectory();

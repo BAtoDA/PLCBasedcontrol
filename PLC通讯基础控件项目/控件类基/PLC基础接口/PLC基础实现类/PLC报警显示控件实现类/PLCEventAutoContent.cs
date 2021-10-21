@@ -22,9 +22,12 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 异步读取当天报警历史
         /// </summary>
         /// <returns></returns>
-        public override async Task<string> TextRead()
+        public async Task<string[]> TextRead()
         {
-            return await base.TextRead();
+            return  File.ReadAllLines(@Textaddress, Encoding.UTF8);
+            //using StreamReader TextReader = new StreamReader(@Textaddress, Encoding.UTF8);
+            //return await TextReader.ReadToEndAsync();
+            //return await base.TextRead();
         }
         /// <summary>
         /// 异步写入当前PLC报警类历史内容

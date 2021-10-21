@@ -44,7 +44,10 @@ namespace 控件测试项目
             this.plcControlSwitch1 = new PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch(this.components);
             this.daUiButton2 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daDataViewToPlcErr1 = new PLC通讯基础控件项目.基础控件.DADataViewToPlcErr(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // plcControlsPreferences1
@@ -66,7 +69,7 @@ namespace 控件测试项目
             // 
             // plcPreferences3
             // 
-            this.plcPreferences3.IPEnd = "192.168.3.115";
+            this.plcPreferences3.IPEnd = "192.168.226.154";
             this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.plcPreferences3.Point = 8000;
             this.plcPreferences3.Receptionovertime = 1000;
@@ -372,6 +375,19 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.Size = new System.Drawing.Size(643, 300);
             this.daDataViewToPlcErr1.TabIndex = 9;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 26);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -385,6 +401,7 @@ namespace 控件测试项目
             this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.Text = "011";
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,6 +419,8 @@ namespace 控件测试项目
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences1;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton2;
         private PLC通讯基础控件项目.基础控件.DADataViewToPlcErr daDataViewToPlcErr1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
 
