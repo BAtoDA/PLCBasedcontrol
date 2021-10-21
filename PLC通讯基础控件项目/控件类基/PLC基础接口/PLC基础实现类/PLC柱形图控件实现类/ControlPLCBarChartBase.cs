@@ -158,44 +158,42 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (SLQServer_SLQLite)
             {
                 //建立连接并打开
-                using (SqlConnection myConn = new SqlConnection(SQLlink))
+                using SqlConnection myConn = new SqlConnection(SQLlink);
+                myConn.Open();
+                using SqlCommand myComm = new SqlCommand();
+                SqlTransaction myTran;
+                myTran = myConn.BeginTransaction();
+                myComm.Transaction = myTran; //定位到pubs数据库
+                myComm.Connection = myConn;
+                foreach (var i in SQLstatement)
                 {
-                    myConn.Open();
-                    SqlCommand myComm = new SqlCommand();
-                    SqlTransaction myTran;
-                    myTran = myConn.BeginTransaction();
-                    myComm.Transaction = myTran; //定位到pubs数据库
-                    myComm.Connection = myConn;
-                    foreach (var i in SQLstatement)
-                    {
-                        //下面绑定连接和事务对象
-                        myComm.CommandText = i;
-                        myComm.ExecuteNonQuery();//更新数据
-                    }
-                    //提交事务--当提交失败自动回滚数据
-                    myTran.Commit();
+                    //下面绑定连接和事务对象
+                    myComm.CommandText = i;
+                    myComm.ExecuteNonQuery();//更新数据
                 }
+                //提交事务--当提交失败自动回滚数据
+                myTran.Commit();
+
             }
             else
             {
                 //建立连接并打开
-                using (SQLiteConnection myConn = new SQLiteConnection(SQLlink))
+                using SQLiteConnection myConn = new SQLiteConnection(SQLlink);
+                myConn.Open();
+                using SQLiteCommand myComm = new SQLiteCommand();
+                SQLiteTransaction myTran;
+                myTran = myConn.BeginTransaction();
+                myComm.Transaction = myTran; //定位到pubs数据库
+                myComm.Connection = myConn;
+                foreach (var i in SQLstatement)
                 {
-                    myConn.Open();
-                    SQLiteCommand myComm = new SQLiteCommand();
-                    SQLiteTransaction myTran;
-                    myTran = myConn.BeginTransaction();
-                    myComm.Transaction = myTran; //定位到pubs数据库
-                    myComm.Connection = myConn;
-                    foreach (var i in SQLstatement)
-                    {
-                        //下面绑定连接和事务对象
-                        myComm.CommandText = i;
-                        myComm.ExecuteNonQuery();//更新数据
-                    }
-                    //提交事务--当提交失败自动回滚数据
-                    myTran.Commit();
+                    //下面绑定连接和事务对象
+                    myComm.CommandText = i;
+                    myComm.ExecuteNonQuery();//更新数据
                 }
+                //提交事务--当提交失败自动回滚数据
+                myTran.Commit();
+
             }
         }
      

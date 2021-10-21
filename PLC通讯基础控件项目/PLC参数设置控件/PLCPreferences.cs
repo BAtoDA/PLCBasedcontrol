@@ -22,7 +22,7 @@ namespace PLC通讯基础控件项目.PLC参数设置控件
     [ToolboxItem(false)]
     [Browsable(false)]
     [Serializable]
-    public  class PLCPreferences: IComponent
+    public sealed class PLCPreferences: IComponent
     {
         /// <summary>
         /// PLC类型

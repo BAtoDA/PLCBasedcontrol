@@ -17,6 +17,7 @@ using PLC通讯库.PLC通讯设备类型表;
 using System.Diagnostics;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
 using System.Windows.Forms;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口
 {

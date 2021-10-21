@@ -3195,10 +3195,6 @@ namespace PLC通讯基础控件项目.模板与控制界面
             this.daUiButton64.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton64.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
-            // plcControlSwitch1
-            // 
-            this.plcControlSwitch1.ControlSwitch = PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch.Switch.Bit0;
-            // 
             // 主页面
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);

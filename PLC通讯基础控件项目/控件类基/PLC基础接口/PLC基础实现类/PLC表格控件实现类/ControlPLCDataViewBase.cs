@@ -104,6 +104,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 textboxcell.ReadOnly = true;
                 this.PlcControl.Columns.Add(textboxcell);
             }
+            //----------注入SQL保存的数据---------
 
 
         }
@@ -160,9 +161,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (SLQServer_SLQLite)
             {
                 //建立连接并打开
-                SqlConnection myConn =new SqlConnection(SQLlink);
+                using SqlConnection myConn =new SqlConnection(SQLlink);
                 myConn.Open();
-                SqlCommand myComm = new SqlCommand();
+                using SqlCommand myComm = new SqlCommand();
                 SqlTransaction myTran;
                 myTran = myConn.BeginTransaction();
                 myComm.Transaction = myTran; //定位到pubs数据库
@@ -179,9 +180,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             else
             {
                 //建立连接并打开
-                SQLiteConnection myConn = new SQLiteConnection(SQLlink);
+                using SQLiteConnection myConn = new SQLiteConnection(SQLlink);
                 myConn.Open();
-                SQLiteCommand myComm = new SQLiteCommand();
+                using SQLiteCommand myComm = new SQLiteCommand();
                 SQLiteTransaction myTran;
                 myTran = myConn.BeginTransaction();
                 myComm.Transaction = myTran; //定位到pubs数据库
