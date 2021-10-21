@@ -30,6 +30,7 @@ namespace 控件测试项目
         }
         protected async override void OnShown(EventArgs e)
         {
+            var DD = DateTime.Now;
             base.OnShown(e);
         }
     }

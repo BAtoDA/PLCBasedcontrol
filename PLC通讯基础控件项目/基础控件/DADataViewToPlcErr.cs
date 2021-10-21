@@ -121,8 +121,16 @@ namespace PLC通讯基础控件项目.基础控件
         [Description("读取PLC报警参数地址"), Category("PLC类型")]
         [ToolboxItem(true)]
         [DefaultValue(typeof(string), "PLCEventErr")]
-        public string EventAddress { get => eventAddress; set { eventAddress = value; } }
-        private string eventAddress = System.IO.Directory.GetCurrentDirectory()+ "\\PLCEventErr\\PLCErr.txt";
+        public string EventAddress 
+        { 
+            get => eventAddress;
+            set 
+            {
+                if (DesignMode)
+                    eventAddress = System.IO.Directory.GetCurrentDirectory();
+            } 
+        }
+        private string eventAddress = System.IO.Directory.GetCurrentDirectory();
         [Browsable(true)]
         [Description("是否开启自动保存报警历史"), Category("PLC类型")]
         public bool Save { get => save; set => save=value; }
@@ -167,7 +175,7 @@ namespace PLC通讯基础控件项目.基础控件
                 }
             }
         }
-        private string saveAddress= System.IO.Directory.GetCurrentDirectory() + "\\PLCEventErr\\SavePLCErr.txt";
+        private string saveAddress= System.IO.Directory.GetCurrentDirectory() + "\\PLCEventErr";
 
         [Browsable(false)]
         public event EventHandler Modification;

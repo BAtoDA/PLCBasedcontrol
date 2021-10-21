@@ -346,10 +346,10 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
-            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\System32\\PLCEventErr\\PLCErr.txt";
+            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\System32";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daDataViewToPlcErr1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.daDataViewToPlcErr1.Location = new System.Drawing.Point(286, 30);
+            this.daDataViewToPlcErr1.Location = new System.Drawing.Point(316, 30);
             this.daDataViewToPlcErr1.Name = "daDataViewToPlcErr1";
             this.daDataViewToPlcErr1.PLC_Enable = true;
             this.daDataViewToPlcErr1.ReadCommand = false;
@@ -369,7 +369,7 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.SaveAddress = "C:\\Users\\Administrator\\Desktop\\自动报警记录测试";
             this.daDataViewToPlcErr1.SelectedIndex = -1;
             this.daDataViewToPlcErr1.ShowGridLine = true;
-            this.daDataViewToPlcErr1.Size = new System.Drawing.Size(643, 307);
+            this.daDataViewToPlcErr1.Size = new System.Drawing.Size(643, 300);
             this.daDataViewToPlcErr1.TabIndex = 9;
             // 
             // Form1

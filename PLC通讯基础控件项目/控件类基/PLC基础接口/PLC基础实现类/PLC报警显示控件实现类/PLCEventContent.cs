@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Security.AccessControl;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类
 {
@@ -13,7 +14,12 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     public  class PLCEventContent
     {
         protected string Textaddress;
-        public PLCEventContent(string Textaddress) => this.@Textaddress = @Textaddress;
+        private string Address;
+        public PLCEventContent(string Textaddress)
+        {
+            this.Address = @Textaddress;
+            this.@Textaddress = @Textaddress+ "\\PLCEventErr\\PLCErr.txt";
+        }
         /// <summary>
         /// 异步读取当前PLC报警类设置参数
         /// </summary>
@@ -44,13 +50,16 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public virtual bool TextCreate()
         {
             //先判定文件夹是否存在
-            if (!Directory.Exists(System.IO.Directory.GetCurrentDirectory() + "\\PLCEventErr"))
+            if (!Directory.Exists(@Address+ "\\PLCEventErr"))
             {
-                string Address= System.IO.Directory.GetCurrentDirectory() + "\\PLCEventErr";
-                var fileInfo = Directory.CreateDirectory(@Address);
+                //向系统申请权限
+                AddSecurityControll2Folder(@Address);
+                var fileInfo = Directory.CreateDirectory(@Address+ "\\PLCEventErr");
             }
-            if (!File.Exists(@Textaddress)&Directory.Exists(System.IO.Directory.GetCurrentDirectory() + "\\PLCEventErr"))
+            if (!File.Exists(@Textaddress)&Directory.Exists(@Address+ "\\PLCEventErr"))
             {
+                //向系统申请权限
+                AddSecurityControll2Folder(@Address + "\\PLCEventErr");
                 using var fileInfo = new FileInfo(@Textaddress).Create();
             }
             return true;
@@ -63,12 +72,34 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             try
             {
                 //先判定文件夹是否存在
-                return Directory.Exists(System.IO.Directory.GetCurrentDirectory() + "\\PLCEventErr") & File.Exists(@Textaddress) ? true : false;
+                return Directory.Exists(@Address+ "\\PLCEventErr") & File.Exists(@Textaddress) ? true : false;
             }
             catch
             {
                 return false;
             }
+        }
+        /// <summary>
+        ///为文件夹添加users，everyone用户组的完全控制权限
+        /// </summary>
+        /// <param name="dirPath"></param>
+        public void AddSecurityControll2Folder(string dirPath)
+        {
+            //获取文件夹信息
+            DirectoryInfo dir = new DirectoryInfo(dirPath);
+            //获得该文件夹的所有访问权限
+            System.Security.AccessControl.DirectorySecurity dirSecurity = dir.GetAccessControl(AccessControlSections.All);
+            //设定文件ACL继承
+            InheritanceFlags inherits = InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit;
+            //添加ereryone用户组的访问权限规则 完全控制权限
+            FileSystemAccessRule everyoneFileSystemAccessRule = new FileSystemAccessRule("Everyone", FileSystemRights.FullControl, inherits, PropagationFlags.None, AccessControlType.Allow);
+            //添加Users用户组的访问权限规则 完全控制权限
+            FileSystemAccessRule usersFileSystemAccessRule = new FileSystemAccessRule("Users", FileSystemRights.FullControl, inherits, PropagationFlags.None, AccessControlType.Allow);
+            bool isModified = false;
+            dirSecurity.ModifyAccessRule(AccessControlModification.Add, everyoneFileSystemAccessRule, out isModified);
+            dirSecurity.ModifyAccessRule(AccessControlModification.Add, usersFileSystemAccessRule, out isModified);
+            //设置访问权限
+            dir.SetAccessControl(dirSecurity);
         }
     }
 }

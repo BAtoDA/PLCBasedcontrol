@@ -50,11 +50,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //先判定文件夹是否存在
             if (!Directory.Exists(@Address + "\\PLCEventErr"))
             {
+                AddSecurityControll2Folder(@Address);
                 string Addressq =this.Address + "\\PLCEventErr";
                 var fileInfo = Directory.CreateDirectory(@Addressq);
             }
             if (!File.Exists(@Textaddress) & Directory.Exists(@Address + "\\PLCEventErr"))
             {
+                AddSecurityControll2Folder(@Address + "\\PLCEventErr");
                 using var fileInfo = new FileInfo(@Textaddress).Create();
             }
             return true;
