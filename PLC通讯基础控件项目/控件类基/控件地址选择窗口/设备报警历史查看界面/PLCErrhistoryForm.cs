@@ -24,38 +24,43 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             InitializeComponent();
             this.pLCEvent_MessageBase = pLCEvent_MessageBase;
             pLCEventAutoContent = new PLCEventAutoContent(@pLCEvent_MessageBase.SaveAddress);
-            //读取自动保存历史
-            TextRead();
         }
         /// <summary>
         /// 异步读取用户设定内容
         /// </summary>
-        private async void TextRead()
+        private async Task TextRead()
         {
             if (!pLCEventAutoContent.IsText()) return;
-            //读取PLC设置报警内容表
-            var Content = await pLCEventAutoContent.TextRead();
+            //-----获取后30天最新的报警表---------
             //清空表
             Event_Messages.Clear();
-            //反序列化
-            foreach (var i in Content)
+            //获取后30天的日期
+            string[] Days = new string[30];
+            for (int i = 0; i < Days.Length; i++)
             {
-                var ContentOop = new JavaScriptSerializer().Deserialize<Event_message>(i);
-                if (ContentOop != null)
+                Days[i] = @pLCEvent_MessageBase.SaveAddress+ "\\PLCEventErr\\" + DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString("D") + ".txt"; //当前时间减去7天
+                //读取PLC设置报警内容表
+                var Content = await pLCEventAutoContent.TextRead(Days[i]);
+                //反序列化
+                foreach (var ix in Content)
                 {
-                    Event_Messages.Add(ContentOop);
+                    var ContentOop = new JavaScriptSerializer().Deserialize<Event_message>(ix);
+                    if (ContentOop != null)
+                    {
+                        Event_Messages.Add(ContentOop);
+                    }
                 }
             }
-            
         }
         protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             //显示UI过度
             UIWaitFormService.ShowWaitForm("开始加载UI...");
+            //读取自动保存历史
+            await TextRead();
             await Task.Run(() =>
             {
-                
                 //从数据获取数据
                 var data = Event_Messages;
                 var query = (from q in Event_Messages where DateTime.Parse(q.报警发生时间.ToString("D")).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
@@ -82,7 +87,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                         this.uiComboboxEx1.Items.Add(s.报警发生时间.ToString("f").Trim());
                         this.uiComboboxEx2.Items.Add(s.报警处理时间.ToString("f").Trim());
                         this.uiComboboxEx3.Items.Add(s.设备.Trim());
-
                     });
                     this.uiComboboxEx1.Items.Add("全部");
                     this.uiComboboxEx2.Items.Add("全部");
@@ -104,7 +108,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 string[] Days = new string[7];
                 for (int i = 0; i < Days.Length; i++)
                     Days[i] = DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString(); //当前时间减去7天
-                                                                                         //计算每天处理异常的总时间
+                //计算每天处理异常的总时间
                 List<Tuple<int, string>> Histogramdata = new List<Tuple<int, string>>();
                 DateTime dateTime = DateTime.Parse(DateTime.Now.ToString("yyyy - MM - dd"));
                 int quantity = 0;
@@ -163,10 +167,10 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HistoryErrTiming()
+        private async void HistoryErrTiming()
         {
             //读取自动保存历史
-            TextRead();
+            await TextRead();
             var data = Event_Messages;
             var query = (from q in data where DateTime.Parse(q.报警发生时间.ToString("f").Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
             //填充7天警告次数

@@ -26,8 +26,12 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public virtual async Task<string> TextRead()
         {
-            using StreamReader TextReader = new StreamReader(@Textaddress, Encoding.UTF8);
-            return await TextReader.ReadToEndAsync();
+            try
+            {
+                using StreamReader TextReader = new StreamReader(@Textaddress, Encoding.UTF8);
+                return await TextReader.ReadToEndAsync();
+            }
+            catch { return ""; }
         }
         /// <summary>
         /// 异步写入当前PLC报警类设置参数
@@ -37,11 +41,12 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public virtual async Task TextWrite(string Content)
         {
-            await Task.Run(() =>
+            try
             {
-                File.WriteAllText(@Textaddress, Content);
-                return true;
-            });
+                //File.WriteAllText(@Textaddress, Content);
+                await File.WriteAllTextAsync(@Textaddress, Content);
+            }
+            catch { }
         }
         /// <summary>
         /// 创建文本

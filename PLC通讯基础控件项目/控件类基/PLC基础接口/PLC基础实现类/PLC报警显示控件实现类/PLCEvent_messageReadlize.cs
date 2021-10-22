@@ -115,6 +115,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             toolStripMenuItem.Name = "toolStripMenuItem1";
             toolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             toolStripMenuItem.Text = "报警历史监控窗口";
+
+            //-------添加导出报警历史功能----
+
+
             //-------注册事件打开报警历史监控窗口-------
             toolStripMenuItem.Click += ((Send, e1) =>
               {

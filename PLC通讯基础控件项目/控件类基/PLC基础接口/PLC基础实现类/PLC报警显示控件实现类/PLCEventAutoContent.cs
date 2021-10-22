@@ -24,10 +24,23 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public async Task<string[]> TextRead()
         {
-            return  File.ReadAllLines(@Textaddress, Encoding.UTF8);
-            //using StreamReader TextReader = new StreamReader(@Textaddress, Encoding.UTF8);
-            //return await TextReader.ReadToEndAsync();
-            //return await base.TextRead();
+            try
+            {
+                return await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+            }
+            catch { return new string[] { "" }; };
+        }
+        /// <summary>
+        /// 异步读取当天报警历史
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string[]> TextRead(string Textaddress)
+        {
+            try
+            {
+                return await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+            }
+            catch { return new string[] { "" }; };
         }
         /// <summary>
         /// 异步写入当前PLC报警类历史内容
@@ -37,12 +50,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public override async Task TextWrite(string Content)
         {
-            await Task.Run(() =>
-            {
-                //File.AppendAllText(@Textaddress, Content);
-                File.AppendAllLines(@Textaddress, new List<string>() { Content });
-                return true;
-            });
+            //File.AppendAllLines(@Textaddress, new List<string>() { Content });
+            await File.AppendAllLinesAsync(@Textaddress, new List<string>() { Content });
         }
         /// <summary>
         /// 自动创建文件夹
