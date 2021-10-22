@@ -14,6 +14,7 @@ using PLC通讯库.通讯实现类;
 using System.Collections.Concurrent;
 using Sunny.UI;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类
 {
@@ -117,7 +118,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             toolStripMenuItem.Text = "报警历史监控窗口";
 
             //-------添加导出报警历史功能----
-
+            ToolStripMenuItem toolStripMenuItem1 = new ToolStripMenuItem();
+            toolStripMenuItem1.Name = "toolStripMenuItem2";
+            toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
+            toolStripMenuItem1.Text = "报警记录导出";
 
             //-------注册事件打开报警历史监控窗口-------
             toolStripMenuItem.Click += ((Send, e1) =>
@@ -125,8 +129,14 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                   new PLCErrhistoryForm(pLCViewClassBase).Show();
               });
 
+            //-------注册事件导出报警历史窗口-------
+            toolStripMenuItem1.Click += ((Send, e1) =>
+            {
+                new PLCErrderiveForm(pLCViewClassBase).ShowDialog();
+            });
+
             uIContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            toolStripMenuItem});
+            toolStripMenuItem,toolStripMenuItem1});
 
             this.PlcControl.ContextMenuStrip = uIContextMenuStrip;
         }
@@ -190,7 +200,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 this.PlcControl.BeginInvoke((EventHandler)delegate { this.PlcControl.Rows.Clear(); });
                 register_Event.ForEach(s1 =>
                 {
-                    s1.报警发生时间= DateTime.Now;
+                    s1.报警发生时间= DateTime.Now.ToString("F");
                     Event_quantity.Add(s1);                
                     //遍历完成开始填充数据
                     this.PlcControl.BeginInvoke((EventHandler)delegate
@@ -204,7 +214,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 {
                 foreach (var i in diffArr1)
                 {
-                    i.报警处理时间 = DateTime.Now;
+                    i.报警处理时间 = DateTime.Now.ToString("F");
                     await pLCEventAutoContent.TextWrite(new JavaScriptSerializer().Serialize(i));
                 }
                 }
