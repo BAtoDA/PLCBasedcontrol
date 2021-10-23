@@ -34,9 +34,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <summary>
         /// 导出数据事件
         /// </summary>
-        /// <param name="Count"></param>
-        /// <param name="Address"></param>
-        /// <param name="Content"></param>
         public event EventHandler ExportDataRun;
         #endregion
         /// <summary>

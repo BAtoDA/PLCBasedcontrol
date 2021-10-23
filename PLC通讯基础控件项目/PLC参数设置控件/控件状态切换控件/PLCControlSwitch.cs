@@ -11,19 +11,24 @@ using System.Windows.Forms;
 namespace PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件
 {
     /// <summary>
+    /// 状态切换枚举
+    /// </summary>
+    public enum Switch
+    {
+        Bit0 = 0, Bit1 = 1
+    }
+
+    /// <summary>
     /// 切换PLC所有Bit控件的状态
     /// 改模式方便用户调试
     /// </summary>
     [ToolboxItem(true)]
+    [Browsable(true)]
     [ToolboxBitmap(typeof(PLCControlSwitch), "ComponentTest.bmp")]
     [DesignTimeVisible(true)]
-    public class PLCControlSwitch: Component
+    [Description("切换PLC所有Bit控件的状态")]
+    public partial class PLCControlSwitch: Timer
     {
-        public enum Switch
-        {
-            Bit0 = 0, Bit1 = 1
-        }
-
         private IContainer _Designer;
         public PLCControlSwitch(IContainer container)
         {

@@ -46,14 +46,15 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
         public PLCStatusView()
         {
             InitializeComponent();
+            this.Size = new Size(101, 110);
         }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             this.pictureBox1.Image =this.imageList1.Images[0];
-            if (this.DesignMode) return;
-            //读取PLC状态
-            GetPLC();
+            //if (this.DesignMode) return;
+            ////读取PLC状态
+            //GetPLC();
         }
         private void GetPLC()
         {

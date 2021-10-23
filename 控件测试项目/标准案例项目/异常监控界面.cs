@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace 控件测试项目.DDW
+namespace 控件测试项目.标准案例项目
 {
-    public partial class Form1 : Form
+    public partial class 异常监控界面 : Form
     {
-        public Form1()
+        public 异常监控界面()
         {
             InitializeComponent();
         }

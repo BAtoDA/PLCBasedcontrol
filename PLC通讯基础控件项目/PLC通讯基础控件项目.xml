@@ -47,6 +47,11 @@
             预留属性
             </summary>
         </member>
+        <member name="T:PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.Switch">
+            <summary>
+            状态切换枚举
+            </summary>
+        </member>
         <member name="T:PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch">
             <summary>
             切换PLC所有Bit控件的状态
@@ -2396,9 +2401,6 @@
             <summary>
             导出数据事件
             </summary>
-            <param name="Count"></param>
-            <param name="Address"></param>
-            <param name="Content"></param>
         </member>
         <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类.PLCErrExportData.ExporData(System.Collections.Generic.List{PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message})">
             <summary>

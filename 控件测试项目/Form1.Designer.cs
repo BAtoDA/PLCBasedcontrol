@@ -357,11 +357,14 @@ namespace 控件测试项目
             // plcStatusView1
             // 
             this.plcStatusView1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.plcStatusView1.AutoSize = true;
+            this.plcStatusView1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.plcStatusView1.BackColor = System.Drawing.Color.Transparent;
-            this.plcStatusView1.Location = new System.Drawing.Point(611, 372);
+            this.plcStatusView1.Location = new System.Drawing.Point(611, 366);
+            this.plcStatusView1.MinimumSize = new System.Drawing.Size(101, 110);
             this.plcStatusView1.Name = "plcStatusView1";
             this.plcStatusView1.PLC_Enable = true;
-            this.plcStatusView1.Size = new System.Drawing.Size(86, 98);
+            this.plcStatusView1.Size = new System.Drawing.Size(101, 110);
             this.plcStatusView1.TabIndex = 11;
             // 
             // uiLine1
@@ -403,7 +406,7 @@ namespace 控件测试项目
             this.uiLine4.Direction = Sunny.UI.UILine.LineDirection.Vertical;
             this.uiLine4.FillColor = System.Drawing.Color.Transparent;
             this.uiLine4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLine4.Location = new System.Drawing.Point(502, 509);
+            this.uiLine4.Location = new System.Drawing.Point(518, 509);
             this.uiLine4.MinimumSize = new System.Drawing.Size(2, 2);
             this.uiLine4.Name = "uiLine4";
             this.uiLine4.Size = new System.Drawing.Size(31, 29);
@@ -423,17 +426,20 @@ namespace 控件测试项目
             // plcStatusView2
             // 
             this.plcStatusView2.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.plcStatusView2.AutoSize = true;
+            this.plcStatusView2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.plcStatusView2.BackColor = System.Drawing.Color.Transparent;
-            this.plcStatusView2.Location = new System.Drawing.Point(476, 536);
+            this.plcStatusView2.Location = new System.Drawing.Point(492, 536);
+            this.plcStatusView2.MinimumSize = new System.Drawing.Size(101, 110);
             this.plcStatusView2.Name = "plcStatusView2";
             this.plcStatusView2.PLC_Enable = true;
-            this.plcStatusView2.Size = new System.Drawing.Size(86, 98);
+            this.plcStatusView2.Size = new System.Drawing.Size(101, 110);
             this.plcStatusView2.TabIndex = 17;
             // 
             // uiLabel2
             // 
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel2.Location = new System.Drawing.Point(480, 637);
+            this.uiLabel2.Location = new System.Drawing.Point(496, 647);
             this.uiLabel2.Name = "uiLabel2";
             this.uiLabel2.Size = new System.Drawing.Size(98, 23);
             this.uiLabel2.TabIndex = 18;
@@ -443,7 +449,7 @@ namespace 控件测试项目
             // uiLabel3
             // 
             this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel3.Location = new System.Drawing.Point(734, 638);
+            this.uiLabel3.Location = new System.Drawing.Point(734, 645);
             this.uiLabel3.Name = "uiLabel3";
             this.uiLabel3.Size = new System.Drawing.Size(98, 23);
             this.uiLabel3.TabIndex = 20;
@@ -453,11 +459,14 @@ namespace 控件测试项目
             // plcStatusView3
             // 
             this.plcStatusView3.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
+            this.plcStatusView3.AutoSize = true;
+            this.plcStatusView3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.plcStatusView3.BackColor = System.Drawing.Color.Transparent;
             this.plcStatusView3.Location = new System.Drawing.Point(724, 537);
+            this.plcStatusView3.MinimumSize = new System.Drawing.Size(101, 110);
             this.plcStatusView3.Name = "plcStatusView3";
             this.plcStatusView3.PLC_Enable = true;
-            this.plcStatusView3.Size = new System.Drawing.Size(86, 98);
+            this.plcStatusView3.Size = new System.Drawing.Size(101, 110);
             this.plcStatusView3.TabIndex = 19;
             // 
             // uiLine5
