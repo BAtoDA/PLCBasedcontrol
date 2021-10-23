@@ -566,6 +566,33 @@
             使用代码编辑器修改此方法的内容。
             </summary>
         </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
         <member name="F:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.功能键参数设置窗口.FunctionForm.components">
             <summary>
             Required designer variable.

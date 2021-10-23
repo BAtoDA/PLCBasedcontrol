@@ -25,7 +25,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             this.uiComboboxEx1.Items.Clear();
             foreach (var i in IPLCsurface.PLCDictionary)
                 this.uiComboboxEx1.Items.Add(i.Key);
-
+            this.uiLedBulb1.On = false;
         }
 
         private void timer1_Tick(object sender, EventArgs e)

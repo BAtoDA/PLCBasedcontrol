@@ -41,6 +41,7 @@ namespace PLC通讯基础控件项目
     [ToolboxBitmap(typeof(PLCControlsPreferences), "ComponentTest.bmp")]
     [DesignTimeVisible(true)]
     [Designer(typeof(FrameworkComponentDesigner))]
+    [Description("PLC通讯参数控件设置")]
     public partial class PLCControlsPreferences
     {
         [Serializable]

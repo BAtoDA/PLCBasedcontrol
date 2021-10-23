@@ -38,17 +38,24 @@ namespace 控件测试项目
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
-            this.dAuiBarChart2 = new PLC通讯基础控件项目.基础控件.DAuiBarChart();
             this.daUiButton1 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daTextBox1 = new PLC通讯基础控件项目.基础控件.DATextBox();
             this.plcControlSwitch1 = new PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch(this.components);
             this.daUiButton2 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daDataViewToPlcErr1 = new PLC通讯基础控件项目.基础控件.DADataViewToPlcErr(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
+            this.plcBasement1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement();
+            this.plcStatusView1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView();
+            this.uiLine1 = new Sunny.UI.UILine();
+            this.uiLine2 = new Sunny.UI.UILine();
+            this.uiLine3 = new Sunny.UI.UILine();
+            this.uiLine4 = new Sunny.UI.UILine();
+            this.uiLabel1 = new Sunny.UI.UILabel();
+            this.plcStatusView2 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView();
+            this.uiLabel2 = new Sunny.UI.UILabel();
+            this.uiLabel3 = new Sunny.UI.UILabel();
+            this.plcStatusView3 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView();
+            this.uiLine5 = new Sunny.UI.UILine();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // plcControlsPreferences1
@@ -86,43 +93,6 @@ namespace 控件测试项目
             this.plcPreferences1.Retain = "S1500";
             this.plcPreferences1.Sendovertime = 1000;
             // 
-            // dAuiBarChart2
-            // 
-            this.dAuiBarChart2.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.dAuiBarChart2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.dAuiBarChart2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dAuiBarChart2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.dAuiBarChart2.Location = new System.Drawing.Point(26, 30);
-            this.dAuiBarChart2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.dAuiBarChart2.Name = "dAuiBarChart2";
-            this.dAuiBarChart2.PLC_Enable = true;
-            this.dAuiBarChart2.pLCDataViewselectRealize.BindingName = "daUiButton1";
-            this.dAuiBarChart2.pLCDataViewselectRealize.BindingOpen = true;
-            this.dAuiBarChart2.pLCDataViewselectRealize.DataGridView_Name = new string[] {
-        "Name"};
-            this.dAuiBarChart2.pLCDataViewselectRealize.DataGridView_numerical = new PLC通讯库.通讯枚举.numerical_format[] {
-        PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit};
-            this.dAuiBarChart2.pLCDataViewselectRealize.DataGridViewPLC_Time = false;
-            this.dAuiBarChart2.pLCDataViewselectRealize.PLC_address = new string[] {
-        "10"};
-            this.dAuiBarChart2.pLCDataViewselectRealize.ReadCommand = false;
-            this.dAuiBarChart2.pLCDataViewselectRealize.ReadWriteFunction = new string[] {
-        "D"};
-            this.dAuiBarChart2.pLCDataViewselectRealize.ReadWritePLC = new PLC通讯基础控件项目.控件类基.控件数据结构.PLC[] {
-        PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi};
-            this.dAuiBarChart2.pLCDataViewselectRealize.SQLCharacter = "uiTextBox2";
-            this.dAuiBarChart2.pLCDataViewselectRealize.SQLOpen = false;
-            this.dAuiBarChart2.pLCDataViewselectRealize.SQLServer_SQLinte = false;
-            this.dAuiBarChart2.pLCDataViewselectRealize.SQLsurface = "";
-            this.dAuiBarChart2.pLCDataViewselectRealize.SQLsurfaceType = new string[] {
-        "varchar"};
-            this.dAuiBarChart2.ReadCommand = false;
-            this.dAuiBarChart2.Size = new System.Drawing.Size(201, 300);
-            this.dAuiBarChart2.TabIndex = 5;
-            this.dAuiBarChart2.Text = "dAuiBarChart2";
-            this.dAuiBarChart2.XAxisName = "PLC";
-            this.dAuiBarChart2.YAxisName = "标题";
-            // 
             // daUiButton1
             // 
             this.daUiButton1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
@@ -132,7 +102,7 @@ namespace 控件测试项目
             this.daUiButton1.FillColor = System.Drawing.Color.Silver;
             this.daUiButton1.FillHoverColor = System.Drawing.Color.Silver;
             this.daUiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daUiButton1.Location = new System.Drawing.Point(381, 372);
+            this.daUiButton1.Location = new System.Drawing.Point(240, 363);
             this.daUiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.daUiButton1.Name = "daUiButton1";
             this.daUiButton1.PLC_Enable = true;
@@ -353,7 +323,7 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\system32";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daDataViewToPlcErr1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.daDataViewToPlcErr1.Location = new System.Drawing.Point(457, 30);
+            this.daDataViewToPlcErr1.Location = new System.Drawing.Point(558, 38);
             this.daDataViewToPlcErr1.Name = "daDataViewToPlcErr1";
             this.daDataViewToPlcErr1.PLC_Enable = true;
             this.daDataViewToPlcErr1.ReadCommand = false;
@@ -376,49 +346,156 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.Size = new System.Drawing.Size(643, 300);
             this.daDataViewToPlcErr1.TabIndex = 9;
             // 
-            // contextMenuStrip1
+            // plcBasement1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 26);
+            this.plcBasement1.BackColor = System.Drawing.Color.DarkGray;
+            this.plcBasement1.Location = new System.Drawing.Point(22, 38);
+            this.plcBasement1.Name = "plcBasement1";
+            this.plcBasement1.Size = new System.Drawing.Size(496, 280);
+            this.plcBasement1.TabIndex = 10;
             // 
-            // toolStripMenuItem1
+            // plcStatusView1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.plcStatusView1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.plcStatusView1.BackColor = System.Drawing.Color.Transparent;
+            this.plcStatusView1.Location = new System.Drawing.Point(611, 372);
+            this.plcStatusView1.Name = "plcStatusView1";
+            this.plcStatusView1.PLC_Enable = true;
+            this.plcStatusView1.Size = new System.Drawing.Size(86, 98);
+            this.plcStatusView1.TabIndex = 11;
             // 
-            // daPlcFunction1
+            // uiLine1
             // 
-            this.daPlcFunction1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daPlcFunction1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daPlcFunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daPlcFunction1.FormName = "Form1";
-            this.daPlcFunction1.FormPath = "控件测试项目.DDW";
-            this.daPlcFunction1.Location = new System.Drawing.Point(613, 342);
-            this.daPlcFunction1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.daPlcFunction1.Name = "daPlcFunction1";
-            this.daPlcFunction1.PLC_Enable = true;
-            this.daPlcFunction1.Size = new System.Drawing.Size(100, 35);
-            this.daPlcFunction1.TabIndex = 10;
-            this.daPlcFunction1.Text = "daPlcFunction1";
+            this.uiLine1.FillColor = System.Drawing.Color.Transparent;
+            this.uiLine1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLine1.Location = new System.Drawing.Point(473, 493);
+            this.uiLine1.MinimumSize = new System.Drawing.Size(2, 2);
+            this.uiLine1.Name = "uiLine1";
+            this.uiLine1.Size = new System.Drawing.Size(360, 14);
+            this.uiLine1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLine1.TabIndex = 12;
+            // 
+            // uiLine2
+            // 
+            this.uiLine2.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.uiLine2.FillColor = System.Drawing.Color.Transparent;
+            this.uiLine2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLine2.Location = new System.Drawing.Point(642, 470);
+            this.uiLine2.MinimumSize = new System.Drawing.Size(2, 2);
+            this.uiLine2.Name = "uiLine2";
+            this.uiLine2.Size = new System.Drawing.Size(31, 29);
+            this.uiLine2.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLine2.TabIndex = 13;
+            // 
+            // uiLine3
+            // 
+            this.uiLine3.FillColor = System.Drawing.Color.Transparent;
+            this.uiLine3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLine3.Location = new System.Drawing.Point(473, 500);
+            this.uiLine3.MinimumSize = new System.Drawing.Size(2, 2);
+            this.uiLine3.Name = "uiLine3";
+            this.uiLine3.Size = new System.Drawing.Size(360, 17);
+            this.uiLine3.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLine3.TabIndex = 14;
+            // 
+            // uiLine4
+            // 
+            this.uiLine4.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.uiLine4.FillColor = System.Drawing.Color.Transparent;
+            this.uiLine4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLine4.Location = new System.Drawing.Point(502, 509);
+            this.uiLine4.MinimumSize = new System.Drawing.Size(2, 2);
+            this.uiLine4.Name = "uiLine4";
+            this.uiLine4.Size = new System.Drawing.Size(31, 29);
+            this.uiLine4.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLine4.TabIndex = 15;
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel1.Location = new System.Drawing.Point(607, 346);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(98, 23);
+            this.uiLabel1.TabIndex = 16;
+            this.uiLabel1.Text = "Modbus TCP";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // plcStatusView2
+            // 
+            this.plcStatusView2.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.plcStatusView2.BackColor = System.Drawing.Color.Transparent;
+            this.plcStatusView2.Location = new System.Drawing.Point(476, 536);
+            this.plcStatusView2.Name = "plcStatusView2";
+            this.plcStatusView2.PLC_Enable = true;
+            this.plcStatusView2.Size = new System.Drawing.Size(86, 98);
+            this.plcStatusView2.TabIndex = 17;
+            // 
+            // uiLabel2
+            // 
+            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel2.Location = new System.Drawing.Point(480, 637);
+            this.uiLabel2.Name = "uiLabel2";
+            this.uiLabel2.Size = new System.Drawing.Size(98, 23);
+            this.uiLabel2.TabIndex = 18;
+            this.uiLabel2.Text = "Mitsubishi";
+            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel3
+            // 
+            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel3.Location = new System.Drawing.Point(734, 638);
+            this.uiLabel3.Name = "uiLabel3";
+            this.uiLabel3.Size = new System.Drawing.Size(98, 23);
+            this.uiLabel3.TabIndex = 20;
+            this.uiLabel3.Text = "Siemens";
+            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // plcStatusView3
+            // 
+            this.plcStatusView3.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Siemens;
+            this.plcStatusView3.BackColor = System.Drawing.Color.Transparent;
+            this.plcStatusView3.Location = new System.Drawing.Point(724, 537);
+            this.plcStatusView3.Name = "plcStatusView3";
+            this.plcStatusView3.PLC_Enable = true;
+            this.plcStatusView3.Size = new System.Drawing.Size(86, 98);
+            this.plcStatusView3.TabIndex = 19;
+            // 
+            // uiLine5
+            // 
+            this.uiLine5.Direction = Sunny.UI.UILine.LineDirection.Vertical;
+            this.uiLine5.FillColor = System.Drawing.Color.Transparent;
+            this.uiLine5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLine5.Location = new System.Drawing.Point(752, 509);
+            this.uiLine5.MinimumSize = new System.Drawing.Size(2, 2);
+            this.uiLine5.Name = "uiLine5";
+            this.uiLine5.Size = new System.Drawing.Size(31, 29);
+            this.uiLine5.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLine5.TabIndex = 21;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 592);
-            this.Controls.Add(this.daPlcFunction1);
+            this.ClientSize = new System.Drawing.Size(1204, 703);
+            this.Controls.Add(this.uiLine5);
+            this.Controls.Add(this.uiLabel3);
+            this.Controls.Add(this.plcStatusView3);
+            this.Controls.Add(this.uiLabel2);
+            this.Controls.Add(this.plcStatusView2);
+            this.Controls.Add(this.uiLabel1);
+            this.Controls.Add(this.uiLine4);
+            this.Controls.Add(this.uiLine2);
+            this.Controls.Add(this.uiLine1);
+            this.Controls.Add(this.plcStatusView1);
+            this.Controls.Add(this.plcBasement1);
             this.Controls.Add(this.daDataViewToPlcErr1);
             this.Controls.Add(this.daTextBox1);
             this.Controls.Add(this.daUiButton1);
-            this.Controls.Add(this.dAuiBarChart2);
+            this.Controls.Add(this.uiLine3);
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.Text = "011";
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,16 +506,24 @@ namespace 控件测试项目
         private PLC通讯基础控件项目.基础控件.DAuiBarChart dAuiBarChart1;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences2;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences3;
-        private PLC通讯基础控件项目.基础控件.DAuiBarChart dAuiBarChart2;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton1;
         private PLC通讯基础控件项目.基础控件.DATextBox daTextBox1;
         private PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch plcControlSwitch1;
         private PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences plcPreferences1;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton2;
         private PLC通讯基础控件项目.基础控件.DADataViewToPlcErr daDataViewToPlcErr1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
+        private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement plcBasement1;
+        private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView plcStatusView1;
+        private Sunny.UI.UILine uiLine1;
+        private Sunny.UI.UILine uiLine2;
+        private Sunny.UI.UILine uiLine3;
+        private Sunny.UI.UILine uiLine4;
+        private Sunny.UI.UILabel uiLabel1;
+        private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView plcStatusView2;
+        private Sunny.UI.UILabel uiLabel2;
+        private Sunny.UI.UILabel uiLabel3;
+        private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView plcStatusView3;
+        private Sunny.UI.UILine uiLine5;
     }
 }
 
