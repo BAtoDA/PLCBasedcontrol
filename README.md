@@ -22,7 +22,10 @@
 # 控件参数持久化以及对应类：
 ![image](https://user-images.githubusercontent.com/60955669/132943851-d847107d-4833-450c-b8a3-88a4ed8ebab5.png)
 # 项目更新展示：
-1：新增全局位控件状态切换 方便用户在IDE编辑设计模式下快速的切换控件状态 在需要的设计窗口添加PlcControlSwitch控件 找到参数ControlSwitch点击切换状态即可。  
+1:新增监控底层设备状态控件PlcStatusView 方便设计人员添加网络监控视图 分为四种状态：1 在线(指示着设备运行中) 2 离线(指示设备离线) 3 未添加(指示设备未添加到PLC表 就是PlcControlsPreferences控件未添加设备) 4 未启用(指示该控件未启用PLC功能)。
+![1634978787(1)](https://user-images.githubusercontent.com/60955669/138549760-7e6c1632-0e76-4714-a564-dd8fb4242e96.png)
+
+2：新增全局位控件状态切换 方便用户在IDE编辑设计模式下快速的切换控件状态 在需要的设计窗口添加PlcControlSwitch控件 找到参数ControlSwitch点击切换状态即可。  
   状态0：
  ![image](https://user-images.githubusercontent.com/60955669/137632715-0c74c336-2ba8-4968-9866-09ac33693cde.png)
   状态1：
