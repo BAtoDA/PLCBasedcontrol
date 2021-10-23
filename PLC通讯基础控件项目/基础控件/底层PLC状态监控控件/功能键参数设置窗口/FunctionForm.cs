@@ -27,7 +27,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
         {
             //从命名空间中加载窗口模板
             Regex r = new Regex(Formpthan?? "PLC通讯基础控件项目.模板与控制界面");
-            var TypeData = Assembly.GetExecutingAssembly().GetTypes();
+            var TypeData = Assembly.GetEntryAssembly().GetTypes();
             this.uiComboBox1.Items.Clear();
             foreach (var i in TypeData)
             {
@@ -56,7 +56,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
 
         private void uiComboBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            //e.Handled = true;
         }
     }
 }

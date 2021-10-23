@@ -31,7 +31,6 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
     {
         protected override void OnClick(EventArgs e)
         {
-
             //用户是否启用该功能
             if (!this.plc_Enable) return;
             //获取所有运行中的窗口
@@ -47,7 +46,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             //var Formoop = Assembly.GetExecutingAssembly().GetTypes(this.FormPath + "." + this.FormName);
             //获取所有运行中的窗口
             Regex rq = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
-            var Formoop = Assembly.GetExecutingAssembly().GetTypes().Where(p=> rq.IsMatch(p.FullName)).ToList();
+            var Formoop = Assembly.GetEntryAssembly().GetTypes().Where(p=> rq.IsMatch(p.FullName)).ToList();
             if (Formoop != null)
             {
                 Regex regex = new Regex(this.FormName);
@@ -76,9 +75,15 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 else
                     Oop = ((dynamic)Oop).Parent;
             }
+            if(Application.OpenForms.Count<=2)
+            {
+                if (MessageBox.Show("代码检测到你窗口数量少于2 \r\n 这表示会导致关闭主窗口 \r\n 这在C#主窗口是不允许关闭的\r\n 这样会导致整个程序都进行关闭", "Err", MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+            }
             foreach (Form i in Application.OpenForms)
             {
-                if (r.IsMatch(i.GetType().FullName) && i == (Form)Oop)
+                //if (r.IsMatch(i.GetType().FullName) && i == (Form)Oop)
+                if (i == (Form)Oop)
                 {
                     i.Close();
                     return;

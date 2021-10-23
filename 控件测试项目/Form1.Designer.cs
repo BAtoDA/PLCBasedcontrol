@@ -46,6 +46,7 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1 = new PLC通讯基础控件项目.基础控件.DADataViewToPlcErr(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +70,7 @@ namespace 控件测试项目
             // 
             // plcPreferences3
             // 
-            this.plcPreferences3.IPEnd = "192.168.220.154";
+            this.plcPreferences3.IPEnd = "192.168.1.8";
             this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.plcPreferences3.Point = 8000;
             this.plcPreferences3.Receptionovertime = 1000;
@@ -349,10 +350,10 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
-            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\System32";
+            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\system32";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daDataViewToPlcErr1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.daDataViewToPlcErr1.Location = new System.Drawing.Point(316, 30);
+            this.daDataViewToPlcErr1.Location = new System.Drawing.Point(457, 30);
             this.daDataViewToPlcErr1.Name = "daDataViewToPlcErr1";
             this.daDataViewToPlcErr1.PLC_Enable = true;
             this.daDataViewToPlcErr1.ReadCommand = false;
@@ -388,11 +389,27 @@ namespace 控件测试项目
             this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
             this.toolStripMenuItem1.Text = "toolStripMenuItem1";
             // 
+            // daPlcFunction1
+            // 
+            this.daPlcFunction1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daPlcFunction1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daPlcFunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daPlcFunction1.FormName = "Form1";
+            this.daPlcFunction1.FormPath = "控件测试项目.DDW";
+            this.daPlcFunction1.Location = new System.Drawing.Point(613, 342);
+            this.daPlcFunction1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.daPlcFunction1.Name = "daPlcFunction1";
+            this.daPlcFunction1.PLC_Enable = true;
+            this.daPlcFunction1.Size = new System.Drawing.Size(100, 35);
+            this.daPlcFunction1.TabIndex = 10;
+            this.daPlcFunction1.Text = "daPlcFunction1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 592);
+            this.Controls.Add(this.daPlcFunction1);
             this.Controls.Add(this.daDataViewToPlcErr1);
             this.Controls.Add(this.daTextBox1);
             this.Controls.Add(this.daUiButton1);
@@ -421,6 +438,7 @@ namespace 控件测试项目
         private PLC通讯基础控件项目.基础控件.DADataViewToPlcErr daDataViewToPlcErr1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
     }
 }
 

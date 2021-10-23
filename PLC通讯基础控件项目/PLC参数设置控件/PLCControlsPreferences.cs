@@ -174,7 +174,6 @@ namespace PLC通讯基础控件项目
                                         IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj));
                                         break;
                                 }
-
                             }
                         }
                     }

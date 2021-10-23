@@ -1,0 +1,3540 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PLC通讯基础控件项目</name>
+    </assembly>
+    <members>
+        <member name="T:PLC通讯基础控件项目.PLCControlsPreferences">
+            <summary>
+            PLC通讯参数控件设置
+            继承Timer定时器 
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences">
+            <summary>
+            PLC参数设置类
+            不可以继承重写 可序列化
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences.PLCDevice">
+            <summary>
+            PLC类型
+            默认三菱
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences.IPEnd">
+            <summary>
+            PLCIP
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences.Point">
+            <summary>
+            PLC 端口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences.Sendovertime">
+            <summary>
+            发送报文超时时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences.Receptionovertime">
+            <summary>
+            接收报文超时时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences.Retain">
+            <summary>
+            预留属性
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch">
+            <summary>
+            切换PLC所有Bit控件的状态
+            改模式方便用户调试
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.PLC参数设置控件.控件状态切换控件.PLCControlSwitch.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.Program.Main">
+            <summary>
+             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.Properties.Resources">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.Properties.Resources.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.Properties.Resources.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性，对
+              使用此强类型资源类的所有资源查找执行重写。
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.Controlpublicity">
+            <summary>
+            用于处理一些控件的共有方法
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.Controlpublicity.GetPidByProcess(System.String)">
+            <summary>
+            判断程序是否在运行
+            true 该程序在电脑进程运行中  false 表示不在进程运行
+            该方法主要用于避免继承过程中CLR 进入SQL数据库 查询数据从而卡死软件
+            </summary>
+            <param name="Name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAButton">
+            <summary>
+            实现上位机底层控件 普通按钮类 -不再公共运行时
+            继承接口PLCBitClassBase,PLCBitproperty, ICloneable
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAButton.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAButton.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAButton.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAButton.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAButton.Clone">
+            <summary>
+            复制控件方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DADataViewToPlc">
+            <summary>
+            表格视图控件 
+            </summary>
+            <summary>
+            表格视图控件 
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DADataViewToPlc.ReadCommand">
+            <summary>
+            读取控制
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DADataViewToPlc.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DADataViewToPlc.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DADataViewToPlcErr">
+            <summary>
+            显示PLC设备报警内容表
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DADataViewToPlcErr.ReadCommand">
+            <summary>
+            读取报警内容
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DADataViewToPlcErr.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DADataViewToPlcErr.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DADataViewToPlcErr.EventAddress">
+            <summary>
+            读取PLC报警参数地址
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DADataViewToPlcErr.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAImageButton">
+            <summary>
+            实现上位机底层控件 透明按钮类 -不再公共运行时
+            继承接口PLCBitClassBase,PLCBitproperty, ICloneable
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAImageButton.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAImageButton.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAImageButton.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAImageButton.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAImageButton.Clone">
+            <summary>
+            复制控件方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DATextBox">
+            <summary>
+            实现上位机底层控件 普通文本类 -不再公共运行时
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DATextBox.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DATextBox.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DATextBox.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DATextBox.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DATextBox.Clone">
+            <summary>
+            复制控件方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAUIAnalogMeter">
+            <summary>
+            表盘控件
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUIAnalogMeter.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAUIAnalogMeter.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUIAnalogMeter.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUIAnalogMeter.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUIAnalogMeter.Clone">
+            <summary>
+            复制控件方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAuiBarChart">
+            <summary>
+            柱形图控件
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.TitleText">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.TitleSubText">
+            <summary>
+            柱形图标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.XAxisName">
+            <summary>
+            柱形图X坐标标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.XAxisMax">
+            <summary>
+            柱形图X坐标最大值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.XAxisMin">
+            <summary>
+            柱形图X坐标最小值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.YAxisName">
+            <summary>
+            柱形图Y坐标标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.YAxisMax">
+            <summary>
+            柱形图Y坐标最大值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.YAxisMin">
+            <summary>
+            柱形图Y坐标最小值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.ReadCommand">
+            <summary>
+            读取控制
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAuiBarChart.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAuiBarChart.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAuiBarChart.uiRefresh">
+            <summary>
+            刷新UI
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAUiButton">
+            <summary>
+            实现上位机底层控件 优化UI类按钮类 -不再公共运行时
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiButton.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAUiButton.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiButton.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUiButton.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUiButton.Clone">
+            <summary>
+            复制控件方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAUiDoughnutChart">
+            <summary>
+            圆形图控件
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiDoughnutChart.TitleText">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiDoughnutChart.TitleSubText">
+            <summary>
+            柱形图标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiDoughnutChart.ReadCommand">
+            <summary>
+            读取控制
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAUiDoughnutChart.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiDoughnutChart.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUiDoughnutChart.uiRefresh">
+            <summary>
+            刷新UI
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAUiLedBulb">
+            <summary>
+            实现上位机底层控件 指示灯类 -不再公共运行时
+            继承接口PLCBitClassBase,PLCBitproperty, ICloneable
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiLedBulb.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAUiLedBulb.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiLedBulb.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUiLedBulb.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUiLedBulb.Clone">
+            <summary>
+            复制控件方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAUiTextBox">
+            <summary>
+            实现上位机底层控件 普通文本类 -不再公共运行时
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiTextBox.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAUiTextBox.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAUiTextBox.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUiTextBox.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.DAUiTextBox.Clone">
+            <summary>
+            复制控件方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction">
+            <summary>
+            PLC功能键
+            读取固定路径// 模板与控制界面命名空间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction.APLC">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction.FormPath">
+            <summary>
+            Form 窗口路径
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction.FormName">
+            <summary>
+            Form反射窗口名称
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面窗口事件方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.ControlDebug">
+            <summary>
+            用于输出消息
+            </summary>
+        </member>
+        <member name="E:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.ControlDebug.EventMessage">
+            <summary>
+            消息触发事件
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.ControlDebug.Write(System.String)">
+            <summary>
+            把消息输出到控制台以及底层订阅者
+            </summary>
+            <param name="Value"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.ControlDebug.Call_back(System.IAsyncResult)">
+            <summary>
+            输出完毕进行回调
+            </summary>
+            <param name="async"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement.components">
+            <summary> 
+            必需的设计器变量。
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement.Dispose(System.Boolean)">
+            <summary> 
+            清理所有正在使用的资源。
+            </summary>
+            <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PlcBasement.InitializeComponent">
+            <summary> 
+            设计器支持所需的方法 - 不要修改
+            使用代码编辑器修改此方法的内容。
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.功能键参数设置窗口.FunctionForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.功能键参数设置窗口.FunctionForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.功能键参数设置窗口.FunctionForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.BasepublicClass.Getsafetypattern(System.Int32)">
+            <summary>
+            判断当前安全模式状态
+            </summary>
+            <param name="Value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.BasepublicClass.Voicebroadcast(System.String)">
+            <summary>
+            使用系统语音播报系统进行播放
+            </summary>
+            <param name="Value"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.BasepublicClass.PLCoopErr(PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase,PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty)">
+            <summary>
+            用于位校验PLC对象
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.BasepublicClass.PLCoopErr(PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDClassBase,PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty)">
+            <summary>
+            用于寄存器校验PLC对象
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.BasepublicClass.PLCoopErr(PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase)">
+            <summary>
+            用于表格校验PLC对象
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.BasepublicClass.GetContrForm(System.Object)">
+            <summary>
+            获取控件归属的窗口
+            </summary>
+            <param name="OopContr"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase">
+            <summary>
+            控件修改参数界面
+            </summary>
+        </member>
+        <member name="E:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase.Modification">
+            <summary>
+            修改参数界面启动事件
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase.pLCBitselectRealize">
+            <summary>
+            用于处理控件参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase.APLC">
+            <summary>
+            用于给用户选择PLC使用
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase.Timerconfiguration">
+            <summary>
+            用于加载配置使用
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitClassBase.ControlSwitch(System.Boolean)">
+            <summary>
+            切换控件状态方法
+            该方法必须实现
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty">
+            <summary>
+            该接口是用于位基础类型参数-比如字体背景颜色-内容等
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty.backgroundColor_0">
+            <summary>
+            背景颜色
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty.TextColor_0">
+            <summary>
+            文本颜色
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty.TextContent_0">
+            <summary>
+            文字内容
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty.backgroundColor_1">
+            <summary>
+            背景颜色
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty.TextColor_1">
+            <summary>
+            文本颜色
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty.TextContent_1">
+            <summary>
+            文字内容
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCBitproperty.PLCTimer">
+            <summary>
+            控件刷新定时器
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase">
+            <summary>
+            该接口是用于寄存器基础类型参数-比如PLC从参数通用参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.description">
+            <summary>
+            控件描述
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Dataentryfunction">
+            <summary>
+            是否启用输入功能
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.ReadWrite">
+            <summary>
+            读取PLC模式-读取/写入地址不同
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.ReadWritePLC">
+            <summary>
+            读取或者写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.ReadWriteFunction">
+            <summary>
+            读取或者写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.ReadWriteAddress">
+            <summary>
+            读取或者写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.WritePLC">
+            <summary>
+            写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.WriteFunction">
+            <summary>
+            写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.WriteAddress">
+            <summary>
+            写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Inform">
+            <summary>
+            是否启用写入完成通知
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Informpattern">
+            <summary>
+            写入通知完成通知模式--0写入OFF 1写入ON
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.InformPLC">
+            <summary>
+            写入通知完成PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.InformFunction">
+            <summary>
+            写入通知完成PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.InformAddress">
+            <summary>
+            写入通知完成PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Keyboard">
+            <summary>
+            是否启用键盘
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.KeyboardStyle">
+            <summary>
+            启用的键盘样式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.ShowFormat">
+            <summary>
+            数据格式显示的资料格式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.NumericalFormat">
+            <summary>
+            数据格式数值的资料格式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.NumericaldigitMax">
+            <summary>
+            数据格式小数点以上位数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.NumericaldigitMin">
+            <summary>
+            数据格式小数点以下位数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.NumericalMax">
+            <summary>
+            数据格式上限最大值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.NumericalMin">
+            <summary>
+            数据格式下限最小值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.keyMinTime">
+            <summary>
+            安全控制--最少按键时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.OperationAffirm">
+            <summary>
+            安全控制--操作前确认
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.AwaitTime">
+            <summary>
+            安全控制--确定等待时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.SafetyPLC">
+            <summary>
+            安全控制--PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.SafetyFunction">
+            <summary>
+            安全控制--PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.WrSafetyAddress">
+            <summary>
+            安全控制--PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.SafetyPattern">
+            <summary>
+            安全控制--启用状态-设ON还是OFF
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.SafetyBehaviorPattern">
+            <summary>
+            安全控制--行为模式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.SafetyCategory">
+            <summary>
+            安全控制--操作类别
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.NoAccessConceal">
+            <summary>
+            安全控制--无权限该控件隐藏
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.NoAccessForm">
+            <summary>
+            安全控制--无权限该控件弹窗
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Speech">
+            <summary>
+            安全控制--启用系统语音播放
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Textalign_0">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.TextFont_0">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Textflicker_0">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.TextItalic_0">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.TextUnderline_0">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Textalign_1">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.TextFont_1">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.Textflicker_1">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.TextItalic_1">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDBase.TextUnderline_1">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDClassBase">
+            <summary>
+            控件修改参数界面
+            </summary>
+        </member>
+        <member name="E:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDClassBase.Modification">
+            <summary>
+            修改参数界面启动事件
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDClassBase.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDClassBase.pLCDselectRealize">
+            <summary>
+            用于处理控件参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDClassBase.APLC">
+            <summary>
+            用于给用户选择PLC使用
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDClassBase.Timerconfiguration">
+            <summary>
+            用于加载配置使用
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty">
+            <summary>
+            该接口是用于寄存器基础类型参数-比如字体颜色-内容等
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty.Textalign_0">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty.TextColor_0">
+            <summary>
+            文本颜色
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty.TextContent_0">
+            <summary>
+            文字内容
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty.TextColor_1">
+            <summary>
+            文本颜色
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty.TextContent_1">
+            <summary>
+            文字内容
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCDproperty.PLCTimer">
+            <summary>
+            控件刷新定时器
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase">
+            <summary>
+            实现基本位控件类--PLC刷新--文字事件等处理
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.pLCBitClassBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.pLCBitproperty">
+            <summary>
+            控件外部文字已经背景颜色等参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.#ctor(System.Windows.Forms.Control)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.ClickPLC(System.Object,System.EventArgs)">
+            <summary>
+            处理点击事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.PLCWrite(PLC通讯基础控件项目.控件类基.控件数据结构.PLC,System.String,System.String,System.Boolean)">
+            <summary>
+            写入PLC操作
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.mutex">
+            <summary>
+            互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.PLCrefresh">
+            <summary>
+            PLC刷新处理
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase.PLCsafety">
+            <summary>
+            PLC安全控制
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCBitselectRealize">
+            <summary>
+            主要用于处理位控件保存参数使用
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类.ControlPLCDonlyBase">
+            <summary>
+            实现基本寄存器控件类--PLC刷新--只读
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类.ControlPLCDonlyBase.pLCDClassBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类.ControlPLCDonlyBase.pLCDproperty">
+            <summary>
+            控件外部文字已经背景颜色等参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类.ControlPLCDonlyBase.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类.ControlPLCDonlyBase.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类.ControlPLCDonlyBase.KeyTime">
+            <summary>
+            用于判断用户是否停止输入文本
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD只读控件实现类.ControlPLCDonlyBase.PLCrefresh">
+            <summary>
+            处理控件值--读取PLC
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase">
+            <summary>
+            实现基本寄存器控件类--PLC刷新--文字事件等处理
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.pLCDClassBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.pLCDproperty">
+            <summary>
+            控件外部文字已经背景颜色等参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.KeyTime">
+            <summary>
+            用于判断用户是否停止输入文本
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.MouseUpPLC(System.Object,System.EventArgs)">
+            <summary>
+            处理鼠标点击事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.PLCWrite(PLC通讯基础控件项目.控件类基.控件数据结构.PLC,System.String,System.String,System.String,PLC通讯库.通讯枚举.numerical_format)">
+            <summary>
+            写入PLC操作
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.PLCrefresh">
+            <summary>
+            处理控件值--读取PLC
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.PLCsafety">
+            <summary>
+            PLC安全控制
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.ControlPLCDBase.PLCinform">
+            <summary>
+            实现PLC写入完成通知功能
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.PLCDselectRealize">
+            <summary>
+            用于保存D寄存器类型控件参数
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlDoughnutChartClassBase">
+            <summary>
+            圆形图基础接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlDoughnutChartClassBase.TitleText">
+            <summary>
+            圆形图标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlDoughnutChartClassBase.TitleSubText">
+            <summary>
+            圆形图标题
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.pLCViewClassBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.pLCBarCharttClassBase">
+            <summary>
+            控件基础接口参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.SQLoperation">
+            <summary>
+            SQL事务表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.PLCValue">
+            <summary>
+            PLC当前值表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.GetPLC">
+            <summary>
+            读取PLC数据
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.SetOption">
+            <summary>
+            设置表格的数据
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlPLCDoughnutChartBase.SetSQL(System.String,System.String,System.String[],System.Boolean)">
+            <summary>
+            使用事务把数据
+            写入到SQLServer/SQLLite
+            </summary>
+            <param name="SQLlink">SQL链接字符串</param>
+            <param name="SQLsurface">SQL表名</param>
+            <param name="SQLstatement">SQL需要执行的语句</param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventAutoContent">
+            <summary>
+            自动保存报警日志
+            
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventAutoContent.TextRead">
+            <summary>
+            异步读取当天报警历史
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventAutoContent.TextRead(System.String)">
+            <summary>
+            异步读取当天报警历史
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventAutoContent.TextWrite(System.String)">
+            <summary>
+            异步写入当前PLC报警类历史内容
+            追加一行文本内容
+            </summary>
+            <param name="Content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventAutoContent.TextCreate">
+            <summary>
+            自动创建文件夹
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventAutoContent.IsText">
+            <summary>
+            判定文件夹以及文本是否创建
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventContent">
+            <summary>
+            读取以及写入PLC报警类
+            写入路径默认在Debug/PLCEventErr文件夹下
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventContent.TextRead">
+            <summary>
+            异步读取当前PLC报警类设置参数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventContent.TextWrite(System.String)">
+            <summary>
+            异步写入当前PLC报警类设置参数
+            自动覆盖当前文本内容
+            </summary>
+            <param name="Content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventContent.TextCreate">
+            <summary>
+            创建文本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventContent.IsText">
+            <summary>
+            判定文件是否存在
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventContent.AddSecurityControll2Folder(System.String)">
+             <summary>
+            为文件夹添加users，everyone用户组的完全控制权限
+             </summary>
+             <param name="dirPath"></param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageBase">
+            <summary>
+            报警表控件基础接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageBase.ReadCommand">
+            <summary>
+            读取控制
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageBase.PLC_Enable">
+            <summary>
+            是否启用控件
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageBase.EventAddress">
+            <summary>
+            注册事件保存路径
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageBase.Save">
+            <summary>
+            是否自动保存历史
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageBase.SaveAddress">
+            <summary>
+            自动保存报警历史的路径
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize">
+            <summary>
+            主要实现PLC报警表显示 刷新 以及 导出
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.pLCViewClassBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.SQLoperation">
+            <summary>
+            SQL事务表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.PLCValue">
+            <summary>
+            PLC当前值表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.PLCEventContent">
+            <summary>
+            PLC报警表读取写入对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.pLCEventAutoContent">
+            <summary>
+            PLC报警历史自动填充
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.PLCErrTimer">
+            <summary>
+            报警刷新定时器
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.register_Event">
+            <summary>
+            指示着已经登录的事件--已经注册的不再显示到表格中--等待事件变不成立移除事件
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.event_Messages">
+            <summary>
+            定义安全集合
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.Event_quantity">
+            <summary>
+            指示上次遍历已经登录的事件
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.obj">
+            <summary>
+            锁
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.TextRead">
+            <summary>
+            异步读取用户设定内容
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.PLCrefresh">
+            <summary>
+            处理控件报警表
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.trigger_Bit(System.Boolean,PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message)">
+            <summary>
+            位触发条件
+            </summary>
+            <param name="In"></param>
+            <param name="event_Message"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_messageReadlize.trigger_word(System.String,PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message)">
+            <summary>
+            字触发条件
+            </summary>
+            <param name="data"></param>
+            <param name="event_Message"></param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase">
+            <summary>
+            实现基本柱形图控件类--读取数据--刷新到SQL
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.pLCViewClassBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.pLCBarCharttClassBase">
+            <summary>
+            控件基础接口参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.SQLoperation">
+            <summary>
+            SQL事务表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.PLCValue">
+            <summary>
+            PLC当前值表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.GetPLC">
+            <summary>
+            读取PLC数据
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCBarChartBase.SetSQL(System.String,System.String,System.String[],System.Boolean)">
+            <summary>
+            使用事务把数据
+            写入到SQLServer/SQLLite
+            </summary>
+            <param name="SQLlink">SQL链接字符串</param>
+            <param name="SQLsurface">SQL表名</param>
+            <param name="SQLstatement">SQL需要执行的语句</param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase">
+            <summary>
+            实现基本表格控件类--读取数据--刷新到SQL
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.pLCViewClassBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.SQLoperation">
+            <summary>
+            SQL事务表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.PLCValue">
+            <summary>
+            PLC当前值表
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.GetPLC">
+            <summary>
+            读取PLC数据
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC表格控件实现类.ControlPLCDataViewBase.SetSQL(System.String,System.String,System.String[],System.Boolean)">
+            <summary>
+            使用事务把数据
+            写入到SQLServer/SQLLite
+            </summary>
+            <param name="SQLlink">SQL链接字符串</param>
+            <param name="SQLsurface">SQL表名</param>
+            <param name="SQLstatement">SQL需要执行的语句</param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase">
+            <summary>
+            柱形图基础接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.TitleText">
+            <summary>
+            柱形图标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.TitleSubText">
+            <summary>
+            图形图标题
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.XAxisName">
+            <summary>
+            X坐标名称
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.XAxisMax">
+            <summary>
+            X坐标最大值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.XAxisMin">
+            <summary>
+            X坐标最小值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.YAxisName">
+            <summary>
+            Y坐标名称
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.YAxisMax">
+            <summary>
+            Y坐标最大值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC柱形图控件实现类.PLCBarCharttClassBase.YAxisMin">
+            <summary>
+            Y坐标最小值
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewselectRealize">
+            <summary>
+            主要用于处理位控件保存参数使用
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.ReadWritePLC">
+            <summary>
+            读取或者写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.ReadWriteFunction">
+            <summary>
+            读取或者写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.PLC_address">
+            <summary>
+            需要访问的PLC地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.DataGridView_Name">
+            <summary>
+            显示表格的名称
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.DataGridView_numerical">
+            <summary>
+            表格对应的数据类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.SQLsurfaceType">
+            <summary>
+            SQL数据列类型
+            非常重要一定要注意类型否则SQL功能变无效
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.DataGridViewPLC_Time">
+            <summary>
+            是否显示读取时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.ReadCommand">
+            <summary>
+            读取控制
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.BindingOpen">
+            <summary>
+            控件绑定开启
+            开启后需要选中目标窗口的一个Button类型控件作为触发点
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.BindingName">
+            <summary>
+            判断控件的Name名称
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.SQLOpen">
+            <summary>
+            是否开启SQL数据库
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.SQLServer_SQLinte">
+            <summary>
+            选择数据库类型
+            true是SQLServer  
+            false是SQLLite  
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.SQLCharacter">
+            <summary>
+            SQL链接字符串
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.DataGridViewPLC_base.SQLsurface">
+            <summary>
+            SQL数据库表名
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase">
+            <summary>
+            用于表格控件对PLC以及SQL
+            操作读取 写入 更新等基础接口
+            </summary>
+        </member>
+        <member name="E:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase.Modification">
+            <summary>
+            修改参数界面启动事件
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase.pLCDataViewselectRealize">
+            <summary>
+            用于处理控件参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase.APLC">
+            <summary>
+            用于给用户选择PLC使用
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase.Timerconfiguration">
+            <summary>
+            用于加载配置使用
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase.ReadCommand">
+            <summary>
+            读取控制
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.判定控件是否在设计期.IsDesignModeClass">
+            <summary>
+            判定类 
+            自定义控件判断是否处于IDE设计模式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.判定控件是否在设计期.IsDesignModeClass.IsDesignMode">
+            <summary>
+            是否在设计期
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message">
+            <summary>
+            报警参数表
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.EventLink">
+            <summary>
+            报警表统一存放类
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.EventLink.PLCEventLink">
+            <summary>
+            报警表
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLCBitBase">
+            <summary>
+            该接口是用于位基础类型参数-比如PLC从参数通用参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.description">
+            <summary>
+            控件描述
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.BitPattern">
+            <summary>
+            选择控件模式-位指示灯还是位状态切换开关
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.ReadWrite">
+            <summary>
+            读取PLC模式-读取/写入地址不同
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.ReadWritePLC">
+            <summary>
+            读取或者写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.ReadWriteFunction">
+            <summary>
+            读取或者写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.ReadWriteAddress">
+            <summary>
+            读取或者写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.OutReverse">
+            <summary>
+            输出模式-输出反向
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.WritePLC">
+            <summary>
+            写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.WriteFunction">
+            <summary>
+            写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.WriteAddress">
+            <summary>
+            写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.LoosenOut">
+            <summary>
+            输出模式-当按钮松开后发出指令
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.Pattern">
+            <summary>
+            按钮操作模式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.keyMinTime">
+            <summary>
+            安全控制--最少按键时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.OperationAffirm">
+            <summary>
+            安全控制--操作前确认
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.AwaitTime">
+            <summary>
+            安全控制--确定等待时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.SafetyPLC">
+            <summary>
+            安全控制--PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.SafetyFunction">
+            <summary>
+            安全控制--PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.WrSafetyAddress">
+            <summary>
+            安全控制--PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.SafetyPattern">
+            <summary>
+            安全控制--启用状态-设ON还是OFF
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.SafetyBehaviorPattern">
+            <summary>
+            安全控制--行为模式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.SafetyCategory">
+            <summary>
+            安全控制--操作类别
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.NoAccessConceal">
+            <summary>
+            安全控制--无权限该控件隐藏
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.NoAccessForm">
+            <summary>
+            安全控制--无权限该控件弹窗
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.Speech">
+            <summary>
+            安全控制--启用系统语音播放
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.Textalign_0">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.TextFont_0">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.Textflicker_0">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.TextItalic_0">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.TextUnderline_0">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.Textalign_1">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.TextFont_1">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.Textflicker_1">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.TextItalic_1">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLCBitBase.TextUnderline_1">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件安全对象池.VoiceObjectPool`1">
+            <summary>
+            对象池
+            本类主要用于处理控件--语音播报对象池调用
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件安全对象池.ControlTime">
+            <summary>
+            用于处理控件传入的委托任务与需要定时的时间
+            </summary>
+        </member>
+        <member name="E:PLC通讯基础控件项目.控件类基.控件安全对象池.ControlTime.PLCEvent">
+            <summary>
+            需要处理任务的控件
+            </summary>
+            <param name="control">输入控件</param>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件安全对象池.ObjectPool`1">
+            <summary>
+            对象池
+            本类主要用于处理控件--设置好的安全时间
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyBit.PlcBitselect">
+            <summary>
+            传入的控件参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyBit.Save">
+            <summary>
+            标识是否保存数据
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyBit.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyBit.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyBit.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyClass">
+            <summary>
+            用于实现PLC属性设置菜单
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyClass.#ctor(Sunny.UI.UITextBox,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox,Sunny.UI.UIGroupBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox,Sunny.UI.UICheckBox,Sunny.UI.UIGroupBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox,Sunny.UI.UICheckBox,Sunny.UI.UIGroupBox,Sunny.UI.UIComboBox,PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCBitselectRealize,Sunny.UI.UIButton)">
+            <summary>
+            Bit位构造函数
+            </summary>
+            <param name="Description"></param>
+            <param name="Alamp"></param>
+            <param name="Aswitch"></param>
+            <param name="readwrite"></param>
+            <param name="readwriteplc"></param>
+            <param name="readwritePLCfunction"></param>
+            <param name="readwriteaddress"></param>
+            <param name="Out"></param>
+            <param name="writePelan"></param>
+            <param name="writeplc"></param>
+            <param name="writePLCfunction"></param>
+            <param name="writeaddress"></param>
+            <param name="loosenOut"></param>
+            <param name="propertyPelan"></param>
+            <param name="pattern"></param>
+            <param name="pLCBitselect"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyClass.#ctor(Sunny.UI.UITextBox,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox,Sunny.UI.UIGroupBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox,Sunny.UI.UIGroupBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox,Sunny.UI.UIGroupBox,Sunny.UI.UICheckBox,Sunny.UI.UIGroupBox,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox,PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.PLCDselectRealize,Sunny.UI.UIButton)">
+            <summary>
+            寄存器D构造函数
+            </summary>
+            <param name="Description">控件描述</param>
+            <param name="Alamp">是否启用输入功能</param>
+            <param name="readwrite">读写不同地址</param>
+            <param name="readwritepelan">读取面板</param>
+            <param name="readwriteplc">读取PLC类型</param>
+            <param name="readwritePLCfunction">读取PLC功能码</param>
+            <param name="readwriteaddress">读取PLC具体地址</param>
+            <param name="writePelan">写入面板</param>
+            <param name="writeplc">写入PLC类型</param>
+            <param name="writePLCfunction">写入PLC功能码</param>
+            <param name="writeaddress">写入PLC具体地址</param>
+            <param name="propertyPelan">通知面板</param>
+            <param name="inform">通知启用</param>
+            <param name="inform01Pealn">通知01的面板</param>
+            <param name="inform1">通知其他状态 设置ON  还是 OFF</param>
+            <param name="inform0">通知其他状态 设置ON  还是 OFF</param>
+            <param name="inforplc">通知PLC类型</param>
+            <param name="informPLCfunction">通知PLC功能码</param>
+            <param name="informaddress">通知PLC具体地址</param>
+            <param name="pLCBitselect">D寄存器参数</param>
+            <param name="SetPlcButton">是否保存按钮</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyClass.PLCload(Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox,Sunny.UI.UIGroupBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox)">
+            <summary>
+            加载PLC选项
+            </summary>
+            <param name="readwriteplc"></param>
+            <param name="readwritePLCfunction"></param>
+            <param name="readwriteaddress"></param>
+            <param name="readwritePelan"></param>
+            <param name="writeplc"></param>
+            <param name="writePLCfunction"></param>
+            <param name="writeaddress"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyClass.PLCload(Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox)">
+            <summary>
+            加载PLC类型地址
+            </summary>
+            <param name="readwriteplc"></param>
+            <param name="readwritePLCfunction"></param>
+            <param name="readwriteaddress"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyD.PlcDselect">
+            <summary>
+            传入的控件参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyD.Save">
+            <summary>
+            标识是否保存数据
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyD.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyD.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyD.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyformat">
+            <summary>
+            处理格式页面
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyformat.#ctor(Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIDoubleUpDown,Sunny.UI.UIDoubleUpDown,Sunny.UI.UITextBox,Sunny.UI.UITextBox,PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.PLCDselectRealize,Sunny.UI.UIButton)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="Showformat">显示的资料格式</param>
+            <param name="format">格式</param>
+            <param name="decimalsMax">小数点以上位数</param>
+            <param name="decimalsMin">小数点一下位数</param>
+            <param name="DataMax">设备上限数值</param>
+            <param name="DataMin">设备下限数值</param>
+            <param name="pLCDselect">保存数据</param>
+            <param name="SetPlcButton">保存按钮</param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyKey">
+            <summary>
+            用于处理控件参数数值键盘输入界面
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyKey.#ctor(Sunny.UI.UICheckBox,Sunny.UI.UIComboBox,Sunny.UI.UILabel,PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.PLCDselectRealize,Sunny.UI.UIButton)">
+            <summary>
+            构造函数处理
+            </summary>
+            <param name="Key"></param>
+            <param name="KeyStey"></param>
+            <param name="pLCDselect">保存参数</param>
+            <param name="KeyLabel">文本显示</param>
+            <param name="SetPlcButton">参数保存</param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertysafety">
+            <summary>
+            用于处理控件属性安全选择页
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertysafety.RandomTime(Sunny.UI.UIComboBox)">
+            <summary>
+            自动产生时间间隔
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText">
+            <summary>
+            用于处理控件文字选择页面加载类
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.TextBase">
+            <summary>
+            状态0字体背景颜色参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.PLCselectTexte">
+            <summary>
+            状态暂时保存
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.#ctor(Sunny.UI.UIComboBox,Sunny.UI.UIButton,Sunny.UI.UIButton,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIRichTextBox,Sunny.UI.UIColorPicker,Sunny.UI.UIColorPicker,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox,System.Object,Sunny.UI.UIButton)">
+            <summary>
+            需要预加载文字--bit位
+            </summary>
+            <param name="Textstate"></param>
+            <param name="Text0"></param>
+            <param name="Text1"></param>
+            <param name="FontText"></param>
+            <param name="FontSize"></param>
+            <param name="Fontalign"></param>
+            <param name="Fontflicker"></param>
+            <param name="TextrichTextBox"></param>
+            <param name="TextBase"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.#ctor(Sunny.UI.UIComboBox,Sunny.UI.UIButton,Sunny.UI.UIButton,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIRichTextBox,Sunny.UI.UIColorPicker,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox,System.Object,Sunny.UI.UIButton)">
+            <summary>
+            需要预加载文字--D
+            </summary>
+            <param name="Textstate"></param>
+            <param name="Text0"></param>
+            <param name="Text1"></param>
+            <param name="FontText"></param>
+            <param name="FontSize"></param>
+            <param name="Fontalign"></param>
+            <param name="Fontflicker"></param>
+            <param name="TextrichTextBox"></param>
+            <param name="TextBase"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.TextSwitch(System.Boolean,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIRichTextBox,Sunny.UI.UIColorPicker,Sunny.UI.UIColorPicker,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox)">
+            <summary>
+            用户切换时切换以及保存数据
+            </summary>
+            <param name="Base"></param>
+            <param name="FontText"></param>
+            <param name="FontSize"></param>
+            <param name="Fontalign"></param>
+            <param name="Fontflicker"></param>
+            <param name="TextrichTextBox"></param>
+            <param name="TextColor"></param>
+            <param name="BackColor"></param>
+            <param name="TextFont1"></param>
+            <param name="TextFont2"></param>
+            <param name="TextBase"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.TextSwitch(System.Boolean,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIRichTextBox,Sunny.UI.UIColorPicker,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox)">
+            <summary>
+            用户切换时切换以及保存数据
+            </summary>
+            <param name="Base"></param>
+            <param name="FontText"></param>
+            <param name="FontSize"></param>
+            <param name="Fontalign"></param>
+            <param name="Fontflicker"></param>
+            <param name="TextrichTextBox"></param>
+            <param name="TextColor"></param>
+            <param name="BackColor"></param>
+            <param name="TextFont1"></param>
+            <param name="TextFont2"></param>
+            <param name="TextBase"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.PLCselectBasee(Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIRichTextBox,Sunny.UI.UIColorPicker,Sunny.UI.UIColorPicker,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox)">
+            <summary>
+            处理0-1-状态切换时保存数据
+            </summary>
+            <param name="Textstate"></param>
+            <param name="FontText"></param>
+            <param name="FontSize"></param>
+            <param name="Fontalign"></param>
+            <param name="Fontflicker"></param>
+            <param name="TextrichTextBox"></param>
+            <param name="TextColor"></param>
+            <param name="BackColor"></param>
+            <param name="TextFont1"></param>
+            <param name="TextFont2"></param>
+            <param name="TextBase"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.PLCselectBasee(Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UIRichTextBox,Sunny.UI.UIColorPicker,Sunny.UI.UICheckBox,Sunny.UI.UICheckBox)">
+            <summary>
+            处理0-1-状态切换时保存数据
+            </summary>
+            <param name="Textstate"></param>
+            <param name="FontText"></param>
+            <param name="FontSize"></param>
+            <param name="Fontalign"></param>
+            <param name="Fontflicker"></param>
+            <param name="TextrichTextBox"></param>
+            <param name="TextColor"></param>
+            <param name="BackColor"></param>
+            <param name="TextFont1"></param>
+            <param name="TextFont2"></param>
+            <param name="TextBase"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.GetWindosFont(Sunny.UI.UIComboBox)">
+            <summary>
+            获取系统全部字体
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.GetTextdirection(Sunny.UI.UIComboBox)">
+            <summary>
+            获取文字字体对齐方向
+            </summary>
+            <param name="comboBox"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpropertyText.GetTextdirection(Sunny.UI.UIComboBox,System.Int32)">
+            <summary>
+            获取文字字体对齐方向
+            </summary>
+            <param name="comboBox"></param>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic">
+            <summary>
+            PLC控件选择页面公用类
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetPLCBitName(Sunny.UI.UIComboBox,System.String)">
+            <summary>
+            读取指定名称PLC对应Bit类型的枚举值
+            </summary>
+            <param name="comboBox">需要填充下拉菜单</param>
+            <param name="EnumName">对应PLC名称</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetPLCDName(Sunny.UI.UIComboBox,System.String)">
+            <summary>
+            读取指定名称PLC对应Bit类型的枚举值
+            </summary>
+            <param name="comboBox">需要填充下拉菜单</param>
+            <param name="EnumName">对应PLC名称</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetPLCBitName(Sunny.UI.UIComboboxEx,System.String)">
+            <summary>
+            读取指定名称PLC对应Bit类型的枚举值
+            </summary>
+            <param name="comboBox">需要填充下拉菜单</param>
+            <param name="EnumName">对应PLC名称</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetPLCDName(Sunny.UI.UIComboboxEx,System.String)">
+            <summary>
+            读取指定名称PLC对应Bit类型的枚举值
+            </summary>
+            <param name="comboBox">需要填充下拉菜单</param>
+            <param name="EnumName">对应PLC名称</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetPLCEnumName``1(Sunny.UI.UIComboBox)">
+            <summary>
+            读取指定枚举名称并且填充到下拉菜单中
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="comboBox"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetPLCEnumName``1(Sunny.UI.UIComboboxEx)">
+            <summary>
+            读取指定枚举名称并且填充到下拉菜单中
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="comboBox"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetPLCErrBase(System.Boolean,Sunny.UI.UIComboboxEx)">
+            <summary>
+            根据标志位索引指定PLC报警条件
+            </summary>
+            <param name="condition"></param>
+            <param name="comboBox"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            取消键盘事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.PLCpublic.GetFontSize(Sunny.UI.UIComboBox)">
+            <summary>
+            加载字体
+            </summary>
+            <param name="comboBox"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewForm.#ctor(PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase,System.Windows.Forms.Control)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="pLCDataView">传入参数的接口</param>
+            <param name="Formcontrol">窗口控件</param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewFormAdd.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewFormAdd.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewFormAdd.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.PLCErrderiveForm.TextRead">
+            <summary>
+            异步读取用户设定内容
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.PLCErrderiveForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.PLCErrderiveForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.PLCErrderiveForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类.PLCErrExportData">
+            <summary>
+            导出设备报警历史类
+            自动导出30天报警内容
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类.PLCErrExportData.Count">
+            <summary>
+            导出个数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类.PLCErrExportData.Address">
+            <summary>
+            导出地址
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类.PLCErrExportData.Content">
+            <summary>
+            导出内容
+            </summary>
+        </member>
+        <member name="E:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类.PLCErrExportData.ExportDataRun">
+            <summary>
+            导出数据事件
+            </summary>
+            <param name="Count"></param>
+            <param name="Address"></param>
+            <param name="Content"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类.PLCErrExportData.ExporData(System.Collections.Generic.List{PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message})">
+            <summary>
+            根据文件路径自动导出30天报警历史
+            </summary>
+            <param name="content"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.TextRead">
+            <summary>
+            异步读取用户设定内容
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.HistoryErrTiming">
+            <summary>
+            定时刷新--加载数据
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.MonthlyErr(System.Collections.Generic.List{PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message})">
+            <summary>
+            计算30天的报警处理用时
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.EquipmentErr(System.Collections.Generic.List{PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message})">
+            <summary>
+            分析设备报警最多的数据
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.MonthlyErr(System.Collections.Generic.List{PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json.Event_message},System.Int32)">
+            <summary>
+            计算的报警处理用时
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.timer1_Tick(System.Object,System.EventArgs)">
+            <summary>
+            定时刷新 定时器
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.alarmhistories">
+            <summary>
+            用于保存历史报警源数据
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.uiButton1_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击了刷新数据源
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.QueryErr(System.Object,System.EventArgs)">
+            <summary>
+            查询报警历史
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面.PLCErrhistoryForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewForm.toolStripMenuItem1_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击了添加报警
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewForm.toolStripMenuItem2_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击了修改报警
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewForm.toolStripMenuItem3_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击了删除报警
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewForm.DataGridViewLoad">
+            <summary>
+            刷新表显示
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewFormAdd.event_Message">
+            <summary>
+            PLC参数事件
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewFormAdd.Save">
+            <summary>
+            标识是否保存数据
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewFormAdd.uiButton1_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击保存参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewFormAdd.uiButton2_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击取消保存参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewFormAdd.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewFormAdd.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面.PLCErrDataViewFormAdd.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.PLC">
+            <summary>
+            PLC硬件选择
+            PLC选择枚举>
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Mitsubishi_bit">
+            <summary>
+            PLC各可访问软元件  三菱-bit位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Mitsubishi_D">
+            <summary>
+            PLC各可访问软元件 三菱 -WORD 字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.OmronTCP_bit">
+            <summary>
+            PLC各可访问软元件  欧姆龙 位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.OmronTCP_D">
+            <summary>
+            PLC各可访问软元件  欧姆龙  字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.OmronUDP_bit">
+            <summary>
+            PLC各可访问软元件  欧姆龙 位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.OmronUDP_D">
+            <summary>
+            PLC各可访问软元件  欧姆龙  字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.OmronCIP_bit">
+            <summary>
+            PLC各可访问软元件  欧姆龙 位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.OmronCIP_D">
+            <summary>
+            PLC各可访问软元件  欧姆龙  字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Fanuc_bit">
+            <summary>
+            PLC各可访问软元件  欧姆龙 位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Fanuc_D">
+            <summary>
+            PLC各可访问软元件  欧姆龙  字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Siemens_bit">
+            <summary>
+             PLC各可访问软元件 西门子 -bit位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Siemens_D">
+            <summary>
+            PLC各可访问软元件 西门子-WORD 字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Modbus_TCP_bit">
+            <summary>
+             PLC各可访问软元件 Modbus_TCP -bit位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Modbus_TCP_D">
+            <summary>
+            PLC各可访问软元件 Modbus_TCP-WORD 字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.HMI_bit">
+            <summary>
+            PLC各可访问软元件  三菱-bit位
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.HMI_D">
+            <summary>
+            PLC各可访问软元件 三菱 -WORD 字
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.numerical_type">
+            <summary>
+            数值显示类型
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern">
+            <summary>
+            按钮操作模式
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.Set_as_on">
+            <summary>
+            设置ON
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.Set_as_off">
+            <summary>
+            设置OFF
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch">
+            <summary>
+            切换开关
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.Regression">
+            <summary>
+            复归型
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Pattern">
+            <summary>
+            安全操作行为模式
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.OperatingClass">
+            <summary>
+            用户控件操作类型等级枚举
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.Safetypattern">
+            <summary>
+            用户控件操作类型等级枚举
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Safetypattern.Close">
+            <summary>
+            关闭
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Safetypattern.Hide">
+            <summary>
+            隐藏
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Safetypattern.Gray">
+            <summary>
+            灰色文字
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.Safetypattern.Nooperation">
+            <summary>
+            无任何操作
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.PLCErrBase">
+            <summary>
+            设备报警判定类基
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.PLCErrBase.condition_Bit">
+            <summary>
+            触发条件--bit位
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件数据结构.PLCErrBase.condition_word">
+            <summary>
+            触发条件--word字--由于枚举不能写小于等于号现用字符串替代
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase">
+            <summary>
+            主要实现PLCBitproperty接口
+            用于处理控件选择保存0 1 控件文本背景颜色等参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.Textalign_0">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.TextFont_0">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>  
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.Textflicker_0">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.TextItalic_0">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.TextUnderline_0">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.Textalign_1">
+            <summary>
+            文字状态--1-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.TextFont_1">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.Textflicker_1">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.TextItalic_1">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.控件数据结构.PLCselectTextBase.TextUnderline_1">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:PLC通讯基础控件项目.控件类基.控件文本键盘.keyboard.numerical_KeyPress_import(System.String,System.String)" -->
+        <member name="F:PLC通讯基础控件项目.控件类基.控件文本键盘.keyboard.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件文本键盘.keyboard.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件文本键盘.keyboard.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件文本键盘.keyboard_Hex.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件文本键盘.keyboard_Hex.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件文本键盘.keyboard_Hex.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL1分料参数.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL1分料参数.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL1分料参数.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL1手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL1手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL1手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL2手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL2手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.FL2手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.HJ01手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.HJ01手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.HJ01手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.HJ02手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.HJ02手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.HJ02手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.PY01_手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.PY01_手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.PY01_手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.ZDP1手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.ZDP1手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.ZDP1手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.ZWJ手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.ZWJ手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.ZWJ手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.一区手动界面.一区手动主界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.一区手动主界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.一区手动界面.一区手动主界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.三区手动界面.PY05手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.PY05手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.PY05手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.三区手动界面.ZDP2手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.ZDP2手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.ZDP2手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.三区手动界面.三区手动主界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.三区手动主界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.三区手动主界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.三区手动界面.新ZDP手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.新ZDP手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.三区手动界面.新ZDP手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.主页面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.主页面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.主页面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.二区手动界面.FL3手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.FL3手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.FL3手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY02前手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY02前手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY02前手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY02后手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY02后手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY02后手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY03手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY03手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.PY03手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.二区手动界面.二区手动主界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.二区手动主界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.二区手动界面.二区手动主界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.参数页面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.参数页面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.参数页面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.四区手动界面.FL4手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.FL4手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.FL4手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.四区手动界面.PY06手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.PY06手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.PY06手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.四区手动界面.ZDP4手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.ZDP4手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.ZDP4手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.四区手动界面.四区手动主界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.四区手动主界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.四区手动界面.四区手动主界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.手动界面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.手动界面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.手动界面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.生产页面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.生产页面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.生产页面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.窗口底层.TemplateForm.AnimateWindow(System.IntPtr,System.Int32,System.Int32)">
+            <param name="hwnd">指定产生动画的窗口的句柄</param>
+            <param name="dwTime">指定动画持续的时间</param>
+            <param name="dwFlags">指定动画类型，可以是一个或多个标志的组合。</param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.窗口底层.TemplateForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.窗口底层.TemplateForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.窗口底层.TemplateForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.模板与控制界面.运转页面.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.运转页面.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.模板与控制界面.运转页面.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.第三方通信互交底层.Messagehandling">
+            <summary>
+            处理进程间通讯消息报文
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.Messagehandling.Manageanalysis(PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT)">
+            <summary>
+            读取PLC数据
+            </summary>
+            <param name="oPYDATASTRUCT"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.Messagehandling.Manageanalysis(PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT,System.Boolean)">
+            <summary>
+            写入PLC数据
+            </summary>
+            <param name="oPYDATASTRUCT"></param>
+            <param name="Write"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.Messagehandling.EnumValue``1">
+            <summary>
+            读取枚举的值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.Messagehandling.IsPLCType``1(System.String)">
+            <summary>
+            判断PLC读写类型 是否正确
+            符合返回true  不符合false
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.Messagehandling.IsInt(System.String)">
+            <summary>
+            判断数据是否int类型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.Messagehandling.Messagelen(PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult)">
+            <summary>
+            计算发送字节的长度
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="vale"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT">
+            <summary>
+            发送方读取标准报文
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.characteristic">
+            <summary>
+            消息标识符 一般是指发送与回复方的名称
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.function">
+            <summary>
+            功能码 
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.Equipmenttype">
+            <summary> 
+            访问设备的功能码 假设访问三菱 D 
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.Address">
+            <summary>
+            访问设备具体地址 假设访问三菱 D--100
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.Type">
+            <summary>
+            访问设备的类型 假设访问三菱 D--100 -- int16
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.length">
+            <summary>
+            访问设备的长度 假设访问三菱 D--100 -- int16 --1 读一个字
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.cbData">
+            <summary>
+            指向内存的字节数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCT.lpData">
+            <summary>
+            消息内容  读数据时 该属性为null
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult">
+            <summary>
+            Hmi回复标准报文
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.characteristic">
+            <summary>
+            消息标识符 一般是指发送与回复方的名称
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.function">
+            <summary>
+            功能码 
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.Equipmenttype">
+            <summary> 
+            访问设备的功能码 假设访问三菱 D 
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.Address">
+            <summary>
+            访问设备具体地址 假设访问三菱 D--100
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.Type">
+            <summary>
+            访问设备的类型 假设访问三菱 D--100 -- int16
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.length">
+            <summary>
+            访问设备的长度 假设访问三菱 D--100 -- int16 --1 读一个字
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.Data">
+            <summary>
+            访问设备回复数据 假设访问三菱 D--100 -- int16 --1 读一个字
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.result">
+            <summary>
+            请求结果--正常为true  异常为false
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.cbData">
+            <summary>
+            指向内存的字节数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.Request.COPYDATASTRUCTresult.lpData">
+            <summary>
+            消息内容  读数据时 该属性为null
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.第三方通信互交底层.SocketServer">
+            <summary>
+            主要用于Socket服务器实现用于 其他socket发送的数据
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.IPEnd">
+            <summary>
+            传入的IP地址与端口
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.reception">
+            <summary>
+            接收客户端发生消息缓冲区
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.socketload">
+            <summary>
+            Socket服务器对象
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.GetPhysicsNetworkCardIP">
+            <summary>
+            获得本机真实物理网卡IP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.SocketLoad">
+            <summary>
+            Socket套接字加载开放
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.Socketcall_back(System.IAsyncResult)">
+            <summary>
+            回调获取Socket客户端对象
+            </summary>
+            <param name="async"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.SocketSend(System.String,System.Int32)">
+            <summary>
+            向客户端发生数据
+            </summary>
+            <param name="Data">需要发生的数据</param>
+            <param name="inedx">Socket客户端索引</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.SocketSendcall_back(System.IAsyncResult)">
+            <summary>
+            消息发送状态监控 
+            </summary>
+            <param name="async"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.SocketRend(System.IAsyncResult)">
+            <summary>
+            监听客户端发生的消息
+            </summary>
+            <param name="async"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.RichTextcontrol(System.String)">
+            <summary>
+            显示文本内容
+            </summary>
+            <param name="Value">显示值</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.SocketHeartbeat(System.Net.Sockets.Socket)">
+            <summary>
+            判断检测客户端是否在线
+            </summary>
+            <param name="socket"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.第三方通信互交底层.SocketServer.SocketClose">
+            <summary>
+            Socket服务器释放
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.自定义窗口设计器.DesignerAddForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.自定义窗口设计器.DesignerAddForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.自定义窗口设计器.DesignerAddForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.FrameworkComponentDesigner">
+            <summary>
+            自定义窗口设计器
+            用于设置PLC参数以及处理
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.FrameworkComponentDesigner.OnAbout(System.Object,System.EventArgs)">
+            <summary>
+            移出PLC参数事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.FrameworkComponentDesigner.OnGenerateMyNodeComponentCode(System.Object,System.EventArgs)">
+            <summary>
+            添加PLC参数事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.FrameworkComponentDesigner.OnGenerateButtonCode(System.Object,System.EventArgs)">
+            <summary>
+            修改PLC参数事件
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+    </members>
+</doc>
