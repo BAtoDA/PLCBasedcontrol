@@ -161,5 +161,20 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                 comboBox.Items.Add(i);
             comboBox.SelectedIndex = 12;
         }
+        public Form GetContrForm(dynamic OopContr)
+        {
+            //递归查找顶级窗口Form
+            object Oop = OopContr;
+            while (true)
+            {
+                if ((((dynamic)Oop).Parent as Form) != null)
+                {
+                    return (Form)((dynamic)Oop).Parent;
+
+                }
+                else
+                    Oop = ((dynamic)Oop).Parent;
+            }
+        }
     }
 }

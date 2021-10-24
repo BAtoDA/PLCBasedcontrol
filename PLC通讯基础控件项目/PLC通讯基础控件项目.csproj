@@ -39,6 +39,7 @@
     <PackageReference Include="SunnyUI" Version="3.0.6" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
     <PackageReference Include="System.Speech" Version="5.0.0" />
+    <PackageReference Include="ZXing.Net" Version="0.16.6" />
   </ItemGroup>
 
   <ItemGroup>

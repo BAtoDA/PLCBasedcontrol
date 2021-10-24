@@ -194,6 +194,31 @@
             <param name="send"></param>
             <param name="e"></param>
         </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAIhatetheqrcode">
+            <summary>
+            实现从PLC侧读取自定类型数据 产生二维码或者条形码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAIhatetheqrcode.Command">
+            <summary>
+            扫描完成进行下一条数据读取
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAIhatetheqrcode.pLCQRcodeRealizeq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAIhatetheqrcode.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAIhatetheqrcode.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
         <member name="T:PLC通讯基础控件项目.基础控件.DAImageButton">
             <summary>
             实现上位机底层控件 透明按钮类 -不再公共运行时
@@ -1020,6 +1045,39 @@
             控件刷新定时器
             </summary>
         </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCQRcodeBaseRealize">
+            <summary>
+            二维码以及条形码
+            基础控件接口
+            </summary>
+        </member>
+        <member name="E:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCQRcodeBaseRealize.Modification">
+            <summary>
+            修改参数界面启动事件
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCQRcodeBaseRealize.Modifications_Eeve(System.Object,System.EventArgs)">
+            <summary>
+            修改参数界面方法
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCQRcodeBaseRealize.pLCQRcodeRealize">
+            <summary>
+            用于处理控件参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCQRcodeBaseRealize.APLC">
+            <summary>
+            用于给用户选择PLC使用
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLCQRcodeBaseRealize.Timerconfiguration">
+            <summary>
+            用于加载配置使用
+            </summary>
+        </member>
         <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.ControlPLCBitBase">
             <summary>
             实现基本位控件类--PLC刷新--文字事件等处理
@@ -1187,6 +1245,157 @@
         <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类.PLCDselectRealize">
             <summary>
             用于保存D寄存器类型控件参数
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate">
+            <summary>
+            实现二维码或者条形码生成
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate.Data">
+            <summary>
+            显示内容
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate.select">
+            <summary>
+            选择显示条形码还是二维码--默认二维码
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate.Generate1(System.String,System.Int32,System.Int32)">
+            <summary>
+            生成二维码
+            </summary>
+            <param name="text">内容</param>
+            <param name="width">宽度</param>
+            <param name="height">高度</param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate.Generate2(System.String,System.Int32,System.Int32)">
+            <summary>
+            生成一维条形码
+            </summary>
+            <param name="text">内容</param>
+            <param name="width">宽度</param>
+            <param name="height">高度</param>
+            <returns></returns>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate.Generate3(System.String,System.Int32,System.Int32)">
+            <summary>
+            生成带Logo的二维码
+            </summary>
+            <param name="text">内容</param>
+            <param name="width">宽度</param>
+            <param name="height">高度</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.IhatetheqrcodeCreate.deleteWhite(ZXing.Common.BitMatrix)">
+            <summary>
+            删除默认对应的空白
+            </summary>
+            <param name="matrix"></param>
+            <returns></returns>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase">
+            <summary>
+            条形码以及二维码
+            基础接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.Select">
+            <summary>
+            选择条形码以及二维码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.BindingOpen">
+            <summary>
+            控件绑定开启
+            开启后需要选中目标窗口的一个Button类型控件作为触发点
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.BindingName">
+            <summary>
+            判断控件的Name名称
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.ReadWritePLC">
+            <summary>
+            读取或者写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.ReadWriteFunction">
+            <summary>
+            读取或者写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.ReadWriteAddress">
+            <summary>
+            读取或者写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.ShowFormat">
+            <summary>
+            读取数据的资料格式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.WritePLC">
+            <summary>
+            写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.WriteFunction">
+            <summary>
+            写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeBase.WriteAddress">
+            <summary>
+            写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRCodecreation">
+            <summary>
+            主要通过读取PLC生成二维码以及条形码
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRCodecreation.pLCQRcodeBaseRealize">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRCodecreation.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRCodecreation.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRCodecreation.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRCodecreation.PLCrefresh">
+            <summary>
+            刷新二维码
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRCodecreation.PLCWrite(PLC通讯基础控件项目.控件类基.控件数据结构.PLC,System.String,System.String,System.Boolean)">
+            <summary>
+            写入PLC操作
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC二维码控件实现类.PLCQRcodeRealize">
+            <summary>
+            实现二维码以及条形码
+            基础接口
             </summary>
         </member>
         <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC圆形图控件实现类.ControlDoughnutChartClassBase">
@@ -2312,6 +2521,48 @@
             加载字体
             </summary>
             <param name="comboBox"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.二维码控件参数界面.PLCQRcodeForm.PLCload(Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox,Sunny.UI.UIComboBox,Sunny.UI.UIComboBox,Sunny.UI.UITextBox)">
+            <summary>
+            加载PLC设备枚举
+            </summary>
+            <param name="readwriteplc"></param>
+            <param name="readwritePLCfunction"></param>
+            <param name="readwriteaddress"></param>
+            <param name="writeplc"></param>
+            <param name="writePLCfunction"></param>
+            <param name="writeaddress"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.二维码控件参数界面.PLCQRcodeForm.uiButton1_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击保存参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.二维码控件参数界面.PLCQRcodeForm.uiButton2_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击取消保存
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.二维码控件参数界面.PLCQRcodeForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.二维码控件参数界面.PLCQRcodeForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.二维码控件参数界面.PLCQRcodeForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
         </member>
         <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.表格控件参数界面.PLCDataViewForm.#ctor(PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC.PLCDataViewClassBase,System.Windows.Forms.Control)">
             <summary>

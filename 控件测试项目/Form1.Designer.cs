@@ -1,4 +1,5 @@
 ﻿
+
 namespace 控件测试项目
 {
     partial class Form1
@@ -34,6 +35,7 @@ namespace 控件测试项目
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
@@ -55,7 +57,10 @@ namespace 控件测试项目
             this.uiLabel3 = new Sunny.UI.UILabel();
             this.plcStatusView3 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView();
             this.uiLine5 = new Sunny.UI.UILine();
+            this.daIhatetheqrcode1 = new PLC通讯基础控件项目.基础控件.DAIhatetheqrcode();
+            this.uiButton1 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daIhatetheqrcode1)).BeginInit();
             this.SuspendLayout();
             // 
             // plcControlsPreferences1
@@ -481,11 +486,46 @@ namespace 控件测试项目
             this.uiLine5.Style = Sunny.UI.UIStyle.Custom;
             this.uiLine5.TabIndex = 21;
             // 
+            // daIhatetheqrcode1
+            // 
+            this.daIhatetheqrcode1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daIhatetheqrcode1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("daIhatetheqrcode1.BackgroundImage")));
+            this.daIhatetheqrcode1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.daIhatetheqrcode1.Location = new System.Drawing.Point(64, 459);
+            this.daIhatetheqrcode1.Name = "daIhatetheqrcode1";
+            this.daIhatetheqrcode1.PLC_Enable = true;
+            this.daIhatetheqrcode1.pLCQRcodeRealize.BindingName = "uiButton1";
+            this.daIhatetheqrcode1.pLCQRcodeRealize.BindingOpen = true;
+            this.daIhatetheqrcode1.pLCQRcodeRealize.ReadWriteAddress = "0";
+            this.daIhatetheqrcode1.pLCQRcodeRealize.ReadWriteFunction = "D";
+            this.daIhatetheqrcode1.pLCQRcodeRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.daIhatetheqrcode1.pLCQRcodeRealize.Select = true;
+            this.daIhatetheqrcode1.pLCQRcodeRealize.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
+            this.daIhatetheqrcode1.pLCQRcodeRealize.WriteAddress = "0";
+            this.daIhatetheqrcode1.pLCQRcodeRealize.WriteFunction = "Y";
+            this.daIhatetheqrcode1.pLCQRcodeRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.daIhatetheqrcode1.Size = new System.Drawing.Size(234, 144);
+            this.daIhatetheqrcode1.TabIndex = 22;
+            this.daIhatetheqrcode1.TabStop = false;
+            // 
+            // uiButton1
+            // 
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.Location = new System.Drawing.Point(127, 610);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Size = new System.Drawing.Size(100, 35);
+            this.uiButton1.TabIndex = 23;
+            this.uiButton1.Text = "uiButton1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 703);
+            this.Controls.Add(this.uiButton1);
+            this.Controls.Add(this.daIhatetheqrcode1);
             this.Controls.Add(this.uiLine5);
             this.Controls.Add(this.uiLabel3);
             this.Controls.Add(this.plcStatusView3);
@@ -505,6 +545,7 @@ namespace 控件测试项目
             this.Padding = new System.Windows.Forms.Padding(0, 35, 0, 0);
             this.Text = "011";
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daIhatetheqrcode1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -533,6 +574,8 @@ namespace 控件测试项目
         private Sunny.UI.UILabel uiLabel3;
         private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.PLCStatusView plcStatusView3;
         private Sunny.UI.UILine uiLine5;
+        private PLC通讯基础控件项目.基础控件.DAIhatetheqrcode daIhatetheqrcode1;
+        private Sunny.UI.UIButton uiButton1;
     }
 }
 
