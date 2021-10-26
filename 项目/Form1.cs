@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLC通讯基础控件项目.模板与控制界面;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +20,7 @@ namespace 项目
 
         private void daPlcFunction1_Click(object sender, EventArgs e)
         {
-            this.timer1.Stop();
-            this.Hide();
+          
         }
         int ImgeIndex = 0;
         /// <summary>
@@ -37,6 +37,13 @@ namespace 项目
             }
             this.pictureBox1.Image = this.imageList1.Images[ImgeIndex];
             ImgeIndex += 1;
+        }
+
+        private void daUiButton1_Click(object sender, EventArgs e)
+        {
+            new 主页面().Show();
+            this.timer1.Stop();
+            this.Hide();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace 控件测试项目
             var DD = DateTime.Now;
             base.OnShown(e);
             PLCMultifunctionBitBase pLCMultifunctionClassBase = new PLCMultifunctionClassBase();
-            new PLCMultifunctionForm(new DAMultifunction()).ShowDialog();
+            //new PLCMultifunctionForm(new DAMultifunction()).ShowDialog();
 
         }
     }

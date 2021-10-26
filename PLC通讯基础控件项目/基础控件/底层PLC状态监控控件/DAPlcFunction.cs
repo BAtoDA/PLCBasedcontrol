@@ -46,7 +46,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             //var Formoop = Assembly.GetExecutingAssembly().GetTypes(this.FormPath + "." + this.FormName);
             //获取所有运行中的窗口
             Regex rq = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
-            var Formoop = Assembly.GetEntryAssembly().GetTypes().Where(p=> rq.IsMatch(p.FullName)).ToList();
+            var Formoop = Assembly.GetExecutingAssembly().GetTypes().Where(p=> rq.IsMatch(p.FullName)).ToList();
             if (Formoop != null)
             {
                 Regex regex = new Regex(this.FormName);
@@ -59,7 +59,22 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 }
             }
             else
-                return;
+            {
+                var Formoop1 = Assembly.GetEntryAssembly().GetTypes().Where(p => rq.IsMatch(p.FullName)).ToList();
+                if (Formoop1 != null)
+                {
+                    Regex regex = new Regex(this.FormName);
+                    var Form = Formoop1.Where(p => regex.IsMatch(p.FullName)).FirstOrDefault();
+                    if (Form != null)
+                    {
+                        Form FormShow = Activator.CreateInstance(Form) as Form;
+                        FormShow.StartPosition = FormStartPosition.CenterScreen;
+                        FormShow.Show();
+                    }
+                }
+            }
+            
+
             //关闭当前窗口
             //获取所有运行中的窗口
             Regex r = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
@@ -75,7 +90,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 else
                     Oop = ((dynamic)Oop).Parent;
             }
-            if(Application.OpenForms.Count<=2)
+            if (Application.OpenForms.Count <= 2)
             {
                 if (MessageBox.Show("代码检测到你窗口数量少于2 \r\n 这表示会导致关闭主窗口 \r\n 这在C#主窗口是不允许关闭的\r\n 这样会导致整个程序都进行关闭", "Err", MessageBoxButtons.YesNo) == DialogResult.No)
                     return;
