@@ -103,18 +103,18 @@ namespace 控件测试项目
             // daUiButton1
             // 
             this.daUiButton1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daUiButton1.backgroundColor_0 = System.Drawing.Color.Silver;
+            this.daUiButton1.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
             this.daUiButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daUiButton1.FillColor = System.Drawing.Color.Silver;
-            this.daUiButton1.FillHoverColor = System.Drawing.Color.Silver;
+            this.daUiButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton1.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
             this.daUiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton1.Location = new System.Drawing.Point(240, 363);
             this.daUiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.daUiButton1.Name = "daUiButton1";
             this.daUiButton1.PLC_Enable = true;
             this.daUiButton1.pLCBitselectRealize.AwaitTime = 0;
-            this.daUiButton1.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.Silver;
+            this.daUiButton1.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
             this.daUiButton1.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton1.pLCBitselectRealize.BitPattern = false;
             this.daUiButton1.pLCBitselectRealize.description = "PLCBitselectRealize";
@@ -327,7 +327,7 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
-            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\system32";
+            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\System32";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daDataViewToPlcErr1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.daDataViewToPlcErr1.Location = new System.Drawing.Point(558, 38);

@@ -315,6 +315,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
                    "Name"+this.uiDataGridView1.Rows.Count,
                    "varchar"
                });
+
+            this.uiDataGridView1.SelectedIndex = this.uiDataGridView1.Rows.Count-1;
         }
         //修改操作
         private void uiButton2_Click(object sender, EventArgs e)
@@ -337,6 +339,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
                     }
 
                 }
+                this.uiDataGridView1.SelectedIndex = Index;
             }
             catch { }
         }
@@ -345,10 +348,13 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
         {
             try
             {
+                Index = this.uiDataGridView1.SelectedIndex;
                 if (this.uiDataGridView1.Rows[Index].Cells[0].Value?.ToString().Trim() != ""& this.uiDataGridView1.Rows[Index].Cells[0].Value!=null)//用户是否选中了空行
                 {
                     uiDataGridView1.Rows.RemoveAt(Index);
                 }
+
+                this.uiDataGridView1.SelectedIndex = Index-1;
             }
             catch { }
         }
