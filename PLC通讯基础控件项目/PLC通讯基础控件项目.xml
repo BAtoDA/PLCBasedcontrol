@@ -253,6 +253,26 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:PLC通讯基础控件项目.基础控件.DAMultifunction">
+            <summary>
+            多功能键
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAMultifunction.pLCBitselectsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.基础控件.DAMultifunction.PLCsz">
+            <summary>
+            私有设置PLC参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAMultifunction.PLC_Enable">
+            <summary>
+            是否启用PLC功能
+            </summary>
+        </member>
         <member name="T:PLC通讯基础控件项目.基础控件.DATextBox">
             <summary>
             实现上位机底层控件 普通文本类 -不再公共运行时
@@ -1472,6 +1492,232 @@
             <param name="SQLsurface">SQL表名</param>
             <param name="SQLstatement">SQL需要执行的语句</param>
         </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCmMltifunctionFunctionBase">
+            <summary>
+            多功能键 
+            窗口切换接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCmMltifunctionFunctionBase.FormPath">
+            <summary>
+            需要反射窗口的路径
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCmMltifunctionFunctionBase.FormName">
+            <summary>
+            需要反射窗口的名称
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase">
+            <summary>
+            多功能控件基础接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.pLCMultifunctions">
+            <summary>
+            功能键保存的参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.pLCBitselectRealizeq">
+            <summary>
+            背景颜色保存参数
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.ReadPLC">
+            <summary>
+            读取或者写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.ReadFunction">
+            <summary>
+            读取或者写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.ReadAddress">
+            <summary>
+            读取或者写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.keyMinTime">
+            <summary>
+            安全控制--最少按键时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.OperationAffirm">
+            <summary>
+            安全控制--操作前确认
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.AwaitTime">
+            <summary>
+            安全控制--确定等待时间
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.SafetyPLC">
+            <summary>
+            安全控制--PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.SafetyFunction">
+            <summary>
+            安全控制--PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.WrSafetyAddress">
+            <summary>
+            安全控制--PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.SafetyPattern">
+            <summary>
+            安全控制--启用状态-设ON还是OFF
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.SafetyBehaviorPattern">
+            <summary>
+            安全控制--行为模式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.SafetyCategory">
+            <summary>
+            安全控制--操作类别
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.NoAccessConceal">
+            <summary>
+            安全控制--无权限该控件隐藏
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.NoAccessForm">
+            <summary>
+            安全控制--无权限该控件弹窗
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.Speech">
+            <summary>
+            安全控制--启用系统语音播放
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.Textalign_0">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.TextFont_0">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.Textflicker_0">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.TextItalic_0">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.TextUnderline_0">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.Textalign_1">
+            <summary>
+            文字状态--0-字体对齐方式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.TextFont_1">
+            <summary>
+            文字属性--字体-尺寸-
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.Textflicker_1">
+            <summary>
+            文本是否闪烁
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.TextItalic_1">
+            <summary>
+            文字是否是斜体
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBase.TextUnderline_1">
+            <summary>
+            文本文字是否有下划线
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase">
+            <summary>
+            功能键位操作基础接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.Pattern">
+            <summary>
+            按钮操作模式
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWritePLC">
+            <summary>
+            读取或者写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWriteFunction">
+            <summary>
+            读取或者写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWriteAddress">
+            <summary>
+            读取或者写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.OutReverse">
+            <summary>
+            输出模式-输出反向
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase">
+            <summary>
+            多功能控件类基
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase.ClassInterface">
+            <summary>
+            默认实现的接口
+            </summary>
+        </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase">
+            <summary>
+            功能键寄存器操作基础接口
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWritePLC">
+            <summary>
+            读取或者写入PLC类型
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWriteFunction">
+            <summary>
+            读取或者写入PLC的功能码
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWriteAddress">
+            <summary>
+            读取或者写入PLC的具体地址
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.Value">
+            <summary>
+            写入值
+            </summary>
+        </member>
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ShowFormat">
+            <summary>
+            数据格式显示的资料格式
+            </summary>
+        </member>
         <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEventAutoContent">
             <summary>
             自动保存报警日志
@@ -2559,6 +2805,144 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.二维码控件参数界面.PLCQRcodeForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            取消键盘事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionBitForm.uiButton1_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击了保存数据
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionBitForm.uiButton2_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击取消数据
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionBitForm.KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            取消键盘事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionBitForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionBitForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionBitForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionDForm.uiButton1_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击保存数据
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionDForm.uiButton2_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击取消数据
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionDForm.KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            取消键盘事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionDForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionDForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionDForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.uiButton3_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击保存参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.uiButton2_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击取消参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            取消键盘事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.

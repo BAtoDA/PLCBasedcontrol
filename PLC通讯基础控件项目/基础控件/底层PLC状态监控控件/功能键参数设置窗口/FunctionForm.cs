@@ -27,17 +27,34 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.�
         {
             //从命名空间中加载窗口模板
             Regex r = new Regex(Formpthan?? "PLC通讯基础控件项目.模板与控制界面");
-            var TypeData = Assembly.GetEntryAssembly().GetTypes();
-            this.uiComboBox1.Items.Clear();
-            foreach (var i in TypeData)
+            if (!DesignMode)
             {
-                if (r.Match(i.FullName).Success)
+                var TypeData = Assembly.GetEntryAssembly().GetTypes();
+                this.uiComboBox1.Items.Clear();
+                foreach (var i in TypeData)
                 {
-                    this.uiComboBox1.Items.Add(i.Name);
+                    if (r.Match(i.FullName).Success)
+                    {
+                        this.uiComboBox1.Items.Add(i.Name);
+                    }
                 }
+                if (this.uiComboBox1.Items.Count > 0)
+                    this.uiComboBox1.SelectedIndex = 0;
             }
-            if (this.uiComboBox1.Items.Count > 0)
-                this.uiComboBox1.SelectedIndex = 0;
+            else
+            {
+                var TypeData = Assembly.GetExecutingAssembly().GetTypes();
+                this.uiComboBox1.Items.Clear();
+                foreach (var i in TypeData)
+                {
+                    if (r.Match(i.FullName).Success)
+                    {
+                        this.uiComboBox1.Items.Add(i.Name);
+                    }
+                }
+                if (this.uiComboBox1.Items.Count > 0)
+                    this.uiComboBox1.SelectedIndex = 0;
+            }
             this.uiTextBox1.Text = Formpthan;
             //显示之前选中的参数
             this.uiComboBox1.Text = FormName;
