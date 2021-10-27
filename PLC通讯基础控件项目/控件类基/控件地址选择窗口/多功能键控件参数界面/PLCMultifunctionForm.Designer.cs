@@ -359,6 +359,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiListBox1.Style = Sunny.UI.UIStyle.White;
             this.uiListBox1.TabIndex = 1;
             this.uiListBox1.Text = "uiListBox1";
+            this.uiListBox1.ItemDoubleClick += new System.EventHandler(this.uiListBox1_ItemDoubleClick);
             this.uiListBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress);
             // 
             // uiGroupBox12
@@ -1306,6 +1307,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiButton5.Size = new System.Drawing.Size(100, 35);
             this.uiButton5.TabIndex = 3;
             this.uiButton5.Text = "确定";
+            this.uiButton5.Click += new System.EventHandler(this.uiButton5_Click);
             // 
             // uiButton6
             // 
@@ -1317,6 +1319,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiButton6.Size = new System.Drawing.Size(100, 35);
             this.uiButton6.TabIndex = 4;
             this.uiButton6.Text = "取消";
+            this.uiButton6.Click += new System.EventHandler(this.uiButton6_Click);
             // 
             // PLCMultifunctionForm
             // 
@@ -1330,6 +1333,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.MinimizeBox = false;
             this.Name = "PLCMultifunctionForm";
             this.Text = "PLCMultifunctionForm";
+            this.TopMost = true;
             this.uiTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.uiGroupBox1.ResumeLayout(false);

@@ -13,20 +13,19 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 按钮操作模式
         /// </summary>
-        Button_pattern Pattern { get; set; }
+        string ValueBit { get; set; }
         /// <summary>
         /// 读取或者写入PLC类型
         /// </summary>
-
-        PLC ReadWritePLC { get; set; }
+        PLC ReadWriteBitPLC { get; set; }
         /// <summary>
         /// 读取或者写入PLC的功能码
         /// </summary>
-        string ReadWriteFunction { get; set; }
+        string ReadWriteBitFunction { get; set; }
         /// <summary>
         /// 读取或者写入PLC的具体地址
         /// </summary>
-        string ReadWriteAddress { get; set; }
+        string ReadWriteBitAddress { get; set; }
         /// <summary>
         /// 输出模式-输出反向
         /// </summary>

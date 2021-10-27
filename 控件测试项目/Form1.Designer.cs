@@ -36,6 +36,8 @@ namespace 控件测试项目
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase1 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
+            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase2 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
             this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
@@ -61,6 +63,7 @@ namespace 控件测试项目
             this.uiButton1 = new Sunny.UI.UIButton();
             this.uiListBox1 = new Sunny.UI.UIListBox();
             this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
+            this.daMultifunction1 = new PLC通讯基础控件项目.基础控件.DAMultifunction();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.daIhatetheqrcode1)).BeginInit();
             this.SuspendLayout();
@@ -84,7 +87,7 @@ namespace 控件测试项目
             // 
             // plcPreferences3
             // 
-            this.plcPreferences3.IPEnd = "192.168.1.8";
+            this.plcPreferences3.IPEnd = "192.168.88.104";
             this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.plcPreferences3.Point = 8000;
             this.plcPreferences3.Receptionovertime = 1000;
@@ -327,7 +330,7 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
-            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\System32";
+            this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\system32";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daDataViewToPlcErr1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.daDataViewToPlcErr1.Location = new System.Drawing.Point(558, 38);
@@ -556,11 +559,129 @@ namespace 控件测试项目
             this.daPlcFunction1.TabIndex = 25;
             this.daPlcFunction1.Text = "daPlcFunction1";
             // 
+            // daMultifunction1
+            // 
+            this.daMultifunction1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daMultifunction1.AwaitTime = 100;
+            this.daMultifunction1.BackColor = System.Drawing.Color.Silver;
+            this.daMultifunction1.backgroundColor_0 = System.Drawing.Color.Silver;
+            this.daMultifunction1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daMultifunction1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daMultifunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daMultifunction1.keyMinTime = 100;
+            this.daMultifunction1.Location = new System.Drawing.Point(392, 447);
+            this.daMultifunction1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.daMultifunction1.Name = "daMultifunction1";
+            this.daMultifunction1.NoAccessConceal = false;
+            this.daMultifunction1.NoAccessForm = false;
+            this.daMultifunction1.OperationAffirm = false;
+            this.daMultifunction1.PLC_Enable = true;
+            this.daMultifunction1.pLCBitselectRealizeq.AwaitTime = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.backgroundColor_0 = System.Drawing.Color.Silver;
+            this.daMultifunction1.pLCBitselectRealizeq.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daMultifunction1.pLCBitselectRealizeq.BitPattern = false;
+            this.daMultifunction1.pLCBitselectRealizeq.description = "PLCBitselectRealize";
+            this.daMultifunction1.pLCBitselectRealizeq.keyMinTime = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.LoosenOut = false;
+            this.daMultifunction1.pLCBitselectRealizeq.NoAccessConceal = false;
+            this.daMultifunction1.pLCBitselectRealizeq.NoAccessForm = false;
+            this.daMultifunction1.pLCBitselectRealizeq.OperationAffirm = false;
+            this.daMultifunction1.pLCBitselectRealizeq.OutReverse = false;
+            this.daMultifunction1.pLCBitselectRealizeq.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
+            this.daMultifunction1.pLCBitselectRealizeq.PLCTimer = null;
+            this.daMultifunction1.pLCBitselectRealizeq.ReadWrite = false;
+            this.daMultifunction1.pLCBitselectRealizeq.ReadWriteAddress = "0";
+            this.daMultifunction1.pLCBitselectRealizeq.ReadWriteFunction = "M";
+            this.daMultifunction1.pLCBitselectRealizeq.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daMultifunction1.pLCBitselectRealizeq.SafetyBehaviorPattern = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.SafetyCategory = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.SafetyFunction = "M";
+            this.daMultifunction1.pLCBitselectRealizeq.SafetyPattern = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daMultifunction1.pLCBitselectRealizeq.Speech = false;
+            this.daMultifunction1.pLCBitselectRealizeq.Textalign_0 = "MiddleCenter";
+            this.daMultifunction1.pLCBitselectRealizeq.Textalign_1 = "MiddleCenter";
+            this.daMultifunction1.pLCBitselectRealizeq.TextColor_0 = System.Drawing.Color.White;
+            this.daMultifunction1.pLCBitselectRealizeq.TextColor_1 = System.Drawing.Color.White;
+            this.daMultifunction1.pLCBitselectRealizeq.TextContent_0 = "OFF";
+            this.daMultifunction1.pLCBitselectRealizeq.TextContent_1 = "ON";
+            this.daMultifunction1.pLCBitselectRealizeq.Textflicker_0 = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.Textflicker_1 = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daMultifunction1.pLCBitselectRealizeq.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daMultifunction1.pLCBitselectRealizeq.TextItalic_0 = false;
+            this.daMultifunction1.pLCBitselectRealizeq.TextItalic_1 = false;
+            this.daMultifunction1.pLCBitselectRealizeq.TextState = 0;
+            this.daMultifunction1.pLCBitselectRealizeq.TextUnderline_0 = false;
+            this.daMultifunction1.pLCBitselectRealizeq.TextUnderline_1 = false;
+            this.daMultifunction1.pLCBitselectRealizeq.WriteAddress = "0";
+            this.daMultifunction1.pLCBitselectRealizeq.WriteFunction = "M";
+            this.daMultifunction1.pLCBitselectRealizeq.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daMultifunction1.pLCBitselectRealizeq.WrSafetyAddress = "0";
+            plcMultifunctionClassBase1.ClassInterface = "PLCMultifunctionBitBase";
+            plcMultifunctionClassBase1.FormName = "TemplateForm";
+            plcMultifunctionClassBase1.FormPath = "PLC通讯基础控件项目.模板与控制界面";
+            plcMultifunctionClassBase1.OutReverse = false;
+            plcMultifunctionClassBase1.ReadWriteBitAddress = "0";
+            plcMultifunctionClassBase1.ReadWriteBitFunction = "Y";
+            plcMultifunctionClassBase1.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            plcMultifunctionClassBase1.ReadWriteDAddress = "0";
+            plcMultifunctionClassBase1.ReadWriteDFunction = "D";
+            plcMultifunctionClassBase1.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            plcMultifunctionClassBase1.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
+            plcMultifunctionClassBase1.Value = 0;
+            plcMultifunctionClassBase1.ValueBit = "ON";
+            plcMultifunctionClassBase2.ClassInterface = "PLCMultifunctionDBase";
+            plcMultifunctionClassBase2.FormName = "TemplateForm";
+            plcMultifunctionClassBase2.FormPath = "PLC通讯基础控件项目.模板与控制界面";
+            plcMultifunctionClassBase2.OutReverse = false;
+            plcMultifunctionClassBase2.ReadWriteBitAddress = "0";
+            plcMultifunctionClassBase2.ReadWriteBitFunction = "M";
+            plcMultifunctionClassBase2.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            plcMultifunctionClassBase2.ReadWriteDAddress = "1";
+            plcMultifunctionClassBase2.ReadWriteDFunction = "D";
+            plcMultifunctionClassBase2.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            plcMultifunctionClassBase2.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
+            plcMultifunctionClassBase2.Value = 66;
+            plcMultifunctionClassBase2.ValueBit = "ON";
+            this.daMultifunction1.pLCMultifunctions = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase[] {
+        plcMultifunctionClassBase1,
+        plcMultifunctionClassBase2};
+            this.daMultifunction1.PLCTimer = null;
+            this.daMultifunction1.ReadAddress = "0";
+            this.daMultifunction1.ReadFunction = "M";
+            this.daMultifunction1.ReadPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daMultifunction1.SafetyBehaviorPattern = 0;
+            this.daMultifunction1.SafetyCategory = 0;
+            this.daMultifunction1.SafetyFunction = "M";
+            this.daMultifunction1.SafetyPattern = 0;
+            this.daMultifunction1.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daMultifunction1.Size = new System.Drawing.Size(100, 35);
+            this.daMultifunction1.Speech = false;
+            this.daMultifunction1.TabIndex = 26;
+            this.daMultifunction1.Text = "OFF";
+            this.daMultifunction1.Textalign_0 = "MiddleCenter";
+            this.daMultifunction1.Textalign_1 = "MiddleCenter";
+            this.daMultifunction1.TextColor_0 = System.Drawing.Color.White;
+            this.daMultifunction1.TextColor_1 = System.Drawing.Color.White;
+            this.daMultifunction1.TextContent_0 = "OFF";
+            this.daMultifunction1.TextContent_1 = "ON";
+            this.daMultifunction1.Textflicker_0 = 0;
+            this.daMultifunction1.Textflicker_1 = 0;
+            this.daMultifunction1.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daMultifunction1.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daMultifunction1.TextItalic_0 = false;
+            this.daMultifunction1.TextItalic_1 = false;
+            this.daMultifunction1.TextUnderline_0 = false;
+            this.daMultifunction1.TextUnderline_1 = false;
+            this.daMultifunction1.WrSafetyAddress = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 703);
+            this.Controls.Add(this.daMultifunction1);
             this.Controls.Add(this.daPlcFunction1);
             this.Controls.Add(this.uiListBox1);
             this.Controls.Add(this.uiButton1);
@@ -617,6 +738,7 @@ namespace 控件测试项目
         private Sunny.UI.UIButton uiButton1;
         private Sunny.UI.UIListBox uiListBox1;
         private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
+        private PLC通讯基础控件项目.基础控件.DAMultifunction daMultifunction1;
     }
 }
 

@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 using PLC通讯基础控件项目.控件类基.PLC基础接口;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using Sunny.UI;
 
@@ -19,11 +21,35 @@ namespace PLC通讯基础控件项目.基础控件
     [Browsable(true)]
     public sealed partial class DAMultifunction : UIButton, PLCMultifunctionBase, PLCBitproperty
     {
+        public DAMultifunction()
+        {
+            Timerconfiguration.Tick += ((send, e) =>
+            {
+                //立马刷新状态
+                this.SuspendLayout();
+                this.backgroundColor_0 = this.pLCBitselectRealizeq.backgroundColor_0;
+                this.TextContent_0 = this.pLCBitselectRealizeq.TextContent_0;
+                this.TextColor_0 = this.pLCBitselectRealizeq.TextColor_0;
+                this.Refresh();
+                this.ResumeLayout(false);
+                Timerconfiguration.Stop();
+                //处理PLC通讯部分
+                if (!this.PLC_Enable || this.IsDisposed || this.Created == false || DesignMode) return;//用户不开启PLC功能
+                {
+                    new ControlPLCMultifunctionBase(this);
+                }
+            });
+        }
         #region 实现接口
         [Browsable(false)]
         [Description("PLC保存参数"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public PLCMultifunctionClassBase[] pLCMultifunctions { get; set; } = new PLCMultifunctionClassBase[] { new PLCMultifunctionClassBase() };
+        public PLCMultifunctionClassBase[] pLCMultifunctions { get => pLCMultifunctionsq; set => pLCMultifunctionsq = value; }
+        /// <summary>
+        /// 私有保存参数 自动添加
+        /// </summary>
+        private PLCMultifunctionClassBase[] pLCMultifunctionsq { get; set; } = new PLCMultifunctionClassBase[]{ new PLCMultifunctionClassBase()};
+
         [Browsable(false)]
         [Description("PLC保存参数"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
@@ -155,14 +181,61 @@ namespace PLC通讯基础控件项目.基础控件
             get => plc_Enable;
             set => plc_Enable = value;
         }
-        public Timer PLCTimer { get; set; }
+        public System.Threading.Timer PLCTimer { get; set; }
+        public System.Windows.Forms.Timer Timerconfiguration { get; set; } = new System.Windows.Forms.Timer() { Enabled = true, Interval = 100 };
 
         private bool plc_Enable = false;
 
         public void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
+            PLCMultifunctionClassBase[] pLCMultifunctionClassBases = new PLCMultifunctionClassBase[pLCMultifunctions.Length];
+            for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
+            {
+                pLCMultifunctionClassBases[i] = new PLCMultifunctionClassBase();
+                var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
+                var w2 = pLCMultifunctions[i].GetType().GetProperties();
+                for (int ix = 0; ix < w2.Length; ix++)
+                    w1[ix] = w2[ix];
+            }
 
+
+            var Copyq1 = pLCMultifunctions.GetType().GetProperties();
+
+
+            var Copy = this.pLCBitselectRealizeq.GetType().GetProperties();
+            PLCBitselectRealize bitselectRealize = new PLCBitselectRealize();
+            var CopyTo = bitselectRealize.GetType().GetProperties();
+            for (int i = 0; i < Copy.Length; i++)
+            {
+                CopyTo[i] = Copy[i];
+            }
+
+            PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(this);
+            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+            pLCpropertyBit.ShowDialog();
+
+            if (!pLCpropertyBit.Save)          
+            {
+                for (int i = 0; i < Copy.Length; i++)
+                {
+                    Copy[i] = CopyTo[i];
+                }
+
+                for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
+                {
+                    var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
+                    var w2 = pLCMultifunctions[i].GetType().GetProperties();
+                    for (int ix = 0; ix < w2.Length; ix++)
+                        w2[ix] = w1[ix];
+                }
+                pLCMultifunctions = pLCMultifunctionClassBases;
+            }
+            else
+            {
+                pLCMultifunctions = pLCpropertyBit.pLCMultifunction.ToArray();
+            }
+            this.Modification -= new EventHandler(Modifications_Eeve);
         }
         #endregion
     }

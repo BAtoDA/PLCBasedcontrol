@@ -18,7 +18,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
     {
         #region 字段
         PLCMultifunctionBase pLCMultifunctionBase;
-        List<PLCMultifunctionClassBase> pLCMultifunction = new List<PLCMultifunctionClassBase>();
+        public List<PLCMultifunctionClassBase> pLCMultifunction = new List<PLCMultifunctionClassBase>();
+        public bool Save = false;
         #endregion
 
         public PLCMultifunctionForm(PLCMultifunctionBase pLCMultifunctionBase)
@@ -67,13 +68,13 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                             break;
                         case "PLCMultifunctionBitBase":
                             //显示Bit位
-                            this.uiListBox1.Items.Add($"{((PLCMultifunctionBitBase)s).ReadWritePLC} {((PLCMultifunctionBitBase)s).ReadWriteFunction} " +
-                                $"{((PLCMultifunctionBitBase)s).ReadWriteAddress} {((PLCMultifunctionBitBase)s).Pattern}");
+                            this.uiListBox1.Items.Add($"{((PLCMultifunctionBitBase)s).ReadWriteBitPLC} {((PLCMultifunctionBitBase)s).ReadWriteBitFunction} " +
+                                $"{((PLCMultifunctionBitBase)s).ReadWriteBitAddress} {((PLCMultifunctionBitBase)s).ValueBit}");
                             break;
                         case "PLCMultifunctionDBase":
                             //显示寄存器D
-                            this.uiListBox1.Items.Add($"{((PLCMultifunctionDBase)s).ReadWritePLC} {((PLCMultifunctionDBase)s).ReadWriteFunction} " +
-                            $"{((PLCMultifunctionDBase)s).ReadWriteAddress} {((PLCMultifunctionDBase)s).Value}");
+                            this.uiListBox1.Items.Add($"{((PLCMultifunctionDBase)s).ReadWriteDPLC} {((PLCMultifunctionDBase)s).ReadWriteDFunction} " +
+                            $"{((PLCMultifunctionDBase)s).ReadWriteDAddress} {((PLCMultifunctionDBase)s).Value}  {((PLCMultifunctionDBase)s).ShowFormat}");
                             break;
                     }
                 });
@@ -172,29 +173,28 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                 //重新填充下拉菜单
                 LitsAdd(Data);
             }
-
-            void LitsAdd(PLCMultifunctionClassBase Data)
-            {
-                //重新填充下拉菜单
-                switch (Data.ClassInterface)
-                {
-                    case "PLCmMltifunctionFunctionBase":
-                        //显示功能键
-                        this.uiListBox1.Items.Add($"{((PLCmMltifunctionFunctionBase)Data).FormName},{((PLCmMltifunctionFunctionBase)Data).FormPath}");
-                        break;
-                    case "PLCMultifunctionBitBase":
-                        //显示Bit位
-                        this.uiListBox1.Items.Add($"{((PLCMultifunctionBitBase)Data).ReadWritePLC} {((PLCMultifunctionBitBase)Data).ReadWriteFunction} " +
-                            $"{((PLCMultifunctionBitBase)Data).ReadWriteAddress} {((PLCMultifunctionBitBase)Data).Pattern}");
-                        break;
-                    case "PLCMultifunctionDBase":
-                        //显示寄存器D
-                        this.uiListBox1.Items.Add($"{((PLCMultifunctionDBase)Data).ReadWritePLC} {((PLCMultifunctionDBase)Data).ReadWriteFunction} " +
-                        $"{((PLCMultifunctionDBase)Data).ReadWriteAddress} {((PLCMultifunctionDBase)Data).Value}");
-                        break;
-                }
-            }
                 
+        }
+        void LitsAdd(PLCMultifunctionClassBase Data)
+        {
+            //重新填充下拉菜单
+            switch (Data.ClassInterface)
+            {
+                case "PLCmMltifunctionFunctionBase":
+                    //显示功能键
+                    this.uiListBox1.Items.Add($"{((PLCmMltifunctionFunctionBase)Data).FormName},{((PLCmMltifunctionFunctionBase)Data).FormPath}");
+                    break;
+                case "PLCMultifunctionBitBase":
+                    //显示Bit位
+                    this.uiListBox1.Items.Add($"{((PLCMultifunctionBitBase)Data).ReadWriteBitPLC} {((PLCMultifunctionBitBase)Data).ReadWriteBitFunction} " +
+                        $"{((PLCMultifunctionBitBase)Data).ReadWriteBitAddress} {((PLCMultifunctionBitBase)Data).ValueBit}");
+                    break;
+                case "PLCMultifunctionDBase":
+                    //显示寄存器D
+                    this.uiListBox1.Items.Add($"{((PLCMultifunctionDBase)Data).ReadWriteDPLC} {((PLCMultifunctionDBase)Data).ReadWriteDFunction} " +
+                    $"{((PLCMultifunctionDBase)Data).ReadWriteDAddress} {((PLCMultifunctionDBase)Data).Value} {((PLCMultifunctionDBase)Data).ShowFormat}");
+                    break;
+            }
         }
         protected override void OnMouseUp(MouseEventArgs e)
         {
@@ -217,5 +217,54 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
         /// <param name="send"></param>
         /// <param name="e"></param>
         public virtual void KeyPress(object send, KeyPressEventArgs e) => e.Handled = true;
+
+        /// <summary>
+        /// 用户点击了保存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton5_Click(object sender, EventArgs e)
+        {
+            Save = true;
+            this.Close();
+        }
+        /// <summary>
+        /// 用户点击了取消
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiButton6_Click(object sender, EventArgs e)
+        {
+            Save = false;
+            this.Close();
+        }
+        /// <summary>
+        /// 用户点击项
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void uiListBox1_ItemDoubleClick(object sender, EventArgs e)
+        {
+            if (this.uiListBox1.SelectedIndex < 0) return;
+            //判断用户选择
+            switch (pLCMultifunction[this.uiListBox1.SelectedIndex].ClassInterface)
+            {
+                case "PLCmMltifunctionFunctionBase":
+                    //显示功能键窗口
+                   new MultifunctionFunctionForm(pLCMultifunction[this.uiListBox1.SelectedIndex]).ShowDialog();
+                    break;
+                case "PLCMultifunctionBitBase":
+                    //显示Bit位窗口
+                    new MultifunctionBitForm(pLCMultifunction[this.uiListBox1.SelectedIndex]).ShowDialog();
+                    break;
+                case "PLCMultifunctionDBase":
+                    //显示寄存器D窗口
+                    new MultifunctionDForm(pLCMultifunction[this.uiListBox1.SelectedIndex]).ShowDialog();
+                    break;
+            }
+            //重新填充数据
+            this.uiListBox1.Items.Clear();
+            pLCMultifunction.ForEach(s => { LitsAdd(s); });
+        }
     }
 }

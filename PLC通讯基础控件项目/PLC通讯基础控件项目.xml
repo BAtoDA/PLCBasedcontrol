@@ -258,6 +258,11 @@
             多功能键
             </summary>
         </member>
+        <member name="P:PLC通讯基础控件项目.基础控件.DAMultifunction.pLCMultifunctionsq">
+            <summary>
+            私有保存参数 自动添加
+            </summary>
+        </member>
         <member name="P:PLC通讯基础控件项目.基础控件.DAMultifunction.pLCBitselectsq">
             <summary>
             私有保存参数 自动添加
@@ -1492,6 +1497,68 @@
             <param name="SQLsurface">SQL表名</param>
             <param name="SQLstatement">SQL需要执行的语句</param>
         </member>
+        <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase">
+            <summary>
+            功能键实现类
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.pLCMultifunctionBase">
+            <summary>
+            控件保存的参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.pLCBitproperty">
+            <summary>
+            控件外部文字已经背景颜色等参数
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.SafetyPattern">
+            <summary>
+            安全控制状态--true正确 false 异常
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.PlcControl">
+            <summary>
+            控件对象
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.PLCsafetypattern">
+            <summary>
+            PLC安全操作模式
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.ClickPLC(System.Object,System.EventArgs)">
+            <summary>
+            处理点击事件
+            </summary>
+            <param name="send"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.PLCWriteBit(PLC通讯基础控件项目.控件类基.控件数据结构.PLC,System.String,System.String,System.Boolean)">
+            <summary>
+            写入PLC操作
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.PLCWriteD(PLC通讯基础控件项目.控件类基.控件数据结构.PLC,System.String,System.String,System.String,PLC通讯库.通讯枚举.numerical_format)">
+            <summary>
+            写入PLC操作
+            </summary>
+        </member>
+        <member name="F:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.mutex">
+            <summary>
+            互斥锁(Mutex)，用于多线程中防止两条线程同时对一个公共资源进行读写的机制
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.PLCrefresh">
+            <summary>
+            PLC刷新处理
+            </summary>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.ControlPLCMultifunctionBase.PLCsafety">
+            <summary>
+            PLC安全控制
+            </summary>
+        </member>
         <member name="T:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCmMltifunctionFunctionBase">
             <summary>
             多功能键 
@@ -1653,22 +1720,22 @@
             功能键位操作基础接口
             </summary>
         </member>
-        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.Pattern">
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ValueBit">
             <summary>
             按钮操作模式
             </summary>
         </member>
-        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWritePLC">
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWriteBitPLC">
             <summary>
             读取或者写入PLC类型
             </summary>
         </member>
-        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWriteFunction">
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWriteBitFunction">
             <summary>
             读取或者写入PLC的功能码
             </summary>
         </member>
-        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWriteAddress">
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionBitBase.ReadWriteBitAddress">
             <summary>
             读取或者写入PLC的具体地址
             </summary>
@@ -1693,17 +1760,17 @@
             功能键寄存器操作基础接口
             </summary>
         </member>
-        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWritePLC">
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWriteDPLC">
             <summary>
             读取或者写入PLC类型
             </summary>
         </member>
-        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWriteFunction">
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWriteDFunction">
             <summary>
             读取或者写入PLC的功能码
             </summary>
         </member>
-        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWriteAddress">
+        <member name="P:PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionDBase.ReadWriteDAddress">
             <summary>
             读取或者写入PLC的具体地址
             </summary>
@@ -2817,6 +2884,27 @@
             <param name="send"></param>
             <param name="e"></param>
         </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.uiButton5_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击了保存
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.uiButton6_Click(System.Object,System.EventArgs)">
+            <summary>
+            用户点击了取消
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.uiListBox1_ItemDoubleClick(System.Object,System.EventArgs)">
+            <summary>
+            用户点击项
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.PLCMultifunctionForm.components">
             <summary>
             Required designer variable.
@@ -2922,13 +3010,6 @@
             用户点击取消参数
             </summary>
             <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
-            <summary>
-            取消键盘事件
-            </summary>
-            <param name="send"></param>
             <param name="e"></param>
         </member>
         <member name="F:PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口.MultifunctionFunctionForm.components">

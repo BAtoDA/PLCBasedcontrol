@@ -145,6 +145,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.MinimizeBox = false;
             this.Name = "MultifunctionFunctionForm";
             this.Text = "MultifunctionFunctionForm";
+            this.TopMost = true;
             this.uiGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

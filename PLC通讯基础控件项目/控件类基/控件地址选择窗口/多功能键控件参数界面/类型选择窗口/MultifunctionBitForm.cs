@@ -38,13 +38,13 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             uiTextBox12.Text = "0";
 
             //填充保存的数据
-            uiComboBox10.Text = pLCMultifunctionBitBase.ReadWritePLC.ToString();
-            uiComboBox11.Text = pLCMultifunctionBitBase.ReadWriteFunction ?? "M";
-            uiTextBox12.Text = pLCMultifunctionBitBase.ReadWriteAddress ?? "0";
+            uiComboBox10.Text = pLCMultifunctionBitBase.ReadWriteBitPLC.ToString();
+            uiComboBox11.Text = pLCMultifunctionBitBase.ReadWriteBitFunction ?? "M";
+            uiTextBox12.Text = pLCMultifunctionBitBase.ReadWriteBitAddress ?? "0";
 
-            Enum.GetNames(typeof(Button_pattern)).ForEach(s => { uiComboboxEx1.Items.Add(s); });
+ 
 
-            uiComboboxEx1.Text = pLCMultifunctionBitBase.Pattern.ToString();
+            uiComboboxEx1.Text = pLCMultifunctionBitBase.ValueBit.ToString();
 
         }
         /// <summary>
@@ -55,11 +55,11 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
         private void uiButton1_Click(object sender, EventArgs e)
         {
             //填充保存的数据
-            pLCMultifunctionBitBase.ReadWriteAddress = uiComboBox10.Text;
-            pLCMultifunctionBitBase.ReadWriteFunction = uiComboBox11.Text;
-            pLCMultifunctionBitBase.ReadWriteAddress = uiTextBox12.Text;
+            pLCMultifunctionBitBase.ReadWriteBitPLC = (PLC)Enum.Parse(typeof(PLC),uiComboBox10.Text);
+            pLCMultifunctionBitBase.ReadWriteBitFunction = uiComboBox11.Text;
+            pLCMultifunctionBitBase.ReadWriteBitAddress = uiTextBox12.Text;
 
-            pLCMultifunctionBitBase.Pattern = (Button_pattern)Enum.Parse(typeof(Button_pattern), uiComboboxEx1.Text);
+            pLCMultifunctionBitBase.ValueBit = uiComboboxEx1.Text;
 
             Save = true;
             this.Close();

@@ -14,7 +14,6 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件;

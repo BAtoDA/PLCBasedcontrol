@@ -45,7 +45,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // uiLabel1
             // 
             this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel1.Location = new System.Drawing.Point(172, 47);
+            this.uiLabel1.Location = new System.Drawing.Point(29, 131);
             this.uiLabel1.Name = "uiLabel1";
             this.uiLabel1.Size = new System.Drawing.Size(100, 23);
             this.uiLabel1.TabIndex = 0;
@@ -58,11 +58,15 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiComboboxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.uiComboboxEx1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiComboboxEx1.FormattingEnabled = true;
+            this.uiComboboxEx1.Items.AddRange(new object[] {
+            "ON",
+            "OFF"});
             this.uiComboboxEx1.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.uiComboboxEx1.Location = new System.Drawing.Point(227, 45);
+            this.uiComboboxEx1.Location = new System.Drawing.Point(83, 130);
             this.uiComboboxEx1.Name = "uiComboboxEx1";
-            this.uiComboboxEx1.Size = new System.Drawing.Size(159, 30);
+            this.uiComboboxEx1.Size = new System.Drawing.Size(99, 30);
             this.uiComboboxEx1.TabIndex = 1;
+            this.uiComboboxEx1.Text = "ON";
             this.uiComboboxEx1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPress);
             // 
             // uiGroupBox1
@@ -70,15 +74,17 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiGroupBox1.Controls.Add(this.uiTextBox12);
             this.uiGroupBox1.Controls.Add(this.uiComboBox11);
             this.uiGroupBox1.Controls.Add(this.uiComboBox10);
+            this.uiGroupBox1.Controls.Add(this.uiComboboxEx1);
             this.uiGroupBox1.Controls.Add(this.uiLabel3);
+            this.uiGroupBox1.Controls.Add(this.uiLabel1);
             this.uiGroupBox1.Controls.Add(this.uiLabel2);
             this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox1.Location = new System.Drawing.Point(4, 77);
+            this.uiGroupBox1.Location = new System.Drawing.Point(4, 40);
             this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(382, 135);
+            this.uiGroupBox1.Size = new System.Drawing.Size(382, 177);
             this.uiGroupBox1.TabIndex = 2;
             this.uiGroupBox1.Text = "写入";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,7 +100,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiTextBox12.Minimum = -2147483648D;
             this.uiTextBox12.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiTextBox12.Name = "uiTextBox12";
-            this.uiTextBox12.Size = new System.Drawing.Size(125, 29);
+            this.uiTextBox12.Size = new System.Drawing.Size(111, 29);
             this.uiTextBox12.TabIndex = 10;
             this.uiTextBox12.Text = "uiTextBox12";
             this.uiTextBox12.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
@@ -156,7 +162,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiButton1.Location = new System.Drawing.Point(172, 219);
+            this.uiButton1.Location = new System.Drawing.Point(170, 225);
             this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton1.Name = "uiButton1";
             this.uiButton1.Size = new System.Drawing.Size(84, 38);
@@ -168,7 +174,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiButton2.Location = new System.Drawing.Point(282, 219);
+            this.uiButton2.Location = new System.Drawing.Point(280, 225);
             this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton2.Name = "uiButton2";
             this.uiButton2.Size = new System.Drawing.Size(84, 38);
@@ -180,16 +186,15 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 263);
+            this.ClientSize = new System.Drawing.Size(390, 268);
             this.Controls.Add(this.uiButton2);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.uiGroupBox1);
-            this.Controls.Add(this.uiComboboxEx1);
-            this.Controls.Add(this.uiLabel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MultifunctionBitForm";
             this.Text = "MultifunctionBitForm";
+            this.TopMost = true;
             this.uiGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

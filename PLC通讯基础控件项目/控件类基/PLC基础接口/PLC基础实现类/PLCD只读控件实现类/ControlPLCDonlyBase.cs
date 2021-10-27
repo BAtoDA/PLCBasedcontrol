@@ -13,7 +13,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.控件类基.控件数据结构;

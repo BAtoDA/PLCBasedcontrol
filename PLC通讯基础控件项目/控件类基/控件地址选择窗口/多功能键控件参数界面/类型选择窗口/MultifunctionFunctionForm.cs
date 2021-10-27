@@ -82,11 +82,5 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.Close();
         }
 
-        /// <summary>
-        /// 取消键盘事件
-        /// </summary>
-        /// <param name="send"></param>
-        /// <param name="e"></param>
-        public virtual void KeyPress(object send, KeyPressEventArgs e) => e.Handled = true;
     }
 }

@@ -48,6 +48,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
 
         private void uiButton2_Click(object sender, EventArgs e)
         {
+            Save = false;
             this.Close();
         }
 

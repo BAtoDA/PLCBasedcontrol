@@ -105,9 +105,9 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiTextBox1.Name = "uiTextBox1";
             this.uiTextBox1.Size = new System.Drawing.Size(125, 29);
             this.uiTextBox1.TabIndex = 12;
-            this.uiTextBox1.Text = "0.00";
+            this.uiTextBox1.Text = "0";
             this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
-            this.uiTextBox1.Type = Sunny.UI.UITextBox.UIEditType.Double;
+            this.uiTextBox1.Type = Sunny.UI.UITextBox.UIEditType.Integer;
             // 
             // uiLabel4
             // 
@@ -226,6 +226,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.MinimizeBox = false;
             this.Name = "MultifunctionDForm";
             this.Text = "MultifunctionDForm";
+            this.TopMost = true;
             this.uiGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
