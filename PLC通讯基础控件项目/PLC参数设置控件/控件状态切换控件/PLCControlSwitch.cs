@@ -1,4 +1,5 @@
 ﻿using PLC通讯基础控件项目.控件类基.PLC基础接口;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using System;
 using System.Collections.Generic;
@@ -74,6 +75,8 @@ namespace PLC通讯基础控件项目.PLC参数设置控件.控件状态切换�
                 {
                     ((PLCBitClassBase)i).ControlSwitch(Convert.ToBoolean(ControlSwitch));
                 }
+                if ((i as PLCMultifunctionBase) != null)
+                    ((PLCMultifunctionBase)i).ControlSwitch(Convert.ToBoolean(ControlSwitch));
             }
         }
     }

@@ -31,13 +31,13 @@ namespace 控件测试项目
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase1 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
-            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase2 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
+            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase3 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
+            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase4 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
             this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences3 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
@@ -87,7 +87,7 @@ namespace 控件测试项目
             // 
             // plcPreferences3
             // 
-            this.plcPreferences3.IPEnd = "192.168.88.104";
+            this.plcPreferences3.IPEnd = "192.168.3.115";
             this.plcPreferences3.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.plcPreferences3.Point = 8000;
             this.plcPreferences3.Receptionovertime = 1000;
@@ -315,19 +315,19 @@ namespace 控件测试项目
             // daDataViewToPlcErr1
             // 
             this.daDataViewToPlcErr1.AaveAddressz = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.daDataViewToPlcErr1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.daDataViewToPlcErr1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.daDataViewToPlcErr1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
             this.daDataViewToPlcErr1.BackgroundColor = System.Drawing.Color.White;
             this.daDataViewToPlcErr1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.daDataViewToPlcErr1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.daDataViewToPlcErr1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
             this.daDataViewToPlcErr1.EventAddress = "C:\\WINDOWS\\system32";
@@ -337,17 +337,17 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.Name = "daDataViewToPlcErr1";
             this.daDataViewToPlcErr1.PLC_Enable = true;
             this.daDataViewToPlcErr1.ReadCommand = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.daDataViewToPlcErr1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.daDataViewToPlcErr1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.daDataViewToPlcErr1.RowHeight = 25;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.daDataViewToPlcErr1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            this.daDataViewToPlcErr1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.daDataViewToPlcErr1.RowTemplate.Height = 25;
             this.daDataViewToPlcErr1.Save = true;
             this.daDataViewToPlcErr1.SaveAddress = "C:\\Users\\Administrator\\Desktop\\自动报警记录测试";
@@ -563,10 +563,12 @@ namespace 控件测试项目
             // 
             this.daMultifunction1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
             this.daMultifunction1.AwaitTime = 100;
-            this.daMultifunction1.BackColor = System.Drawing.Color.Silver;
+            this.daMultifunction1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daMultifunction1.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daMultifunction1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daMultifunction1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daMultifunction1.FillColor = System.Drawing.Color.Silver;
+            this.daMultifunction1.FillHoverColor = System.Drawing.Color.Silver;
             this.daMultifunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daMultifunction1.keyMinTime = 100;
             this.daMultifunction1.Location = new System.Drawing.Point(392, 447);
@@ -618,39 +620,39 @@ namespace 控件测试项目
             this.daMultifunction1.pLCBitselectRealizeq.WriteFunction = "M";
             this.daMultifunction1.pLCBitselectRealizeq.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daMultifunction1.pLCBitselectRealizeq.WrSafetyAddress = "0";
-            plcMultifunctionClassBase1.ClassInterface = "PLCMultifunctionBitBase";
-            plcMultifunctionClassBase1.FormName = "TemplateForm";
-            plcMultifunctionClassBase1.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            plcMultifunctionClassBase1.OutReverse = false;
-            plcMultifunctionClassBase1.ReadWriteBitAddress = "0";
-            plcMultifunctionClassBase1.ReadWriteBitFunction = "Y";
-            plcMultifunctionClassBase1.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
-            plcMultifunctionClassBase1.ReadWriteDAddress = "0";
-            plcMultifunctionClassBase1.ReadWriteDFunction = "D";
-            plcMultifunctionClassBase1.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            plcMultifunctionClassBase1.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
-            plcMultifunctionClassBase1.Value = 0;
-            plcMultifunctionClassBase1.ValueBit = "ON";
-            plcMultifunctionClassBase2.ClassInterface = "PLCMultifunctionDBase";
-            plcMultifunctionClassBase2.FormName = "TemplateForm";
-            plcMultifunctionClassBase2.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            plcMultifunctionClassBase2.OutReverse = false;
-            plcMultifunctionClassBase2.ReadWriteBitAddress = "0";
-            plcMultifunctionClassBase2.ReadWriteBitFunction = "M";
-            plcMultifunctionClassBase2.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            plcMultifunctionClassBase2.ReadWriteDAddress = "1";
-            plcMultifunctionClassBase2.ReadWriteDFunction = "D";
-            plcMultifunctionClassBase2.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
-            plcMultifunctionClassBase2.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
-            plcMultifunctionClassBase2.Value = 66;
-            plcMultifunctionClassBase2.ValueBit = "ON";
+            plcMultifunctionClassBase3.ClassInterface = "PLCMultifunctionBitBase";
+            plcMultifunctionClassBase3.FormName = "TemplateForm";
+            plcMultifunctionClassBase3.FormPath = "PLC通讯基础控件项目.模板与控制界面";
+            plcMultifunctionClassBase3.OutReverse = false;
+            plcMultifunctionClassBase3.ReadWriteBitAddress = "0";
+            plcMultifunctionClassBase3.ReadWriteBitFunction = "M";
+            plcMultifunctionClassBase3.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            plcMultifunctionClassBase3.ReadWriteDAddress = "0";
+            plcMultifunctionClassBase3.ReadWriteDFunction = "D";
+            plcMultifunctionClassBase3.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            plcMultifunctionClassBase3.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
+            plcMultifunctionClassBase3.Value = 0;
+            plcMultifunctionClassBase3.ValueBit = "ON";
+            plcMultifunctionClassBase4.ClassInterface = "PLCMultifunctionBitBase";
+            plcMultifunctionClassBase4.FormName = "TemplateForm";
+            plcMultifunctionClassBase4.FormPath = "PLC通讯基础控件项目.模板与控制界面";
+            plcMultifunctionClassBase4.OutReverse = false;
+            plcMultifunctionClassBase4.ReadWriteBitAddress = "0";
+            plcMultifunctionClassBase4.ReadWriteBitFunction = "M";
+            plcMultifunctionClassBase4.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            plcMultifunctionClassBase4.ReadWriteDAddress = "0";
+            plcMultifunctionClassBase4.ReadWriteDFunction = "D";
+            plcMultifunctionClassBase4.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            plcMultifunctionClassBase4.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
+            plcMultifunctionClassBase4.Value = 0;
+            plcMultifunctionClassBase4.ValueBit = "ON";
             this.daMultifunction1.pLCMultifunctions = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase[] {
-        plcMultifunctionClassBase1,
-        plcMultifunctionClassBase2};
+        plcMultifunctionClassBase3,
+        plcMultifunctionClassBase4};
             this.daMultifunction1.PLCTimer = null;
-            this.daMultifunction1.ReadAddress = "0";
-            this.daMultifunction1.ReadFunction = "M";
-            this.daMultifunction1.ReadPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daMultifunction1.ReadAddress = "1";
+            this.daMultifunction1.ReadFunction = "Y";
+            this.daMultifunction1.ReadPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.daMultifunction1.SafetyBehaviorPattern = 0;
             this.daMultifunction1.SafetyCategory = 0;
             this.daMultifunction1.SafetyFunction = "M";
@@ -658,6 +660,8 @@ namespace 控件测试项目
             this.daMultifunction1.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daMultifunction1.Size = new System.Drawing.Size(100, 35);
             this.daMultifunction1.Speech = false;
+            this.daMultifunction1.Style = Sunny.UI.UIStyle.Custom;
+            this.daMultifunction1.StyleCustomMode = true;
             this.daMultifunction1.TabIndex = 26;
             this.daMultifunction1.Text = "OFF";
             this.daMultifunction1.Textalign_0 = "MiddleCenter";

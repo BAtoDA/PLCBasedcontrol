@@ -30,6 +30,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
         private void InitializeComponent()
         {
             this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.uiButton1 = new Sunny.UI.UIButton();
             this.uiComboBox1 = new Sunny.UI.UIComboBox();
             this.uiTextBox1 = new Sunny.UI.UITextBox();
             this.uiLabel2 = new Sunny.UI.UILabel();
@@ -41,6 +42,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             // uiGroupBox1
             // 
+            this.uiGroupBox1.Controls.Add(this.uiButton1);
             this.uiGroupBox1.Controls.Add(this.uiComboBox1);
             this.uiGroupBox1.Controls.Add(this.uiTextBox1);
             this.uiGroupBox1.Controls.Add(this.uiLabel2);
@@ -51,11 +53,23 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiGroupBox1.Name = "uiGroupBox1";
             this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(328, 171);
+            this.uiGroupBox1.Size = new System.Drawing.Size(337, 210);
             this.uiGroupBox1.TabIndex = 1;
             this.uiGroupBox1.Text = "窗口属性";
             this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.uiGroupBox1.TitleAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // uiButton1
+            // 
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.Location = new System.Drawing.Point(114, 153);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Size = new System.Drawing.Size(123, 38);
+            this.uiButton1.TabIndex = 12;
+            this.uiButton1.Text = "查询";
+            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
             // 
             // uiComboBox1
             // 
@@ -74,7 +88,9 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             // uiTextBox1
             // 
+            this.uiTextBox1.AcceptsReturn = true;
             this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox1.EnterAsTab = true;
             this.uiTextBox1.FillColor = System.Drawing.Color.White;
             this.uiTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiTextBox1.Location = new System.Drawing.Point(96, 56);
@@ -82,8 +98,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.uiTextBox1.Maximum = 2147483647D;
             this.uiTextBox1.Minimum = -2147483648D;
             this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiTextBox1.Multiline = true;
             this.uiTextBox1.Name = "uiTextBox1";
-            this.uiTextBox1.ReadOnly = true;
             this.uiTextBox1.Size = new System.Drawing.Size(220, 29);
             this.uiTextBox1.TabIndex = 2;
             this.uiTextBox1.Text = "uiTextBox1";
@@ -113,7 +129,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiButton2.Location = new System.Drawing.Point(234, 214);
+            this.uiButton2.Location = new System.Drawing.Point(196, 253);
             this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton2.Name = "uiButton2";
             this.uiButton2.Size = new System.Drawing.Size(84, 38);
@@ -125,7 +141,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             this.uiButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uiButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiButton3.Location = new System.Drawing.Point(124, 214);
+            this.uiButton3.Location = new System.Drawing.Point(86, 253);
             this.uiButton3.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiButton3.Name = "uiButton3";
             this.uiButton3.Size = new System.Drawing.Size(84, 38);
@@ -137,7 +153,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(339, 261);
+            this.ClientSize = new System.Drawing.Size(354, 294);
             this.Controls.Add(this.uiButton2);
             this.Controls.Add(this.uiButton3);
             this.Controls.Add(this.uiGroupBox1);
@@ -160,5 +176,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
         private Sunny.UI.UILabel uiLabel1;
         private Sunny.UI.UIButton uiButton2;
         private Sunny.UI.UIButton uiButton3;
+        private Sunny.UI.UIButton uiButton1;
     }
 }

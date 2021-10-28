@@ -227,7 +227,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //获取所有运行中的窗口
             Regex r = new Regex(FormPath ?? "PLC通讯基础控件项目.模板与控制界面");
             //递归查找顶级窗口Form
-            object Oop = this;
+            object Oop = this.PlcControl;
             while (true)
             {
                 if ((((dynamic)Oop).Parent as Form) != null)
@@ -247,8 +247,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             {
                 if (i == (Form)Oop)
                 {
-                    i.Close();
-                    return;
+                    i.BeginInvoke((MethodInvoker)delegate
+                    {
+                        i.Close();
+                        return;
+                    });
                 }
             }
 
@@ -265,7 +268,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
                 if (PLCoop.PLC_ready)
                     PLCoop.PLC_write_M_bit(Id, Addary, (Button_state)Enum.Parse(typeof(Button_state), Value ? "ON" : "Off"));
-                else UINotifierHelper.ShowNotifier("未连接设备：" + IPLC + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
             });
         }
         /// <summary>
@@ -297,7 +299,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             {
                 if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
                 PLCsafety();
-                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCMultifunctionBase.pLCBitselectRealizeq.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCMultifunctionBase.ReadPLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                 if (PLCoop == null) return;
                 if (!PLCoop.PLC_ready)
                 {
@@ -315,7 +317,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     });
                     return;
                 }
-                var State = PLCoop.PLC_read_M_bit(pLCMultifunctionBase.pLCBitselectRealizeq.ReadWriteFunction, pLCMultifunctionBase.pLCBitselectRealizeq.ReadWriteAddress);
+                var State = PLCoop.PLC_read_M_bit(pLCMultifunctionBase.ReadFunction, pLCMultifunctionBase.ReadAddress);
                 //---委托控件----处理状态颜色
                 PlcControl.BeginInvoke((MethodInvoker)delegate
                 {

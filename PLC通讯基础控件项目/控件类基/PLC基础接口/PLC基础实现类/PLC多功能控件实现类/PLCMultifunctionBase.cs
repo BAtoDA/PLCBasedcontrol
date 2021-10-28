@@ -124,5 +124,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 文本文字是否有下划线
         /// </summary>
         bool TextUnderline_1 { get; set; }
+        /// <summary>
+        /// 切换控件状态方法
+        /// 该方法必须实现
+        /// </summary>
+        void ControlSwitch(bool switchover);
     }
 }

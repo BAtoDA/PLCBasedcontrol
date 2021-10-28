@@ -17,7 +17,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
     public partial class PLCMultifunctionForm : UIForm
     {
         #region 字段
-        PLCMultifunctionBase pLCMultifunctionBase;
+        public PLCMultifunctionBase pLCMultifunctionBase;
         public List<PLCMultifunctionClassBase> pLCMultifunction = new List<PLCMultifunctionClassBase>();
         public bool Save = false;
         #endregion
@@ -33,10 +33,10 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             //填充安全页面
             PLCpropertysafety pLCpropertysafety = new PLCpropertysafety(uiComboBox20, uiCheckBox20, uiComboBox21, uiComboBox22, uiComboBox23, uiTextBox20, uiComboBox24
                 , uiComboBox25, uiComboBox26, new Sunny.UI.UIGroupBox[] { uiGroupBox21, uiGroupBox22, uiGroupBox23 }, new Sunny.UI.UICheckBox[] { uiCheckBox21, uiCheckBox22 },
-                this.uiCheckBox23, this.uiButton1, pLCMultifunctionBase);
+                this.uiCheckBox23, this.uiButton5, pLCMultifunctionBase);
             //填充处理文字选择页面
             PLCpropertyText pLCpropertyText = new PLCpropertyText(uiComboBox30, uiButton30, uiButton31, uiComboBox31, uiComboBox32, uiComboBox33, uiComboBox34, uiRichTextBox30
-                , uiColorPicker30, uiColorPicker31, uiCheckBox30, uiCheckBox31, pLCMultifunctionBase.pLCBitselectRealizeq, uiButton1);
+                , uiColorPicker30, uiColorPicker31, uiCheckBox30, uiCheckBox31, pLCMultifunctionBase.pLCBitselectRealizeq, uiButton5);
             //填充PLC属性设置页面
             uiComboBox10.Items.Clear();
             foreach (var i in Enum.GetNames(typeof(PLC)))
@@ -93,10 +93,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                 //移除指定索引的行
                 if (this.uiListBox1.SelectedIndex > -1)
                 {
+                    int Index = this.uiListBox1.SelectedIndex;
                     pLCMultifunction.RemoveAt(this.uiListBox1.SelectedIndex);
 
                     this.uiListBox1.Items.Clear();
                     pLCMultifunction.ForEach(s => { LitsAdd(s); });
+
+                    if (this.uiListBox1.Count > 0)
+                        this.uiListBox1.SelectedIndex = Index > 1 ? Index - 1 : 0;
                 }
             });
             this.uiButton3.Click += ((send, e) =>
@@ -140,7 +144,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                 bitForm.ShowDialog();
                 classBase.ClassInterface = "PLCMultifunctionBitBase";
 
-                Add(classBase);
+                if (bitForm.Save)
+                    Add(classBase);
+
+                //var Oop = OopCopy();
+                //if (!bitForm.Save)
+                //{
+                //    pLCMultifunction = Oop.ToList();
+                //}
             });
 
             this.uiButton8.Click += ((send, e) =>
@@ -152,7 +163,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                 dForm.ShowDialog();
                 classBase.ClassInterface = "PLCMultifunctionDBase";
 
-                Add(classBase);
+                if (dForm.Save)
+                    Add(classBase);
+
+                //var Oop = OopCopy();
+                //if (!dForm.Save)
+                //{
+                //    pLCMultifunction = Oop.ToList();
+                //}
             });
 
             this.uiButton9.Click += ((send, e) =>
@@ -164,7 +182,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                 functionForm.ShowDialog();
                 classBase.ClassInterface = "PLCmMltifunctionFunctionBase";
 
-                Add(classBase);
+                if (functionForm.Save)
+                    Add(classBase);
+
+                //var Oop = OopCopy();
+                //if (!functionForm.Save)
+                //{
+                //    pLCMultifunction = Oop.ToList();
+                //}
             });
             void Add(PLCMultifunctionClassBase Data)
             {
@@ -173,7 +198,20 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                 //重新填充下拉菜单
                 LitsAdd(Data);
             }
-                
+            PLCMultifunctionClassBase[] OopCopy()
+            {
+
+                PLCMultifunctionClassBase[] pLCMultifunctionClassBases = new PLCMultifunctionClassBase[pLCMultifunction.Count];
+                for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
+                {
+                    pLCMultifunctionClassBases[i] = new PLCMultifunctionClassBase();
+                    var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
+                    var w2 = pLCMultifunction[i].GetType().GetProperties();
+                    for (int ix = 0; ix < w2.Length; ix++)
+                        w1[ix] = w2[ix];
+                }
+                return pLCMultifunctionClassBases;
+            }
         }
         void LitsAdd(PLCMultifunctionClassBase Data)
         {
@@ -226,6 +264,10 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
         private void uiButton5_Click(object sender, EventArgs e)
         {
             Save = true;
+            //填充保存的数据
+            pLCMultifunctionBase.ReadPLC = (PLC)Enum.Parse(typeof(PLC), uiComboBox10.Text);
+            pLCMultifunctionBase.ReadFunction=uiComboBox11.Text?? "M";
+            pLCMultifunctionBase.ReadAddress=uiTextBox12.Text?? "0";
             this.Close();
         }
         /// <summary>

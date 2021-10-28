@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类;
 using Sunny.UI;
@@ -21,41 +22,42 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             InitializeComponent();
             this.pLCmMltifunction = pLCmMltifunction;
         }
-        protected override void OnShown(EventArgs e)
+        protected  override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-
-            //从命名空间中加载窗口模板
-            Regex r = new Regex(pLCmMltifunction.FormPath ?? "PLC通讯基础控件项目.模板与控制界面");
-
-            var TypeData = Assembly.GetEntryAssembly().GetTypes();
-            this.uiComboBox1.Items.Clear();
-            foreach (var i in TypeData)
+            this.BeginInvoke((MethodInvoker)delegate
             {
-                if (r.Match(i.FullName).Success)
+                //从命名空间中加载窗口模板
+                Regex r = new Regex(pLCmMltifunction.FormPath ?? "PLC通讯基础控件项目.模板与控制界面");
+
+                var TypeData = Assembly.GetEntryAssembly().GetTypes();
+                this.uiComboBox1.Items.Clear();
+                foreach (var i in TypeData)
                 {
-                    this.uiComboBox1.Items.Add(i.Name);
+                    if (r.Match(i.FullName).Success)
+                    {
+                        this.uiComboBox1.Items.Add(i.Name);
+                    }
                 }
-            }
-            if (this.uiComboBox1.Items.Count > 0)
-                this.uiComboBox1.SelectedIndex = 0;
+                if (this.uiComboBox1.Items.Count > 0)
+                    this.uiComboBox1.SelectedIndex = 0;
 
-            var TypeData1 = Assembly.GetExecutingAssembly().GetTypes();
-            this.uiComboBox1.Items.Clear();
-            foreach (var i in TypeData1)
-            {
-                if (r.Match(i.FullName).Success)
+                var TypeData1 = Assembly.GetExecutingAssembly().GetTypes();
+                this.uiComboBox1.Items.Clear();
+                foreach (var i in TypeData1)
                 {
-                    this.uiComboBox1.Items.Add(i.Name);
+                    if (r.Match(i.FullName).Success)
+                    {
+                        this.uiComboBox1.Items.Add(i.Name);
+                    }
                 }
-            }
-            if (this.uiComboBox1.Items.Count > 0)
-                this.uiComboBox1.SelectedIndex = 0;
+                if (this.uiComboBox1.Items.Count > 0)
+                    this.uiComboBox1.SelectedIndex = 0;
 
-            this.uiTextBox1.Text = pLCmMltifunction.FormPath;
-            //显示之前选中的参数
-            this.uiComboBox1.Text = pLCmMltifunction.FormName;
-
+                this.uiTextBox1.Text = pLCmMltifunction.FormPath;
+                //显示之前选中的参数
+                this.uiComboBox1.Text = pLCmMltifunction.FormName;
+            });
         }
         /// <summary>
         /// 用户点击保存参数
@@ -82,5 +84,34 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
             this.Close();
         }
 
+        private void uiButton1_Click(object sender, EventArgs e)
+        {
+            //从命名空间中加载窗口模板
+            Regex r = new Regex(this.uiTextBox1.Text ?? "PLC通讯基础控件项目.模板与控制界面");
+
+            var TypeData = Assembly.GetEntryAssembly().GetTypes();
+            this.uiComboBox1.Items.Clear();
+            foreach (var i in TypeData)
+            {
+                if (r.Match(i.FullName).Success)
+                {
+                    this.uiComboBox1.Items.Add(i.Name);
+                }
+            }
+            if (this.uiComboBox1.Items.Count > 0)
+                this.uiComboBox1.SelectedIndex = 0;
+
+            var TypeData1 = Assembly.GetExecutingAssembly().GetTypes();
+            this.uiComboBox1.Items.Clear();
+            foreach (var i in TypeData1)
+            {
+                if (r.Match(i.FullName).Success)
+                {
+                    this.uiComboBox1.Items.Add(i.Name);
+                }
+            }
+            if (this.uiComboBox1.Items.Count > 0)
+                this.uiComboBox1.SelectedIndex = 0;
+        }
     }
 }
