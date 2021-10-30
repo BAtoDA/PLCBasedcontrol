@@ -61,7 +61,9 @@ namespace PLC通讯基础控件项目
                  new PlclinkClass(){ PLC=PLC.OmronTCP, Link="HslCommunication.Profinet.Omron.OmronFinsNet",Dllplace=true,Dll="HslCommunication"},
                  new PlclinkClass(){ PLC=PLC.OmronUDP, Link="HslCommunication.Profinet.Omron.OmronFinsUdp",Dllplace=true,Dll="HslCommunication"},
                       new PlclinkClass(){ PLC=PLC.Siemens, Link="HslCommunication.Profinet.Siemens.SiemensS7Net",Dllplace=true,Dll="HslCommunication"},
-                      new PlclinkClass(){PLC=PLC.Fanuc,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"}
+                      new PlclinkClass(){PLC=PLC.Fanuc,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"},
+                         new PlclinkClass(){ PLC=PLC.Mitsubishi1, Link="HslCommunication.Profinet.Melsec.MelsecMcNet",Dllplace=true,Dll="HslCommunication"},
+                            new PlclinkClass(){ PLC=PLC.Mitsubishi2, Link="HslCommunication.Profinet.Melsec.MelsecMcNet",Dllplace=true,Dll="HslCommunication"}
         };
     }
     public partial class PLCControlsPreferences : Timer

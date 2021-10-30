@@ -62,6 +62,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //先判定文件夹是否存在
             if (!Directory.Exists(@Address + "\\PLCEventErr"))
             {
+                //if (!IsAdministrator()) throw new Exception("当前用户无权限创建");
                 AddSecurityControll2Folder(@Address);
                 string Addressq =this.Address + "\\PLCEventErr";
                 var fileInfo = Directory.CreateDirectory(@Addressq);

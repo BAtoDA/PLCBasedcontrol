@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类
 {
@@ -57,6 +58,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //先判定文件夹是否存在
             if (!Directory.Exists(@Address+ "\\PLCEventErr"))
             {
+                //if (!IsAdministrator()) throw new Exception("当前用户无权限创建");
                 //向系统申请权限
                 AddSecurityControll2Folder(@Address);
                 var fileInfo = Directory.CreateDirectory(@Address+ "\\PLCEventErr");
@@ -93,7 +95,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //获取文件夹信息
             DirectoryInfo dir = new DirectoryInfo(dirPath);
             //获得该文件夹的所有访问权限
-            System.Security.AccessControl.DirectorySecurity dirSecurity = dir.GetAccessControl(AccessControlSections.All);
+            System.Security.AccessControl.DirectorySecurity dirSecurity = dir.GetAccessControl(AccessControlSections.Access);
             //设定文件ACL继承
             InheritanceFlags inherits = InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit;
             //添加ereryone用户组的访问权限规则 完全控制权限
@@ -105,6 +107,16 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             dirSecurity.ModifyAccessRule(AccessControlModification.Add, usersFileSystemAccessRule, out isModified);
             //设置访问权限
             dir.SetAccessControl(dirSecurity);
+        }
+        /// <summary>
+        /// 判断当前是否开启了管理员权限
+        /// </summary>
+        /// <returns></returns>
+        public  bool IsAdministrator()
+        {
+            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }
 }

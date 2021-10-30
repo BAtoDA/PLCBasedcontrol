@@ -19,10 +19,11 @@
     <NeutralLanguage></NeutralLanguage>
     <PackageProjectUrl>https://github.com/BAtoDA/PLCBasedcontrol</PackageProjectUrl>
     <Copyright>BAtoDA</Copyright>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\Administrator\source\repos\BAtoDA\PLCBasedcontrol\PLC通讯基础控件项目\PLC通讯基础控件项目.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

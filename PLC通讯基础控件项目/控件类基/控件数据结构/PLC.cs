@@ -18,7 +18,9 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         OmronTCP = 04,
         OmronCIP = 05,
         OmronUDP = 06,
-        Fanuc = 07
+        Fanuc = 07,
+        Mitsubishi1 = 10,
+        Mitsubishi2 = 11
     }
     /// <summary>
     /// PLC各可访问软元件  三菱-bit位
@@ -32,6 +34,38 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     /// PLC各可访问软元件 三菱 -WORD 字
     /// </summary>
     public enum Mitsubishi_D
+    {
+        /*LCN,LZ,*/
+        D, R, W, TN, SN, CN, SW, Z
+    }
+    /// <summary>
+    /// PLC各可访问软元件  三菱-bit位
+    /// </summary>
+    public enum Mitsubishi1_bit
+    {
+        /*  LCS,LCC,*/
+        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit, R_Bit, SW_Bit, W_Bit
+    }
+    /// <summary>
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// </summary>
+    public enum Mitsubishi1_D
+    {
+        /*LCN,LZ,*/
+        D, R, W, TN, SN, CN, SW, Z
+    }
+    /// <summary>
+    /// PLC各可访问软元件  三菱-bit位
+    /// </summary>
+    public enum Mitsubishi2_bit
+    {
+        /*  LCS,LCC,*/
+        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit, R_Bit, SW_Bit, W_Bit
+    }
+    /// <summary>
+    /// PLC各可访问软元件 三菱 -WORD 字
+    /// </summary>
+    public enum Mitsubishi2_D
     {
         /*LCN,LZ,*/
         D, R, W, TN, SN, CN, SW, Z
