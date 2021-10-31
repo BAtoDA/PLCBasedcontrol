@@ -31,6 +31,7 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
     {
         protected override void OnClick(EventArgs e)
         {
+            base.OnClick(e);
             //用户是否启用该功能
             if (!this.plc_Enable) return;
             //获取所有运行中的窗口
@@ -46,7 +47,9 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             //var Formoop = Assembly.GetExecutingAssembly().GetTypes(this.FormPath + "." + this.FormName);
             //获取所有运行中的窗口
             Regex rq = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
-            var Formoop = Assembly.GetExecutingAssembly().GetTypes().Where(p=> rq.IsMatch(p.FullName)).ToList();
+            var Formoop2 = Assembly.GetEntryAssembly().GetTypes().Where(p => rq.IsMatch(p.FullName)).ToList();
+            var Formoop = Assembly.GetEntryAssembly().GetTypes().Where(p=> rq.IsMatch(p.FullName)).ToList();
+            //MessageBox.Show(Formoop.Count.ToString());
             if (Formoop != null)
             {
                 Regex regex = new Regex(this.FormName);
@@ -56,24 +59,24 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                     Form FormShow = Activator.CreateInstance(Form) as Form;
                     FormShow.StartPosition = FormStartPosition.CenterScreen;
                     FormShow.Show();
+                    goto FormIndex;
                 }
             }
-            else
+            var Formoop1 = Assembly.GetExecutingAssembly().GetTypes().Where(p => rq.IsMatch(p.FullName)).ToList();
+            //MessageBox.Show(Formoop1.Count.ToString());
+            if (Formoop1 != null)
             {
-                var Formoop1 = Assembly.GetEntryAssembly().GetTypes().Where(p => rq.IsMatch(p.FullName)).ToList();
-                if (Formoop1 != null)
+                Regex regex = new Regex(this.FormName);
+                var Form = Formoop1.Where(p => regex.IsMatch(p.FullName)).FirstOrDefault();
+                if (Form != null)
                 {
-                    Regex regex = new Regex(this.FormName);
-                    var Form = Formoop1.Where(p => regex.IsMatch(p.FullName)).FirstOrDefault();
-                    if (Form != null)
-                    {
-                        Form FormShow = Activator.CreateInstance(Form) as Form;
-                        FormShow.StartPosition = FormStartPosition.CenterScreen;
-                        FormShow.Show();
-                    }
+                    Form FormShow = Activator.CreateInstance(Form) as Form;
+                    FormShow.StartPosition = FormStartPosition.CenterScreen;
+                    FormShow.Show();
                 }
             }
             
+            FormIndex:
 
             //关闭当前窗口
             //获取所有运行中的窗口
@@ -105,7 +108,6 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 }
             }
 
-            base.OnClick(e);
 
         }
     }
