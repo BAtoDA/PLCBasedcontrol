@@ -92,15 +92,15 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (((dynamic)PlcControl).PLC_Enable)
             {
                 PLCErrTimer = new System.Windows.Forms.Timer();
-                PLCErrTimer.Tick+=((sen,e)=>
-                {
-                    lock (obj)
-                    {
-                        PLCErrTimer.Stop();
-                        _ = PLCrefresh();
-                        PLCErrTimer.Start();
-                    }
-                });
+                PLCErrTimer.Tick += ((sen, e) =>
+                  {
+                      lock (obj)
+                      {
+                          PLCErrTimer.Stop();
+                          _ = PLCrefresh();
+                          PLCErrTimer.Start();
+                      }
+                  });
                 PLCErrTimer.Interval = 1000;
                 PLCErrTimer.Start();
             }
@@ -108,20 +108,26 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (pLCViewClassBase.Save)
                 pLCEventAutoContent.TextCreate();
             //-------添加右键报警监控窗口----
-            UIContextMenuStrip uIContextMenuStrip = new UIContextMenuStrip();
-            uIContextMenuStrip.Name = "contextMenuStrip1";
-            uIContextMenuStrip.Size = new System.Drawing.Size(193, 48);
+            UIContextMenuStrip uIContextMenuStrip = new UIContextMenuStrip()
+            {
+                Name = "contextMenuStrip1",
+                Size = new System.Drawing.Size(193, 48)
+            };
 
-            ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem.Name = "toolStripMenuItem1";
-            toolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            toolStripMenuItem.Text = "报警历史监控窗口";
+            ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem()
+            {
+                Name = "toolStripMenuItem1",
+                Size = new System.Drawing.Size(192, 22),
+                Text = "报警历史监控窗口"
+            };
 
             //-------添加导出报警历史功能----
-            ToolStripMenuItem toolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem1.Name = "toolStripMenuItem2";
-            toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
-            toolStripMenuItem1.Text = "报警记录导出";
+            ToolStripMenuItem toolStripMenuItem1 = new ToolStripMenuItem()
+            {
+                Name = "toolStripMenuItem2",
+                Size = new System.Drawing.Size(192, 22),
+                Text = "报警记录导出"
+            };
 
             //-------注册事件打开报警历史监控窗口-------
             toolStripMenuItem.Click += ((Send, e1) =>
@@ -135,8 +141,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 new PLCErrderiveForm(pLCViewClassBase).ShowDialog();
             });
 
-            uIContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            toolStripMenuItem,toolStripMenuItem1});
+            uIContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                toolStripMenuItem,
+                toolStripMenuItem1}
+            );
 
             this.PlcControl.ContextMenuStrip = uIContextMenuStrip;
         }

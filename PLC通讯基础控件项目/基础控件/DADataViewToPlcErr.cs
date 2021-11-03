@@ -29,7 +29,7 @@ namespace PLC通讯基础控件项目.基础控件
             }
             container.Add(this);
             //改变控件基础大小
-            this.Size = new System.Drawing.Size(643, 300);
+            //this.Size = new System.Drawing.Size(643, 300);
             Timerconfiguration.Tick += ((send, e) =>
             {
                 Timerconfiguration.Stop();
@@ -77,6 +77,7 @@ namespace PLC通讯基础控件项目.基础控件
     }
     public sealed partial class DADataViewToPlcErr : UIDataGridView, PLCEvent_messageBase
     {
+        
         /// <summary>
         /// 读取报警内容
         /// </summary>
@@ -128,12 +129,13 @@ namespace PLC通讯基础控件项目.基础控件
             set 
             {
                 if (DesignMode)
-                    eventAddress = System.IO.Directory.GetCurrentDirectory();
+                    //eventAddress = System.IO.Directory.GetCurrentDirectory();
+                    eventAddress = @"C:";
                 else
                     eventAddress = value;
             } 
         }
-        private string eventAddress = System.IO.Directory.GetCurrentDirectory();
+        private string eventAddress = @"C:";
         [Browsable(true)]
         [Description("是否开启自动保存报警历史"), Category("PLC类型")]
         public bool Save { get => save; set => save=value; }

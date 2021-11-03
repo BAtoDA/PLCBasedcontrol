@@ -330,7 +330,7 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
-            this.daDataViewToPlcErr1.EventAddress = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\IDE";
+            this.daDataViewToPlcErr1.EventAddress = "C:";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daDataViewToPlcErr1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
             this.daDataViewToPlcErr1.Location = new System.Drawing.Point(558, 38);
