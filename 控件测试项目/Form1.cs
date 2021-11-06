@@ -5,6 +5,7 @@ using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现�
 using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口.顺控视图参数设置界面;
 using PLC通讯基础控件项目.模板与控制界面.窗口底层;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,16 @@ namespace 控件测试项目
         {
             var DD = DateTime.Now;
             base.OnShown(e);
+         
+
             //PLCMultifunctionBitBase pLCMultifunctionClassBase = new PLCMultifunctionClassBase();
             //new PLCMultifunctionForm(new DAMultifunction()).ShowDialog();
 
+        }
+
+        private void daUiButton1_Click(object sender, EventArgs e)
+        {
+            new FormGraph(this.daPlcGraph1.GraphList).Show();
         }
     }
 }

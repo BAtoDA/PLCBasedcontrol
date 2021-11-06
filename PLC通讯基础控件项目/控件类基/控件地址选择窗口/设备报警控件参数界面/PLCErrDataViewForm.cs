@@ -34,29 +34,33 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
 
         private async void uiDataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex > -1)//判断用户是否选中行
+            try
             {
-                if (this.uiDataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString().Trim() == "")//用户是否选中了空行
+                if (e.RowIndex > -1)//判断用户是否选中行
                 {
-                    MessageBox.Show("你选中了空行", "Err");//提示异常
-                    return; //返回方法
+                    if (this.uiDataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString().Trim() == "")//用户是否选中了空行
+                    {
+                        MessageBox.Show("你选中了空行", "Err");//提示异常
+                        return; //返回方法
+                    }
+                    else
+                    {
+                        var Index = EventLink.PLCEventLink.Where(p => p.ID == Convert.ToInt32(this.uiDataGridView1.Rows[e.RowIndex].Cells[0].Value)).FirstOrDefault();
+                        PLCErrDataViewFormAdd PLCErr = new PLCErrDataViewFormAdd(Index);
+                        PLCErr.ShowDialog();
+                        //修改参数完成 进行参数序列化保存
+                        if (PLCErr.Save)
+                            await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
+                        DataGridViewLoad();
+
+                    }
                 }
                 else
                 {
-                    var Index = EventLink.PLCEventLink.Where(p => p.ID == Convert.ToInt32(this.uiDataGridView1.Rows[e.RowIndex].Cells[0].Value)).FirstOrDefault();
-                    PLCErrDataViewFormAdd PLCErr = new PLCErrDataViewFormAdd(Index);
-                    PLCErr.ShowDialog();
-                    //修改参数完成 进行参数序列化保存
-                    if (PLCErr.Save)
-                        await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
-                    DataGridViewLoad();
-
+                    MessageBox.Show("你选中了空行", "Err");//提示异常
                 }
             }
-            else
-            {
-                MessageBox.Show("你选中了空行", "Err");//提示异常
-            }
+            catch { }
         }
         /// <summary>
         /// 用户点击了添加报警
@@ -96,29 +100,33 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <param name="e"></param>
         private async void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            if (this.uiDataGridView1.SelectedIndex > -1)//判断用户是否选中行
+            try
             {
-                if (this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value.ToString().Trim() == "")//用户是否选中了空行
+                if (this.uiDataGridView1.SelectedIndex > -1)//判断用户是否选中行
                 {
-                    MessageBox.Show("你选中了空行", "Err");//提示异常
-                    return; //返回方法
+                    if (this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value.ToString().Trim() == "")//用户是否选中了空行
+                    {
+                        MessageBox.Show("你选中了空行", "Err");//提示异常
+                        return; //返回方法
+                    }
+                    else
+                    {
+                        var Index = EventLink.PLCEventLink.Where(p => p.ID == Convert.ToInt32(this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value)).FirstOrDefault();
+                        PLCErrDataViewFormAdd PLCErr = new PLCErrDataViewFormAdd(Index);
+                        PLCErr.ShowDialog();
+                        //修改参数完成 进行参数序列化保存
+                        if (PLCErr.Save)
+                            await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
+                        DataGridViewLoad();
+
+                    }
                 }
                 else
                 {
-                    var Index = EventLink.PLCEventLink.Where(p => p.ID == Convert.ToInt32(this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value)).FirstOrDefault();
-                    PLCErrDataViewFormAdd PLCErr = new PLCErrDataViewFormAdd(Index);
-                    PLCErr.ShowDialog();
-                    //修改参数完成 进行参数序列化保存
-                    if (PLCErr.Save)
-                        await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
-                    DataGridViewLoad();
-
+                    MessageBox.Show("你选中了空行", "Err");//提示异常
                 }
             }
-            else
-            {
-                MessageBox.Show("你选中了空行", "Err");//提示异常
-            }
+            catch { }
         }
         /// <summary>
         /// 用户点击了删除报警
@@ -127,25 +135,29 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <param name="e"></param>
         private async void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            if (this.uiDataGridView1.SelectedIndex > -1)//判断用户是否选中行
+            try
             {
-                if (this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value.ToString().Trim() == "")//用户是否选中了空行
+                if (this.uiDataGridView1.SelectedIndex > -1)//判断用户是否选中行
                 {
-                    MessageBox.Show("你选中了空行", "Err");//提示异常
-                    return; //返回方法
+                    if (this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value.ToString().Trim() == "")//用户是否选中了空行
+                    {
+                        MessageBox.Show("你选中了空行", "Err");//提示异常
+                        return; //返回方法
+                    }
+                    else
+                    {
+                        var Index = EventLink.PLCEventLink.Where(p => p.ID == Convert.ToInt32(this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value)).FirstOrDefault();
+                        EventLink.PLCEventLink.Remove(Index);
+                        await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
+                        DataGridViewLoad();
+                    }
                 }
                 else
                 {
-                    var Index = EventLink.PLCEventLink.Where(p => p.ID == Convert.ToInt32(this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value)).FirstOrDefault();
-                    EventLink.PLCEventLink.Remove(Index);
-                    await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
-                    DataGridViewLoad();
+                    MessageBox.Show("你选中了空行", "Err");//提示异常
                 }
             }
-            else
-            {
-                MessageBox.Show("你选中了空行", "Err");//提示异常
-            }
+            catch { }
         }
         /// <summary>
         /// 刷新表显示

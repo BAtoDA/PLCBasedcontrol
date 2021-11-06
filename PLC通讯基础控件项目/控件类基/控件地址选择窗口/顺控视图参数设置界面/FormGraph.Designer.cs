@@ -1,7 +1,7 @@
 ﻿
-namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面
+namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.顺控视图参数设置界面
 {
-    partial class PLCErrDataViewForm
+    partial class FormGraph
     {
         /// <summary>
         /// Required designer variable.
@@ -35,13 +35,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.uiDataGridView1 = new Sunny.UI.UIDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.uiContextMenuStrip1 = new Sunny.UI.UIContextMenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.uiButton1 = new Sunny.UI.UIButton();
+            this.uiButton2 = new Sunny.UI.UIButton();
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).BeginInit();
             this.uiContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +61,12 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.uiDataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.uiDataGridView1.ColumnHeadersHeight = 32;
+            this.uiDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.uiDataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
             this.uiDataGridView1.ContextMenuStrip = this.uiContextMenuStrip1;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -73,9 +79,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             this.uiDataGridView1.EnableHeadersVisualStyles = false;
             this.uiDataGridView1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiDataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
-            this.uiDataGridView1.Location = new System.Drawing.Point(3, 38);
+            this.uiDataGridView1.Location = new System.Drawing.Point(2, 37);
             this.uiDataGridView1.Name = "uiDataGridView1";
-            this.uiDataGridView1.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -90,69 +95,86 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             this.uiDataGridView1.RowTemplate.Height = 25;
             this.uiDataGridView1.SelectedIndex = -1;
             this.uiDataGridView1.ShowGridLine = true;
-            this.uiDataGridView1.Size = new System.Drawing.Size(1016, 503);
+            this.uiDataGridView1.Size = new System.Drawing.Size(649, 306);
             this.uiDataGridView1.TabIndex = 0;
-            this.uiDataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.uiDataGridView1_CellMouseDoubleClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Step";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Content";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 400;
             // 
             // uiContextMenuStrip1
             // 
             this.uiContextMenuStrip1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripSeparator1,
-            this.toolStripMenuItem2,
-            this.toolStripSeparator2,
-            this.toolStripMenuItem3,
-            this.toolStripSeparator3});
+            this.toolStripMenuItem2});
             this.uiContextMenuStrip1.Name = "uiContextMenuStrip1";
-            this.uiContextMenuStrip1.Size = new System.Drawing.Size(145, 100);
+            this.uiContextMenuStrip1.Size = new System.Drawing.Size(113, 56);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 26);
-            this.toolStripMenuItem1.Text = "添加报警";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 26);
+            this.toolStripMenuItem1.Text = "添加";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(144, 26);
-            this.toolStripMenuItem2.Text = "修改报警";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(112, 26);
+            this.toolStripMenuItem2.Text = "删除";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
-            // toolStripSeparator2
+            // uiButton1
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(141, 6);
+            this.uiButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton1.Location = new System.Drawing.Point(88, 350);
+            this.uiButton1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton1.Name = "uiButton1";
+            this.uiButton1.Size = new System.Drawing.Size(100, 35);
+            this.uiButton1.TabIndex = 1;
+            this.uiButton1.Text = "确定";
+            this.uiButton1.Click += new System.EventHandler(this.uiButton1_Click);
             // 
-            // toolStripMenuItem3
+            // uiButton2
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(144, 26);
-            this.toolStripMenuItem3.Text = "删除报警";
-            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            this.uiButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton2.Location = new System.Drawing.Point(433, 350);
+            this.uiButton2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton2.Name = "uiButton2";
+            this.uiButton2.Size = new System.Drawing.Size(100, 35);
+            this.uiButton2.TabIndex = 2;
+            this.uiButton2.Text = "取消";
+            this.uiButton2.Click += new System.EventHandler(this.uiButton2_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
-            // 
-            // PLCErrDataViewForm
+            // FormGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 544);
+            this.ClientSize = new System.Drawing.Size(655, 392);
+            this.Controls.Add(this.uiButton2);
+            this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.uiDataGridView1);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1920, 1040);
             this.MinimizeBox = false;
-            this.Name = "PLCErrDataViewForm";
-            this.Text = "PLCErrDataViewForm";
+            this.Name = "FormGraph";
+            this.Text = "FormGraph";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.uiDataGridView1)).EndInit();
             this.uiContextMenuStrip1.ResumeLayout(false);
@@ -163,12 +185,13 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         #endregion
 
         private Sunny.UI.UIDataGridView uiDataGridView1;
+        private Sunny.UI.UIButton uiButton1;
+        private Sunny.UI.UIButton uiButton2;
         private Sunny.UI.UIContextMenuStrip uiContextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

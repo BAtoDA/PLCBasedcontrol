@@ -1457,6 +1457,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.ClientSize = new System.Drawing.Size(464, 753);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PLCpropertyBit";
             this.Text = "PLCpropertyBit";
             this.TopMost = true;

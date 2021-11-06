@@ -263,6 +263,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //{
                 try
                 {
+                lock (this)
+                {
                     if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
                     PLCoopErr(pLCBitClassBase, pLCBitproperty);
                     PLCsafety();
@@ -288,8 +290,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     //---委托控件----处理状态颜色
                     PlcControl.BeginInvoke((MethodInvoker)delegate
                     {
-                    //处理安全控制---是否要隐藏控件
-                    this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
+                        //处理安全控制---是否要隐藏控件
+                        this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
                         if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
                         PlcControl.SuspendLayout();
                         if (!State)
@@ -308,6 +310,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         PlcControl.ResumeLayout(false);
                     });
                     //ControlDebug.Write(this.PlcControl.Name + $"刷新值为：{State}");
+                }
                 }
                 catch(Exception e) { //ControlDebug.Write(this.PlcControl.Name + e.Message);
                                      }

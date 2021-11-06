@@ -430,6 +430,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             this.Controls.Add(this.uiButton2);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.uiTabControl1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PLCErrDataViewFormAdd";
             this.Text = "";
             this.TopMost = true;
