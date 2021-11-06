@@ -1459,6 +1459,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PLCpropertyBit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PLCpropertyBit";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.PLCproperty_Load);

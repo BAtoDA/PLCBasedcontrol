@@ -26,7 +26,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         {
             InitializeComponent();
             PlcBitselect = ControlPlcBit;
-            this.TopMost = false;
             this.BringToFront();
             this.TopMost = true;
         }

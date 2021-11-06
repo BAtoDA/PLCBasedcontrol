@@ -1829,6 +1829,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PLCpropertyD";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PLCpropertyD";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.PLCpropertyD_Load);

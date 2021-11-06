@@ -594,7 +594,7 @@ namespace 控件测试项目
             this.daPlcGraph1.PLC_Enable = true;
             this.daPlcGraph1.pLCDselectRealize.AwaitTime = 0;
             this.daPlcGraph1.pLCDselectRealize.Dataentryfunction = false;
-            this.daPlcGraph1.pLCDselectRealize.description = "PLCDselectRealize";
+            this.daPlcGraph1.pLCDselectRealize.description = "";
             this.daPlcGraph1.pLCDselectRealize.Inform = false;
             this.daPlcGraph1.pLCDselectRealize.InformAddress = "0";
             this.daPlcGraph1.pLCDselectRealize.InformFunction = "M";
@@ -613,7 +613,7 @@ namespace 控件测试项目
             this.daPlcGraph1.pLCDselectRealize.OperationAffirm = false;
             this.daPlcGraph1.pLCDselectRealize.PLCTimer = null;
             this.daPlcGraph1.pLCDselectRealize.ReadWrite = false;
-            this.daPlcGraph1.pLCDselectRealize.ReadWriteAddress = "0";
+            this.daPlcGraph1.pLCDselectRealize.ReadWriteAddress = "3";
             this.daPlcGraph1.pLCDselectRealize.ReadWriteFunction = "D";
             this.daPlcGraph1.pLCDselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
             this.daPlcGraph1.pLCDselectRealize.SafetyBehaviorPattern = 1;

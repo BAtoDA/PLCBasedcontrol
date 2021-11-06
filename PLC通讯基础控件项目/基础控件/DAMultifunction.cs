@@ -188,7 +188,7 @@ namespace PLC通讯基础控件项目.基础控件
 
         private bool plc_Enable = false;
 
-        public void Modifications_Eeve(object send, EventArgs e)
+        public  void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
 
@@ -214,32 +214,35 @@ namespace PLC通讯基础控件项目.基础控件
                 CopyTo[i] = Copy[i];
             }
 
-            PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(this);
-            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
-            pLCpropertyBit.ShowDialog();
-
-            if (!pLCpropertyBit.Save)          
+            this.BeginInvoke((MethodInvoker)delegate
             {
-                for (int i = 0; i < Copy.Length; i++)
-                {
-                    Copy[i] = CopyTo[i];
-                }
+                PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(this);
+                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                pLCpropertyBit.ShowDialog();
 
-                for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
+                if (!pLCpropertyBit.Save)
                 {
-                    var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
-                    var w2 = pLCMultifunctions[i].GetType().GetProperties();
-                    for (int ix = 0; ix < w2.Length; ix++)
-                        w2[ix] = w1[ix];
+                    for (int i = 0; i < Copy.Length; i++)
+                    {
+                        Copy[i] = CopyTo[i];
+                    }
+
+                    for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
+                    {
+                        var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
+                        var w2 = pLCMultifunctions[i].GetType().GetProperties();
+                        for (int ix = 0; ix < w2.Length; ix++)
+                            w2[ix] = w1[ix];
+                    }
+                    pLCMultifunctions = pLCMultifunctionClassBases;
                 }
-                pLCMultifunctions = pLCMultifunctionClassBases;
-            }
-            else
-            {
-                var DD= (PLCMultifunctionBase)this;
-                DD = pLCpropertyBit.pLCMultifunctionBase;
-                pLCMultifunctions = pLCpropertyBit.pLCMultifunction.ToArray();
-            }
+                else
+                {
+                    var DD = (PLCMultifunctionBase)this;
+                    DD = pLCpropertyBit.pLCMultifunctionBase;
+                    pLCMultifunctions = pLCpropertyBit.pLCMultifunction.ToArray();
+                }
+            });
             this.Modification -= new EventHandler(Modifications_Eeve);
         }
 

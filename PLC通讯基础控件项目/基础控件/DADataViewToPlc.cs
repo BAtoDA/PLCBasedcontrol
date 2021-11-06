@@ -113,7 +113,7 @@ namespace PLC通讯基础控件项目.基础控件
         [Browsable(false)]
         public event EventHandler Modification;
         #endregion
-        public void Modifications_Eeve(object send, EventArgs e)
+        public  void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
             var Copy = this.pLCDataViewselectRealize.GetType().GetProperties();
@@ -123,16 +123,19 @@ namespace PLC通讯基础控件项目.基础控件
             {
                 CopyTo[i] = Copy[i];
             }
-            PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this,this);
-            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
-            pLCpropertyBit.ShowDialog();
-            if (!pLCpropertyBit.Save)
+            this.BeginInvoke((MethodInvoker)delegate
             {
-                for (int i = 0; i < Copy.Length; i++)
+                PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this);
+                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                pLCpropertyBit.ShowDialog();
+                if (!pLCpropertyBit.Save)
                 {
-                    Copy[i] = CopyTo[i];
+                    for (int i = 0; i < Copy.Length; i++)
+                    {
+                        Copy[i] = CopyTo[i];
+                    }
                 }
-            }
+            });
             //参数修改完成--行列进行显示更新--
             this.Rows.Clear();
             this.Columns.Clear();

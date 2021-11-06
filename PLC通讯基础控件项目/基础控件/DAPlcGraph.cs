@@ -100,7 +100,7 @@ namespace PLC通讯基础控件项目.基础控件
         /// <param name="send"></param>
         /// <param name="e"></param>
 
-        public void Modifications_Eeve(object send, EventArgs e)
+        public  void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
             var Copy = this.pLCDselectRealize.GetType().GetProperties();
@@ -111,19 +111,22 @@ namespace PLC通讯基础控件项目.基础控件
                 //if (Copy[i].Name == CopyTo[i].Name)
                 CopyTo[i] = Copy[i];
             }
-            PLCpropertyD pLCpropertyBit = new PLCpropertyD(this.pLCDselectRealize);
-            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
-
-            pLCpropertyBit.ShowDialog();
-            if (!pLCpropertyBit.Save)
+            this.BeginInvoke((MethodInvoker)delegate
             {
-                for (int i = 0; i < Copy.Length; i++)
-                {
-                    //if (Copy[i].Name == CopyTo[i].Name)
-                    Copy[i] = CopyTo[i];
+                 PLCpropertyD pLCpropertyBit = new PLCpropertyD(this.pLCDselectRealize);
+                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+
+                 pLCpropertyBit.ShowDialog();
+                 if (!pLCpropertyBit.Save)
+                 {
+                     for (int i = 0; i < Copy.Length; i++)
+                     {
+                        //if (Copy[i].Name == CopyTo[i].Name)
+                        Copy[i] = CopyTo[i];
+                     }
+                    //this.pLCBitselectRealize = bitselectRealize;
                 }
-                //this.pLCBitselectRealize = bitselectRealize;
-            }
+             });
             //立马刷新状态
             this.SuspendLayout();
             this.TextContent_0 = this.pLCDselectRealize.TextContent_0;

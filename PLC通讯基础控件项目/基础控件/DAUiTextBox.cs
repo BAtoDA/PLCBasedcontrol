@@ -204,19 +204,22 @@ namespace PLC通讯基础控件项目.基础控件
                 //if (Copy[i].Name == CopyTo[i].Name)
                 CopyTo[i] = Copy[i];
             }
-            PLCpropertyD pLCpropertyBit = new PLCpropertyD(this.pLCDselectRealize);
-            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
-
-            pLCpropertyBit.ShowDialog();
-            if (!pLCpropertyBit.Save)
+            this.BeginInvoke((MethodInvoker)delegate
             {
-                for (int i = 0; i < Copy.Length; i++)
+                PLCpropertyD pLCpropertyBit = new PLCpropertyD(this.pLCDselectRealize);
+                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+
+                pLCpropertyBit.ShowDialog();
+                if (!pLCpropertyBit.Save)
                 {
-                    //if (Copy[i].Name == CopyTo[i].Name)
-                    Copy[i] = CopyTo[i];
+                    for (int i = 0; i < Copy.Length; i++)
+                    {
+                        //if (Copy[i].Name == CopyTo[i].Name)
+                        Copy[i] = CopyTo[i];
+                    }
+                    //this.pLCBitselectRealize = bitselectRealize;
                 }
-                //this.pLCBitselectRealize = bitselectRealize;
-            }
+            });
             //立马刷新状态
             this.SuspendLayout();
             this.TextContent_0 = this.pLCDselectRealize.TextContent_0;

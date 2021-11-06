@@ -107,10 +107,13 @@ namespace PLC通讯基础控件项目.基础控件
 
         public event EventHandler Modification;
 
-        public void Modifications_Eeve(object send, EventArgs e)
+        public  void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
-            new PLCQRcodeForm(this, this).ShowDialog();
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                new PLCQRcodeForm(this, this).ShowDialog();
+            });
         }
 
 

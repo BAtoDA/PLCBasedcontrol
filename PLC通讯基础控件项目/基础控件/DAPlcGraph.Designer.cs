@@ -317,7 +317,7 @@ namespace PLC通讯基础控件项目.基础控件
             this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiLabel2.Location = new System.Drawing.Point(3, 9);
             this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(100, 23);
+            this.uiLabel2.Size = new System.Drawing.Size(354, 23);
             this.uiLabel2.TabIndex = 1;
             this.uiLabel2.Text = "PlcGraph";
             this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

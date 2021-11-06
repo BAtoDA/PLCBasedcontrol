@@ -175,17 +175,21 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
         /// <param name="send"></param>
         /// <param name="e"></param>
 
-        public void Modifications_Eeve(object send, EventArgs e)
+        public async void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
-            FunctionForm pLCpropertyBit = new FunctionForm(this.FormPath, FormName);
-            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
-            pLCpropertyBit.ShowDialog();
-            if (pLCpropertyBit.Save)
+            var T = await System.Threading.Tasks.Task.Run(() =>
             {
-                this.formPath = pLCpropertyBit.Formpthan;
-                this.FormName = pLCpropertyBit.FormName;
-            }
+                FunctionForm pLCpropertyBit = new FunctionForm(this.FormPath, FormName);
+                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                pLCpropertyBit.ShowDialog();
+                if (pLCpropertyBit.Save)
+                {
+                    this.formPath = pLCpropertyBit.Formpthan;
+                    this.FormName = pLCpropertyBit.FormName;
+                }
+                return true;
+            });
         }
     }
 }
