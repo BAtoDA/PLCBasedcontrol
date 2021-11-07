@@ -168,8 +168,8 @@ namespace PLC通讯基础控件项目.基础控件
                 //if (Copy[i].Name == CopyTo[i].Name)
                 CopyTo[i] = Copy[i];
             }
-            this.BeginInvoke((MethodInvoker)delegate
-           // var T = await System.Threading.Tasks.Task.Run(() =>
+            var asyncResult  = this.BeginInvoke((MethodInvoker)delegate
+            // var T = await System.Threading.Tasks.Task.Run(() =>
             {
                 PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(this.pLCBitselectRealize);
                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
@@ -182,16 +182,17 @@ namespace PLC通讯基础控件项目.基础控件
                         //if (Copy[i].Name == CopyTo[i].Name)
                         Copy[i] = CopyTo[i];
                     }
-                    //this.pLCBitselectRealize = bitselectRealize;
                 }
-                //return true;
+                this.Invoke((MethodInvoker)delegate
+                {
+                    //立马刷新状态
+                    this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
+                    this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
+                    this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
+                    this.Refresh();
+                    this.ResumeLayout(false);
+                });
             });
-            //立马刷新状态
-            this.backgroundColor_0 = this.pLCBitselectRealize.backgroundColor_0;
-            this.TextContent_0 = this.pLCBitselectRealize.TextContent_0;
-            this.TextColor_0 = this.pLCBitselectRealize.TextColor_0;
-            this.Refresh();
-            this.ResumeLayout(false);
         }
         /// <summary>
         /// 复制控件方法

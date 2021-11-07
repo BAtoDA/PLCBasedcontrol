@@ -113,7 +113,7 @@ namespace PLC通讯基础控件项目.基础控件
         [Browsable(false)]
         public event EventHandler Modification;
         #endregion
-        public  void Modifications_Eeve(object send, EventArgs e)
+        public void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
             var Copy = this.pLCDataViewselectRealize.GetType().GetProperties();
@@ -135,27 +135,31 @@ namespace PLC通讯基础控件项目.基础控件
                         Copy[i] = CopyTo[i];
                     }
                 }
+
+                this.Invoke((MethodInvoker)delegate
+                {
+                //参数修改完成--行列进行显示更新--
+                this.Rows.Clear();
+                    this.Columns.Clear();
+                    for (int i = 0; i < this.pLCDataViewselectRealize.DataGridView_Name.Length; i++)
+                    {
+                        DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
+                        textboxcell.HeaderText = this.pLCDataViewselectRealize.DataGridView_Name[i];
+                        textboxcell.ToolTipText = this.pLCDataViewselectRealize.DataGridView_Name[i];
+                        textboxcell.ReadOnly = true;
+                        this.Columns.Add(textboxcell);
+                    }
+                    if (this.pLCDataViewselectRealize.DataGridViewPLC_Time)
+                    {
+                    //用户开启了 时间显示
+                    DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
+                        textboxcell.HeaderText = "更新时间";
+                        textboxcell.ToolTipText = "更新时间";
+                        textboxcell.ReadOnly = true;
+                        this.Columns.Add(textboxcell);
+                    }
+                });
             });
-            //参数修改完成--行列进行显示更新--
-            this.Rows.Clear();
-            this.Columns.Clear();
-            for(int i=0;i< this.pLCDataViewselectRealize.DataGridView_Name.Length;i++)
-            {
-                DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
-                textboxcell.HeaderText = this.pLCDataViewselectRealize.DataGridView_Name[i];
-                textboxcell.ToolTipText = this.pLCDataViewselectRealize.DataGridView_Name[i];
-                textboxcell.ReadOnly = true;
-                this.Columns.Add(textboxcell);
-            }
-            if(this.pLCDataViewselectRealize.DataGridViewPLC_Time)
-            {
-                //用户开启了 时间显示
-                DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
-                textboxcell.HeaderText = "更新时间";
-                textboxcell.ToolTipText = "更新时间";
-                textboxcell.ReadOnly = true;
-                this.Columns.Add(textboxcell);
-            }
         }
     }
 }

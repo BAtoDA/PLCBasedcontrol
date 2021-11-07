@@ -257,9 +257,12 @@ namespace PLC通讯基础控件项目.基础控件
                         Copy[i] = CopyTo[i];
                     }
                 }
+                this.Invoke((MethodInvoker)delegate
+                {
+                    //参数修改完成--行列进行显示更新--
+                    uiRefresh();
+                });
             });
-            //参数修改完成--行列进行显示更新--
-            uiRefresh();
         }
         /// <summary>
         /// 刷新UI

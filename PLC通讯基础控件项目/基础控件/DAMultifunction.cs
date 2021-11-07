@@ -242,32 +242,36 @@ namespace PLC通讯基础控件项目.基础控件
                     DD = pLCpropertyBit.pLCMultifunctionBase;
                     pLCMultifunctions = pLCpropertyBit.pLCMultifunction.ToArray();
                 }
+                ControlSwitch(false);
             });
             this.Modification -= new EventHandler(Modifications_Eeve);
         }
 
         public void ControlSwitch(bool switchover)
         {
-            if (switchover)
+            this.Invoke((MethodInvoker)delegate
             {
-                //立马刷新状态
-                this.SuspendLayout();
-                this.backgroundColor_0 = this.pLCBitselectRealizeq.backgroundColor_1;
-                this.TextContent_0 = this.pLCBitselectRealizeq.TextContent_1;
-                this.TextColor_0 = this.pLCBitselectRealizeq.TextColor_1;
-                this.Refresh();
-                this.ResumeLayout(false);
-            }
-            else
-            {
-                //立马刷新状态
-                this.SuspendLayout();
-                this.backgroundColor_0 = this.pLCBitselectRealizeq.backgroundColor_0;
-                this.TextContent_0 = this.pLCBitselectRealizeq.TextContent_0;
-                this.TextColor_0 = this.pLCBitselectRealizeq.TextColor_0;
-                this.Refresh();
-                this.ResumeLayout(false);
-            }
+                if (switchover)
+                {
+                    //立马刷新状态
+                    this.SuspendLayout();
+                    this.backgroundColor_0 = this.pLCBitselectRealizeq.backgroundColor_1;
+                    this.TextContent_0 = this.pLCBitselectRealizeq.TextContent_1;
+                    this.TextColor_0 = this.pLCBitselectRealizeq.TextColor_1;
+                    this.Refresh();
+                    this.ResumeLayout(false);
+                }
+                else
+                {
+                    //立马刷新状态
+                    this.SuspendLayout();
+                    this.backgroundColor_0 = this.pLCBitselectRealizeq.backgroundColor_0;
+                    this.TextContent_0 = this.pLCBitselectRealizeq.TextContent_0;
+                    this.TextColor_0 = this.pLCBitselectRealizeq.TextColor_0;
+                    this.Refresh();
+                    this.ResumeLayout(false);
+                }
+            });
         }
         #endregion
     }

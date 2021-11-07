@@ -219,13 +219,16 @@ namespace PLC通讯基础控件项目.基础控件
                     }
                     //this.pLCBitselectRealize = bitselectRealize;
                 }
+                this.Invoke((MethodInvoker)delegate
+                {
+                //立马刷新状态
+                this.SuspendLayout();
+                    this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
+                    this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
+                    this.Refresh();
+                    this.ResumeLayout(false);
+                });
             });
-            //立马刷新状态
-            this.SuspendLayout();
-            this.TextContent_0 = this.pLCDselectRealize.TextContent_0;
-            this.TextColor_0 = this.pLCDselectRealize.TextColor_0;
-            this.Refresh();
-            this.ResumeLayout(false);
         }
         /// <summary>
         /// 复制控件方法
