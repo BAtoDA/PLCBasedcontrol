@@ -64,6 +64,8 @@ namespace 控件测试项目
             this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
             this.daMultifunction1 = new PLC通讯基础控件项目.基础控件.DAMultifunction();
             this.daPlcGraph1 = new PLC通讯基础控件项目.基础控件.DAPlcGraph();
+            this.daUiButton3 = new PLC通讯基础控件项目.基础控件.DAUiButton();
+            this.daUiButton4 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             ((System.ComponentModel.ISupportInitialize)(this.daIhatetheqrcode1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,7 +97,7 @@ namespace 控件测试项目
             // 
             // plcPreferences1
             // 
-            this.plcPreferences1.IPEnd = "192.168.3.240";
+            this.plcPreferences1.IPEnd = "192.168.3.31";
             this.plcPreferences1.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.plcPreferences1.Point = 5002;
             this.plcPreferences1.Receptionovertime = 1000;
@@ -111,7 +113,7 @@ namespace 控件测试项目
             this.daUiButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
             this.daUiButton1.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
             this.daUiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daUiButton1.Location = new System.Drawing.Point(240, 363);
+            this.daUiButton1.Location = new System.Drawing.Point(110, 243);
             this.daUiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.daUiButton1.Name = "daUiButton1";
             this.daUiButton1.PLC_Enable = true;
@@ -129,7 +131,7 @@ namespace 控件测试项目
             this.daUiButton1.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton1.pLCBitselectRealize.PLCTimer = null;
             this.daUiButton1.pLCBitselectRealize.ReadWrite = false;
-            this.daUiButton1.pLCBitselectRealize.ReadWriteAddress = "10";
+            this.daUiButton1.pLCBitselectRealize.ReadWriteAddress = "1";
             this.daUiButton1.pLCBitselectRealize.ReadWriteFunction = "X";
             this.daUiButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daUiButton1.pLCBitselectRealize.SafetyBehaviorPattern = 0;
@@ -654,11 +656,151 @@ namespace 控件测试项目
             this.daPlcGraph1.TextFont_1 = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcGraph1.Title = "PLC";
             // 
+            // daUiButton3
+            // 
+            this.daUiButton3.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daUiButton3.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton3.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton3.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton3.Location = new System.Drawing.Point(110, 297);
+            this.daUiButton3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.daUiButton3.Name = "daUiButton3";
+            this.daUiButton3.PLC_Enable = true;
+            this.daUiButton3.pLCBitselectRealize.AwaitTime = 0;
+            this.daUiButton3.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton3.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton3.pLCBitselectRealize.BitPattern = false;
+            this.daUiButton3.pLCBitselectRealize.description = "PLCBitselectRealize";
+            this.daUiButton3.pLCBitselectRealize.keyMinTime = 0;
+            this.daUiButton3.pLCBitselectRealize.LoosenOut = false;
+            this.daUiButton3.pLCBitselectRealize.NoAccessConceal = false;
+            this.daUiButton3.pLCBitselectRealize.NoAccessForm = false;
+            this.daUiButton3.pLCBitselectRealize.OperationAffirm = false;
+            this.daUiButton3.pLCBitselectRealize.OutReverse = false;
+            this.daUiButton3.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
+            this.daUiButton3.pLCBitselectRealize.PLCTimer = null;
+            this.daUiButton3.pLCBitselectRealize.ReadWrite = false;
+            this.daUiButton3.pLCBitselectRealize.ReadWriteAddress = "21";
+            this.daUiButton3.pLCBitselectRealize.ReadWriteFunction = "X";
+            this.daUiButton3.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton3.pLCBitselectRealize.SafetyBehaviorPattern = 0;
+            this.daUiButton3.pLCBitselectRealize.SafetyCategory = 0;
+            this.daUiButton3.pLCBitselectRealize.SafetyFunction = "M";
+            this.daUiButton3.pLCBitselectRealize.SafetyPattern = 0;
+            this.daUiButton3.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton3.pLCBitselectRealize.Speech = false;
+            this.daUiButton3.pLCBitselectRealize.Textalign_0 = "MiddleCenter";
+            this.daUiButton3.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
+            this.daUiButton3.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton3.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton3.pLCBitselectRealize.TextContent_0 = "OFF-M10";
+            this.daUiButton3.pLCBitselectRealize.TextContent_1 = "ON-M10";
+            this.daUiButton3.pLCBitselectRealize.Textflicker_0 = 0;
+            this.daUiButton3.pLCBitselectRealize.Textflicker_1 = 0;
+            this.daUiButton3.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton3.pLCBitselectRealize.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton3.pLCBitselectRealize.TextItalic_0 = false;
+            this.daUiButton3.pLCBitselectRealize.TextItalic_1 = false;
+            this.daUiButton3.pLCBitselectRealize.TextState = 0;
+            this.daUiButton3.pLCBitselectRealize.TextUnderline_0 = false;
+            this.daUiButton3.pLCBitselectRealize.TextUnderline_1 = false;
+            this.daUiButton3.pLCBitselectRealize.WriteAddress = "0";
+            this.daUiButton3.pLCBitselectRealize.WriteFunction = "M";
+            this.daUiButton3.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton3.pLCBitselectRealize.WrSafetyAddress = "0";
+            this.daUiButton3.PLCTimer = null;
+            this.daUiButton3.Size = new System.Drawing.Size(100, 35);
+            this.daUiButton3.Style = Sunny.UI.UIStyle.Custom;
+            this.daUiButton3.TabIndex = 28;
+            this.daUiButton3.Text = "OFF-M10";
+            this.daUiButton3.Textalign_0 = "MiddleCenter";
+            this.daUiButton3.Textalign_1 = "MiddleCenter";
+            this.daUiButton3.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton3.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton3.TextContent_0 = "OFF-M10";
+            this.daUiButton3.TextContent_1 = "ON-M10";
+            this.daUiButton3.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton3.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
+            // daUiButton4
+            // 
+            this.daUiButton4.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daUiButton4.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.Location = new System.Drawing.Point(110, 346);
+            this.daUiButton4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.daUiButton4.Name = "daUiButton4";
+            this.daUiButton4.PLC_Enable = true;
+            this.daUiButton4.pLCBitselectRealize.AwaitTime = 0;
+            this.daUiButton4.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton4.pLCBitselectRealize.BitPattern = false;
+            this.daUiButton4.pLCBitselectRealize.description = "PLCBitselectRealize";
+            this.daUiButton4.pLCBitselectRealize.keyMinTime = 0;
+            this.daUiButton4.pLCBitselectRealize.LoosenOut = false;
+            this.daUiButton4.pLCBitselectRealize.NoAccessConceal = false;
+            this.daUiButton4.pLCBitselectRealize.NoAccessForm = false;
+            this.daUiButton4.pLCBitselectRealize.OperationAffirm = false;
+            this.daUiButton4.pLCBitselectRealize.OutReverse = false;
+            this.daUiButton4.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
+            this.daUiButton4.pLCBitselectRealize.PLCTimer = null;
+            this.daUiButton4.pLCBitselectRealize.ReadWrite = false;
+            this.daUiButton4.pLCBitselectRealize.ReadWriteAddress = "34";
+            this.daUiButton4.pLCBitselectRealize.ReadWriteFunction = "X";
+            this.daUiButton4.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton4.pLCBitselectRealize.SafetyBehaviorPattern = 0;
+            this.daUiButton4.pLCBitselectRealize.SafetyCategory = 0;
+            this.daUiButton4.pLCBitselectRealize.SafetyFunction = "M";
+            this.daUiButton4.pLCBitselectRealize.SafetyPattern = 0;
+            this.daUiButton4.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton4.pLCBitselectRealize.Speech = false;
+            this.daUiButton4.pLCBitselectRealize.Textalign_0 = "MiddleCenter";
+            this.daUiButton4.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
+            this.daUiButton4.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton4.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton4.pLCBitselectRealize.TextContent_0 = "OFF-M10";
+            this.daUiButton4.pLCBitselectRealize.TextContent_1 = "ON-M10";
+            this.daUiButton4.pLCBitselectRealize.Textflicker_0 = 0;
+            this.daUiButton4.pLCBitselectRealize.Textflicker_1 = 0;
+            this.daUiButton4.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.pLCBitselectRealize.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.pLCBitselectRealize.TextItalic_0 = false;
+            this.daUiButton4.pLCBitselectRealize.TextItalic_1 = false;
+            this.daUiButton4.pLCBitselectRealize.TextState = 0;
+            this.daUiButton4.pLCBitselectRealize.TextUnderline_0 = false;
+            this.daUiButton4.pLCBitselectRealize.TextUnderline_1 = false;
+            this.daUiButton4.pLCBitselectRealize.WriteAddress = "0";
+            this.daUiButton4.pLCBitselectRealize.WriteFunction = "M";
+            this.daUiButton4.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton4.pLCBitselectRealize.WrSafetyAddress = "0";
+            this.daUiButton4.PLCTimer = null;
+            this.daUiButton4.Size = new System.Drawing.Size(100, 35);
+            this.daUiButton4.Style = Sunny.UI.UIStyle.Custom;
+            this.daUiButton4.TabIndex = 29;
+            this.daUiButton4.Text = "OFF-M10";
+            this.daUiButton4.Textalign_0 = "MiddleCenter";
+            this.daUiButton4.Textalign_1 = "MiddleCenter";
+            this.daUiButton4.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton4.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton4.TextContent_0 = "OFF-M10";
+            this.daUiButton4.TextContent_1 = "ON-M10";
+            this.daUiButton4.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 703);
+            this.Controls.Add(this.daUiButton4);
+            this.Controls.Add(this.daUiButton3);
             this.Controls.Add(this.daPlcGraph1);
             this.Controls.Add(this.daMultifunction1);
             this.Controls.Add(this.daPlcFunction1);
@@ -712,6 +854,8 @@ namespace 控件测试项目
         private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
         private PLC通讯基础控件项目.基础控件.DAMultifunction daMultifunction1;
         private PLC通讯基础控件项目.基础控件.DAPlcGraph daPlcGraph1;
+        private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton3;
+        private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton4;
     }
 }
 
