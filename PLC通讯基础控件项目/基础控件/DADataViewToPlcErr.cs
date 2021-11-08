@@ -45,7 +45,8 @@ namespace PLC通讯基础控件项目.基础控件
         protected override void OnLeave(EventArgs e)
         {
             base.OnLeave(e);
-            DataLoad();
+            if (DesignMode)
+                DataLoad();
         }
         private void DataLoad()
         {
