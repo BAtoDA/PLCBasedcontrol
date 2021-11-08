@@ -42,6 +42,11 @@ namespace PLC通讯基础控件项目.基础控件
                 DataLoad();
             });
         }
+        protected override void OnLeave(EventArgs e)
+        {
+            base.OnLeave(e);
+            DataLoad();
+        }
         private void DataLoad()
         {
             this.Columns.Clear();
@@ -51,33 +56,52 @@ namespace PLC通讯基础控件项目.基础控件
             dataGridView[0].Name = "发生时间";
             dataGridView[0].ReadOnly = true;
             dataGridView[0].Visible = true;
+            dataGridView[0].Width = TableSize[0];
 
             dataGridView[1] = new DataGridViewTextBoxColumn();
             dataGridView[1].HeaderText = "报警设备";
             dataGridView[1].Name = "报警设备";
             dataGridView[1].ReadOnly = true;
             dataGridView[1].Visible = true;
-            dataGridView[1].Width = 130;
+            dataGridView[1].Width = TableSize[1];
 
             dataGridView[2] = new DataGridViewTextBoxColumn();
             dataGridView[2].HeaderText = "报警地址";
             dataGridView[2].Name = "报警地址";
             dataGridView[2].ReadOnly = true;
             dataGridView[2].Visible = true;
+            dataGridView[2].Width = TableSize[2];
 
             dataGridView[3] = new DataGridViewTextBoxColumn();
             dataGridView[3].HeaderText = "报警内容";
             dataGridView[3].Name = "报警内容";
             dataGridView[3].ReadOnly = true;
             dataGridView[3].Visible = true;
-            dataGridView[3].Width = 300;
+            dataGridView[3].Width = TableSize[3];
 
             this.Columns.AddRange(dataGridView);
         }
     }
     public sealed partial class DADataViewToPlcErr : UIDataGridView, PLCEvent_messageBase
     {
-        
+        #region 实现控件宽度
+        [Browsable(true)]
+        [Description("报警表格控件内容显示的宽度"), Category("PLC类型")]
+        public int[] TableSize 
+        { 
+            get => tableSize;
+            set
+            {
+                if (value.Length < 5)
+                {
+                    tableSize = value;
+                    DataLoad();
+                }
+            }
+        } 
+        private int[] tableSize = new int[4] { 100, 130, 100, 300 };
+        #endregion
+        #region 实现接口参数
         /// <summary>
         /// 读取报警内容
         /// </summary>
@@ -92,7 +116,11 @@ namespace PLC通讯基础控件项目.基础控件
         public bool PLC_Enable
         {
             get => plc_Enable;
-            set => plc_Enable = value;
+            set
+            {
+                plc_Enable = value;
+                DataLoad();
+            }
         }
         private bool plc_Enable = false;
         [Description("选择PLC类型\r\n默认三菱PLC"), Category("PLC类型")]
@@ -197,5 +225,6 @@ namespace PLC通讯基础控件项目.基础控件
             new PLCErrDataViewForm(this).Show();
             this.Modification -= new EventHandler(Modifications_Eeve);
         }
+        #endregion
     }
 }
