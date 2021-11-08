@@ -46,5 +46,6 @@ namespace 控件测试项目
         {
             new FormGraph(this.daPlcGraph1.GraphList).Show();
         }
+
     }
 }

@@ -30,6 +30,7 @@ using PLC通讯基础控件项目.控件类基.控件安全对象池;
 using System.Speech.Synthesis;
 using HslCommunication.Profinet.Siemens;
 using PLC通讯基础控件项目.第三方通信互交底层;
+using PLC通讯库.通讯枚举;
 
 namespace PLC通讯基础控件项目
 {
@@ -195,19 +196,42 @@ namespace PLC通讯基础控件项目
                                 switch (i.PLCDevice)
                                 {
                                     case PLC.Siemens:
+                                    case PLC.Siemens1:
+                                    case PLC.Siemens2:
+                                    case PLC.Siemens3:
+                                    case PLC.Siemens4:
+                                    case PLC.Siemens5:
                                         constructParms = new object[] { (SiemensPLCS)(Enum.Parse(typeof(HslCommunication.Profinet.Siemens.SiemensPLCS), i.Retain) ?? HslCommunication.Profinet.Siemens.SiemensPLCS.S1500) };  //构造器参数 
                                         SiemensS7Net obj1 = (SiemensS7Net)Activator.CreateInstance(PLCoop, constructParms);
-                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj1));
+                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj1, i.Sendovertime, i.Receptionovertime));
                                         break;
                                     case PLC.Modbus_TCP:
+                                    case PLC.Modbus_TCP1:
+                                    case PLC.Modbus_TCP2:
+                                    case PLC.Modbus_TCP3:
+                                    case PLC.Modbus_TCP4:
+                                    case PLC.Modbus_TCP5:
                                         constructParms = new object[] { };  //构造器参数
                                         obj = Activator.CreateInstance(PLCoop, constructParms);
-                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj));
+                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime));
                                         break;
-                                    default:
+                                    case PLC.Mitsubishi:
+                                    case PLC.Mitsubishi1:
+                                    case PLC.Mitsubishi2:
+                                    case PLC.Mitsubishi3:
+                                    case PLC.Mitsubishi4:
+                                    case PLC.Mitsubishi5:
+                                        //三菱协议
+                                        var constructParmse = (MitsubishiPLC)(Enum.Parse(typeof(MitsubishiPLC), i.Retain) ?? MitsubishiPLC.FX) ;  //构造器参数 
                                         constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
                                         obj = Activator.CreateInstance(PLCoop, constructParms);
-                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj));
+                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime, constructParmse));
+                                        break;
+                                    default:
+                                        //欧姆龙协议
+                                        constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
+                                        obj = Activator.CreateInstance(PLCoop, constructParms);
+                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime));
                                         break;
                                 }
                             }

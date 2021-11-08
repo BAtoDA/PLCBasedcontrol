@@ -162,12 +162,15 @@ namespace PLC通讯基础控件项目.基础控件
         }
         public void GraphModifications_Eeve(object send, EventArgs e)
         {
-            FormGraph graph= new FormGraph(this.GraphList);
-            graph.ShowDialog();
-            if(graph.Save)
+            this.BeginInvoke((MethodInvoker)delegate
             {
-                GraphList=graph.GraphList;
-            }
+                FormGraph graph = new FormGraph(this.GraphList);
+                graph.ShowDialog();
+                if (graph.Save)
+                {
+                    GraphList = graph.GraphList;
+                }
+            });
         }
         /// <summary>
         /// 视图步参数设置
@@ -222,18 +225,40 @@ namespace PLC通讯基础控件项目.基础控件
                                 this.BeginInvoke((MethodInvoker) delegate
                                 {
                                     //填充上一步
-                                    int Index = Data > 0 ? Data - 1 : GraphList.Length - 1;
-                                    this.uiTextBox1.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Step.ToString() : "***";
-                                    this.uiTextBox2.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Content.ToString() : "***";
-                                    //填充当前步
-                                    Index = Data > GraphList.Length ? GraphList.Length : Data;
-                                    this.uiTextBox4.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Step.ToString() : "***";
-                                    this.uiTextBox3.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Content.ToString() : "***";
-                                    //填充下一步
-                                    Index = Data + 1 < GraphList.Length ? Data + 1 : GraphList.Length;
-                                    this.uiTextBox6.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Step.ToString() : "***";
-                                    this.uiTextBox5.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Content.ToString() : "***";
-                                    //显示当前视图活动索引'
+                                    //int Index = Data > 0 ? Data - 1 : GraphList.Length - 1;
+                                    //this.uiTextBox1.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Step.ToString() : "***";
+                                    //this.uiTextBox2.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Content.ToString() : "***";
+                                    var LastStepData = GraphList.Where(p => p.Step == Data).FirstOrDefault();
+                                    if (LastStepData != null)
+                                    {
+                                        //填充上一步
+                                        this.uiTextBox1.Text = GraphList.Where(p => p.Step == LastStepData.LastStep).FirstOrDefault()!=null ? GraphList.Where(p => p.Step == LastStepData.LastStep).FirstOrDefault().Step.ToString(): "***";
+                                        this.uiTextBox2.Text = GraphList.Where(p => p.Step == LastStepData.LastStep).FirstOrDefault() != null ? GraphList.Where(p => p.Step == LastStepData.LastStep).FirstOrDefault().Content.ToString() : "***";
+                                        //填充当前步
+                                        this.uiTextBox4.Text = LastStepData.Step.ToString();
+                                        this.uiTextBox3.Text = LastStepData.Content;
+                                        //填充下一步
+                                        this.uiTextBox6.Text = GraphList.Where(p => p.Step == LastStepData.NextStep).FirstOrDefault() != null ? GraphList.Where(p => p.Step == LastStepData.NextStep).FirstOrDefault().Step.ToString() : "***";
+                                        this.uiTextBox5.Text= GraphList.Where(p => p.Step == LastStepData.NextStep).FirstOrDefault() != null ? GraphList.Where(p => p.Step == LastStepData.NextStep).FirstOrDefault().Content.ToString() : "***";
+                                    }
+                                    else
+                                    {
+                                        this.uiTextBox1.Text = "***";
+                                        this.uiTextBox2.Text = "***";
+                                        this.uiTextBox3.Text = "***";
+                                        this.uiTextBox4.Text = "***";
+                                        this.uiTextBox5.Text = "***";
+                                        this.uiTextBox6.Text = "***";
+                                    }
+                                    ////填充当前步
+                                    //Index = Data > GraphList.Length ? GraphList.Length : Data;
+                                    //this.uiTextBox4.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Step.ToString() : "***";
+                                    //this.uiTextBox3.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Content.ToString() : "***";
+                                    ////填充下一步
+                                    //Index = Data + 1 < GraphList.Length ? Data + 1 : GraphList.Length;
+                                    //this.uiTextBox6.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Step.ToString() : "***";
+                                    //this.uiTextBox5.Text = GraphList.Where(p => p.Step == Index).FirstOrDefault() != null ? GraphList.Where(p => p.Step == Index).FirstOrDefault().Content.ToString() : "***";
+                                    //显示当前视图活动索引
                                     var ListData = ((List<R>)this.uiDataGridView1.DataSource);
                                     for (int i = 0; i < ListData.Count; i++)
                                     {
@@ -260,8 +285,25 @@ namespace PLC通讯基础控件项目.基础控件
     ///顺控视图参数基础类
     public class R
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         public int ID { get; set; } = 0;
-        public int Step { get; set; } = 0;
+        /// <summary>
+        /// 当前步号
+        /// </summary>
+        public int Step { get; set; } = 1;
+        /// <summary>
+        /// 当前步内容
+        /// </summary>
         public string Content { get; set; } = "Null";
+        /// <summary>
+        /// 关联的上一步
+        /// </summary>
+        public int LastStep { get; set; } = 0;
+        /// <summary>
+        /// 关联的下一般
+        /// </summary>
+        public int NextStep { get; set; } = 0;
     }
 }

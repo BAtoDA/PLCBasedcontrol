@@ -53,6 +53,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.顺�
                         if (GraphListqeu[i].ID != Convert.ToInt32(this.uiDataGridView1.Rows[i].Cells[0].Value.ToString())) continue;
                         GraphListqeu[i].Step = Convert.ToInt32(this.uiDataGridView1.Rows[i].Cells[1].Value.ToString());
                         GraphListqeu[i].Content = this.uiDataGridView1.Rows[i].Cells[2].Value.ToString();
+                        GraphListqeu[i].LastStep = Convert.ToInt32(this.uiDataGridView1.Rows[i].Cells[3].Value.ToString());
+                        GraphListqeu[i].NextStep = Convert.ToInt32(this.uiDataGridView1.Rows[i].Cells[4].Value.ToString());
                     }
                 }
                 GraphList = GraphListqeu.ToArray();
@@ -84,7 +86,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.顺�
                 Step = GraphListqeu.Max(p => p.Step) + 1
             };
             this.GraphListqeu.Add(Data);
-            this.uiDataGridView1.Rows.Add(Data.ID, Data.Step, Data.Content);
+            this.uiDataGridView1.Rows.Add(Data.ID, Data.Step, Data.Content,Data.LastStep,Data.NextStep);
 
         }
         /// <summary>
@@ -118,7 +120,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.顺�
         private void DataView(List<R> Data)
         {
             this.uiDataGridView1.Rows.Clear();
-            Data.ForEach(s => { this.uiDataGridView1.Rows.Add(s.ID,s.Step,s.Content); });
+            Data.ForEach(s => { this.uiDataGridView1.Rows.Add(s.ID,s.Step,s.Content,s.LastStep,s.NextStep); });
         }
     }
 }
