@@ -152,47 +152,56 @@ namespace PLC通讯库.通讯实现类
             try
             {
                 dynamic PLCData = "";
-                if (this.melsec_net.GetType().Name != "ModbusTcpNet")
+                //三菱PLC处理
+                if (this.melsec_net.GetType().Name == "MelsecMcNet")
                 {
-                    //三菱PLC处理
-                    if (this.melsec_net.GetType().Name == "MelsecMcNet")
-                    {
-                        PLCData = melsec_net.ReadBool(Name + id, 1);
-                        //判断当前PLC类型--8进制
-                        switch (mitsubishiPLC)
-                        {
-                            case MitsubishiPLC.FX:
-                                if ((Name != "X") & (Name != "Y"))
-                                {
-                                    //不是读取输入输出点
-                                }
-                                else
-                                {
-                                    //读取输入输出点位
-                                    var Idto8 = Convert.ToInt16(id, 8).ToString("X");
-                                    PLCData = melsec_net.ReadBool(Name + Idto8, 1); 
-                                }
-                                break;
-                            case MitsubishiPLC.L:
-                            case MitsubishiPLC.R:
-                            case MitsubishiPLC.Q:
-                                PLCData = melsec_net.ReadBool(Name + id, 1);
-                                break;
-                        }
-                        return PLCData != null ? PLCData.Content[0] : false;
-                    }
-                    //西门子//欧姆龙处理
-                    PLCData = melsec_net.ReadBool(Name + id);
+                    PLCData = MelsecMcNet();
+                    goto Resul;
                 }
-                else
+                if (this.melsec_net.GetType().Name == "ModbusTcpNet")
                 {
-                    PLCData = melsec_net.ReadCoil(id);
+                    PLCData = ModbusTcpNet();
+                    goto Resul;
                 }
+
+                //西门子//欧姆龙处理
+                PLCData = melsec_net.ReadBool(Name + id);
+            Resul:
                 readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
-                return PLCData.Content;
+                return PLCData != null ? PLCData.Content[0] : false;
             }
             catch { }
             return result.ToLower() == "true" ? true : false;//返回数据
+            dynamic MelsecMcNet()
+            {
+                dynamic PLCData = "";
+                //判断当前PLC类型--8进制
+                switch (mitsubishiPLC)
+                {
+                    case MitsubishiPLC.FX:
+                        if ((Name != "X") & (Name != "Y"))
+                        {
+                            //不是读取输入输出点
+                            return PLCData = melsec_net.ReadBool(Name + id, 1);
+                        }
+                        else
+                        {
+                            //读取输入输出点位
+                            var Idto8 = Convert.ToInt16(id, 8).ToString("X");
+                            return PLCData = melsec_net.ReadBool(Name + Idto8, 1);
+                        }
+                    case MitsubishiPLC.L:
+                    case MitsubishiPLC.R:
+                    case MitsubishiPLC.Q:
+                        return PLCData = melsec_net.ReadBool(Name + id, 1);
+                }
+                return null;
+            }
+            dynamic ModbusTcpNet()
+            {
+                dynamic PLCData = "";
+                return PLCData = melsec_net.ReadCoil(id);
+            }
         }
         /// <summary>
         /// 写入PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
@@ -206,22 +215,60 @@ namespace PLC通讯库.通讯实现类
 
             try
             {
-                //var PLCData = melsec_net.WriteAsync(Name + id, button_State == Button_state.ON ? true : false).Result;
+
                 dynamic PLCData = "";
-                if (this.melsec_net.GetType().Name != "ModbusTcpNet")
+
+                if (this.melsec_net.GetType().Name == "MelsecMcNet")
                 {
-                    PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
+                    PLCData = MelsecMcNet();
+                    goto Resul;
                 }
-                else
+
+                if (this.melsec_net.GetType().Name == "ModbusTcpNet")
                 {
-                    PLCData = melsec_net.WriteCoil(id, button_State == Button_state.ON ? true : false);
+                    PLCData = ModbusTcpNet();
+                    goto Resul;
                 }
+                //欧姆龙 西门子PLC处理
+                PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
+
+            Resul:
                 writeResultRender(PLCData, Name.Trim() + id.Trim());
                 return PLCData.IsSuccess;//返回数据
             }
             catch { }
 
             return false;//返回数据
+            dynamic ModbusTcpNet()
+            {
+                dynamic PLCData = "";
+                return PLCData = melsec_net.WriteCoil(id, button_State == Button_state.ON ? true : false);
+            }
+            dynamic MelsecMcNet()
+            {
+                dynamic PLCData = "";
+                //判断当前PLC类型--8进制
+                switch (mitsubishiPLC)
+                {
+                    case MitsubishiPLC.FX:
+                        if ((Name != "X") & (Name != "Y"))
+                        {
+                            //不是写入输入输出点
+                            return PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
+                        }
+                        else
+                        {
+                            //写入输入输出点位
+                            var Idto8 = Convert.ToInt16(id, 8).ToString("X");
+                            return PLCData = melsec_net.Write(Name + Idto8, button_State == Button_state.ON ? true : false);
+                        }
+                    case MitsubishiPLC.L:
+                    case MitsubishiPLC.R:
+                    case MitsubishiPLC.Q:
+                        return PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
+                }
+                return null;
+            }
         }
         /// <summary>
         ///  读寄存器--转换相应类型
