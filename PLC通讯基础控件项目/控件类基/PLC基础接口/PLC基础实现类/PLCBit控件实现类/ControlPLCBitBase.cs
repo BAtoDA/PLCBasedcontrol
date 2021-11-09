@@ -261,8 +261,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         {
             //mutex.WaitOne(50);
             //{
-                try
-                {
+            try
+            {
                 lock (this)
                 {
                     if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
@@ -311,9 +311,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     });
                     //ControlDebug.Write(this.PlcControl.Name + $"刷新值为：{State}");
                 }
-                }
-                catch(Exception e) { //ControlDebug.Write(this.PlcControl.Name + e.Message);
-                                     }
+            }
+            catch (Exception e)
+            { 
+                //ControlDebug.Write(this.PlcControl.Name + e.Message);
+            }
             //mutex.ReleaseMutex();
         }
         /// <summary>

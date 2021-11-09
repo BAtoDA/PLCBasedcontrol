@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -168,7 +169,7 @@ namespace PLC通讯库.通讯实现类
                 PLCData = melsec_net.ReadBool(Name + id);
             Resul:
                 readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
-                return PLCData != null ? PLCData.Content[0] : false;
+                return PLCData.Content != null ? PLCData.Content[0] : false;
             }
             catch { }
             return result.ToLower() == "true" ? true : false;//返回数据
@@ -181,8 +182,10 @@ namespace PLC通讯库.通讯实现类
                     case MitsubishiPLC.FX:
                         if ((Name != "X") & (Name != "Y"))
                         {
+                            //判断是否读取寄存器的Bit位操作
+                            Regex rq = new Regex("Bit");
                             //不是读取输入输出点
-                            return PLCData = melsec_net.ReadBool(Name + id, 1);
+                            return PLCData = rq.IsMatch(Name) ? MelsecMcNetBit() : melsec_net.ReadBool(Name + id, 1);
                         }
                         else
                         {
@@ -202,6 +205,18 @@ namespace PLC通讯库.通讯实现类
                 dynamic PLCData = "";
                 return PLCData = melsec_net.ReadCoil(id);
             }
+            dynamic MelsecMcNetBit()//三菱寄存器Bit位处理
+            {
+                if (id.IndexOf('.') > -1)
+                {
+                    var IdArray = id.Split('.');
+                    var Data = this.PLC_read_D_register(Name[0].ToString(),  IdArray[0], numerical_format.Signed_32_Bit);
+                    var DataBitArray = this.ConvertIntToBoolArray(Convert.ToInt32(Data), 32).Reverse().ToArray();
+                    //返回数据
+                    return new OperateResult<bool[]>() { Content = new bool[] { DataBitArray[Convert.ToInt32(TryStringTOint(IdArray[1]))] }, ErrorCode = 0, IsSuccess = true, Message = "0" };
+                }
+                return new OperateResult<bool[]>();
+            }
         }
         /// <summary>
         /// 写入PLC 位状态 --D_bit这类需要自己在表流获取当前位状态--M这类不需要
@@ -212,12 +227,9 @@ namespace PLC通讯库.通讯实现类
         /// <returns></returns>
         public bool PLC_write_M_bit(string Name, string id, Button_state button_State)
         {
-
             try
             {
-
                 dynamic PLCData = "";
-
                 if (this.melsec_net.GetType().Name == "MelsecMcNet")
                 {
                     PLCData = MelsecMcNet();
@@ -253,8 +265,11 @@ namespace PLC通讯库.通讯实现类
                     case MitsubishiPLC.FX:
                         if ((Name != "X") & (Name != "Y"))
                         {
+                            //判断是否读取寄存器的Bit位操作
+                            Regex rq = new Regex("Bit");
+
                             //不是写入输入输出点
-                            return PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
+                            return PLCData = rq.IsMatch(Name)? MelsecMcNetBit(): melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
                         }
                         else
                         {
@@ -267,7 +282,23 @@ namespace PLC通讯库.通讯实现类
                     case MitsubishiPLC.Q:
                         return PLCData = melsec_net.Write(Name + id, button_State == Button_state.ON ? true : false);
                 }
-                return null;
+                return new OperateResult<bool[]>();
+            }
+            dynamic MelsecMcNetBit()//写入寄存器Bit位处理
+            {
+                if (id.IndexOf('.') > -1)
+                {
+                    var IdArray = id.Split('.');
+
+                    var Data = this.PLC_read_D_register(Name[0].ToString(), IdArray[0], numerical_format.Signed_16_Bit);
+                    var DataBitArray = this.ConvertIntToBoolArray(Convert.ToInt32(Data), 16).Reverse().ToArray();
+                    DataBitArray[Convert.ToInt32(TryStringTOint(IdArray[1]))] = button_State == Button_state.ON ? true : false;
+                    //回写数据值
+                    this.PLC_write_D_register(Name[0].ToString(), IdArray[0], ConvertBoolArrayToInt(DataBitArray.Reverse().ToArray(), 16).ToString(), numerical_format.Signed_16_Bit);
+                    //返回数据
+                    return new OperateResult<bool[]>() { Content = new bool[] { DataBitArray[Convert.ToInt32(TryStringTOint(IdArray[1]))] }, ErrorCode = 0, IsSuccess = true, Message = "0" };
+                }
+                return new OperateResult<bool[]>();
             }
         }
         /// <summary>

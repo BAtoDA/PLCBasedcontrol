@@ -118,8 +118,59 @@ namespace PLC通讯库.通讯实现类
             }
             return result;
         }
-   
-  
+        /// <summary>
+        /// BOOL转INT类型
+        /// </summary>
+        /// <param name="barray"></param>
+        /// <returns></returns>
+        public int ConvertBoolArrayToInt(bool[] barray,int lenq)//BOOL转INT类型
+        {
+            int result = 0;
+            if (barray != null)
+            {
+                int len = barray.Length;
+
+                if (lenq-1 < len)
+                {
+                    foreach (bool b in barray)
+                    {
+                        result = (result << 1) + (b ? 1 : 0);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("bool数组长度大于32，整数只有32位。");
+                }
+            }
+            else
+            {
+                Console.WriteLine("bool数组为空。");
+            }
+            return result;
+        }
+        /// <summary>
+        /// 输入的字符串自动识别16进制 与 10进制 进行转换
+        /// </summary>
+        /// <param name="IData"></param>
+        /// <returns></returns>
+        public int TryStringTOint(string IData)
+        {
+            try
+            {
+                int OData = 0;
+                if (int.TryParse(IData ?? "0", out OData))
+                {
+                    return OData;
+                }
+                {
+                    return Convert.ToInt32(IData ?? "0", 16);
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
         /// <summary>
         /// 数据类型查询
         /// </summary>

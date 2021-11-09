@@ -32,8 +32,6 @@ namespace 控件测试项目
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase1 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
-            PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase2 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
             PLC通讯基础控件项目.基础控件.R r1 = new PLC通讯基础控件项目.基础控件.R();
             PLC通讯基础控件项目.基础控件.R r2 = new PLC通讯基础控件项目.基础控件.R();
             PLC通讯基础控件项目.基础控件.R r3 = new PLC通讯基础控件项目.基础控件.R();
@@ -65,12 +63,38 @@ namespace 控件测试项目
             this.uiButton1 = new Sunny.UI.UIButton();
             this.uiListBox1 = new Sunny.UI.UIListBox();
             this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
-            this.daMultifunction1 = new PLC通讯基础控件项目.基础控件.DAMultifunction();
             this.daPlcGraph1 = new PLC通讯基础控件项目.基础控件.DAPlcGraph();
-            this.daUiButton4 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daUiTextBox1 = new PLC通讯基础控件项目.基础控件.DAUiTextBox();
             this.daUiButton3 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daDataViewToPlcErr1 = new PLC通讯基础控件项目.基础控件.DADataViewToPlcErr(this.components);
+            this.dataGridViewTextBoxColumn49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn45 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn46 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn47 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn41 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn42 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn43 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn44 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn39 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,11 +119,13 @@ namespace 控件测试项目
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.daUiButton1 = new PLC通讯基础控件项目.基础控件.DAUiButton();
+            this.daUiButton4 = new PLC通讯基础控件项目.基础控件.DAUiButton();
+            this.daUiButton5 = new PLC通讯基础控件项目.基础控件.DAUiButton();
+            this.dataGridViewTextBoxColumn53 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn56 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.daIhatetheqrcode1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).BeginInit();
             this.SuspendLayout();
@@ -403,127 +429,6 @@ namespace 控件测试项目
             this.daPlcFunction1.TabIndex = 25;
             this.daPlcFunction1.Text = "daPlcFunction1";
             // 
-            // daMultifunction1
-            // 
-            this.daMultifunction1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daMultifunction1.AwaitTime = 100;
-            this.daMultifunction1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.daMultifunction1.backgroundColor_0 = System.Drawing.Color.Silver;
-            this.daMultifunction1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.daMultifunction1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daMultifunction1.FillColor = System.Drawing.Color.Silver;
-            this.daMultifunction1.FillHoverColor = System.Drawing.Color.Silver;
-            this.daMultifunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daMultifunction1.keyMinTime = 100;
-            this.daMultifunction1.Location = new System.Drawing.Point(392, 447);
-            this.daMultifunction1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.daMultifunction1.Name = "daMultifunction1";
-            this.daMultifunction1.NoAccessConceal = false;
-            this.daMultifunction1.NoAccessForm = false;
-            this.daMultifunction1.OperationAffirm = false;
-            this.daMultifunction1.PLC_Enable = true;
-            this.daMultifunction1.pLCBitselectRealizeq.AwaitTime = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.backgroundColor_0 = System.Drawing.Color.Silver;
-            this.daMultifunction1.pLCBitselectRealizeq.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.daMultifunction1.pLCBitselectRealizeq.BitPattern = false;
-            this.daMultifunction1.pLCBitselectRealizeq.description = "PLCBitselectRealize";
-            this.daMultifunction1.pLCBitselectRealizeq.keyMinTime = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.LoosenOut = false;
-            this.daMultifunction1.pLCBitselectRealizeq.NoAccessConceal = false;
-            this.daMultifunction1.pLCBitselectRealizeq.NoAccessForm = false;
-            this.daMultifunction1.pLCBitselectRealizeq.OperationAffirm = false;
-            this.daMultifunction1.pLCBitselectRealizeq.OutReverse = false;
-            this.daMultifunction1.pLCBitselectRealizeq.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
-            this.daMultifunction1.pLCBitselectRealizeq.PLCTimer = null;
-            this.daMultifunction1.pLCBitselectRealizeq.ReadWrite = false;
-            this.daMultifunction1.pLCBitselectRealizeq.ReadWriteAddress = "0";
-            this.daMultifunction1.pLCBitselectRealizeq.ReadWriteFunction = "M";
-            this.daMultifunction1.pLCBitselectRealizeq.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.daMultifunction1.pLCBitselectRealizeq.SafetyBehaviorPattern = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.SafetyCategory = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.SafetyFunction = "M";
-            this.daMultifunction1.pLCBitselectRealizeq.SafetyPattern = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.daMultifunction1.pLCBitselectRealizeq.Speech = false;
-            this.daMultifunction1.pLCBitselectRealizeq.Textalign_0 = "MiddleCenter";
-            this.daMultifunction1.pLCBitselectRealizeq.Textalign_1 = "MiddleCenter";
-            this.daMultifunction1.pLCBitselectRealizeq.TextColor_0 = System.Drawing.Color.White;
-            this.daMultifunction1.pLCBitselectRealizeq.TextColor_1 = System.Drawing.Color.White;
-            this.daMultifunction1.pLCBitselectRealizeq.TextContent_0 = "OFF";
-            this.daMultifunction1.pLCBitselectRealizeq.TextContent_1 = "ON";
-            this.daMultifunction1.pLCBitselectRealizeq.Textflicker_0 = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.Textflicker_1 = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daMultifunction1.pLCBitselectRealizeq.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daMultifunction1.pLCBitselectRealizeq.TextItalic_0 = false;
-            this.daMultifunction1.pLCBitselectRealizeq.TextItalic_1 = false;
-            this.daMultifunction1.pLCBitselectRealizeq.TextState = 0;
-            this.daMultifunction1.pLCBitselectRealizeq.TextUnderline_0 = false;
-            this.daMultifunction1.pLCBitselectRealizeq.TextUnderline_1 = false;
-            this.daMultifunction1.pLCBitselectRealizeq.WriteAddress = "0";
-            this.daMultifunction1.pLCBitselectRealizeq.WriteFunction = "M";
-            this.daMultifunction1.pLCBitselectRealizeq.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.daMultifunction1.pLCBitselectRealizeq.WrSafetyAddress = "0";
-            plcMultifunctionClassBase1.ClassInterface = "PLCMultifunctionBitBase";
-            plcMultifunctionClassBase1.FormName = "TemplateForm";
-            plcMultifunctionClassBase1.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            plcMultifunctionClassBase1.OutReverse = false;
-            plcMultifunctionClassBase1.ReadWriteBitAddress = "0";
-            plcMultifunctionClassBase1.ReadWriteBitFunction = "M";
-            plcMultifunctionClassBase1.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            plcMultifunctionClassBase1.ReadWriteDAddress = "0";
-            plcMultifunctionClassBase1.ReadWriteDFunction = "D";
-            plcMultifunctionClassBase1.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            plcMultifunctionClassBase1.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
-            plcMultifunctionClassBase1.Value = 0;
-            plcMultifunctionClassBase1.ValueBit = "ON";
-            plcMultifunctionClassBase2.ClassInterface = "PLCMultifunctionBitBase";
-            plcMultifunctionClassBase2.FormName = "TemplateForm";
-            plcMultifunctionClassBase2.FormPath = "PLC通讯基础控件项目.模板与控制界面";
-            plcMultifunctionClassBase2.OutReverse = false;
-            plcMultifunctionClassBase2.ReadWriteBitAddress = "0";
-            plcMultifunctionClassBase2.ReadWriteBitFunction = "M";
-            plcMultifunctionClassBase2.ReadWriteBitPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            plcMultifunctionClassBase2.ReadWriteDAddress = "0";
-            plcMultifunctionClassBase2.ReadWriteDFunction = "D";
-            plcMultifunctionClassBase2.ReadWriteDPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            plcMultifunctionClassBase2.ShowFormat = PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit;
-            plcMultifunctionClassBase2.Value = 0;
-            plcMultifunctionClassBase2.ValueBit = "ON";
-            this.daMultifunction1.pLCMultifunctions = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase[] {
-        plcMultifunctionClassBase1,
-        plcMultifunctionClassBase2};
-            this.daMultifunction1.PLCTimer = null;
-            this.daMultifunction1.ReadAddress = "1";
-            this.daMultifunction1.ReadFunction = "Y";
-            this.daMultifunction1.ReadPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
-            this.daMultifunction1.SafetyBehaviorPattern = 0;
-            this.daMultifunction1.SafetyCategory = 0;
-            this.daMultifunction1.SafetyFunction = "M";
-            this.daMultifunction1.SafetyPattern = 0;
-            this.daMultifunction1.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.daMultifunction1.Size = new System.Drawing.Size(100, 35);
-            this.daMultifunction1.Speech = false;
-            this.daMultifunction1.Style = Sunny.UI.UIStyle.Custom;
-            this.daMultifunction1.StyleCustomMode = true;
-            this.daMultifunction1.TabIndex = 26;
-            this.daMultifunction1.Text = "OFF";
-            this.daMultifunction1.Textalign_0 = "MiddleCenter";
-            this.daMultifunction1.Textalign_1 = "MiddleCenter";
-            this.daMultifunction1.TextColor_0 = System.Drawing.Color.White;
-            this.daMultifunction1.TextColor_1 = System.Drawing.Color.White;
-            this.daMultifunction1.TextContent_0 = "OFF";
-            this.daMultifunction1.TextContent_1 = "ON";
-            this.daMultifunction1.Textflicker_0 = 0;
-            this.daMultifunction1.Textflicker_1 = 0;
-            this.daMultifunction1.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daMultifunction1.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daMultifunction1.TextItalic_0 = false;
-            this.daMultifunction1.TextItalic_1 = false;
-            this.daMultifunction1.TextUnderline_0 = false;
-            this.daMultifunction1.TextUnderline_1 = false;
-            this.daMultifunction1.WrSafetyAddress = "0";
-            // 
             // daPlcGraph1
             // 
             this.daPlcGraph1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
@@ -633,75 +538,6 @@ namespace 控件测试项目
             this.daPlcGraph1.TextFont_1 = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daPlcGraph1.Title = "PLC";
             // 
-            // daUiButton4
-            // 
-            this.daUiButton4.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
-            this.daUiButton4.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
-            this.daUiButton4.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.daUiButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.daUiButton4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
-            this.daUiButton4.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
-            this.daUiButton4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daUiButton4.Location = new System.Drawing.Point(110, 346);
-            this.daUiButton4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.daUiButton4.Name = "daUiButton4";
-            this.daUiButton4.PLC_Enable = true;
-            this.daUiButton4.pLCBitselectRealize.AwaitTime = 0;
-            this.daUiButton4.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
-            this.daUiButton4.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.daUiButton4.pLCBitselectRealize.BitPattern = false;
-            this.daUiButton4.pLCBitselectRealize.description = "PLCBitselectRealize";
-            this.daUiButton4.pLCBitselectRealize.keyMinTime = 0;
-            this.daUiButton4.pLCBitselectRealize.LoosenOut = false;
-            this.daUiButton4.pLCBitselectRealize.NoAccessConceal = false;
-            this.daUiButton4.pLCBitselectRealize.NoAccessForm = false;
-            this.daUiButton4.pLCBitselectRealize.OperationAffirm = false;
-            this.daUiButton4.pLCBitselectRealize.OutReverse = false;
-            this.daUiButton4.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
-            this.daUiButton4.pLCBitselectRealize.PLCTimer = null;
-            this.daUiButton4.pLCBitselectRealize.ReadWrite = false;
-            this.daUiButton4.pLCBitselectRealize.ReadWriteAddress = "34";
-            this.daUiButton4.pLCBitselectRealize.ReadWriteFunction = "X";
-            this.daUiButton4.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.daUiButton4.pLCBitselectRealize.SafetyBehaviorPattern = 0;
-            this.daUiButton4.pLCBitselectRealize.SafetyCategory = 0;
-            this.daUiButton4.pLCBitselectRealize.SafetyFunction = "M";
-            this.daUiButton4.pLCBitselectRealize.SafetyPattern = 0;
-            this.daUiButton4.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.daUiButton4.pLCBitselectRealize.Speech = false;
-            this.daUiButton4.pLCBitselectRealize.Textalign_0 = "MiddleCenter";
-            this.daUiButton4.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
-            this.daUiButton4.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
-            this.daUiButton4.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton4.pLCBitselectRealize.TextContent_0 = "OFF-M10";
-            this.daUiButton4.pLCBitselectRealize.TextContent_1 = "ON-M10";
-            this.daUiButton4.pLCBitselectRealize.Textflicker_0 = 0;
-            this.daUiButton4.pLCBitselectRealize.Textflicker_1 = 0;
-            this.daUiButton4.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daUiButton4.pLCBitselectRealize.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daUiButton4.pLCBitselectRealize.TextItalic_0 = false;
-            this.daUiButton4.pLCBitselectRealize.TextItalic_1 = false;
-            this.daUiButton4.pLCBitselectRealize.TextState = 0;
-            this.daUiButton4.pLCBitselectRealize.TextUnderline_0 = false;
-            this.daUiButton4.pLCBitselectRealize.TextUnderline_1 = false;
-            this.daUiButton4.pLCBitselectRealize.WriteAddress = "0";
-            this.daUiButton4.pLCBitselectRealize.WriteFunction = "M";
-            this.daUiButton4.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
-            this.daUiButton4.pLCBitselectRealize.WrSafetyAddress = "0";
-            this.daUiButton4.PLCTimer = null;
-            this.daUiButton4.Size = new System.Drawing.Size(100, 35);
-            this.daUiButton4.Style = Sunny.UI.UIStyle.Custom;
-            this.daUiButton4.TabIndex = 29;
-            this.daUiButton4.Text = "OFF-M10";
-            this.daUiButton4.Textalign_0 = "MiddleCenter";
-            this.daUiButton4.Textalign_1 = "MiddleCenter";
-            this.daUiButton4.TextColor_0 = System.Drawing.Color.White;
-            this.daUiButton4.TextColor_1 = System.Drawing.Color.White;
-            this.daUiButton4.TextContent_0 = "OFF-M10";
-            this.daUiButton4.TextContent_1 = "ON-M10";
-            this.daUiButton4.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daUiButton4.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            // 
             // daUiTextBox1
             // 
             this.daUiTextBox1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
@@ -807,8 +643,8 @@ namespace 控件测试项目
             this.daUiButton3.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton3.pLCBitselectRealize.PLCTimer = null;
             this.daUiButton3.pLCBitselectRealize.ReadWrite = false;
-            this.daUiButton3.pLCBitselectRealize.ReadWriteAddress = "88";
-            this.daUiButton3.pLCBitselectRealize.ReadWriteFunction = "M";
+            this.daUiButton3.pLCBitselectRealize.ReadWriteAddress = "105.0";
+            this.daUiButton3.pLCBitselectRealize.ReadWriteFunction = "R_Bit";
             this.daUiButton3.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daUiButton3.pLCBitselectRealize.SafetyBehaviorPattern = 0;
             this.daUiButton3.pLCBitselectRealize.SafetyCategory = 0;
@@ -868,10 +704,10 @@ namespace 控件测试项目
             this.daDataViewToPlcErr1.ColumnHeadersHeight = 32;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.daDataViewToPlcErr1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28});
+            this.dataGridViewTextBoxColumn53,
+            this.dataGridViewTextBoxColumn54,
+            this.dataGridViewTextBoxColumn55,
+            this.dataGridViewTextBoxColumn56});
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
             this.daDataViewToPlcErr1.EventAddress = "C:";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -903,6 +739,195 @@ namespace 控件测试项目
         200,
         100,
         300};
+            // 
+            // dataGridViewTextBoxColumn49
+            // 
+            this.dataGridViewTextBoxColumn49.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn49.Name = "dataGridViewTextBoxColumn49";
+            this.dataGridViewTextBoxColumn49.ReadOnly = true;
+            this.dataGridViewTextBoxColumn49.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn50
+            // 
+            this.dataGridViewTextBoxColumn50.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
+            this.dataGridViewTextBoxColumn50.ReadOnly = true;
+            this.dataGridViewTextBoxColumn50.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn51
+            // 
+            this.dataGridViewTextBoxColumn51.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn51.Name = "dataGridViewTextBoxColumn51";
+            this.dataGridViewTextBoxColumn51.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn52
+            // 
+            this.dataGridViewTextBoxColumn52.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn52.Name = "dataGridViewTextBoxColumn52";
+            this.dataGridViewTextBoxColumn52.ReadOnly = true;
+            this.dataGridViewTextBoxColumn52.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn45
+            // 
+            this.dataGridViewTextBoxColumn45.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn45.Name = "dataGridViewTextBoxColumn45";
+            this.dataGridViewTextBoxColumn45.ReadOnly = true;
+            this.dataGridViewTextBoxColumn45.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn46
+            // 
+            this.dataGridViewTextBoxColumn46.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
+            this.dataGridViewTextBoxColumn46.ReadOnly = true;
+            this.dataGridViewTextBoxColumn46.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn47
+            // 
+            this.dataGridViewTextBoxColumn47.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
+            this.dataGridViewTextBoxColumn47.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn48
+            // 
+            this.dataGridViewTextBoxColumn48.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
+            this.dataGridViewTextBoxColumn48.ReadOnly = true;
+            this.dataGridViewTextBoxColumn48.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn41
+            // 
+            this.dataGridViewTextBoxColumn41.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn41.Name = "dataGridViewTextBoxColumn41";
+            this.dataGridViewTextBoxColumn41.ReadOnly = true;
+            this.dataGridViewTextBoxColumn41.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn42
+            // 
+            this.dataGridViewTextBoxColumn42.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn42.Name = "dataGridViewTextBoxColumn42";
+            this.dataGridViewTextBoxColumn42.ReadOnly = true;
+            this.dataGridViewTextBoxColumn42.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn43
+            // 
+            this.dataGridViewTextBoxColumn43.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
+            this.dataGridViewTextBoxColumn43.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn44
+            // 
+            this.dataGridViewTextBoxColumn44.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
+            this.dataGridViewTextBoxColumn44.ReadOnly = true;
+            this.dataGridViewTextBoxColumn44.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            this.dataGridViewTextBoxColumn37.ReadOnly = true;
+            this.dataGridViewTextBoxColumn37.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn38
+            // 
+            this.dataGridViewTextBoxColumn38.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
+            this.dataGridViewTextBoxColumn38.ReadOnly = true;
+            this.dataGridViewTextBoxColumn38.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn39
+            // 
+            this.dataGridViewTextBoxColumn39.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
+            this.dataGridViewTextBoxColumn39.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn40
+            // 
+            this.dataGridViewTextBoxColumn40.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
+            this.dataGridViewTextBoxColumn40.ReadOnly = true;
+            this.dataGridViewTextBoxColumn40.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn33
+            // 
+            this.dataGridViewTextBoxColumn33.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
+            this.dataGridViewTextBoxColumn33.ReadOnly = true;
+            this.dataGridViewTextBoxColumn33.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn34
+            // 
+            this.dataGridViewTextBoxColumn34.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
+            this.dataGridViewTextBoxColumn34.ReadOnly = true;
+            this.dataGridViewTextBoxColumn34.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            this.dataGridViewTextBoxColumn35.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            this.dataGridViewTextBoxColumn36.ReadOnly = true;
+            this.dataGridViewTextBoxColumn36.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            this.dataGridViewTextBoxColumn29.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            this.dataGridViewTextBoxColumn30.ReadOnly = true;
+            this.dataGridViewTextBoxColumn30.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn31
+            // 
+            this.dataGridViewTextBoxColumn31.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
+            this.dataGridViewTextBoxColumn31.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn32
+            // 
+            this.dataGridViewTextBoxColumn32.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
+            this.dataGridViewTextBoxColumn32.ReadOnly = true;
+            this.dataGridViewTextBoxColumn32.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            this.dataGridViewTextBoxColumn25.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            this.dataGridViewTextBoxColumn26.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            this.dataGridViewTextBoxColumn28.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            this.dataGridViewTextBoxColumn28.Width = 300;
             // 
             // dataGridViewTextBoxColumn21
             // 
@@ -1066,33 +1091,6 @@ namespace 控件测试项目
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 300;
             // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.HeaderText = "发生时间";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            this.dataGridViewTextBoxColumn25.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.HeaderText = "报警设备";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            this.dataGridViewTextBoxColumn26.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            this.dataGridViewTextBoxColumn27.HeaderText = "报警地址";
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn28
-            // 
-            this.dataGridViewTextBoxColumn28.HeaderText = "报警内容";
-            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
-            this.dataGridViewTextBoxColumn28.ReadOnly = true;
-            this.dataGridViewTextBoxColumn28.Width = 300;
-            // 
             // daUiButton1
             // 
             this.daUiButton1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
@@ -1102,7 +1100,7 @@ namespace 控件测试项目
             this.daUiButton1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
             this.daUiButton1.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
             this.daUiButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.daUiButton1.Location = new System.Drawing.Point(110, 145);
+            this.daUiButton1.Location = new System.Drawing.Point(110, 322);
             this.daUiButton1.MinimumSize = new System.Drawing.Size(1, 1);
             this.daUiButton1.Name = "daUiButton1";
             this.daUiButton1.PLC_Enable = true;
@@ -1120,9 +1118,9 @@ namespace 控件测试项目
             this.daUiButton1.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton1.pLCBitselectRealize.PLCTimer = null;
             this.daUiButton1.pLCBitselectRealize.ReadWrite = false;
-            this.daUiButton1.pLCBitselectRealize.ReadWriteAddress = "1";
-            this.daUiButton1.pLCBitselectRealize.ReadWriteFunction = "X";
-            this.daUiButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Modbus_TCP;
+            this.daUiButton1.pLCBitselectRealize.ReadWriteAddress = "88";
+            this.daUiButton1.pLCBitselectRealize.ReadWriteFunction = "M";
+            this.daUiButton1.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daUiButton1.pLCBitselectRealize.SafetyBehaviorPattern = 0;
             this.daUiButton1.pLCBitselectRealize.SafetyCategory = 0;
             this.daUiButton1.pLCBitselectRealize.SafetyFunction = "M";
@@ -1162,18 +1160,183 @@ namespace 控件测试项目
             this.daUiButton1.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton1.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
+            // daUiButton4
+            // 
+            this.daUiButton4.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daUiButton4.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.Location = new System.Drawing.Point(110, 178);
+            this.daUiButton4.MinimumSize = new System.Drawing.Size(1, 1);
+            this.daUiButton4.Name = "daUiButton4";
+            this.daUiButton4.PLC_Enable = true;
+            this.daUiButton4.pLCBitselectRealize.AwaitTime = 0;
+            this.daUiButton4.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton4.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton4.pLCBitselectRealize.BitPattern = false;
+            this.daUiButton4.pLCBitselectRealize.description = "PLCBitselectRealize";
+            this.daUiButton4.pLCBitselectRealize.keyMinTime = 0;
+            this.daUiButton4.pLCBitselectRealize.LoosenOut = false;
+            this.daUiButton4.pLCBitselectRealize.NoAccessConceal = false;
+            this.daUiButton4.pLCBitselectRealize.NoAccessForm = false;
+            this.daUiButton4.pLCBitselectRealize.OperationAffirm = false;
+            this.daUiButton4.pLCBitselectRealize.OutReverse = false;
+            this.daUiButton4.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
+            this.daUiButton4.pLCBitselectRealize.PLCTimer = null;
+            this.daUiButton4.pLCBitselectRealize.ReadWrite = false;
+            this.daUiButton4.pLCBitselectRealize.ReadWriteAddress = "34";
+            this.daUiButton4.pLCBitselectRealize.ReadWriteFunction = "X";
+            this.daUiButton4.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton4.pLCBitselectRealize.SafetyBehaviorPattern = 0;
+            this.daUiButton4.pLCBitselectRealize.SafetyCategory = 0;
+            this.daUiButton4.pLCBitselectRealize.SafetyFunction = "M";
+            this.daUiButton4.pLCBitselectRealize.SafetyPattern = 0;
+            this.daUiButton4.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton4.pLCBitselectRealize.Speech = false;
+            this.daUiButton4.pLCBitselectRealize.Textalign_0 = "MiddleCenter";
+            this.daUiButton4.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
+            this.daUiButton4.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton4.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton4.pLCBitselectRealize.TextContent_0 = "OFF-M10";
+            this.daUiButton4.pLCBitselectRealize.TextContent_1 = "ON-M10";
+            this.daUiButton4.pLCBitselectRealize.Textflicker_0 = 0;
+            this.daUiButton4.pLCBitselectRealize.Textflicker_1 = 0;
+            this.daUiButton4.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.pLCBitselectRealize.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.pLCBitselectRealize.TextItalic_0 = false;
+            this.daUiButton4.pLCBitselectRealize.TextItalic_1 = false;
+            this.daUiButton4.pLCBitselectRealize.TextState = 0;
+            this.daUiButton4.pLCBitselectRealize.TextUnderline_0 = false;
+            this.daUiButton4.pLCBitselectRealize.TextUnderline_1 = false;
+            this.daUiButton4.pLCBitselectRealize.WriteAddress = "0";
+            this.daUiButton4.pLCBitselectRealize.WriteFunction = "M";
+            this.daUiButton4.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton4.pLCBitselectRealize.WrSafetyAddress = "0";
+            this.daUiButton4.PLCTimer = null;
+            this.daUiButton4.Size = new System.Drawing.Size(100, 35);
+            this.daUiButton4.Style = Sunny.UI.UIStyle.Custom;
+            this.daUiButton4.TabIndex = 35;
+            this.daUiButton4.Text = "OFF-M10";
+            this.daUiButton4.Textalign_0 = "MiddleCenter";
+            this.daUiButton4.Textalign_1 = "MiddleCenter";
+            this.daUiButton4.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton4.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton4.TextContent_0 = "OFF-M10";
+            this.daUiButton4.TextContent_1 = "ON-M10";
+            this.daUiButton4.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton4.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
+            // daUiButton5
+            // 
+            this.daUiButton5.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daUiButton5.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton5.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daUiButton5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton5.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton5.Location = new System.Drawing.Point(110, 95);
+            this.daUiButton5.MinimumSize = new System.Drawing.Size(1, 1);
+            this.daUiButton5.Name = "daUiButton5";
+            this.daUiButton5.PLC_Enable = true;
+            this.daUiButton5.pLCBitselectRealize.AwaitTime = 0;
+            this.daUiButton5.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(61)))), ((int)(((byte)(139)))));
+            this.daUiButton5.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daUiButton5.pLCBitselectRealize.BitPattern = false;
+            this.daUiButton5.pLCBitselectRealize.description = "PLCBitselectRealize";
+            this.daUiButton5.pLCBitselectRealize.keyMinTime = 0;
+            this.daUiButton5.pLCBitselectRealize.LoosenOut = false;
+            this.daUiButton5.pLCBitselectRealize.NoAccessConceal = false;
+            this.daUiButton5.pLCBitselectRealize.NoAccessForm = false;
+            this.daUiButton5.pLCBitselectRealize.OperationAffirm = false;
+            this.daUiButton5.pLCBitselectRealize.OutReverse = false;
+            this.daUiButton5.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
+            this.daUiButton5.pLCBitselectRealize.PLCTimer = null;
+            this.daUiButton5.pLCBitselectRealize.ReadWrite = false;
+            this.daUiButton5.pLCBitselectRealize.ReadWriteAddress = "162.A";
+            this.daUiButton5.pLCBitselectRealize.ReadWriteFunction = "D_Bit";
+            this.daUiButton5.pLCBitselectRealize.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton5.pLCBitselectRealize.SafetyBehaviorPattern = 0;
+            this.daUiButton5.pLCBitselectRealize.SafetyCategory = 0;
+            this.daUiButton5.pLCBitselectRealize.SafetyFunction = "M";
+            this.daUiButton5.pLCBitselectRealize.SafetyPattern = 0;
+            this.daUiButton5.pLCBitselectRealize.SafetyPLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton5.pLCBitselectRealize.Speech = false;
+            this.daUiButton5.pLCBitselectRealize.Textalign_0 = "MiddleCenter";
+            this.daUiButton5.pLCBitselectRealize.Textalign_1 = "MiddleCenter";
+            this.daUiButton5.pLCBitselectRealize.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton5.pLCBitselectRealize.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton5.pLCBitselectRealize.TextContent_0 = "OFF-M10";
+            this.daUiButton5.pLCBitselectRealize.TextContent_1 = "ON-M10";
+            this.daUiButton5.pLCBitselectRealize.Textflicker_0 = 0;
+            this.daUiButton5.pLCBitselectRealize.Textflicker_1 = 0;
+            this.daUiButton5.pLCBitselectRealize.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton5.pLCBitselectRealize.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton5.pLCBitselectRealize.TextItalic_0 = false;
+            this.daUiButton5.pLCBitselectRealize.TextItalic_1 = false;
+            this.daUiButton5.pLCBitselectRealize.TextState = 0;
+            this.daUiButton5.pLCBitselectRealize.TextUnderline_0 = false;
+            this.daUiButton5.pLCBitselectRealize.TextUnderline_1 = false;
+            this.daUiButton5.pLCBitselectRealize.WriteAddress = "0";
+            this.daUiButton5.pLCBitselectRealize.WriteFunction = "M";
+            this.daUiButton5.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton5.pLCBitselectRealize.WrSafetyAddress = "0";
+            this.daUiButton5.PLCTimer = null;
+            this.daUiButton5.Size = new System.Drawing.Size(100, 35);
+            this.daUiButton5.Style = Sunny.UI.UIStyle.Custom;
+            this.daUiButton5.TabIndex = 36;
+            this.daUiButton5.Text = "OFF-M10";
+            this.daUiButton5.Textalign_0 = "MiddleCenter";
+            this.daUiButton5.Textalign_1 = "MiddleCenter";
+            this.daUiButton5.TextColor_0 = System.Drawing.Color.White;
+            this.daUiButton5.TextColor_1 = System.Drawing.Color.White;
+            this.daUiButton5.TextContent_0 = "OFF-M10";
+            this.daUiButton5.TextContent_1 = "ON-M10";
+            this.daUiButton5.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daUiButton5.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
+            // dataGridViewTextBoxColumn53
+            // 
+            this.dataGridViewTextBoxColumn53.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn53.Name = "dataGridViewTextBoxColumn53";
+            this.dataGridViewTextBoxColumn53.ReadOnly = true;
+            this.dataGridViewTextBoxColumn53.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn54
+            // 
+            this.dataGridViewTextBoxColumn54.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn54.Name = "dataGridViewTextBoxColumn54";
+            this.dataGridViewTextBoxColumn54.ReadOnly = true;
+            this.dataGridViewTextBoxColumn54.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn55
+            // 
+            this.dataGridViewTextBoxColumn55.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn55.Name = "dataGridViewTextBoxColumn55";
+            this.dataGridViewTextBoxColumn55.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn56
+            // 
+            this.dataGridViewTextBoxColumn56.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn56.Name = "dataGridViewTextBoxColumn56";
+            this.dataGridViewTextBoxColumn56.ReadOnly = true;
+            this.dataGridViewTextBoxColumn56.Width = 300;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1204, 703);
+            this.Controls.Add(this.daUiButton5);
+            this.Controls.Add(this.daUiButton4);
             this.Controls.Add(this.daUiButton1);
             this.Controls.Add(this.daDataViewToPlcErr1);
             this.Controls.Add(this.daUiButton3);
             this.Controls.Add(this.daUiTextBox1);
-            this.Controls.Add(this.daUiButton4);
             this.Controls.Add(this.daPlcGraph1);
-            this.Controls.Add(this.daMultifunction1);
             this.Controls.Add(this.daPlcFunction1);
             this.Controls.Add(this.uiListBox1);
             this.Controls.Add(this.uiButton1);
@@ -1222,9 +1385,7 @@ namespace 控件测试项目
         private Sunny.UI.UIButton uiButton1;
         private Sunny.UI.UIListBox uiListBox1;
         private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
-        private PLC通讯基础控件项目.基础控件.DAMultifunction daMultifunction1;
         private PLC通讯基础控件项目.基础控件.DAPlcGraph daPlcGraph1;
-        private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton4;
         private PLC通讯基础控件项目.基础控件.DAUiTextBox daUiTextBox1;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton3;
         private PLC通讯基础控件项目.基础控件.DADataViewToPlcErr daDataViewToPlcErr1;
@@ -1256,7 +1417,37 @@ namespace 控件测试项目
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn42;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn44;
+        private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn45;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn46;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn47;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn48;
+        private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn49;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn50;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn51;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn53;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn54;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn55;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn56;
     }
 }
 
