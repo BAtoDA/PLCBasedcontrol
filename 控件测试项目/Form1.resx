@@ -57,39 +57,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="plcControlsPreferences1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="plcPreferences2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>357, 17</value>
-  </metadata>
-  <metadata name="plcPreferences3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>502, 17</value>
-  </metadata>
-  <metadata name="plcPreferences1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>806, 17</value>
-  </metadata>
-  <metadata name="plcPreferences4.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>951, 17</value>
-  </metadata>
-  <metadata name="plcControlSwitch1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>647, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="daIhatetheqrcode1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAGQAAAAyCAIAAAAlV+npAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAktJREFUaEPt0kFuHDEMRFHf/9IO0J+LDxBqUGPVLAK9VaXEcNSCf36vsftYG+5j
-        bbiPtSH1WD9j9R/Efc8TzB93H2tD9rHqHwue2c0rk5mPxfYOLu2Z3bwymflYbK8uTTb3qwwauCGbe/Jx
-        sb26NNncrzJo4IZs7snHxfbq0mRzT17xTM/mnnxcbK8uTTb35BXP9GzuycfF9urSZHPvvOIZZ3NPPi62
-        V5cmm3vnFc84m3vycbG9g0t7hmz0tuptMvOx2N7BpT1DNnpb9TaZ+Vhs75jnJ3mC+eNie8c8P8kTzB+X
-        2rsr+pGn3MfaEPuLFTdk0KCqR1Uy72lCUtvr7g83ZNCgqkdVMu9pQlLbfXVy109p4GaVu/fTP4rt1aXJ
-        XT+lgZtV7t5P/yi2d3BpZt7V6KOqxqfkkPtYG7LbwWdYHTzeG/IKM19zH2vD9x5rN6M3oLc6eFR1Wmqv
-        +QPmGb0BvdXBo6rTUnt3vX8kp1g1X3Afa0Pql+o7Bvr8e9MzenNcajtXn+jz703P6M1xqe2Tq/eZ3lg/
-        dUMGzXGxvYNL95neWD91QwbNcbG9ujTZ3JPNPdnoUVVTx6fF9urSZHNPNvdko0dVTR2fFturS5PNvbPR
-        oypx7wya42J7dWmyuXc2elQl7p1Bc1xsry5NNvdkuOnZeu+GfFxsry5NNvdkuOnZeu+GfFxs7+DSnunZ
-        6OFmlUNS2ydX90zPRg83qxyS2s7VJzzfM9z0DJqo1G/UFwx4vme46Rk0Ud/4jf/GfawN97E23Mca+/39
-        B5jLiwrEw8dgAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

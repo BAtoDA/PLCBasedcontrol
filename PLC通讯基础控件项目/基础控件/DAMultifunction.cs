@@ -192,6 +192,20 @@ namespace PLC通讯基础控件项目.基础控件
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
 
+            PLCMultifunctionBase pLCMultifunctionBase=new DAMultifunction();
+            pLCMultifunctionBase.pLCMultifunctions = pLCMultifunctions;
+
+            //----------------复制该对象的属性---------------
+            var Copyz = pLCBitselectRealizeq.GetType().GetProperties();
+
+            PLCBitselectRealize PlcBitselectCopy = (PLCBitselectRealize)Activator.CreateInstance(pLCBitselectRealizeq.GetType());
+
+            for (int i = 0; i < Copyz.Length; i++)
+            {
+                PlcBitselectCopy.GetType().GetProperties()[i].SetValue(PlcBitselectCopy, Copyz[i].GetValue(pLCBitselectRealizeq));
+            }
+            pLCMultifunctionBase.pLCBitselectRealizeq = PlcBitselectCopy;
+
 
 
 
@@ -206,30 +220,13 @@ namespace PLC通讯基础控件项目.基础控件
             }
 
 
-            var Copyq1 = pLCMultifunctions.GetType().GetProperties();
-
-
-            var Copy = this.pLCBitselectRealizeq.GetType().GetProperties();
-            PLCBitselectRealize bitselectRealize = new PLCBitselectRealize();
-            var CopyTo = bitselectRealize.GetType().GetProperties();
-            for (int i = 0; i < Copy.Length; i++)
-            {
-                CopyTo[i] = Copy[i];
-            }
-
             this.BeginInvoke((MethodInvoker)delegate
             {
-                PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(this);
+                PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(pLCMultifunctionBase);
                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
                 pLCpropertyBit.ShowDialog();
-
                 if (!pLCpropertyBit.Save)
                 {
-                    for (int i = 0; i < Copy.Length; i++)
-                    {
-                        Copy[i] = CopyTo[i];
-                    }
-
                     for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
                     {
                         var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
@@ -244,6 +241,15 @@ namespace PLC通讯基础控件项目.基础控件
                     var DD = (PLCMultifunctionBase)this;
                     DD = pLCpropertyBit.pLCMultifunctionBase;
                     pLCMultifunctions = pLCpropertyBit.pLCMultifunction.ToArray();
+                }
+                if (pLCpropertyBit.Save)
+                {
+                    //-------------放回对象属性----------------
+                    var Copyz = PlcBitselectCopy.GetType().GetProperties();
+                    for (int i = 0; i < Copyz.Length; i++)
+                    {
+                        pLCBitselectRealizeq.GetType().GetProperties()[i].SetValue(pLCBitselectRealizeq, Copyz[i].GetValue(PlcBitselectCopy));
+                    }
                 }
                 ControlSwitch(false);
             });
