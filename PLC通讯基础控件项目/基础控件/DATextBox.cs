@@ -130,28 +130,30 @@ namespace PLC通讯基础控件项目.基础控件
         public void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
-            var Copy = this.pLCDselectRealize.GetType().GetProperties();
-            PLCDselectRealize bitselectRealize = new PLCDselectRealize();
-            var CopyTo = bitselectRealize.GetType().GetProperties();
+            this.Modification -= new EventHandler(Modifications_Eeve);
+            //----------------复制该对象的属性---------------
+            var Copy = pLCDselectRealize.GetType().GetProperties();
+
+            PLCDselectRealize PlcBitselectCopy = (PLCDselectRealize)Activator.CreateInstance(pLCDselectRealize.GetType());
+
             for (int i = 0; i < Copy.Length; i++)
             {
-                //if (Copy[i].Name == CopyTo[i].Name)
-                CopyTo[i] = Copy[i];
+                PlcBitselectCopy.GetType().GetProperties()[i].SetValue(PlcBitselectCopy, Copy[i].GetValue(pLCDselectRealize));
             }
             this.BeginInvoke((MethodInvoker)delegate
             {
-                PLCpropertyD pLCpropertyBit = new PLCpropertyD(this.pLCDselectRealize);
+                PLCpropertyD pLCpropertyBit = new PLCpropertyD(PlcBitselectCopy);
                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
 
                 pLCpropertyBit.ShowDialog();
-                if (!pLCpropertyBit.Save)
+                if (pLCpropertyBit.Save)
                 {
+                    //-------------放回对象属性----------------
+                    var Copy = PlcBitselectCopy.GetType().GetProperties();
                     for (int i = 0; i < Copy.Length; i++)
                     {
-                        //if (Copy[i].Name == CopyTo[i].Name)
-                        Copy[i] = CopyTo[i];
+                        pLCDselectRealize.GetType().GetProperties()[i].SetValue(pLCDselectRealize, Copy[i].GetValue(PlcBitselectCopy));
                     }
-                    //this.pLCBitselectRealize = bitselectRealize;
                 }
                 this.Invoke((MethodInvoker)delegate
                 {

@@ -192,6 +192,9 @@ namespace PLC通讯基础控件项目.基础控件
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
 
+
+
+
             PLCMultifunctionClassBase[] pLCMultifunctionClassBases = new PLCMultifunctionClassBase[pLCMultifunctions.Length];
             for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
             {

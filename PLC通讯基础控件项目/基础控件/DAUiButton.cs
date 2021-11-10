@@ -160,27 +160,28 @@ namespace PLC通讯基础控件项目.基础控件
         {
             this.SuspendLayout();
             this.Modification -= new EventHandler(Modifications_Eeve);
-            var Copy = this.pLCBitselectRealize.GetType().GetProperties();
-            PLCBitselectRealize bitselectRealize = new PLCBitselectRealize();
-            var CopyTo = bitselectRealize.GetType().GetProperties();
+            //----------------复制该对象的属性---------------
+            var Copy = pLCBitselectRealize.GetType().GetProperties();
+
+            PLCBitselectRealize PlcBitselectCopy = (PLCBitselectRealize)Activator.CreateInstance(pLCBitselectRealize.GetType());
+
             for (int i = 0; i < Copy.Length; i++)
             {
-                //if (Copy[i].Name == CopyTo[i].Name)
-                CopyTo[i] = Copy[i];
+                PlcBitselectCopy.GetType().GetProperties()[i].SetValue(PlcBitselectCopy, Copy[i].GetValue(pLCBitselectRealize));
             }
             var asyncResult  = this.BeginInvoke((MethodInvoker)delegate
-            // var T = await System.Threading.Tasks.Task.Run(() =>
             {
-                PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(this.pLCBitselectRealize);
+                PLCpropertyBit pLCpropertyBit = new PLCpropertyBit(PlcBitselectCopy);
                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
                 pLCpropertyBit.TopMost = true;
                 pLCpropertyBit.ShowDialog();
-                if (!pLCpropertyBit.Save)
+                if (pLCpropertyBit.Save)
                 {
+                    //-------------放回对象属性----------------
+                    var Copy = PlcBitselectCopy.GetType().GetProperties();
                     for (int i = 0; i < Copy.Length; i++)
                     {
-                        //if (Copy[i].Name == CopyTo[i].Name)
-                        Copy[i] = CopyTo[i];
+                        pLCBitselectRealize.GetType().GetProperties()[i].SetValue(pLCBitselectRealize, Copy[i].GetValue(PlcBitselectCopy));
                     }
                 }
                 this.Invoke((MethodInvoker)delegate

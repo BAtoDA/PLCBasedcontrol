@@ -1822,6 +1822,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.uiButton2;
             this.ClientSize = new System.Drawing.Size(464, 765);
             this.Controls.Add(this.uiButton2);
             this.Controls.Add(this.uiButton1);

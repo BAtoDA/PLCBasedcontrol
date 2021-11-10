@@ -50,8 +50,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public override async Task TextWrite(string Content)
         {
-            //File.AppendAllLines(@Textaddress, new List<string>() { Content });
-            await File.AppendAllLinesAsync(@Textaddress, new List<string>() { Content });
+            try
+            {
+                await File.AppendAllLinesAsync(@Textaddress, new List<string>() { Content });
+            }
+            catch { }
         }
         /// <summary>
         /// 自动创建文件夹
@@ -59,20 +62,27 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public override bool TextCreate()
         {
-            //先判定文件夹是否存在
-            if (!Directory.Exists(@Address + "\\PLCEventErr"))
+            try
             {
-                //if (!IsAdministrator()) throw new Exception("当前用户无权限创建");
-                AddSecurityControll2Folder(@Address);
-                string Addressq =this.Address + "\\PLCEventErr";
-                var fileInfo = Directory.CreateDirectory(@Addressq);
+                //先判定文件夹是否存在
+                if (!Directory.Exists(@Address + "\\PLCEventErr"))
+                {
+                    //if (!IsAdministrator()) throw new Exception("当前用户无权限创建");
+                    AddSecurityControll2Folder(@Address);
+                    string Addressq = this.Address + "\\PLCEventErr";
+                    var fileInfo = Directory.CreateDirectory(@Addressq);
+                }
+                if (!File.Exists(@Textaddress) & Directory.Exists(@Address + "\\PLCEventErr"))
+                {
+                    AddSecurityControll2Folder(@Address + "\\PLCEventErr");
+                    using var fileInfo = new FileInfo(@Textaddress).Create();
+                }
+                return true;
             }
-            if (!File.Exists(@Textaddress) & Directory.Exists(@Address + "\\PLCEventErr"))
+            catch
             {
-                AddSecurityControll2Folder(@Address + "\\PLCEventErr");
-                using var fileInfo = new FileInfo(@Textaddress).Create();
+                return false;
             }
-            return true;
         }
         /// <summary>
         /// 判定文件夹以及文本是否创建

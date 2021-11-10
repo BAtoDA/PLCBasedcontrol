@@ -11,6 +11,7 @@ using Sunny.UI;
 using System.Linq;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面.类型选择窗口;
 using System.Diagnostics;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
 
 namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面
 {
@@ -26,6 +27,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
         {
             InitializeComponent();
             this.pLCMultifunctionBase = pLCMultifunctionBase;
+
         }
         protected override void OnShown(EventArgs e)
         {
