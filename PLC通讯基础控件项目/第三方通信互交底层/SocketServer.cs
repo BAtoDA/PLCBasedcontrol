@@ -90,15 +90,15 @@ namespace PLC通讯基础控件项目.第三方通信互交底层
             {
                 socketload = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socketload.Bind(this.IPEnd);
+                //监听客户端
+                socketload.Listen(10);
+                socketload.BeginAccept(new AsyncCallback(Socketcall_back), socketload);
             }
             catch
             {
                 socketload = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socketload.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"),9500));
             }
-            //监听客户端
-            socketload.Listen(10);
-            socketload.BeginAccept(new AsyncCallback(Socketcall_back), socketload);
         }
         /// <summary>
         /// 回调获取Socket客户端对象

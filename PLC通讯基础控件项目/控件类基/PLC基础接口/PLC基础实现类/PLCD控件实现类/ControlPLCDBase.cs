@@ -231,7 +231,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         this.PlcControl.Text = Keyoop.O_Text;
                         O_Text= Keyoop.O_Text;
                     }
-                    catch(Exception e1)
+                    catch
                     {
                         //异常处理键盘
                         keyboard keyboard = new keyboard(this.PlcControl.Text, this.pLCDClassBase.pLCDselectRealize);

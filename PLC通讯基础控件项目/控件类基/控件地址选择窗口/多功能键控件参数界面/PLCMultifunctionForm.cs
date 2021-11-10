@@ -146,12 +146,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
 
                 if (bitForm.Save)
                     Add(classBase);
-
-                //var Oop = OopCopy();
-                //if (!bitForm.Save)
-                //{
-                //    pLCMultifunction = Oop.ToList();
-                //}
             });
 
             this.uiButton8.Click += ((send, e) =>
@@ -165,12 +159,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
 
                 if (dForm.Save)
                     Add(classBase);
-
-                //var Oop = OopCopy();
-                //if (!dForm.Save)
-                //{
-                //    pLCMultifunction = Oop.ToList();
-                //}
             });
 
             this.uiButton9.Click += ((send, e) =>
@@ -184,12 +172,6 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
 
                 if (functionForm.Save)
                     Add(classBase);
-
-                //var Oop = OopCopy();
-                //if (!functionForm.Save)
-                //{
-                //    pLCMultifunction = Oop.ToList();
-                //}
             });
             void Add(PLCMultifunctionClassBase Data)
             {
@@ -198,20 +180,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
                 //重新填充下拉菜单
                 LitsAdd(Data);
             }
-            PLCMultifunctionClassBase[] OopCopy()
-            {
-
-                PLCMultifunctionClassBase[] pLCMultifunctionClassBases = new PLCMultifunctionClassBase[pLCMultifunction.Count];
-                for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
-                {
-                    pLCMultifunctionClassBases[i] = new PLCMultifunctionClassBase();
-                    var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
-                    var w2 = pLCMultifunction[i].GetType().GetProperties();
-                    for (int ix = 0; ix < w2.Length; ix++)
-                        w1[ix] = w2[ix];
-                }
-                return pLCMultifunctionClassBases;
-            }
+           
         }
         void LitsAdd(PLCMultifunctionClassBase Data)
         {

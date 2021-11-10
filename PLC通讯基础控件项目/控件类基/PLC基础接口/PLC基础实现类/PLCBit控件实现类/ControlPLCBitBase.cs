@@ -312,7 +312,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     //ControlDebug.Write(this.PlcControl.Name + $"刷新值为：{State}");
                 }
             }
-            catch (Exception e)
+            catch
             { 
                 //ControlDebug.Write(this.PlcControl.Name + e.Message);
             }

@@ -135,16 +135,18 @@ namespace PLC通讯基础控件项目
             container.Add(this);
         }
         private bool PlcLoad = false;
+        private bool SocketLoad = false;
         protected async override void OnTick(EventArgs e)
         {
             //判定改控件是否在窗口设计期
             if (DesignMode) return;
             this.Stop();
             #region 处理第三方通信互交
-            if (!PlcLoad)
+            if (!SocketLoad)
             {
                 SocketServer socketServer = new SocketServer();
                 socketServer.SocketLoad();
+                SocketLoad = true;
             }
             #endregion
             #region 分配对象池
@@ -240,7 +242,7 @@ namespace PLC通讯基础控件项目
                     PlcLoad = true;
                 }
             }
-            catch (Exception ex) { }
+            catch { }
             #endregion
             #region 处理链接PLC部分
             //--------------处理链接PLC部分---------------------
@@ -262,7 +264,7 @@ namespace PLC通讯基础控件项目
                        return 1;
                    });
                 }
-                catch (Exception ex) { }
+                catch { }
             }
             this.Start();
             #endregion
