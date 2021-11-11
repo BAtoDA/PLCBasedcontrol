@@ -22,14 +22,15 @@ namespace PLC通讯基础控件项目.基础控件
         IContainer container;
         public DADataViewToPlcErr(IContainer container)
         {
-            this.container = container;
-            foreach (var i in container.Components)
+            if (container != null)
             {
-                if (i is DADataViewToPlcErr) throw new Exception("该控件已经存在无需重复添加");
+                this.container = container;
+                foreach (var i in container.Components)
+                {
+                    if (i is DADataViewToPlcErr) throw new Exception("该控件已经存在无需重复添加");
+                }
             }
             container.Add(this);
-            //改变控件基础大小
-            //this.Size = new System.Drawing.Size(643, 300);
             Timerconfiguration.Tick += ((send, e) =>
             {
                 Timerconfiguration.Stop();

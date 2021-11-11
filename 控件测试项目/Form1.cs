@@ -37,7 +37,7 @@ namespace 控件测试项目
             var DD = DateTime.Now;
             base.OnShown(e);
 
-            new PLCpropertyBit(this.daUiButton5.pLCBitselectRealize).ShowDialog();
+           // new PLCpropertyBit(this.daUiButton5.pLCBitselectRealize).ShowDialog();
             //PLCMultifunctionBitBase pLCMultifunctionClassBase = new PLCMultifunctionClassBase();
             //new PLCMultifunctionForm(new DAMultifunction()).ShowDialog();
 
