@@ -11,6 +11,7 @@ using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现�
 using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json;
 using Sunny.UI;
 using System.Linq;
+using System.IO;
 
 namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面
 {
@@ -30,26 +31,39 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// </summary>
         private async Task TextRead()
         {
-            if (!pLCEventAutoContent.IsText()) return;
-            //-----获取后30天最新的报警表---------
-            //清空表
-            Event_Messages.Clear();
-            //获取后30天的日期
-            string[] Days = new string[30];
-            for (int i = 0; i < Days.Length; i++)
+            try
             {
-                Days[i] = @pLCEvent_MessageBase.SaveAddress+ "\\PLCEventErr\\" + DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString("D") + ".txt"; //当前时间减去7天
-                //读取PLC设置报警内容表
-                var Content = await pLCEventAutoContent.TextRead(Days[i]);
-                //反序列化
-                foreach (var ix in Content)
+                if (!pLCEventAutoContent.IsText()) return;
+                //-----获取后30天最新的报警表---------
+                //清空表
+                Event_Messages.Clear();
+                //获取后30天的日期
+                string[] Days = new string[30];
+                for (int i = 0; i < Days.Length; i++)
                 {
-                    var ContentOop = new JavaScriptSerializer().Deserialize<Event_message>(ix);
-                    if (ContentOop != null)
+                    try
                     {
-                        Event_Messages.Add(ContentOop);
+                        Days[i] = @pLCEvent_MessageBase.SaveAddress + "\\PLCEventErr\\" + DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString("D") + ".txt"; //当前时间减去7天
+                        if (!File.Exists(@Days[i])) continue;                                                                                                                                         //读取PLC设置报警内容表
+                        var Content = await pLCEventAutoContent.TextRead(Days[i]);
+                        if (Content == null) continue;
+                        //反序列化
+                        foreach (var ix in Content)
+                        {
+                            var ContentOop = new JavaScriptSerializer().Deserialize<Event_message>(ix);
+                            if (ContentOop != null)
+                            {
+                                Event_Messages.Add(ContentOop);
+                            }
+                        }
                     }
+                    catch { continue; }
+                    
                 }
+            }
+            catch
+            {
+
             }
         }
         protected async override void OnLoad(EventArgs e)
@@ -388,6 +402,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 }
                 catch 
                 {
+
                 }
             });
 

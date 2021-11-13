@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类
@@ -26,9 +27,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         {
             try
             {
-                return await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+                var Data = await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+                return Data;
             }
-            catch { return new string[] { "" }; };
+            catch { return new string[] { }; };
         }
         /// <summary>
         /// 异步读取当天报警历史
@@ -38,9 +40,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         {
             try
             {
-                return await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+                var Data = await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+                return Data;
             }
-            catch { return new string[] { "" }; };
+            catch { return new string[] { }; };
         }
         /// <summary>
         /// 异步写入当前PLC报警类历史内容

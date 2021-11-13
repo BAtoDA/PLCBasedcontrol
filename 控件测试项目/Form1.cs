@@ -1,21 +1,9 @@
-﻿using Nancy.Json;
-using PLC通讯基础控件项目.基础控件;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json;
-using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
-using PLC通讯基础控件项目.控件类基.控件地址选择窗口.多功能键控件参数界面;
-using PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面;
-using PLC通讯基础控件项目.控件类基.控件地址选择窗口.顺控视图参数设置界面;
-using PLC通讯基础控件项目.模板与控制界面.窗口底层;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 控件测试项目
@@ -25,28 +13,19 @@ namespace 控件测试项目
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void daUiTextBox1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-        protected  override void OnShown(EventArgs e)
-        {
-            var DD = DateTime.Now;
-            base.OnShown(e);
-
-           // new PLCpropertyBit(this.daUiButton5.pLCBitselectRealize).ShowDialog();
-            //PLCMultifunctionBitBase pLCMultifunctionClassBase = new PLCMultifunctionClassBase();
-            //new PLCMultifunctionForm(new DAMultifunction()).ShowDialog();
+            var 女朋友 = new 女朋友()
+            {
+                性别 = "女",
+                财富 = 9223372036854775807L,
+                身材 = "完美"
+            };
 
         }
-
-        private void daUiButton1_Click(object sender, EventArgs e)
-        {
-            new FormGraph(this.daPlcGraph1.GraphList).Show();
-        }
-
+    }
+    class 女朋友
+    {
+        public Int64 财富 { get; set; }
+        public string 身材 { get; set; }
+        public string 性别 { get; set; }
     }
 }

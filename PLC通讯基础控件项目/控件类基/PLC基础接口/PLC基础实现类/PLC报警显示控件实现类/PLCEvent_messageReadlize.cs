@@ -77,8 +77,14 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 锁
         /// </summary>
         object obj = new object();
+        /// <summary>
+        /// 测试用
+        /// </summary>
+        CancellationTokenSource tokenSource = new CancellationTokenSource();
+        CancellationToken token;
+        ManualResetEvent resetEvent = new ManualResetEvent(true);
         #endregion
-        public PLCEvent_messageReadlize(DataGridView PlcControl)
+        public  PLCEvent_messageReadlize(DataGridView PlcControl)
         {
             //---------处理控件接口问题---------
             if (!(PlcControl is PLCEvent_messageBase)) throw new Exception($"{PlcControl.GetType().Name} 不实现：PLCEvent_messageBase接口");
@@ -104,6 +110,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 PLCErrTimer.Interval = 1000;
                 PLCErrTimer.Start();
             }
+
+            token = tokenSource.Token;
+
+            PLCErrTimer.Disposed += PLCErrTimer_Disposed;
             //-------自动填充报警历史--------
             if (pLCViewClassBase.Save)
                 pLCEventAutoContent.TextCreate();
@@ -149,6 +159,12 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
 
             this.PlcControl.ContextMenuStrip = uIContextMenuStrip;
         }
+
+        private void PLCErrTimer_Disposed(object sender, EventArgs e)
+        {
+            tokenSource.Cancel();
+        }
+        
         /// <summary>
         /// 异步读取用户设定内容
         /// </summary>
@@ -169,15 +185,19 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         private async Task PLCrefresh()
         {
-            await Task.Run(() =>
-            {
+            await Task.Run( () => {
+
+                if (token.IsCancellationRequested)
+                {
+                    return 1;
+                }
                 EventLink.PLCEventLink.ForEach(async s1 =>
-                    {
-                        await ReadPLC(s1);
-                    });
+                {
+                    await ReadPLC(s1);
+                });
                 return 1;
-            });
-        }
+            }, token);
+        }  
         private async Task ReadPLC(Event_message event_Message)
         {
             //try
