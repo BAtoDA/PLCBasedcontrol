@@ -192,9 +192,8 @@ namespace PLC通讯基础控件项目.基础控件
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
 
-            PLCMultifunctionBase pLCMultifunctionBase=new DAMultifunction();
+            PLCMultifunctionBase pLCMultifunctionBase = new DAMultifunction();
             pLCMultifunctionBase.pLCMultifunctions = pLCMultifunctions;
-
             //----------------复制该对象的属性---------------
             var Copyz = pLCBitselectRealizeq.GetType().GetProperties();
 
@@ -205,7 +204,21 @@ namespace PLC通讯基础控件项目.基础控件
                 PlcBitselectCopy.GetType().GetProperties()[i].SetValue(PlcBitselectCopy, Copyz[i].GetValue(pLCBitselectRealizeq));
             }
             pLCMultifunctionBase.pLCBitselectRealizeq = PlcBitselectCopy;
-
+            pLCMultifunctionBase.ReadPLC=ReadPLC;
+            pLCMultifunctionBase.ReadFunction=ReadFunction;
+            pLCMultifunctionBase.ReadAddress = ReadAddress;
+            pLCMultifunctionBase.keyMinTime=keyMinTime;
+            pLCMultifunctionBase.OperationAffirm = OperationAffirm;
+            pLCMultifunctionBase.AwaitTime=AwaitTime;
+            pLCMultifunctionBase.SafetyPLC=SafetyPLC;
+            pLCMultifunctionBase.SafetyFunction=SafetyFunction;
+            pLCMultifunctionBase.WrSafetyAddress=WrSafetyAddress;
+            pLCMultifunctionBase.SafetyPattern=SafetyPattern;
+            pLCMultifunctionBase.SafetyBehaviorPattern=SafetyBehaviorPattern;
+            pLCMultifunctionBase.SafetyBehaviorPattern=SafetyCategory;
+            pLCMultifunctionBase.NoAccessConceal=NoAccessConceal;
+            pLCMultifunctionBase.NoAccessForm=NoAccessForm;
+            pLCMultifunctionBase.Speech=Speech;
 
 
 
@@ -225,31 +238,35 @@ namespace PLC通讯基础控件项目.基础控件
                 PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(pLCMultifunctionBase);
                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
                 pLCpropertyBit.ShowDialog();
-                if (!pLCpropertyBit.Save)
+                if (pLCpropertyBit.Save)
                 {
-                    for (int i = 0; i < pLCMultifunctionClassBases.Length; i++)
-                    {
-                        var w1 = pLCMultifunctionClassBases[i].GetType().GetProperties();
-                        var w2 = pLCMultifunctions[i].GetType().GetProperties();
-                        for (int ix = 0; ix < w2.Length; ix++)
-                            w2[ix] = w1[ix];
-                    }
-                    pLCMultifunctions = pLCMultifunctionClassBases;
-                }
-                else
-                {
-                    var DD = (PLCMultifunctionBase)this;
-                    DD = pLCpropertyBit.pLCMultifunctionBase;
                     pLCMultifunctions = pLCpropertyBit.pLCMultifunction.ToArray();
                 }
                 if (pLCpropertyBit.Save)
                 {
                     //-------------放回对象属性----------------
-                    var Copyz = PlcBitselectCopy.GetType().GetProperties();
+                    var Copyz = pLCMultifunctionBase.pLCBitselectRealizeq.GetType().GetProperties();
                     for (int i = 0; i < Copyz.Length; i++)
                     {
-                        pLCBitselectRealizeq.GetType().GetProperties()[i].SetValue(pLCBitselectRealizeq, Copyz[i].GetValue(PlcBitselectCopy));
+                        pLCBitselectRealizeq.GetType().GetProperties()[i].SetValue(pLCBitselectRealizeq, Copyz[i].GetValue(pLCMultifunctionBase.pLCBitselectRealizeq));
                     }
+                    //反射 PLCBitproperty属性
+                    ReadPLC = pLCMultifunctionBase.ReadPLC;
+                    ReadFunction = pLCMultifunctionBase.ReadFunction;
+                    ReadAddress = pLCMultifunctionBase.ReadAddress;
+                    keyMinTime = pLCMultifunctionBase.keyMinTime;
+                    OperationAffirm = pLCMultifunctionBase.OperationAffirm;
+                    AwaitTime = pLCMultifunctionBase.AwaitTime;
+                    SafetyPLC = pLCMultifunctionBase.SafetyPLC;
+                    SafetyFunction = pLCMultifunctionBase.SafetyFunction;
+                    WrSafetyAddress = pLCMultifunctionBase.WrSafetyAddress;
+                    SafetyPattern = pLCMultifunctionBase.SafetyPattern;
+                    SafetyBehaviorPattern = pLCMultifunctionBase.SafetyBehaviorPattern;
+                    SafetyCategory = pLCMultifunctionBase.SafetyBehaviorPattern;
+                    NoAccessConceal = pLCMultifunctionBase.NoAccessConceal;
+                    NoAccessForm = pLCMultifunctionBase.NoAccessForm;
+                    Speech = pLCMultifunctionBase.Speech;
+
                 }
                 ControlSwitch(false);
             });
