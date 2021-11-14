@@ -41,6 +41,7 @@ namespace PLC通讯基础控件项目.基础控件
                       //pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
                       //pLCpropertyBit.ShowDialog();
                   }
+                  
               });
         }
     }
@@ -116,23 +117,35 @@ namespace PLC通讯基础控件项目.基础控件
         public void Modifications_Eeve(object send, EventArgs e)
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
-            var Copy = this.pLCDataViewselectRealize.GetType().GetProperties();
-            PLCDataViewselectRealize bitselectRealize = new PLCDataViewselectRealize();
-            var CopyTo = bitselectRealize.GetType().GetProperties();
+            //var Copy = this.pLCDataViewselectRealize.GetType().GetProperties();
+            //PLCDataViewselectRealize bitselectRealize = new PLCDataViewselectRealize();
+            //var CopyTo = bitselectRealize.GetType().GetProperties();
+            //for (int i = 0; i < Copy.Length; i++)
+            //{
+            //    CopyTo[i] = Copy[i];
+            //}
+            //----------------复制该对象的属性---------------
+            var Copy = pLCDataViewselectRealize.GetType().GetProperties();
+            PLCDataViewClassBase PlcBitselectCopy = new DADataViewToPlc();
+
+            PlcBitselectCopy.pLCDataViewselectRealize = (PLCDataViewselectRealize)Activator.CreateInstance(pLCDataViewselectRealize.GetType());
+
             for (int i = 0; i < Copy.Length; i++)
             {
-                CopyTo[i] = Copy[i];
+                PlcBitselectCopy.pLCDataViewselectRealize.GetType().GetProperties()[i].SetValue(PlcBitselectCopy.pLCDataViewselectRealize, Copy[i].GetValue(pLCDataViewselectRealize));
             }
             this.BeginInvoke((MethodInvoker)delegate
             {
-                PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this);
+                PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(PlcBitselectCopy, this);
                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
                 pLCpropertyBit.ShowDialog();
-                if (!pLCpropertyBit.Save)
+                if (pLCpropertyBit.Save)
                 {
+                    //-------------放回对象属性----------------
+                    var Copy = PlcBitselectCopy.pLCDataViewselectRealize.GetType().GetProperties();
                     for (int i = 0; i < Copy.Length; i++)
                     {
-                        Copy[i] = CopyTo[i];
+                        pLCDataViewselectRealize.GetType().GetProperties()[i].SetValue(pLCDataViewselectRealize, Copy[i].GetValue(PlcBitselectCopy.pLCDataViewselectRealize));
                     }
                 }
 
