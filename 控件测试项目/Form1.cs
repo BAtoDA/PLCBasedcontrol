@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using PLC通讯基础控件项目.宏脚本;
+using PLC通讯基础控件项目.宏脚本.接口类基;
 
 namespace 控件测试项目
 {
@@ -13,13 +15,13 @@ namespace 控件测试项目
         public Form1()
         {
             InitializeComponent();
-            var 女朋友 = new 女朋友()
-            {
-                性别 = "女",
-                财富 = 9223372036854775807L,
-                身材 = "完美"
-            };
+           
 
+        }
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            new  MacroinstructionForm(new MacroinstructionClass()).Show();
         }
     }
     class 女朋友
