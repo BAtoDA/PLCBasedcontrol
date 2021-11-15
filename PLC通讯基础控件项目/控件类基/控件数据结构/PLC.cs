@@ -14,7 +14,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         Mitsubishi = 0,
         Siemens = 01,
         Modbus_TCP = 02,
-        //HMI = 03,
+        HMI = 03,
         OmronTCP = 04,
         OmronCIP = 05,
         OmronUDP = 06,
@@ -982,14 +982,16 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     /// </summary>
     public enum HMI_bit
     {
-        Data_Bit
+        LB,
+        RB
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
     /// </summary>
     public enum HMI_D
     {
-        Data_D
+        LW,
+        RW
     }
     /// <summary>
     /// 数值显示类型

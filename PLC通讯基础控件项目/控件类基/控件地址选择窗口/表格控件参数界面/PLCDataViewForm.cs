@@ -120,61 +120,61 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
                 }
                 goto TOinde;
                 //SQL--放弃代码--由于CLR未运行 无法校验SQL数据参数是否正确
-                if (this.uiCheckBox1.Checked)
-                {
-                    if (!this.uiCheckBox3.Checked)
-                    {
-                        //测试SQLserver数据库
-                        using (SqlConnection db = new SqlConnection(this.uiTextBox2.Text))
-                        {
-                            db.Open();
-                            //测试名以及数据类型
-                            SqlCommand sqlCommand = new SqlCommand($"select * from {this.uiTextBox3.Text}", db);
-                            var SqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                            DataSet ds = new DataSet();
-                            SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
-                            for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
-                            {
-                                if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
-                                if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
-                                    throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
-                                {
-                                    //查找到表名---进行数据类型匹配
-                                    if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType.Name != this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString())
-                                        throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
-                                }
-                            }
-                            MessageBox.Show("测试成功");
-                            db.Close();
-                        }
-                    }
-                    else
-                    {
-                        //测试SQLlite数据库
-                        using (SQLiteConnection db = new SQLiteConnection(this.uiTextBox2.Text))
-                        {
-                            db.Open();
-                            //测试名以及数据类型
-                            SQLiteCommand sqlCommand = new SQLiteCommand($"select * from {this.uiTextBox3.Text}", db);
-                            var SqlDataAdapter = new SQLiteDataAdapter(sqlCommand);
-                            DataSet ds = new DataSet();
-                            SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
-                            for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
-                            {
-                                if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
-                                if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
-                                    throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
-                                {
-                                    //查找到表名---进行数据类型匹配
-                                    if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType.Name != this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString())
-                                        throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
-                                }
-                            }
-                            db.Close();
-                        }
+                //if (this.uiCheckBox1.Checked)
+                //{
+                //    if (!this.uiCheckBox3.Checked)
+                //    {
+                //        //测试SQLserver数据库
+                //        using (SqlConnection db = new SqlConnection(this.uiTextBox2.Text))
+                //        {
+                //            db.Open();
+                //            //测试名以及数据类型
+                //            SqlCommand sqlCommand = new SqlCommand($"select * from {this.uiTextBox3.Text}", db);
+                //            var SqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                //            DataSet ds = new DataSet();
+                //            SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
+                //            for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
+                //            {
+                //                if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
+                //                if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
+                //                    throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
+                //                {
+                //                    //查找到表名---进行数据类型匹配
+                //                    if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType.Name != this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString())
+                //                        throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
+                //                }
+                //            }
+                //            MessageBox.Show("测试成功");
+                //            db.Close();
+                //        }
+                //    }
+                //    else
+                //    {
+                //        //测试SQLlite数据库
+                //        using (SQLiteConnection db = new SQLiteConnection(this.uiTextBox2.Text))
+                //        {
+                //            db.Open();
+                //            //测试名以及数据类型
+                //            SQLiteCommand sqlCommand = new SQLiteCommand($"select * from {this.uiTextBox3.Text}", db);
+                //            var SqlDataAdapter = new SQLiteDataAdapter(sqlCommand);
+                //            DataSet ds = new DataSet();
+                //            SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
+                //            for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
+                //            {
+                //                if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
+                //                if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
+                //                    throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
+                //                {
+                //                    //查找到表名---进行数据类型匹配
+                //                    if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType.Name != this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString())
+                //                        throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
+                //                }
+                //            }
+                //            db.Close();
+                //        }
 
-                    }
-                }
+                //    }
+                //}
             }
             catch(Exception E)
             {
@@ -238,70 +238,70 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
         private void uiButton4_Click(object sender, EventArgs e)
         {
             return;
-            try
-            {
-                //SQL--放弃代码---
-                if (this.uiCheckBox1.Checked)
-                {
-                    if (!this.uiCheckBox3.Checked)
-                    {
-                        //测试SQLserver数据库
-                        using (SqlConnection db = new SqlConnection(this.uiTextBox2.Text))
-                        {
-                            db.Open();
-                            //测试名以及数据类型
-                            SqlCommand sqlCommand = new SqlCommand($"select * from {this.uiTextBox3.Text}", db);
-                            var SqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                            DataSet ds = new DataSet();
-                            SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
-                            for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
-                            {
-                                if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
-                                if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
-                                    throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
-                                {
-                                    //查找到表名---进行数据类型匹配
-                                    if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType != this.uiDataGridView1.Rows[i].Cells[5].Value?.GetType())
-                                        throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
-                                }
-                            }
-                            MessageBox.Show("测试成功");
+            //try
+            //{
+            //    //SQL--放弃代码---
+            //    if (this.uiCheckBox1.Checked)
+            //    {
+            //        if (!this.uiCheckBox3.Checked)
+            //        {
+            //            //测试SQLserver数据库
+            //            using (SqlConnection db = new SqlConnection(this.uiTextBox2.Text))
+            //            {
+            //                db.Open();
+            //                //测试名以及数据类型
+            //                SqlCommand sqlCommand = new SqlCommand($"select * from {this.uiTextBox3.Text}", db);
+            //                var SqlDataAdapter = new SqlDataAdapter(sqlCommand);
+            //                DataSet ds = new DataSet();
+            //                SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
+            //                for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
+            //                {
+            //                    if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
+            //                    if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
+            //                        throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
+            //                    {
+            //                        //查找到表名---进行数据类型匹配
+            //                        if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType != this.uiDataGridView1.Rows[i].Cells[5].Value?.GetType())
+            //                            throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
+            //                    }
+            //                }
+            //                MessageBox.Show("测试成功");
 
-                            db.Close();
-                        }
-                    }
-                    else
-                    {
-                        //测试SQLlite数据库
-                        using (SQLiteConnection db = new SQLiteConnection(this.uiTextBox2.Text))
-                        {
-                            db.Open();
-                            //测试名以及数据类型
-                            SQLiteCommand sqlCommand = new SQLiteCommand($"select * from {this.uiTextBox3.Text}", db);
-                            var SqlDataAdapter = new SQLiteDataAdapter(sqlCommand);
-                            DataSet ds = new DataSet();
-                            SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
-                            for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
-                            {
-                                if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
-                                if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
-                                    throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
-                                {
-                                    //查找到表名---进行数据类型匹配
-                                    if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType.Name != this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString())
-                                        throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
-                                }
-                            }
-                            db.Close();
-                        }
+            //                db.Close();
+            //            }
+            //        }
+            //        else
+            //        {
+            //            //测试SQLlite数据库
+            //            using (SQLiteConnection db = new SQLiteConnection(this.uiTextBox2.Text))
+            //            {
+            //                db.Open();
+            //                //测试名以及数据类型
+            //                SQLiteCommand sqlCommand = new SQLiteCommand($"select * from {this.uiTextBox3.Text}", db);
+            //                var SqlDataAdapter = new SQLiteDataAdapter(sqlCommand);
+            //                DataSet ds = new DataSet();
+            //                SqlDataAdapter.FillSchema(ds, System.Data.SchemaType.Mapped);
+            //                for (int i = 0; i < this.uiDataGridView1.Rows.Count; i++)
+            //                {
+            //                    if (this.uiDataGridView1.Rows[i].Cells[4].Value == null) continue;
+            //                    if (!ds.Tables[0].Columns.Contains(this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()))
+            //                        throw new Exception($"找不到指定的表名：{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}");
+            //                    {
+            //                        //查找到表名---进行数据类型匹配
+            //                        if (ds.Tables[0].Columns[this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()].DataType.Name != this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString())
+            //                            throw new Exception($"{this.uiDataGridView1.Rows[i].Cells[4].Value?.ToString()}设置的列数据类型应该为：{ds.Tables[0].Columns[pLCDataView.pLCDataViewselectRealize.DataGridView_Name[i]].DataType.Name} 设置成：{this.uiDataGridView1.Rows[i].Cells[5].Value?.ToString()}是错误的！");
+            //                    }
+            //                }
+            //                db.Close();
+            //            }
 
-                    }
-                }           
-            }
-            catch(Exception E)
-            {
-                MessageBox.Show("错误："+E.Message);
-            }
+            //        }
+            //    }           
+            //}
+            //catch(Exception E)
+            //{
+            //    MessageBox.Show("错误："+E.Message);
+            //}
         }
         //添加操作
         private void uiButton1_Click(object sender, EventArgs e)

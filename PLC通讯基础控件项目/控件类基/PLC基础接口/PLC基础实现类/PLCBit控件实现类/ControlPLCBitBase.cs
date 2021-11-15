@@ -79,7 +79,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 {
                     this.PLCrefresh();
                 }));
-                pLCBitproperty.PLCTimer.Change(500, 300);
+                pLCBitproperty.PLCTimer.Change(TimeSpan.FromMilliseconds(500), TimeSpan.FromMilliseconds(300));
             }
             //---------安全操作模式----------
             PLCsafetypattern = pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? Getsafetypattern(pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern) : Safetypattern.Nooperation;

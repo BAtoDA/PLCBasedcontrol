@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Speech.Synthesis;
 
-namespace PLC通讯基础控件项目.控件类基.控件安全对象池
+namespace PLC通讯库.内部软元件.底层数据保存
 {
     /// <summary>
     /// 对象池
     /// 本类主要用于处理控件--语音播报对象池调用
     /// </summary>
-    class VoiceObjectPool<T>:IDisposable
+    class InteriorObjectPool<T>:IDisposable
     {
         //并发安全集合，存放可用的实例
         public volatile static ConcurrentBag<T> _objects;
@@ -27,7 +26,7 @@ namespace PLC通讯基础控件项目.控件类基.控件安全对象池
 
         static object  objlock = new object();
 
-        public VoiceObjectPool(uint instenceLimit, Func<T> objectGenerator)
+        public InteriorObjectPool(uint instenceLimit, Func<T> objectGenerator)
         {
             _instenceLimit = instenceLimit;
             _AllObject = new List<T>();

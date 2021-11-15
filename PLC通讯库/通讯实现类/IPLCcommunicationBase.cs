@@ -103,6 +103,7 @@ namespace PLC通讯库.通讯实现类
         {
             this.IPEndPoint =new IPEndPoint(IPAddress.Parse("127.0.0.1"),2000);//获取IP地址
             this.melsec_net =new MelsecMcNet();//实例化对象
+            //HslCommunication.Profinet.Omron.OmronFinsUdp
         }
         /// <summary>
         /// 链接PLC
@@ -157,22 +158,31 @@ namespace PLC通讯库.通讯实现类
                 if (this.melsec_net.GetType().Name == "MelsecMcNet")
                 {
                     PLCData = MelsecMcNet();
-                    goto Resul;
+                    readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
+                    return PLCData.Content != null ? PLCData.Content[0] : false;
                 }
                 if (this.melsec_net.GetType().Name == "ModbusTcpNet")
                 {
                     PLCData = ModbusTcpNet();
-                    goto Resul;
+                    readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
+                    return PLCData.Content != null ? PLCData.Content[0] : false;
                 }
-
-                //西门子//欧姆龙处理
+                if(this.melsec_net.GetType().Name== "OmronFinsNet" || this.melsec_net.GetType().Name == "OmronFinsUdp")
+                {
+                    //欧姆龙处理UDP TCP
+                    PLCData = melsec_net.ReadBool(Name + id);
+                    readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
+                    return PLCData.Content != null ? PLCData.Content[0] : false;
+                }
+                //西门子//欧姆龙处理CIP//内部HMI处理
                 PLCData = melsec_net.ReadBool(Name + id);
-            Resul:
                 readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
-                return PLCData.Content != null ? PLCData.Content[0] : false;
+                return PLCData.Content != null ? PLCData.Content: false;
+
             }
             catch { }
             return result.ToLower() == "true" ? true : false;//返回数据
+
             dynamic MelsecMcNet()
             {
                 dynamic PLCData = "";

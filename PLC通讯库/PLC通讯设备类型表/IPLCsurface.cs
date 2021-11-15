@@ -9,6 +9,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using PLC通讯库.内部软元件.通讯实现;
+using PLC通讯库.通讯实现类;
+using System.Net;
 
 namespace PLC通讯库.PLC通讯设备类型表
 {
@@ -20,7 +23,10 @@ namespace PLC通讯库.PLC通讯设备类型表
     /// </summary>
     public class IPLCsurface
     {
-        public volatile static Dictionary<string, object> PLCDictionary = new Dictionary<string, object>();
+        public volatile static Dictionary<string, object> PLCDictionary = new Dictionary<string, object>()
+        {
+            {"HMI",new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse("127.0.0.0"),2000),new HmiInteriorElementBase("127.0.0.0",2000),1000,1000)}
+        };
         /// <summary>
         /// 添加PLC通讯表对象
         /// </summary>
