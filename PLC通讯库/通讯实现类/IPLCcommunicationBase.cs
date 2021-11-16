@@ -165,7 +165,7 @@ namespace PLC通讯库.通讯实现类
                 {
                     PLCData = ModbusTcpNet();
                     readResultRender(PLCData, Name.Trim() + id.Trim(), ref result);
-                    return PLCData.Content != null ? PLCData.Content[0] : false;
+                    return PLCData.Content != null ? PLCData.Content : false;
                 }
                 if(this.melsec_net.GetType().Name== "OmronFinsNet" || this.melsec_net.GetType().Name == "OmronFinsUdp")
                 {

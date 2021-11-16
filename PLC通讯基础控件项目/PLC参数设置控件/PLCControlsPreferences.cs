@@ -56,7 +56,6 @@ namespace PLC通讯基础控件项目
         //PLC名称对应的命名空间---
         private List<PlclinkClass> plclinkClasses = new List<PlclinkClass>()
         {
-            //new PlclinkClass(){PLC=PLC.HMI,Link="PLC通讯库.内部软元件.通讯实现.HmiInteriorElementBase",Dllplace=true,Dll="PLC通讯库"},
             new PlclinkClass(){ PLC=PLC.Mitsubishi, Link="HslCommunication.Profinet.Melsec.MelsecMcNet",Dllplace=true,Dll="HslCommunication"},
             new PlclinkClass(){ PLC=PLC.Modbus_TCP, Link="HslCommunication.ModBus.ModbusTcpNet",Dllplace=true,Dll="HslCommunication"},
             new PlclinkClass(){ PLC=PLC.OmronCIP, Link="HslCommunication.Profinet.Omron.OmronCipNet",Dllplace=true,Dll="HslCommunication"},

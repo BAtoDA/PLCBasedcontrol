@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>1.0.3</Version>
-    <AssemblyVersion>1.0.0.3</AssemblyVersion>
-    <FileVersion>1.0.0.3</FileVersion>
+    <Version>1.0.4</Version>
+    <AssemblyVersion>1.0.0.4</AssemblyVersion>
+    <FileVersion>1.0.0.4</FileVersion>
     <Description>用于PLC通讯底层库 目前支持三菱 西门子 欧姆龙 ModbusTCP需要配合 PLC通讯基础控件项目进行使用</Description>
     <PackageReleaseNotes>修复欧姆龙 以及西门子PLC读取异常问题 新增Hmi内部软元件 </PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
