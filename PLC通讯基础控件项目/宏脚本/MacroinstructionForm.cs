@@ -98,7 +98,7 @@ namespace PLC通讯基础控件项目.宏脚本
             string Code = this.uiRichTextBox1.Text;
             try
             {
-                await Task.Run(() =>
+                await Task.Run(()=>
                 {
                     stopwatch.Start();
                     Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@Code);
@@ -114,6 +114,7 @@ namespace PLC通讯基础控件项目.宏脚本
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.ToString());
                 stopwatch.Stop();
                 this.uiLabel4.Text = stopwatch.Elapsed.TotalMilliseconds.ToString();
                 this.uiLedBulb1.On = false;
@@ -127,48 +128,71 @@ namespace PLC通讯基础控件项目.宏脚本
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void uiButton2_Click(object sender, EventArgs e)
+        private async void uiButton2_Click(object sender, EventArgs e)
         {
-            uiButton1_Click(sender, e);
-            //进行保存操作
-            if(Compiling)
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            string Code = this.uiRichTextBox1.Text;
+            try
             {
-                macroinstructionInterface.Numbering = Convert.ToInt32(this.uiTextBox1.Text);
-                macroinstructionInterface.Name =this.uiTextBox2.Text ?? "Null";
-                macroinstructionInterface.Period= this.uiCheckBox1.Checked;
-                macroinstructionInterface.Condition= this.uiCheckBox2.Checked;
-                macroinstructionInterface.FormShowLoad= this.uiCheckBox3.Checked;
-                macroinstructionInterface.Macrocode =this.uiRichTextBox1.Text ?? "using CSScriptLib; \r\n" +
-            "using Microsoft.CSharp;using System; \r\n" +
-            "using System.CodeDom.Compiler; \r\n" +
-            "using System.Collections.Generic; \r\n" +
-            "using System.ComponentModel; \r\n" +
-            "using System.Data; \r\n" +
-            "using System.Drawing; \r\n" +
-            "using System.IO; \r\n" +
-            "using System.Linq; \r\n" +
-            "using System.Net.Sockets; \r\n" +
-            "using System.Reflection; \r\n" +
-            "using System.Text; \r\n" +
-            "using System.Threading.Tasks; \r\n" +
-            "using System.Windows.Forms; \r\n" +
-            "using System.Net; \r\n" +
-            "using System.Threading; \r\n" +
-            "public static class ScriptCCStatic \r\n" +
-            "{ \r\n" +
-                  "//主方法不可更改和删除否则编译报错 \r\n" +
-              "   public static void Main(string greeting) \r\n" +
-            "      { \r\n " +
-                     "//编写代码行： \r\n" +
-            "      } \r\n" +
-            "} \r\n";
-
-                //-------------放回对象属性----------------
-                var Copy = macroinstructionInterface.GetType().GetProperties();
-                for (int i = 0; i < Copy.Length; i++)
+                await Task.Run(() =>
                 {
-                    PlcBitselectCopy.GetType().GetProperties()[i].SetValue(PlcBitselectCopy, Copy[i].GetValue(macroinstructionInterface));
-                }
+                    stopwatch.Start();
+                    Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@Code);
+                    var Macroinstructiontype = compilemethod.GetType("css_root+DynamicClass+ScriptCCStatic");
+                    var MacroinstructionMethod = Macroinstructiontype.GetMethod("Main");
+                    MacroinstructionMethod.Invoke(null, new object[] { "1" });
+                });
+                stopwatch.Stop();
+                this.uiLabel4.Text = stopwatch.Elapsed.TotalMilliseconds.ToString();
+                this.uiLedBulb1.On = true;
+                Compiling = true;
+                this.uiRichTextBox3.AppendText(DateTime.Now.ToString("f") + "编译完成：耗时" + stopwatch.Elapsed.TotalMilliseconds.ToString() + "\r\n");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
+                stopwatch.Stop();
+                this.uiLabel4.Text = stopwatch.Elapsed.TotalMilliseconds.ToString();
+                this.uiLedBulb1.On = false;
+                this.uiRichTextBox3.AppendText(DateTime.Now.ToString("f") + ex.Message + "\r\n");
+                Compiling = false;
+            }
+            macroinstructionInterface.Compilestate = Compiling;
+            macroinstructionInterface.Numbering = Convert.ToInt32(this.uiTextBox1.Text);
+            macroinstructionInterface.Name = this.uiTextBox2.Text ?? "Null";
+            macroinstructionInterface.Period = this.uiCheckBox1.Checked;
+            macroinstructionInterface.Condition = this.uiCheckBox2.Checked;
+            macroinstructionInterface.FormShowLoad = this.uiCheckBox3.Checked;
+            macroinstructionInterface.Macrocode = this.uiRichTextBox1.Text ?? "using CSScriptLib; \r\n" +
+        "using Microsoft.CSharp;using System; \r\n" +
+        "using System.CodeDom.Compiler; \r\n" +
+        "using System.Collections.Generic; \r\n" +
+        "using System.ComponentModel; \r\n" +
+        "using System.Data; \r\n" +
+        "using System.Drawing; \r\n" +
+        "using System.IO; \r\n" +
+        "using System.Linq; \r\n" +
+        "using System.Net.Sockets; \r\n" +
+        "using System.Reflection; \r\n" +
+        "using System.Text; \r\n" +
+        "using System.Threading.Tasks; \r\n" +
+        "using System.Windows.Forms; \r\n" +
+        "using System.Net; \r\n" +
+        "using System.Threading; \r\n" +
+        "public static class ScriptCCStatic \r\n" +
+        "{ \r\n" +
+              "//主方法不可更改和删除否则编译报错 \r\n" +
+          "   public static void Main(string greeting) \r\n" +
+        "      { \r\n " +
+                 "//编写代码行： \r\n" +
+        "      } \r\n" +
+        "} \r\n";
+
+            //-------------放回对象属性----------------
+            var Copy = macroinstructionInterface.GetType().GetProperties();
+            for (int i = 0; i < Copy.Length; i++)
+            {
+                PlcBitselectCopy.GetType().GetProperties()[i].SetValue(PlcBitselectCopy, Copy[i].GetValue(macroinstructionInterface));
             }
             this.Close();
         }

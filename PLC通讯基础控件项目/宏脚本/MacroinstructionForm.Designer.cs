@@ -418,6 +418,7 @@
             this.MaximizeBox = false;
             this.Name = "MacroinstructionForm";
             this.Text = "MacroinstructionForm";
+            this.TopMost = true;
             this.uiGroupBox1.ResumeLayout(false);
             this.uiGroupBox3.ResumeLayout(false);
             this.uiGroupBox2.ResumeLayout(false);

@@ -11,8 +11,10 @@ namespace PLC通讯基础控件项目.宏脚本.接口类基
     /// </summary>
     public class MacroinstructionClass : MacroinstructionInterface
     {
+        public int MacroID { get; set; } = 1;
         public int Numbering { get; set; } = 1;
         public string Name { get; set; } = "MacroinstructionClass1";
+        public bool Compilestate { get; set; } = false;
         public bool Period { get; set; } = false;
         public bool Condition { get; set; } = false;
         public bool FormShowLoad { get; set; } = false;

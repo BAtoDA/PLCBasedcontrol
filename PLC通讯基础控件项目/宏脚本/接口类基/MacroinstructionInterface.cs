@@ -11,9 +11,18 @@ namespace PLC通讯基础控件项目.宏脚本.接口类基
     public interface MacroinstructionInterface
     {
         /// <summary>
+        /// 宏指令ID
+        /// 不可更改
+        /// </summary>
+        int MacroID { get; set; }
+        /// <summary>
         /// 宏指令编号
         /// </summary>
         int Numbering { get; set; }
+        /// <summary>
+        /// 宏指令编译状态
+        /// </summary>
+        bool Compilestate { get; set; }
         /// <summary>
         /// 宏指令名称
         /// </summary>

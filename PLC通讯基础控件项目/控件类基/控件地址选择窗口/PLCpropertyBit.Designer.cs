@@ -111,6 +111,15 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiLabel16 = new Sunny.UI.UILabel();
             this.uiButton1 = new Sunny.UI.UIButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            this.uiLabel21 = new Sunny.UI.UILabel();
+            this.uiTextBox1 = new Sunny.UI.UITextBox();
+            this.uiTextBox2 = new Sunny.UI.UITextBox();
+            this.uiLabel22 = new Sunny.UI.UILabel();
+            this.uiRichTextBox1 = new Sunny.UI.UIRichTextBox();
+            this.uiLabel23 = new Sunny.UI.UILabel();
+            this.uiButton3 = new Sunny.UI.UIButton();
             this.panel1.SuspendLayout();
             this.uiTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -130,6 +139,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiGroupBox32.SuspendLayout();
             this.uiGroupBox30.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.uiGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -177,10 +188,11 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiTabControl1.Controls.Add(this.tabPage1);
             this.uiTabControl1.Controls.Add(this.tabPage2);
             this.uiTabControl1.Controls.Add(this.tabPage3);
+            this.uiTabControl1.Controls.Add(this.tabPage4);
             this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 40);
-            this.uiTabControl1.Location = new System.Drawing.Point(-1, 1);
+            this.uiTabControl1.Location = new System.Drawing.Point(1, 1);
             this.uiTabControl1.MainPage = "";
             this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
             this.uiTabControl1.Name = "uiTabControl1";
@@ -228,7 +240,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiComboBox16.DataSource = null;
             this.uiComboBox16.FillColor = System.Drawing.Color.White;
             this.uiComboBox16.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboBox16.Location = new System.Drawing.Point(118, 42);
+            this.uiComboBox16.Location = new System.Drawing.Point(153, 43);
             this.uiComboBox16.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.uiComboBox16.MinimumSize = new System.Drawing.Size(63, 0);
             this.uiComboBox16.Name = "uiComboBox16";
@@ -243,7 +255,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             // uiLabel6
             // 
             this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel6.Location = new System.Drawing.Point(41, 42);
+            this.uiLabel6.Location = new System.Drawing.Point(76, 43);
             this.uiLabel6.Name = "uiLabel6";
             this.uiLabel6.Size = new System.Drawing.Size(100, 23);
             this.uiLabel6.Style = Sunny.UI.UIStyle.Custom;
@@ -1450,6 +1462,149 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.uiGroupBox1);
+            this.tabPage4.Location = new System.Drawing.Point(0, 40);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(462, 634);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "宏编辑";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // uiGroupBox1
+            // 
+            this.uiGroupBox1.Controls.Add(this.uiButton3);
+            this.uiGroupBox1.Controls.Add(this.uiLabel23);
+            this.uiGroupBox1.Controls.Add(this.uiRichTextBox1);
+            this.uiGroupBox1.Controls.Add(this.uiTextBox2);
+            this.uiGroupBox1.Controls.Add(this.uiLabel22);
+            this.uiGroupBox1.Controls.Add(this.uiTextBox1);
+            this.uiGroupBox1.Controls.Add(this.uiLabel21);
+            this.uiGroupBox1.FillColor = System.Drawing.Color.White;
+            this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiGroupBox1.Location = new System.Drawing.Point(5, 18);
+            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiGroupBox1.Name = "uiGroupBox1";
+            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 32, 0, 0);
+            this.uiGroupBox1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
+            this.uiGroupBox1.Size = new System.Drawing.Size(453, 611);
+            this.uiGroupBox1.Style = Sunny.UI.UIStyle.White;
+            this.uiGroupBox1.StyleCustomMode = true;
+            this.uiGroupBox1.TabIndex = 0;
+            this.uiGroupBox1.Text = "宏指令编辑";
+            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // uiLabel21
+            // 
+            this.uiLabel21.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel21.Location = new System.Drawing.Point(83, 51);
+            this.uiLabel21.Name = "uiLabel21";
+            this.uiLabel21.Size = new System.Drawing.Size(100, 23);
+            this.uiLabel21.Style = Sunny.UI.UIStyle.White;
+            this.uiLabel21.TabIndex = 0;
+            this.uiLabel21.Text = "编号：";
+            this.uiLabel21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiTextBox1
+            // 
+            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox1.FillColor = System.Drawing.Color.White;
+            this.uiTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiTextBox1.Location = new System.Drawing.Point(130, 48);
+            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox1.Maximum = 2147483647D;
+            this.uiTextBox1.Minimum = -2147483648D;
+            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiTextBox1.Name = "uiTextBox1";
+            this.uiTextBox1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
+            this.uiTextBox1.Size = new System.Drawing.Size(228, 29);
+            this.uiTextBox1.Style = Sunny.UI.UIStyle.White;
+            this.uiTextBox1.TabIndex = 1;
+            this.uiTextBox1.Text = "uiTextBox1";
+            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiTextBox2
+            // 
+            this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.uiTextBox2.FillColor = System.Drawing.Color.White;
+            this.uiTextBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiTextBox2.Location = new System.Drawing.Point(130, 90);
+            this.uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiTextBox2.Maximum = 2147483647D;
+            this.uiTextBox2.Minimum = -2147483648D;
+            this.uiTextBox2.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiTextBox2.Name = "uiTextBox2";
+            this.uiTextBox2.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
+            this.uiTextBox2.Size = new System.Drawing.Size(228, 29);
+            this.uiTextBox2.Style = Sunny.UI.UIStyle.White;
+            this.uiTextBox2.TabIndex = 3;
+            this.uiTextBox2.Text = "uiTextBox2";
+            this.uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiLabel22
+            // 
+            this.uiLabel22.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel22.Location = new System.Drawing.Point(83, 93);
+            this.uiLabel22.Name = "uiLabel22";
+            this.uiLabel22.Size = new System.Drawing.Size(100, 23);
+            this.uiLabel22.Style = Sunny.UI.UIStyle.White;
+            this.uiLabel22.TabIndex = 2;
+            this.uiLabel22.Text = "名称：";
+            this.uiLabel22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiRichTextBox1
+            // 
+            this.uiRichTextBox1.AutoWordSelection = true;
+            this.uiRichTextBox1.FillColor = System.Drawing.Color.White;
+            this.uiRichTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiRichTextBox1.Location = new System.Drawing.Point(2, 158);
+            this.uiRichTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiRichTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiRichTextBox1.Name = "uiRichTextBox1";
+            this.uiRichTextBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.uiRichTextBox1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
+            this.uiRichTextBox1.Size = new System.Drawing.Size(447, 359);
+            this.uiRichTextBox1.Style = Sunny.UI.UIStyle.White;
+            this.uiRichTextBox1.TabIndex = 4;
+            this.uiRichTextBox1.Text = "uiRichTextBox1";
+            this.uiRichTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiRichTextBox1.WordWrap = true;
+            // 
+            // uiLabel23
+            // 
+            this.uiLabel23.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.uiLabel23.Location = new System.Drawing.Point(172, 130);
+            this.uiLabel23.Name = "uiLabel23";
+            this.uiLabel23.Size = new System.Drawing.Size(100, 23);
+            this.uiLabel23.Style = Sunny.UI.UIStyle.White;
+            this.uiLabel23.TabIndex = 5;
+            this.uiLabel23.Text = "代码预览";
+            this.uiLabel23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // uiButton3
+            // 
+            this.uiButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiButton3.FillColor = System.Drawing.Color.White;
+            this.uiButton3.FillHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.uiButton3.FillPressColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.uiButton3.FillSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
+            this.uiButton3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(98)))), ((int)(((byte)(102)))));
+            this.uiButton3.ForeHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(160)))), ((int)(((byte)(255)))));
+            this.uiButton3.ForePressColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(131)))), ((int)(((byte)(229)))));
+            this.uiButton3.ForeSelectedColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(131)))), ((int)(((byte)(229)))));
+            this.uiButton3.Location = new System.Drawing.Point(136, 534);
+            this.uiButton3.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiButton3.Name = "uiButton3";
+            this.uiButton3.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(219)))), ((int)(((byte)(227)))));
+            this.uiButton3.RectHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(222)))), ((int)(((byte)(255)))));
+            this.uiButton3.Size = new System.Drawing.Size(172, 60);
+            this.uiButton3.Style = Sunny.UI.UIStyle.White;
+            this.uiButton3.TabIndex = 6;
+            this.uiButton3.Text = "宏指令代码编辑器";
+            // 
             // PLCpropertyBit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -1484,6 +1639,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             this.uiGroupBox32.ResumeLayout(false);
             this.uiGroupBox30.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.uiGroupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1570,5 +1727,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         private Sunny.UI.UIRichTextBox uiRichTextBox30;
         private Sunny.UI.UIColorPicker uiColorPicker31;
         private Sunny.UI.UILabel uiLabel20;
+        private System.Windows.Forms.TabPage tabPage4;
+        private Sunny.UI.UIGroupBox uiGroupBox1;
+        private Sunny.UI.UILabel uiLabel23;
+        private Sunny.UI.UIRichTextBox uiRichTextBox1;
+        private Sunny.UI.UITextBox uiTextBox2;
+        private Sunny.UI.UILabel uiLabel22;
+        private Sunny.UI.UITextBox uiTextBox1;
+        private Sunny.UI.UILabel uiLabel21;
+        private Sunny.UI.UIButton uiButton3;
     }
 }

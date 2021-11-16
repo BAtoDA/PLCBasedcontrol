@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using PLC通讯基础控件项目.宏脚本.接口类基;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类
@@ -67,6 +68,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public System.Threading.Timer PLCTimer { get; set; }
         public string Textalign_0 { get; set; }= ContentAlignment.MiddleCenter.ToString();
         public string Textalign_1 { get; set; }= ContentAlignment.MiddleCenter.ToString();
+        #endregion
+        #region 宏
+        public MacroinstructionClass macroinstructionClass { get; set; }=new MacroinstructionClass();
         #endregion
 
     }

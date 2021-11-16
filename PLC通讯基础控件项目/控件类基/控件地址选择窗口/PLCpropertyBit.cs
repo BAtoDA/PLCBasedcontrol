@@ -33,16 +33,18 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         private void PLCproperty_Load(object sender, EventArgs e)
         {
             //填充PLC选型页面
-            PLCpropertyClass pLCpropertyClass = new PLCpropertyClass(uiTextBox10, uiCheckBox11, uiCheckBox10, uiCheckBox12, uiGroupBox11, uiComboBox10
+            new PLCpropertyClass(uiTextBox10, uiCheckBox11, uiCheckBox10, uiCheckBox12, uiGroupBox11, uiComboBox10
                 , uiComboBox11, uiTextBox12, uiCheckBox13, uiGroupBox13, uiComboBox13, uiComboBox14, uiTextBox15, uiCheckBox14, uiGroupBox14
                 , uiComboBox16,PlcBitselect,this.uiButton1);
             //填充安全页面
-            PLCpropertysafety pLCpropertysafety = new PLCpropertysafety(uiComboBox20, uiCheckBox20, uiComboBox21, uiComboBox22, uiComboBox23, uiTextBox20, uiComboBox24
+            new PLCpropertysafety(uiComboBox20, uiCheckBox20, uiComboBox21, uiComboBox22, uiComboBox23, uiTextBox20, uiComboBox24
                 , uiComboBox25, uiComboBox26,new Sunny.UI.UIGroupBox[] { uiGroupBox21, uiGroupBox22, uiGroupBox23 },new Sunny.UI.UICheckBox[] { uiCheckBox21 , uiCheckBox22},
                 this.uiCheckBox23,this.uiButton1,PlcBitselect);
             //填充处理文字选择页面
-            PLCpropertyText pLCpropertyText = new PLCpropertyText(uiComboBox30, uiButton30, uiButton31, uiComboBox31, uiComboBox32, uiComboBox33, uiComboBox34, uiRichTextBox30
+            new PLCpropertyText(uiComboBox30, uiButton30, uiButton31, uiComboBox31, uiComboBox32, uiComboBox33, uiComboBox34, uiRichTextBox30
                 , uiColorPicker30, uiColorPicker31, uiCheckBox30, uiCheckBox31, PlcBitselect,uiButton1);
+            //加载宏指令窗口页面
+            new PLCmacrosClass(uiTextBox1, uiTextBox2, uiRichTextBox1, uiButton3,PlcBitselect.macroinstructionClass);
         }
 
         private void uiButton2_Click(object sender, EventArgs e)

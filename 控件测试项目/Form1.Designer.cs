@@ -37,12 +37,85 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass macroinstructionClass1 = new PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass macroinstructionClass2 = new PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass();
             PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase1 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
             PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase plcMultifunctionClassBase2 = new PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC多功能控件实现类.PLCMultifunctionClassBase();
+            PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass macroinstructionClass3 = new PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass();
+            PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass macroinstructionClass4 = new PLC通讯基础控件项目.宏脚本.接口类基.MacroinstructionClass();
             this.plcControlsPreferences1 = new PLC通讯基础控件项目.PLCControlsPreferences(this.components);
             this.plcPreferences1 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.plcPreferences2 = new PLC通讯基础控件项目.PLC参数设置控件.PLCPreferences();
             this.daDataViewToPlcErr1 = new PLC通讯基础控件项目.基础控件.DADataViewToPlcErr(this.components);
+            this.dataGridViewTextBoxColumn149 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn150 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn151 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn152 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn145 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn146 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn147 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn148 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn141 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn142 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn143 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn144 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn137 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn138 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn139 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn140 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn133 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn134 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn135 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn136 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn129 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn130 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn131 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn132 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn125 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn126 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn127 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn128 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn121 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn122 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn123 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn124 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn117 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn118 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn119 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn120 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn113 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn114 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn115 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn116 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn109 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn110 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn111 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn112 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn101 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn102 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn103 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn104 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn97 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn98 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn99 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn100 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn93 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn94 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn95 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn96 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn89 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn90 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn91 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn92 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn85 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn86 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn87 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn88 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn81 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn82 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn83 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,12 +205,12 @@
             this.daUiButton1 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.button1 = new System.Windows.Forms.Button();
             this.daMultifunction1 = new PLC通讯基础控件项目.基础控件.DAMultifunction();
-            this.dataGridViewTextBoxColumn85 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn86 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn87 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn88 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.daUiButton2 = new PLC通讯基础控件项目.基础控件.DAUiButton();
             this.daUiButton3 = new PLC通讯基础控件项目.基础控件.DAUiButton();
+            this.dataGridViewTextBoxColumn153 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn154 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn155 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn156 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlcErr1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.daDataViewToPlc1)).BeginInit();
             this.SuspendLayout();
@@ -186,10 +259,10 @@
             this.daDataViewToPlcErr1.ColumnHeadersHeight = 32;
             this.daDataViewToPlcErr1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.daDataViewToPlcErr1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn85,
-            this.dataGridViewTextBoxColumn86,
-            this.dataGridViewTextBoxColumn87,
-            this.dataGridViewTextBoxColumn88});
+            this.dataGridViewTextBoxColumn153,
+            this.dataGridViewTextBoxColumn154,
+            this.dataGridViewTextBoxColumn155,
+            this.dataGridViewTextBoxColumn156});
             this.daDataViewToPlcErr1.EnableHeadersVisualStyles = false;
             this.daDataViewToPlcErr1.EventAddress = "C:";
             this.daDataViewToPlcErr1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -221,6 +294,448 @@
         130,
         100,
         300};
+            // 
+            // dataGridViewTextBoxColumn149
+            // 
+            this.dataGridViewTextBoxColumn149.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn149.Name = "dataGridViewTextBoxColumn149";
+            this.dataGridViewTextBoxColumn149.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn150
+            // 
+            this.dataGridViewTextBoxColumn150.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn150.Name = "dataGridViewTextBoxColumn150";
+            this.dataGridViewTextBoxColumn150.ReadOnly = true;
+            this.dataGridViewTextBoxColumn150.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn151
+            // 
+            this.dataGridViewTextBoxColumn151.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn151.Name = "dataGridViewTextBoxColumn151";
+            this.dataGridViewTextBoxColumn151.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn152
+            // 
+            this.dataGridViewTextBoxColumn152.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn152.Name = "dataGridViewTextBoxColumn152";
+            this.dataGridViewTextBoxColumn152.ReadOnly = true;
+            this.dataGridViewTextBoxColumn152.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn145
+            // 
+            this.dataGridViewTextBoxColumn145.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn145.Name = "dataGridViewTextBoxColumn145";
+            this.dataGridViewTextBoxColumn145.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn146
+            // 
+            this.dataGridViewTextBoxColumn146.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn146.Name = "dataGridViewTextBoxColumn146";
+            this.dataGridViewTextBoxColumn146.ReadOnly = true;
+            this.dataGridViewTextBoxColumn146.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn147
+            // 
+            this.dataGridViewTextBoxColumn147.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn147.Name = "dataGridViewTextBoxColumn147";
+            this.dataGridViewTextBoxColumn147.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn148
+            // 
+            this.dataGridViewTextBoxColumn148.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn148.Name = "dataGridViewTextBoxColumn148";
+            this.dataGridViewTextBoxColumn148.ReadOnly = true;
+            this.dataGridViewTextBoxColumn148.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn141
+            // 
+            this.dataGridViewTextBoxColumn141.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn141.Name = "dataGridViewTextBoxColumn141";
+            this.dataGridViewTextBoxColumn141.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn142
+            // 
+            this.dataGridViewTextBoxColumn142.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn142.Name = "dataGridViewTextBoxColumn142";
+            this.dataGridViewTextBoxColumn142.ReadOnly = true;
+            this.dataGridViewTextBoxColumn142.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn143
+            // 
+            this.dataGridViewTextBoxColumn143.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn143.Name = "dataGridViewTextBoxColumn143";
+            this.dataGridViewTextBoxColumn143.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn144
+            // 
+            this.dataGridViewTextBoxColumn144.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn144.Name = "dataGridViewTextBoxColumn144";
+            this.dataGridViewTextBoxColumn144.ReadOnly = true;
+            this.dataGridViewTextBoxColumn144.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn137
+            // 
+            this.dataGridViewTextBoxColumn137.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn137.Name = "dataGridViewTextBoxColumn137";
+            this.dataGridViewTextBoxColumn137.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn138
+            // 
+            this.dataGridViewTextBoxColumn138.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn138.Name = "dataGridViewTextBoxColumn138";
+            this.dataGridViewTextBoxColumn138.ReadOnly = true;
+            this.dataGridViewTextBoxColumn138.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn139
+            // 
+            this.dataGridViewTextBoxColumn139.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn139.Name = "dataGridViewTextBoxColumn139";
+            this.dataGridViewTextBoxColumn139.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn140
+            // 
+            this.dataGridViewTextBoxColumn140.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn140.Name = "dataGridViewTextBoxColumn140";
+            this.dataGridViewTextBoxColumn140.ReadOnly = true;
+            this.dataGridViewTextBoxColumn140.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn133
+            // 
+            this.dataGridViewTextBoxColumn133.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn133.Name = "dataGridViewTextBoxColumn133";
+            this.dataGridViewTextBoxColumn133.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn134
+            // 
+            this.dataGridViewTextBoxColumn134.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn134.Name = "dataGridViewTextBoxColumn134";
+            this.dataGridViewTextBoxColumn134.ReadOnly = true;
+            this.dataGridViewTextBoxColumn134.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn135
+            // 
+            this.dataGridViewTextBoxColumn135.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn135.Name = "dataGridViewTextBoxColumn135";
+            this.dataGridViewTextBoxColumn135.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn136
+            // 
+            this.dataGridViewTextBoxColumn136.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn136.Name = "dataGridViewTextBoxColumn136";
+            this.dataGridViewTextBoxColumn136.ReadOnly = true;
+            this.dataGridViewTextBoxColumn136.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn129
+            // 
+            this.dataGridViewTextBoxColumn129.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn129.Name = "dataGridViewTextBoxColumn129";
+            this.dataGridViewTextBoxColumn129.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn130
+            // 
+            this.dataGridViewTextBoxColumn130.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn130.Name = "dataGridViewTextBoxColumn130";
+            this.dataGridViewTextBoxColumn130.ReadOnly = true;
+            this.dataGridViewTextBoxColumn130.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn131
+            // 
+            this.dataGridViewTextBoxColumn131.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn131.Name = "dataGridViewTextBoxColumn131";
+            this.dataGridViewTextBoxColumn131.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn132
+            // 
+            this.dataGridViewTextBoxColumn132.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn132.Name = "dataGridViewTextBoxColumn132";
+            this.dataGridViewTextBoxColumn132.ReadOnly = true;
+            this.dataGridViewTextBoxColumn132.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn125
+            // 
+            this.dataGridViewTextBoxColumn125.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn125.Name = "dataGridViewTextBoxColumn125";
+            this.dataGridViewTextBoxColumn125.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn126
+            // 
+            this.dataGridViewTextBoxColumn126.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn126.Name = "dataGridViewTextBoxColumn126";
+            this.dataGridViewTextBoxColumn126.ReadOnly = true;
+            this.dataGridViewTextBoxColumn126.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn127
+            // 
+            this.dataGridViewTextBoxColumn127.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn127.Name = "dataGridViewTextBoxColumn127";
+            this.dataGridViewTextBoxColumn127.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn128
+            // 
+            this.dataGridViewTextBoxColumn128.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn128.Name = "dataGridViewTextBoxColumn128";
+            this.dataGridViewTextBoxColumn128.ReadOnly = true;
+            this.dataGridViewTextBoxColumn128.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn121
+            // 
+            this.dataGridViewTextBoxColumn121.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn121.Name = "dataGridViewTextBoxColumn121";
+            this.dataGridViewTextBoxColumn121.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn122
+            // 
+            this.dataGridViewTextBoxColumn122.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn122.Name = "dataGridViewTextBoxColumn122";
+            this.dataGridViewTextBoxColumn122.ReadOnly = true;
+            this.dataGridViewTextBoxColumn122.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn123
+            // 
+            this.dataGridViewTextBoxColumn123.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn123.Name = "dataGridViewTextBoxColumn123";
+            this.dataGridViewTextBoxColumn123.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn124
+            // 
+            this.dataGridViewTextBoxColumn124.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn124.Name = "dataGridViewTextBoxColumn124";
+            this.dataGridViewTextBoxColumn124.ReadOnly = true;
+            this.dataGridViewTextBoxColumn124.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn117
+            // 
+            this.dataGridViewTextBoxColumn117.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn117.Name = "dataGridViewTextBoxColumn117";
+            this.dataGridViewTextBoxColumn117.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn118
+            // 
+            this.dataGridViewTextBoxColumn118.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn118.Name = "dataGridViewTextBoxColumn118";
+            this.dataGridViewTextBoxColumn118.ReadOnly = true;
+            this.dataGridViewTextBoxColumn118.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn119
+            // 
+            this.dataGridViewTextBoxColumn119.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn119.Name = "dataGridViewTextBoxColumn119";
+            this.dataGridViewTextBoxColumn119.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn120
+            // 
+            this.dataGridViewTextBoxColumn120.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn120.Name = "dataGridViewTextBoxColumn120";
+            this.dataGridViewTextBoxColumn120.ReadOnly = true;
+            this.dataGridViewTextBoxColumn120.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn113
+            // 
+            this.dataGridViewTextBoxColumn113.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn113.Name = "dataGridViewTextBoxColumn113";
+            this.dataGridViewTextBoxColumn113.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn114
+            // 
+            this.dataGridViewTextBoxColumn114.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn114.Name = "dataGridViewTextBoxColumn114";
+            this.dataGridViewTextBoxColumn114.ReadOnly = true;
+            this.dataGridViewTextBoxColumn114.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn115
+            // 
+            this.dataGridViewTextBoxColumn115.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn115.Name = "dataGridViewTextBoxColumn115";
+            this.dataGridViewTextBoxColumn115.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn116
+            // 
+            this.dataGridViewTextBoxColumn116.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn116.Name = "dataGridViewTextBoxColumn116";
+            this.dataGridViewTextBoxColumn116.ReadOnly = true;
+            this.dataGridViewTextBoxColumn116.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn109
+            // 
+            this.dataGridViewTextBoxColumn109.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn109.Name = "dataGridViewTextBoxColumn109";
+            this.dataGridViewTextBoxColumn109.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn110
+            // 
+            this.dataGridViewTextBoxColumn110.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn110.Name = "dataGridViewTextBoxColumn110";
+            this.dataGridViewTextBoxColumn110.ReadOnly = true;
+            this.dataGridViewTextBoxColumn110.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn111
+            // 
+            this.dataGridViewTextBoxColumn111.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn111.Name = "dataGridViewTextBoxColumn111";
+            this.dataGridViewTextBoxColumn111.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn112
+            // 
+            this.dataGridViewTextBoxColumn112.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn112.Name = "dataGridViewTextBoxColumn112";
+            this.dataGridViewTextBoxColumn112.ReadOnly = true;
+            this.dataGridViewTextBoxColumn112.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn105
+            // 
+            this.dataGridViewTextBoxColumn105.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
+            this.dataGridViewTextBoxColumn105.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn106
+            // 
+            this.dataGridViewTextBoxColumn106.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
+            this.dataGridViewTextBoxColumn106.ReadOnly = true;
+            this.dataGridViewTextBoxColumn106.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn107
+            // 
+            this.dataGridViewTextBoxColumn107.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
+            this.dataGridViewTextBoxColumn107.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn108
+            // 
+            this.dataGridViewTextBoxColumn108.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
+            this.dataGridViewTextBoxColumn108.ReadOnly = true;
+            this.dataGridViewTextBoxColumn108.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn101
+            // 
+            this.dataGridViewTextBoxColumn101.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn101.Name = "dataGridViewTextBoxColumn101";
+            this.dataGridViewTextBoxColumn101.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn102
+            // 
+            this.dataGridViewTextBoxColumn102.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn102.Name = "dataGridViewTextBoxColumn102";
+            this.dataGridViewTextBoxColumn102.ReadOnly = true;
+            this.dataGridViewTextBoxColumn102.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn103
+            // 
+            this.dataGridViewTextBoxColumn103.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn103.Name = "dataGridViewTextBoxColumn103";
+            this.dataGridViewTextBoxColumn103.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn104
+            // 
+            this.dataGridViewTextBoxColumn104.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn104.Name = "dataGridViewTextBoxColumn104";
+            this.dataGridViewTextBoxColumn104.ReadOnly = true;
+            this.dataGridViewTextBoxColumn104.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn97
+            // 
+            this.dataGridViewTextBoxColumn97.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn97.Name = "dataGridViewTextBoxColumn97";
+            this.dataGridViewTextBoxColumn97.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn98
+            // 
+            this.dataGridViewTextBoxColumn98.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn98.Name = "dataGridViewTextBoxColumn98";
+            this.dataGridViewTextBoxColumn98.ReadOnly = true;
+            this.dataGridViewTextBoxColumn98.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn99
+            // 
+            this.dataGridViewTextBoxColumn99.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn99.Name = "dataGridViewTextBoxColumn99";
+            this.dataGridViewTextBoxColumn99.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn100
+            // 
+            this.dataGridViewTextBoxColumn100.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn100.Name = "dataGridViewTextBoxColumn100";
+            this.dataGridViewTextBoxColumn100.ReadOnly = true;
+            this.dataGridViewTextBoxColumn100.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn93
+            // 
+            this.dataGridViewTextBoxColumn93.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn93.Name = "dataGridViewTextBoxColumn93";
+            this.dataGridViewTextBoxColumn93.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn94
+            // 
+            this.dataGridViewTextBoxColumn94.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn94.Name = "dataGridViewTextBoxColumn94";
+            this.dataGridViewTextBoxColumn94.ReadOnly = true;
+            this.dataGridViewTextBoxColumn94.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn95
+            // 
+            this.dataGridViewTextBoxColumn95.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn95.Name = "dataGridViewTextBoxColumn95";
+            this.dataGridViewTextBoxColumn95.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn96
+            // 
+            this.dataGridViewTextBoxColumn96.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn96.Name = "dataGridViewTextBoxColumn96";
+            this.dataGridViewTextBoxColumn96.ReadOnly = true;
+            this.dataGridViewTextBoxColumn96.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn89
+            // 
+            this.dataGridViewTextBoxColumn89.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn89.Name = "dataGridViewTextBoxColumn89";
+            this.dataGridViewTextBoxColumn89.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn90
+            // 
+            this.dataGridViewTextBoxColumn90.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn90.Name = "dataGridViewTextBoxColumn90";
+            this.dataGridViewTextBoxColumn90.ReadOnly = true;
+            this.dataGridViewTextBoxColumn90.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn91
+            // 
+            this.dataGridViewTextBoxColumn91.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn91.Name = "dataGridViewTextBoxColumn91";
+            this.dataGridViewTextBoxColumn91.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn92
+            // 
+            this.dataGridViewTextBoxColumn92.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn92.Name = "dataGridViewTextBoxColumn92";
+            this.dataGridViewTextBoxColumn92.ReadOnly = true;
+            this.dataGridViewTextBoxColumn92.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn85
+            // 
+            this.dataGridViewTextBoxColumn85.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn85.Name = "dataGridViewTextBoxColumn85";
+            this.dataGridViewTextBoxColumn85.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn86
+            // 
+            this.dataGridViewTextBoxColumn86.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn86.Name = "dataGridViewTextBoxColumn86";
+            this.dataGridViewTextBoxColumn86.ReadOnly = true;
+            this.dataGridViewTextBoxColumn86.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn87
+            // 
+            this.dataGridViewTextBoxColumn87.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn87.Name = "dataGridViewTextBoxColumn87";
+            this.dataGridViewTextBoxColumn87.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn88
+            // 
+            this.dataGridViewTextBoxColumn88.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn88.Name = "dataGridViewTextBoxColumn88";
+            this.dataGridViewTextBoxColumn88.ReadOnly = true;
+            this.dataGridViewTextBoxColumn88.Width = 300;
             // 
             // dataGridViewTextBoxColumn81
             // 
@@ -857,6 +1372,18 @@
             this.daUiButton1.pLCBitselectRealize.description = "PLCBitselectRealize";
             this.daUiButton1.pLCBitselectRealize.keyMinTime = 0;
             this.daUiButton1.pLCBitselectRealize.LoosenOut = false;
+            macroinstructionClass1.Condition = false;
+            macroinstructionClass1.ConditionOFF = true;
+            macroinstructionClass1.ConditionON = false;
+            macroinstructionClass1.FormShowLoad = false;
+            macroinstructionClass1.Macrocode = resources.GetString("macroinstructionClass1.Macrocode");
+            macroinstructionClass1.Name = "MacroinstructionClass1";
+            macroinstructionClass1.Numbering = 1;
+            macroinstructionClass1.Period = false;
+            macroinstructionClass1.ReadWriteAddress = "0";
+            macroinstructionClass1.ReadWriteFunction = "M";
+            macroinstructionClass1.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton1.pLCBitselectRealize.macroinstructionClass = macroinstructionClass1;
             this.daUiButton1.pLCBitselectRealize.NoAccessConceal = false;
             this.daUiButton1.pLCBitselectRealize.NoAccessForm = false;
             this.daUiButton1.pLCBitselectRealize.OperationAffirm = false;
@@ -940,6 +1467,18 @@
             this.daMultifunction1.pLCBitselectRealizeq.description = "PLCBitselectRealize";
             this.daMultifunction1.pLCBitselectRealizeq.keyMinTime = 0;
             this.daMultifunction1.pLCBitselectRealizeq.LoosenOut = false;
+            macroinstructionClass2.Condition = false;
+            macroinstructionClass2.ConditionOFF = true;
+            macroinstructionClass2.ConditionON = false;
+            macroinstructionClass2.FormShowLoad = false;
+            macroinstructionClass2.Macrocode = resources.GetString("macroinstructionClass2.Macrocode");
+            macroinstructionClass2.Name = "MacroinstructionClass1";
+            macroinstructionClass2.Numbering = 1;
+            macroinstructionClass2.Period = false;
+            macroinstructionClass2.ReadWriteAddress = "0";
+            macroinstructionClass2.ReadWriteFunction = "M";
+            macroinstructionClass2.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daMultifunction1.pLCBitselectRealizeq.macroinstructionClass = macroinstructionClass2;
             this.daMultifunction1.pLCBitselectRealizeq.NoAccessConceal = false;
             this.daMultifunction1.pLCBitselectRealizeq.NoAccessForm = false;
             this.daMultifunction1.pLCBitselectRealizeq.OperationAffirm = false;
@@ -1034,32 +1573,6 @@
             this.daMultifunction1.TextUnderline_1 = false;
             this.daMultifunction1.WrSafetyAddress = "0";
             // 
-            // dataGridViewTextBoxColumn85
-            // 
-            this.dataGridViewTextBoxColumn85.HeaderText = "发生时间";
-            this.dataGridViewTextBoxColumn85.Name = "dataGridViewTextBoxColumn85";
-            this.dataGridViewTextBoxColumn85.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn86
-            // 
-            this.dataGridViewTextBoxColumn86.HeaderText = "报警设备";
-            this.dataGridViewTextBoxColumn86.Name = "dataGridViewTextBoxColumn86";
-            this.dataGridViewTextBoxColumn86.ReadOnly = true;
-            this.dataGridViewTextBoxColumn86.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn87
-            // 
-            this.dataGridViewTextBoxColumn87.HeaderText = "报警地址";
-            this.dataGridViewTextBoxColumn87.Name = "dataGridViewTextBoxColumn87";
-            this.dataGridViewTextBoxColumn87.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn88
-            // 
-            this.dataGridViewTextBoxColumn88.HeaderText = "报警内容";
-            this.dataGridViewTextBoxColumn88.Name = "dataGridViewTextBoxColumn88";
-            this.dataGridViewTextBoxColumn88.ReadOnly = true;
-            this.dataGridViewTextBoxColumn88.Width = 300;
-            // 
             // daUiButton2
             // 
             this.daUiButton2.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
@@ -1080,6 +1593,18 @@
             this.daUiButton2.pLCBitselectRealize.description = "PLCBitselectRealize";
             this.daUiButton2.pLCBitselectRealize.keyMinTime = 0;
             this.daUiButton2.pLCBitselectRealize.LoosenOut = false;
+            macroinstructionClass3.Condition = false;
+            macroinstructionClass3.ConditionOFF = true;
+            macroinstructionClass3.ConditionON = false;
+            macroinstructionClass3.FormShowLoad = false;
+            macroinstructionClass3.Macrocode = resources.GetString("macroinstructionClass3.Macrocode");
+            macroinstructionClass3.Name = "MacroinstructionClass1";
+            macroinstructionClass3.Numbering = 1;
+            macroinstructionClass3.Period = false;
+            macroinstructionClass3.ReadWriteAddress = "0";
+            macroinstructionClass3.ReadWriteFunction = "M";
+            macroinstructionClass3.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton2.pLCBitselectRealize.macroinstructionClass = macroinstructionClass3;
             this.daUiButton2.pLCBitselectRealize.NoAccessConceal = false;
             this.daUiButton2.pLCBitselectRealize.NoAccessForm = false;
             this.daUiButton2.pLCBitselectRealize.OperationAffirm = false;
@@ -1149,6 +1674,18 @@
             this.daUiButton3.pLCBitselectRealize.description = "PLCBitselectRealize";
             this.daUiButton3.pLCBitselectRealize.keyMinTime = 0;
             this.daUiButton3.pLCBitselectRealize.LoosenOut = false;
+            macroinstructionClass4.Condition = false;
+            macroinstructionClass4.ConditionOFF = true;
+            macroinstructionClass4.ConditionON = false;
+            macroinstructionClass4.FormShowLoad = false;
+            macroinstructionClass4.Macrocode = resources.GetString("macroinstructionClass4.Macrocode");
+            macroinstructionClass4.Name = "MacroinstructionClass1";
+            macroinstructionClass4.Numbering = 1;
+            macroinstructionClass4.Period = false;
+            macroinstructionClass4.ReadWriteAddress = "0";
+            macroinstructionClass4.ReadWriteFunction = "M";
+            macroinstructionClass4.ReadWritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
+            this.daUiButton3.pLCBitselectRealize.macroinstructionClass = macroinstructionClass4;
             this.daUiButton3.pLCBitselectRealize.NoAccessConceal = false;
             this.daUiButton3.pLCBitselectRealize.NoAccessForm = false;
             this.daUiButton3.pLCBitselectRealize.OperationAffirm = false;
@@ -1197,6 +1734,32 @@
             this.daUiButton3.TextContent_1 = "1-ON";
             this.daUiButton3.TextFont_0 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daUiButton3.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 
+            // dataGridViewTextBoxColumn153
+            // 
+            this.dataGridViewTextBoxColumn153.HeaderText = "发生时间";
+            this.dataGridViewTextBoxColumn153.Name = "dataGridViewTextBoxColumn153";
+            this.dataGridViewTextBoxColumn153.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn154
+            // 
+            this.dataGridViewTextBoxColumn154.HeaderText = "报警设备";
+            this.dataGridViewTextBoxColumn154.Name = "dataGridViewTextBoxColumn154";
+            this.dataGridViewTextBoxColumn154.ReadOnly = true;
+            this.dataGridViewTextBoxColumn154.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn155
+            // 
+            this.dataGridViewTextBoxColumn155.HeaderText = "报警地址";
+            this.dataGridViewTextBoxColumn155.Name = "dataGridViewTextBoxColumn155";
+            this.dataGridViewTextBoxColumn155.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn156
+            // 
+            this.dataGridViewTextBoxColumn156.HeaderText = "报警内容";
+            this.dataGridViewTextBoxColumn156.Name = "dataGridViewTextBoxColumn156";
+            this.dataGridViewTextBoxColumn156.ReadOnly = true;
+            this.dataGridViewTextBoxColumn156.Width = 300;
             // 
             // Form1
             // 
@@ -1320,5 +1883,73 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn88;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton2;
         private PLC通讯基础控件项目.基础控件.DAUiButton daUiButton3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn89;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn90;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn91;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn92;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn93;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn94;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn95;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn96;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn97;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn98;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn99;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn100;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn101;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn102;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn103;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn104;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn106;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn109;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn110;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn111;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn112;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn113;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn114;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn115;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn116;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn117;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn118;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn119;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn120;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn121;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn122;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn123;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn124;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn125;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn126;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn127;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn128;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn129;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn130;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn131;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn132;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn133;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn134;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn135;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn136;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn137;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn138;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn139;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn140;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn141;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn142;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn143;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn144;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn145;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn146;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn147;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn148;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn149;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn150;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn151;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn152;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn153;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn154;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn155;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn156;
     }
 }

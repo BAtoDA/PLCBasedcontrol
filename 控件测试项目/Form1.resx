@@ -66,4 +66,112 @@
   <metadata name="plcPreferences2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>357, 17</value>
   </metadata>
+  <data name="macroinstructionClass1.Macrocode" xml:space="preserve">
+    <value>using CSScriptLib; 
+using Microsoft.CSharp;using System; 
+using System.CodeDom.Compiler; 
+using System.Collections.Generic; 
+using System.ComponentModel; 
+using System.Data; 
+using System.Drawing; 
+using System.IO; 
+using System.Linq; 
+using System.Net.Sockets; 
+using System.Reflection; 
+using System.Text; 
+using System.Threading.Tasks; 
+using System.Windows.Forms; 
+using System.Net; 
+using System.Threading; 
+public static class ScriptCCStatic 
+{ 
+//主方法不可更改和删除否则编译报错 
+   public static void Main(string greeting) 
+      { 
+ //编写代码行： 
+      } 
+} 
+</value>
+  </data>
+  <data name="macroinstructionClass2.Macrocode" xml:space="preserve">
+    <value>using CSScriptLib; 
+using Microsoft.CSharp;using System; 
+using System.CodeDom.Compiler; 
+using System.Collections.Generic; 
+using System.ComponentModel; 
+using System.Data; 
+using System.Drawing; 
+using System.IO; 
+using System.Linq; 
+using System.Net.Sockets; 
+using System.Reflection; 
+using System.Text; 
+using System.Threading.Tasks; 
+using System.Windows.Forms; 
+using System.Net; 
+using System.Threading; 
+public static class ScriptCCStatic 
+{ 
+//主方法不可更改和删除否则编译报错 
+   public static void Main(string greeting) 
+      { 
+ //编写代码行： 
+      } 
+} 
+</value>
+  </data>
+  <data name="macroinstructionClass3.Macrocode" xml:space="preserve">
+    <value>using CSScriptLib; 
+using Microsoft.CSharp;using System; 
+using System.CodeDom.Compiler; 
+using System.Collections.Generic; 
+using System.ComponentModel; 
+using System.Data; 
+using System.Drawing; 
+using System.IO; 
+using System.Linq; 
+using System.Net.Sockets; 
+using System.Reflection; 
+using System.Text; 
+using System.Threading.Tasks; 
+using System.Windows.Forms; 
+using System.Net; 
+using System.Threading; 
+public static class ScriptCCStatic 
+{ 
+//主方法不可更改和删除否则编译报错 
+   public static void Main(string greeting) 
+      { 
+ //编写代码行： 
+      } 
+} 
+</value>
+  </data>
+  <data name="macroinstructionClass4.Macrocode" xml:space="preserve">
+    <value>using CSScriptLib; 
+using Microsoft.CSharp;using System; 
+using System.CodeDom.Compiler; 
+using System.Collections.Generic; 
+using System.ComponentModel; 
+using System.Data; 
+using System.Drawing; 
+using System.IO; 
+using System.Linq; 
+using System.Net.Sockets; 
+using System.Reflection; 
+using System.Text; 
+using System.Threading.Tasks; 
+using System.Windows.Forms; 
+using System.Net; 
+using System.Threading; 
+public static class ScriptCCStatic 
+{ 
+//主方法不可更改和删除否则编译报错 
+   public static void Main(string greeting) 
+      { 
+ //编写代码行： 
+      } 
+} 
+</value>
+  </data>
 </root>

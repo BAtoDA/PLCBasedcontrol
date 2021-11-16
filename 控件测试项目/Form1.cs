@@ -15,13 +15,13 @@ namespace 控件测试项目
         public Form1()
         {
             InitializeComponent();
-           
 
         }
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            new  MacroinstructionForm(new MacroinstructionClass()).Show();
+            //new  MacroinstructionForm(new MacroinstructionClass()).Show();
+            new MacroListForm().Show();
         }
     }
     class 女朋友

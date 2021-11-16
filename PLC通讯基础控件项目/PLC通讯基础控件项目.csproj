@@ -27,7 +27,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CS-Script" Version="4.2.0" />
+    <PackageReference Include="CS-Script.Core" Version="2.0.0" />
     <PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
     <PackageReference Include="HslCommunication" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="5.0.1" />
