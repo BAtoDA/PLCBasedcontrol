@@ -15,6 +15,9 @@
  https://pan.baidu.com/s/1ap2zkjWe8ORIAOHKnxRL6w 提取码：4z8d
 # 底层控件使用说明：   
  ![OK$TVDKKT{ 05_2RZRM4MWT](https://user-images.githubusercontent.com/60955669/132943726-6ff58945-6766-4f99-a40f-403cd41b0dba.png)
+# 项目发布需要注意：
+1：需要在IDE设计电脑C盘中找到3个文件夹然后 发布到安装软件的电脑中  当然可以不覆盖这样有些保存的文件和功能达不到预期效果。  
+ ![1637306007(1)](https://user-images.githubusercontent.com/60955669/142580797-c298a9cb-4dbb-4e61-9793-f5b1eb6a8d43.png)  
 
 # 项目更新展示：
 1:控件宏脚本 以及全局宏脚本控件（1：需要添加DaMacroControl控件让窗口获得右键菜单打开宏窗口功能 2：绑定的宏代码需要在窗口右键打开宏编译器进行编译后才能运行绑定 注意宏代默认在C:\Program Files目录下建议发布软件时在该目录覆盖回去)  
