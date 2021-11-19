@@ -148,6 +148,7 @@ namespace PLC通讯基础控件项目.基础控件.宏指令控件
                 await Task.Run(async () =>
                 {
                     macroinstructionClasses.Clear();
+
                     string[] filenames = Directory.GetFiles(@"C:\PLCMacroList", "*.txt", SearchOption.AllDirectories);
                     MacroContent macroContent = new MacroContent(@"C:\");
                     //遍历文件夹下面的.txt文本
