@@ -15,23 +15,15 @@
  https://pan.baidu.com/s/1ap2zkjWe8ORIAOHKnxRL6w 提取码：4z8d
 # 底层控件使用说明：   
  ![OK$TVDKKT{ 05_2RZRM4MWT](https://user-images.githubusercontent.com/60955669/132943726-6ff58945-6766-4f99-a40f-403cd41b0dba.png)
-# 控件继承以及实现路线
-![image](https://user-images.githubusercontent.com/60955669/132943782-b0c82742-639d-4dbc-a272-c798b3af8e5f.png)
-![image](https://user-images.githubusercontent.com/60955669/132943802-a45f47a8-156c-467b-9c73-2f4bd325d87d.png)
 
-# 控件访问PLC底层实现路线：
-![image](https://user-images.githubusercontent.com/60955669/132943830-aa9dfa49-52bd-4591-a0eb-244ce20eac8c.png)
-
-# 控件参数持久化以及对应类：
-![image](https://user-images.githubusercontent.com/60955669/132943851-d847107d-4833-450c-b8a3-88a4ed8ebab5.png)
 # 项目更新展示：
-1:控件宏脚本 以及全局宏脚本控件（1：需要添加DaMacroControl控件让窗口获得右键菜单打开宏窗口功能 2：绑定的宏代码需要在窗口右键打开宏编译器进行编译后才能运行绑定 注意宏代默认在C:\Program Files目录下建议发布软件时在该目录覆盖回去)
+1:控件宏脚本 以及全局宏脚本控件（1：需要添加DaMacroControl控件让窗口获得右键菜单打开宏窗口功能 2：绑定的宏代码需要在窗口右键打开宏编译器进行编译后才能运行绑定 注意宏代默认在C:\Program Files目录下建议发布软件时在该目录覆盖回去)  
 ![图片](https://user-images.githubusercontent.com/60955669/142577081-b05a7c98-e07d-40a3-9303-ab2bafffc7de.png)
 ![图片](https://user-images.githubusercontent.com/60955669/142577129-2a109e91-8290-4a02-90b4-a5af1ec47d83.png)
-2:支持控件绑定以及利用控件动态绑定触发宏代码（绑定的代码需要编译通过才能运行)
+2:支持控件绑定以及利用控件动态绑定触发宏代码（绑定的代码需要编译通过才能运行)  
 ![图片](https://user-images.githubusercontent.com/60955669/142577296-c868b2f2-e780-4125-8e4e-2109ba8e006b.png)
 
-3:新增监控底层设备状态控件PlcStatusView 方便设计人员添加网络监控视图 分为四种状态：1 在线(指示着设备运行中) 2 离线(指示设备离线) 3 未添加(指示设备未添加到PLC表 就是PlcControlsPreferences控件未添加设备) 4 未启用(指示该控件未启用PLC功能)。
+3:新增监控底层设备状态控件PlcStatusView 方便设计人员添加网络监控视图 分为四种状态：1 在线(指示着设备运行中) 2 离线(指示设备离线) 3 未添加(指示设备未添加到PLC表 就是PlcControlsPreferences控件未添加设备) 4 未启用(指示该控件未启用PLC功能)。  
 ![1634978787(1)](https://user-images.githubusercontent.com/60955669/138549760-7e6c1632-0e76-4714-a564-dd8fb4242e96.png)
 
 4：新增全局位控件状态切换 方便用户在IDE编辑设计模式下快速的切换控件状态 在需要的设计窗口添加PlcControlSwitch控件 找到参数ControlSwitch点击切换状态即可。  
@@ -40,8 +32,8 @@
   状态1：
  ![image](https://user-images.githubusercontent.com/60955669/137632738-238bb3f4-0f05-4a79-8a52-28cb7f9c7e2c.png)
 # 更新计划：
-1：全面覆盖宏指令脚本 以及控件触发宏脚本。
-2：优化宏脚本编译器 关键词颜色进行改变 新增内部类进行处理。
-3：新增PLC配方控件。
+1：全面覆盖宏指令脚本 以及控件触发宏脚本。  
+2：优化宏脚本编译器 关键词颜色进行改变 新增内部类进行处理。   
+3：新增PLC配方控件。  
 # 作者：
 DAtoDA
