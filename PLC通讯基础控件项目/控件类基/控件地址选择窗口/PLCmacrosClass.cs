@@ -87,6 +87,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             macroinstructionClasses.Clear();
             macrosTxtList.Items.Clear();
             macroContent = new MacroContent(@"C:\");
+            if (!macroContent.IsDirectory())
+                macroContent.DirectoryCreate();
             string[] filenames = Directory.GetFiles(@"C:\PLCMacroList", "*.txt", SearchOption.AllDirectories);
             //遍历文件夹下面的.txt文本
             foreach (string filename in filenames)
