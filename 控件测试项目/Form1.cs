@@ -5,8 +5,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using PLC通讯基础控件项目.宏脚本;
-using PLC通讯基础控件项目.宏脚本.接口类基;
+using PLC通讯基础控件项目.控件类基.PLC基础接口;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
 
 namespace 控件测试项目
 {
@@ -15,19 +16,21 @@ namespace 控件测试项目
         public Form1()
         {
             InitializeComponent();
+        }
 
-        }
-        protected override void OnShown(EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            base.OnShown(e);
-            //new  MacroinstructionForm(new MacroinstructionClass()).Show();
-            new MacroListForm().Show();
+           // new PLCpropertyBit( new PLCBitselectRealize()).Show();
+            var dw = new EventCreateClass();
+
+            foreach(var i in dw.EventName(this.uiButton1))
+                this.uiComboBox1.Items.Add(i.Name);
+            this.uiComboBox1.SelectedIndex = 22;
+            dw.GainHandler(this.uiButton1, this.uiComboBox1.Text);
+            dw.ControlEvent += ((sender, e) =>
+              {
+                  MessageBox.Show(sender.ToString());
+              });
         }
-    }
-    class 女朋友
-    {
-        public Int64 财富 { get; set; }
-        public string 身材 { get; set; }
-        public string 性别 { get; set; }
     }
 }

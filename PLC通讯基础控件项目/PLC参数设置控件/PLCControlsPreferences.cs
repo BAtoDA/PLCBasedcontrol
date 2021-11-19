@@ -126,7 +126,7 @@ namespace PLC通讯基础控件项目
         public PLCControlsPreferences(IContainer container)
         {
             this.Enabled = true;
-            this.Interval = 1000;
+            this.Interval = 2000;
             _Designer = container;
             foreach(var i in container.Components)
             {
@@ -252,17 +252,20 @@ namespace PLC通讯基础控件项目
                 try
                 {
                     await Task.Run(() =>
-                   {
-                       lock (this)
-                       {
-                           foreach (IPLC_interface i in IPLCsurface.PLCDictionary.Values)
-                           {
-                               if (!i.PLC_ready)
-                                   i.PLC_open();
-                           }
-                       }
-                       return 1;
-                   });
+                    {
+                        lock (this)
+                        {
+                            foreach (IPLC_interface i in IPLCsurface.PLCDictionary.Values)
+                            {
+                                if (!i.PLC_ready)
+                                {
+                                    Debug.WriteLine($"正在重连:{i.IPEndPoint.Address} Port:{i.IPEndPoint.Port}");
+                                    i.PLC_open();
+                                }
+                            }
+                        }
+                        return 1;
+                    });
                 }
                 catch { }
             }

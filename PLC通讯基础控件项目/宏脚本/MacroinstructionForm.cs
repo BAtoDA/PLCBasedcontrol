@@ -164,7 +164,8 @@ namespace PLC通讯基础控件项目.宏脚本
             macroinstructionInterface.Condition = this.uiCheckBox2.Checked;
             macroinstructionInterface.FormShowLoad = this.uiCheckBox3.Checked;
             macroinstructionInterface.Macrocode = this.uiRichTextBox1.Text ?? "using CSScriptLib; \r\n" +
-        "using Microsoft.CSharp;using System; \r\n" +
+        "using Microsoft.CSharp;\r\n" +
+        "using System; \r\n" +
         "using System.CodeDom.Compiler; \r\n" +
         "using System.Collections.Generic; \r\n" +
         "using System.ComponentModel; \r\n" +

@@ -78,7 +78,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         object obj = new object();
         /// <summary>
-        /// 测试用
+        /// 异步线程取消令牌
         /// </summary>
         CancellationTokenSource tokenSource = new CancellationTokenSource();
         CancellationToken token;

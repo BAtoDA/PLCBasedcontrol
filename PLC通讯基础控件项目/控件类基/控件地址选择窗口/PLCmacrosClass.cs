@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
+using Nancy.Json;
 using PLC通讯基础控件项目.宏脚本;
 using PLC通讯基础控件项目.宏脚本.接口类基;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
 using Sunny.UI;
+using System.Linq;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
+using PLC通讯基础控件项目.控件类基.PLC基础接口;
+using System.Windows.Forms;
 
 namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
 {
@@ -14,22 +22,25 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
     internal class PLCmacrosClass
     {
         /// <summary>
-        /// 宏接口
+        /// 保存宏指令文本类
         /// </summary>
-        private MacroinstructionInterface macroinstructionInterface;
+        MacroContent macroContent;
+        /// <summary>
+        /// 宏指令列表
+        /// </summary>
+        List<MacroinstructionClass> macroinstructionClasses = new List<MacroinstructionClass>();
         /// <summary>
         /// 构造函数
         /// 加载窗口数据
         /// </summary>
         /// <param name="macroinstructionInterfac"></param>
-        public PLCmacrosClass(UITextBox NumberingTextBox,UITextBox NameTextBox,UIRichTextBox MacrocodeRichTextBox,UIButton macrosShowButton, MacroinstructionInterface macroinstructionInterfac)
+        public PLCmacrosClass(UITextBox NumberingTextBox, UITextBox NameTextBox, UIRichTextBox MacrocodeRichTextBox, 
+            UIComboboxEx macrosTxtList, PLCBitselectRealize pLCBitselect)
         {
-            //获取接口参数
-            this.macroinstructionInterface = macroinstructionInterfac;
             //-------------------加载参数-----------------------------
-            NumberingTextBox.Text = macroinstructionInterfac.Numbering.ToString();
-            NameTextBox.Text= macroinstructionInterfac.Name??this.GetType().Name;
-            MacrocodeRichTextBox.Text = macroinstructionInterfac.Macrocode ?? "using CSScriptLib; \r\n" +
+            NumberingTextBox.Text = pLCBitselect.macroID.ToString();
+            NameTextBox.Text = pLCBitselect.MacroName ?? this.GetType().Name;
+            MacrocodeRichTextBox.Text = pLCBitselect.Macrocode ?? "using CSScriptLib; \r\n" +
             "using Microsoft.CSharp;using System; \r\n" +
             "using System.CodeDom.Compiler; \r\n" +
             "using System.Collections.Generic; \r\n" +
@@ -53,10 +64,99 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
                      "//编写代码行： \r\n" +
             "      } \r\n" +
             "} \r\n";
-            //-------------------用户是否点击了打开宏指令编辑器--------------
-            macrosShowButton.Click += ((sender, e) =>
+        }
+        /// <summary>
+        /// 加载宏文件
+        /// </summary>
+        /// <param name="NumberingTextBox"></param>
+        /// <param name="NameTextBox"></param>
+        /// <param name="MacrocodeRichTextBox"></param>
+        /// <param name="macrosTxtList"></param>
+        /// <returns></returns>
+        public async Task MacroLoad(UITextBox NumberingTextBox, UITextBox NameTextBox, UIRichTextBox MacrocodeRichTextBox, UIComboboxEx macrosTxtList,
+            UIComboboxEx EventList, UIButton button, PLCBitselectRealize pLCBitselect)
+        {
+            macrosTxtList.KeyPress += ((sender, e) =>
               {
-                  new MacroinstructionForm(this.macroinstructionInterface).ShowDialog();
+                  e.Handled = true;
+              });
+            EventList.KeyPress+=((sender, e) =>
+            {
+                e.Handled= true;
+            });
+            macroinstructionClasses.Clear();
+            macrosTxtList.Items.Clear();
+            macroContent = new MacroContent(@"C:\");
+            string[] filenames = Directory.GetFiles(@"C:\PLCMacroList", "*.txt", SearchOption.AllDirectories);
+            //遍历文件夹下面的.txt文本
+            foreach (string filename in filenames)
+            {
+                macroContent.Textaddress = @filename;
+                if (!File.Exists(macroContent.Textaddress)) continue;
+                //读取宏指令内容 
+                var Content = await macroContent.TextRead(macroContent.Textaddress);
+                if (Content == null) continue;
+                //反序列化
+                foreach (var ix in Content)
+                {
+                    var ContentOop = new JavaScriptSerializer().Deserialize<MacroinstructionClass>(ix);
+                    if (ContentOop != null)
+                    {
+                        //if (ContentOop.Compilestate)
+                            macroinstructionClasses.Add(ContentOop);
+                    }
+                }
+            }
+            //-----------加载选项------------
+            macroinstructionClasses.ForEach(s => { macrosTxtList.Items.Add(s.Name + s.MacroID); });
+            //-----------加载可绑定事件------------------
+            EventList.Items.Add("不使用");
+            new EventCreateClass().EventName(new Control()).ForEach(s => { EventList.Items.Add(s.Name); });
+            EventList.SelectedIndex = 0;
+            //-----------加载下拉选项改变内容-----------------
+            macrosTxtList.SelectedIndexChanged += ((send, e) =>
+              {
+                  if (macrosTxtList.SelectedIndex > -1)
+                  {
+                      NumberingTextBox.Text = macroinstructionClasses[macrosTxtList.SelectedIndex].MacroID.ToString();
+                      NameTextBox.Text = macroinstructionClasses[macrosTxtList.SelectedIndex].Name;
+                      MacrocodeRichTextBox.Text = macroinstructionClasses[macrosTxtList.SelectedIndex].Macrocode;
+                  }
+              });
+            //-----------恢复之前选项------------------------
+            EventList.Text = pLCBitselect.MacroEvent;
+            macrosTxtList.Text = pLCBitselect.MacroName + pLCBitselect.macroID;
+            if (macroinstructionClasses.Where(p => p.MacroID == pLCBitselect.macroID).FirstOrDefault() != null)
+            {
+                var macro = macroinstructionClasses.Where(p => p.MacroID == pLCBitselect.macroID).First();
+                NumberingTextBox.Text = macro.MacroID.ToString();
+                NameTextBox.Text = macro.Name;
+                MacrocodeRichTextBox.Text = macro.Macrocode;
+                macrosTxtList.Text = macro.Name + macro.MacroID.ToString();
+            }
+            else
+            {
+                NumberingTextBox.Text = "Null";
+                NameTextBox.Text = "Null";
+                MacrocodeRichTextBox.Text = "Null";
+                macrosTxtList.Text= "Null";
+            }
+            NumberingTextBox.Text = pLCBitselect.macroID.ToString();
+            NameTextBox.Text = pLCBitselect.MacroName;
+            MacrocodeRichTextBox.Text = pLCBitselect.Macrocode;
+            //macrosTxtList.Text = pLCBitselect.MacroName + pLCBitselect.macroID.ToString();
+            //----------进行保存操作--------------------------
+            button.Click += ((send, e) =>
+              {
+                  if (macroinstructionClasses.Where(p => p.MacroID == Convert.ToInt16(NumberingTextBox.Text)).FirstOrDefault() != null)
+                  {
+                      var Data = macroinstructionClasses.Where(p => p.MacroID == Convert.ToInt16(NumberingTextBox.Text)).First();
+                      pLCBitselect.macroID = Data.MacroID;
+                      pLCBitselect.MacroName = Data.Name;
+                      pLCBitselect.Macrocode = Data.Macrocode;
+                      pLCBitselect.Compilestate = Data.Compilestate;
+                  }
+                  pLCBitselect.MacroEvent = EventList.Text;
               });
         }
 

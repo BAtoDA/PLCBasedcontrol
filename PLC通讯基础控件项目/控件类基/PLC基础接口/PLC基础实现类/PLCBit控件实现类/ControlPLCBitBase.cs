@@ -22,6 +22,9 @@ using PLC通讯库.通讯枚举;
 using PLC通讯库.通讯基础接口;
 using PLC通讯基础控件项目.基础控件.底层PLC状态监控控件;
 using Sunny.UI;
+using System.Threading.Tasks;
+using System.Reflection;
+using CSScriptLib;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类
 {
@@ -83,6 +86,23 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             }
             //---------安全操作模式----------
             PLCsafetypattern = pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? Getsafetypattern(pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern) : Safetypattern.Nooperation;
+            //---------宏指令处理----------
+            if (pLCBitClassBase.pLCBitselectRealize.MacroEvent != "不使用")
+            {
+                var ContrEvent = new EventCreateClass();
+                ContrEvent.GainHandler(this.PlcControl, pLCBitClassBase.pLCBitselectRealize.MacroEvent ?? "Click");//注册控件事件
+                ContrEvent.ControlEvent += ( async(send,e) =>//控件触发后处理事件
+                  {
+                      if (@pLCBitClassBase.pLCBitselectRealize.Macrocode == null || @pLCBitClassBase.pLCBitselectRealize.Macrocode == "") return;
+                      await Task.Run(() =>
+                      {
+                          Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@pLCBitClassBase.pLCBitselectRealize.Macrocode);
+                          var Macroinstructiontype = compilemethod.GetType("css_root+DynamicClass+ScriptCCStatic");
+                          var MacroinstructionMethod = Macroinstructiontype.GetMethod("Main");
+                          MacroinstructionMethod.Invoke(null, new object[] { "1" });
+                      });
+                  });
+            }
         }
         /// <summary>
         /// 处理点击事件
