@@ -104,7 +104,8 @@ namespace PLC通讯基础控件项目.宏脚本
                     Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@Code);
                     var Macroinstructiontype = compilemethod.GetType("css_root+DynamicClass+ScriptCCStatic");
                     var MacroinstructionMethod = Macroinstructiontype.GetMethod("Main");
-                    MacroinstructionMethod.Invoke(null, new object[] { "1" });
+                    if (MacroinstructionMethod == null) throw new Exception("编译失败：不存在主方法（Main）;");
+                   // MacroinstructionMethod.Invoke(null, new object[] { "1" });
                 });
                 stopwatch.Stop();
                 this.uiLabel4.Text = stopwatch.Elapsed.TotalMilliseconds.ToString();

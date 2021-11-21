@@ -24,6 +24,7 @@ using PLC通讯库.通讯实现类;
 using System.Text.RegularExpressions;
 using PLC通讯库.通讯枚举;
 using System.Threading.Tasks;
+using CSScriptLib;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类
 {
@@ -175,6 +176,25 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 }
             });
             this.PlcControl.Text = "0";
+            //---------宏指令处理----------
+            if (pLCDClassBase.pLCDselectRealize.MacroEvent != "不使用")
+            {
+                var ContrEvent = new EventCreateClass();
+                ContrEvent.GainHandler(this.PlcControl, pLCDClassBase.pLCDselectRealize.MacroEvent ?? "Click");//注册控件事件
+                ContrEvent.ControlEvent += (async (send, e) =>//控件触发后处理事件
+                {
+                    if (@pLCDClassBase.pLCDselectRealize.Macrocode == null || @pLCDClassBase.pLCDselectRealize.Macrocode == "") return;
+                    await Task.Run(() =>
+                    {
+                        Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@pLCDClassBase.pLCDselectRealize.Macrocode);
+                        var Macroinstructiontype = compilemethod.GetType("css_root+DynamicClass+ScriptCCStatic");
+                        var MacroinstructionMethod = Macroinstructiontype.GetMethod("Main");
+                        Debug.WriteLine($"正在执行：{pLCDClassBase.pLCDselectRealize.MacroName}");
+                        MacroinstructionMethod.Invoke(null, new object[] { "1" });
+                        Debug.WriteLine($"执行完成：{pLCDClassBase.pLCDselectRealize.MacroName}");
+                    });
+                });
+            }
         }
         /// <summary>
         /// 处理鼠标点击事件

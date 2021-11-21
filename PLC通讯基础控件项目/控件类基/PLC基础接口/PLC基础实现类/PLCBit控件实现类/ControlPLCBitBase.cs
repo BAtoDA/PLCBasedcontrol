@@ -99,7 +99,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                           Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@pLCBitClassBase.pLCBitselectRealize.Macrocode);
                           var Macroinstructiontype = compilemethod.GetType("css_root+DynamicClass+ScriptCCStatic");
                           var MacroinstructionMethod = Macroinstructiontype.GetMethod("Main");
+                          Debug.WriteLine($"正在执行：{pLCBitClassBase.pLCBitselectRealize.MacroName}");
                           MacroinstructionMethod.Invoke(null, new object[] { "1" });
+                          Debug.WriteLine($"执行完成：{pLCBitClassBase.pLCBitselectRealize.MacroName}");
                       });
                   });
             }

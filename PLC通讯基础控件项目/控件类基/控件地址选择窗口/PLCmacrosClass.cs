@@ -35,7 +35,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         /// </summary>
         /// <param name="macroinstructionInterfac"></param>
         public PLCmacrosClass(UITextBox NumberingTextBox, UITextBox NameTextBox, UIRichTextBox MacrocodeRichTextBox, 
-            UIComboboxEx macrosTxtList, PLCBitselectRealize pLCBitselect)
+            UIComboboxEx macrosTxtList, dynamic pLCBitselect)
         {
             //-------------------加载参数-----------------------------
             NumberingTextBox.Text = pLCBitselect.macroID.ToString();
@@ -74,7 +74,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
         /// <param name="macrosTxtList"></param>
         /// <returns></returns>
         public async Task MacroLoad(UITextBox NumberingTextBox, UITextBox NameTextBox, UIRichTextBox MacrocodeRichTextBox, UIComboboxEx macrosTxtList,
-            UIComboboxEx EventList, UIButton button, PLCBitselectRealize pLCBitselect)
+            UIComboboxEx EventList, UIButton button, dynamic pLCBitselect)
         {
             macrosTxtList.KeyPress += ((sender, e) =>
               {

@@ -73,5 +73,50 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public string TextContent_1 { get; set; }
         public Timer PLCTimer { get; set; }
         #endregion
+        #region 宏脚本实现
+        /// <summary>
+        /// 宏指令程序ID
+        /// </summary>
+        public int macroID { get; set; } = 1;
+        /// <summary>
+        /// 宏指令编译状态
+        /// </summary>
+        public bool Compilestate { get; set; } = false;
+        /// <summary>
+        /// 宏指令名称
+        /// </summary>
+        public string MacroName { get; set; } = "MacroList";
+        /// <summary>
+        /// 宏指令绑定事件
+        /// </summary>
+        public string MacroEvent { get; set; } = "不使用";
+        /// <summary>
+        /// 宏指令代码
+        /// </summary>
+        public string Macrocode { get; set; } = "using CSScriptLib; \r\n" +
+            "using Microsoft.CSharp;using System; \r\n" +
+            "using System.CodeDom.Compiler; \r\n" +
+            "using System.Collections.Generic; \r\n" +
+            "using System.ComponentModel; \r\n" +
+            "using System.Data; \r\n" +
+            "using System.Drawing; \r\n" +
+            "using System.IO; \r\n" +
+            "using System.Linq; \r\n" +
+            "using System.Net.Sockets; \r\n" +
+            "using System.Reflection; \r\n" +
+            "using System.Text; \r\n" +
+            "using System.Threading.Tasks; \r\n" +
+            "using System.Windows.Forms; \r\n" +
+            "using System.Net; \r\n" +
+            "using System.Threading; \r\n" +
+            "public static class ScriptCCStatic \r\n" +
+            "{ \r\n" +
+                  "//主方法不可更改和删除否则编译报错 \r\n" +
+              "   public static void Main(string greeting) \r\n" +
+            "      { \r\n " +
+                     "//编写代码行： \r\n" +
+            "      } \r\n" +
+            "} \r\n";
+        #endregion
     }
 }

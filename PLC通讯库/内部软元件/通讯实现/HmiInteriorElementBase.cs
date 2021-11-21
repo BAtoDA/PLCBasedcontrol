@@ -21,22 +21,22 @@ namespace PLC通讯库.内部软元件.通讯实现
         /// 内部软元件Bit位数组
         /// 不掉电保持
         /// </summary>
-        private static volatile bool[] HmiLB = new bool[1000];
+        public static volatile bool[] HmiLB = new bool[1000];
         /// <summary>
         /// 内部软元件寄存器数组
         /// 不掉电保持
         /// </summary>
-        private static volatile object[] HmiLW = new object[1000];
+        public static volatile object[] HmiLW = new object[1000];
         /// <summary>
         /// 内部软元件Bit位数组
         /// 掉电保持
         /// </summary>
-        private static volatile bool[] HmiRB = new bool[500];
+        public static volatile bool[] HmiRB = new bool[500];
         /// <summary>
         /// 内部软元件寄存器数组
         /// 掉电保持
         /// </summary>
-        private static volatile object[] HmiRW = new object[500];
+        public static volatile object[] HmiRW = new object[500];
 
         public string IpAddress { get; set; } = "127.0.0.0";
         public int Port { get; set; } = 2000;
