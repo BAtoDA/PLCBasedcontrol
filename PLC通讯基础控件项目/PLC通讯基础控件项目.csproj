@@ -10,11 +10,12 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>BAtoDA</Authors>
     <Product />
-    <Description>该包主要用于工业自动化中 采用内置封装控件方便用户进行设计软件不需要过多的理会PLC等设备的需要 让开发人员注重于图形界面以及过程逻辑控制。</Description>
-    <AssemblyVersion>1.0.0.28</AssemblyVersion>
-    <FileVersion>1.0.0.28</FileVersion>
+    <Description>该包主要用于工业自动化中 采用内置封装控件方便用户进行设计软件不需要过多的理会PLC等设备的需要 让开发人员注重于图形界面以及过程逻辑控制。
+支持宏脚本以及宏任务运行 目前支持西门子的S7协议 三菱的3E帧 MOdbus TCP 发那科协议 教学视频请移步Github </Description>
+    <AssemblyVersion>1.0.0.29</AssemblyVersion>
+    <FileVersion>1.0.0.29</FileVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>1.0.28</Version>
+    <Version>1.0.29</Version>
     <PackageReleaseNotes>新增宏指令脚本以及绑定Bit位控件支持脚本触发  </PackageReleaseNotes>
     <NeutralLanguage></NeutralLanguage>
     <PackageProjectUrl>https://github.com/BAtoDA/PLCBasedcontrol</PackageProjectUrl>

@@ -42,6 +42,12 @@
             this.daMacroControl1 = new PLC通讯基础控件项目.基础控件.宏指令控件.DAMacroControl(this.components);
             this.uiComboBox1 = new Sunny.UI.UIComboBox();
             this.uiButton1 = new Sunny.UI.UIButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.uiRichTextBox1 = new Sunny.UI.UIRichTextBox();
+            this.uiLineChart1 = new Sunny.UI.UILineChart();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // plcControlsPreferences1
@@ -259,7 +265,7 @@
             // 
             // daMacroControl1
             // 
-            this.daMacroControl1.Location = new System.Drawing.Point(139, 146);
+            this.daMacroControl1.Location = new System.Drawing.Point(305, 305);
             this.daMacroControl1.Name = "daMacroControl1";
             this.daMacroControl1.PLC_Enable = true;
             this.daMacroControl1.Size = new System.Drawing.Size(75, 23);
@@ -292,11 +298,65 @@
             this.uiButton1.TabIndex = 5;
             this.uiButton1.Text = "uiButton1";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
+            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(192, 22);
+            this.toolStripMenuItem2.Text = "toolStripMenuItem2";
+            // 
+            // uiRichTextBox1
+            // 
+            this.uiRichTextBox1.AutoWordSelection = true;
+            this.uiRichTextBox1.FillColor = System.Drawing.Color.White;
+            this.uiRichTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiRichTextBox1.Location = new System.Drawing.Point(80, 135);
+            this.uiRichTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.uiRichTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiRichTextBox1.Name = "uiRichTextBox1";
+            this.uiRichTextBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.uiRichTextBox1.Size = new System.Drawing.Size(270, 180);
+            this.uiRichTextBox1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiRichTextBox1.TabIndex = 6;
+            this.uiRichTextBox1.Text = "ifd \nelse1";
+            this.uiRichTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.uiRichTextBox1.WordWrap = true;
+            this.uiRichTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uiRichTextBox1_KeyPress);
+            this.uiRichTextBox1.TextChanged += new System.EventHandler(this.uiRichTextBox1_TextChanged);
+            // 
+            // uiLineChart1
+            // 
+            this.uiLineChart1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.uiLineChart1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.uiLineChart1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
+            this.uiLineChart1.Location = new System.Drawing.Point(120, 34);
+            this.uiLineChart1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiLineChart1.Name = "uiLineChart1";
+            this.uiLineChart1.Size = new System.Drawing.Size(543, 370);
+            this.uiLineChart1.TabIndex = 7;
+            this.uiLineChart1.Text = "uiLineChart1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.uiLineChart1);
+            this.Controls.Add(this.uiRichTextBox1);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.uiComboBox1);
             this.Controls.Add(this.daMacroControl1);
@@ -305,6 +365,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -322,5 +383,10 @@
         private PLC通讯基础控件项目.基础控件.宏指令控件.DAMacroControl daMacroControl1;
         private Sunny.UI.UIComboBox uiComboBox1;
         private Sunny.UI.UIButton uiButton1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private Sunny.UI.UIRichTextBox uiRichTextBox1;
+        private Sunny.UI.UILineChart uiLineChart1;
     }
 }

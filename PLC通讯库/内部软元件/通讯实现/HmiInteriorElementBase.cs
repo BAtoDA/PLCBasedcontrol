@@ -51,7 +51,7 @@ namespace PLC通讯库.内部软元件.通讯实现
         public HmiInteriorElementBase(string ip, int Port)
         {
             IpAddress = ip;
-            //------------设置语音播报对象池大小--------------
+            //------------设置对象池大小--------------
             Func<Tuple<InteriorElement>> Voice = new Func<Tuple<InteriorElement>>(() =>
             {
                 return new Tuple<InteriorElement>(new InteriorElement(@"C:\", "LB"));
@@ -132,13 +132,6 @@ namespace PLC通讯库.内部软元件.通讯实现
                     if (Convert.ToInt32(Getaddress(address)) < HmiRB.Length)
                     {
                         Boolarray[0] = HmiRB[Convert.ToInt32(Getaddress(address))];
-                        //var Data = TextRead(address);
-                        //if (Data.Result != null&& Data.Result!="")
-                        //{
-                        //    HmiRB = new JavaScriptSerializer().Deserialize<bool[]>(Data.Result);
-                        //    Boolarray[0] = HmiRB[Convert.ToInt32(Getaddress(address))];
-                        //}
-
                     }
                     break;
                 default:
@@ -234,13 +227,6 @@ namespace PLC通讯库.内部软元件.通讯实现
                     if (Convert.ToInt32(Getaddress(address)) < HmiRW.Length)
                     {
                         return new OperateResult<short>() { Content = Convert.ToInt16(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //var Data = TextRead(address);
-                        //if (Data.Result != null)
-                        //{
-                        //    JavaScriptSerializer javaScript = new JavaScriptSerializer();
-                        //    HmiRW = javaScript.Deserialize<object[]>(Data.Result);
-                        //    return new OperateResult<short>() { Content = Convert.ToInt16(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //}
                     }
                     break;
                 default:
@@ -265,13 +251,6 @@ namespace PLC通讯库.内部软元件.通讯实现
                     if (Convert.ToInt32(Getaddress(address)) < HmiRW.Length)
                     {
                         return new OperateResult<int>() { Content = Convert.ToInt16(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //var Data = TextRead(address);
-                        //if (Data.Result != null)
-                        //{
-                        //    JavaScriptSerializer javaScript = new JavaScriptSerializer();
-                        //    HmiRW = javaScript.Deserialize<object[]>(Data.Result);
-                        //    return new OperateResult<int>() { Content = Convert.ToInt16(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //}
                     }
                     break;
                 default:
@@ -296,13 +275,6 @@ namespace PLC通讯库.内部软元件.通讯实现
                     if (Convert.ToInt32(Getaddress(address)) < HmiRW.Length)
                     {
                         return new OperateResult<ushort>() { Content = Convert.ToUInt16(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //var Data = TextRead(address);
-                        //if (Data.Result != null)
-                        //{
-                        //    JavaScriptSerializer javaScript = new JavaScriptSerializer();
-                        //    HmiRW = javaScript.Deserialize<object[]>(Data.Result);
-                        //    return new OperateResult<ushort>() { Content = Convert.ToUInt16(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //}
                     }
                     break;
                 default:
@@ -327,13 +299,6 @@ namespace PLC通讯库.内部软元件.通讯实现
                     if (Convert.ToInt32(Getaddress(address)) < HmiRW.Length)
                     {
                         return new OperateResult<uint>() { Content = Convert.ToUInt32(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //var Data = TextRead(address);
-                        //if (Data.Result != null)
-                        //{
-                        //    JavaScriptSerializer javaScript = new JavaScriptSerializer();
-                        //    HmiRW = javaScript.Deserialize<object[]>(Data.Result);
-                        //    return new OperateResult<uint>() { Content = Convert.ToUInt32(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //}
                     }
                     break;
                 default:
@@ -359,13 +324,6 @@ namespace PLC通讯库.内部软元件.通讯实现
                     if (Convert.ToInt32(Getaddress(address)) < HmiRW.Length)
                     {
                         return new OperateResult<float>() { Content = Convert.ToSingle(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //var Data = TextRead(address);
-                        //if (Data.Result != null)
-                        //{
-                        //    JavaScriptSerializer javaScript = new JavaScriptSerializer();
-                        //    HmiRW = javaScript.Deserialize<object[]>(Data.Result);
-                        //    return new OperateResult<float>() { Content = Convert.ToSingle(HmiRW[Convert.ToInt32(Getaddress(address))]), ErrorCode = 0, IsSuccess = true, Message = $"Null" };
-                        //}
                     }
                     break;
                 default:
