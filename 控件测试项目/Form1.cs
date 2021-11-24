@@ -89,5 +89,11 @@ namespace 控件测试项目
                 w1e = true;
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            new 控件测试项目.dddddd.Form1().Show();
+            this.Hide();
+        }
     }
 }

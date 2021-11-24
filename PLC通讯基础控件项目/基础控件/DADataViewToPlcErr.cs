@@ -37,7 +37,7 @@ namespace PLC通讯基础控件项目.基础控件
                 //处理PLC通讯部分
                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false || DesignMode) return;//用户不开启PLC功能
                 {
-                    new PLCEvent_messageReadlize(this);
+                    _ = new PLCEvent_messageReadlize(this);
                 }
                 //刷新表格列
                 DataLoad();
@@ -53,33 +53,41 @@ namespace PLC通讯基础控件项目.基础控件
         {
             this.Columns.Clear();
             DataGridViewTextBoxColumn[] dataGridView = new DataGridViewTextBoxColumn[4];
-            dataGridView[0] = new DataGridViewTextBoxColumn();
-            dataGridView[0].HeaderText = "发生时间";
-            dataGridView[0].Name = "发生时间";
-            dataGridView[0].ReadOnly = true;
-            dataGridView[0].Visible = true;
-            dataGridView[0].Width = TableSize[0];
+            dataGridView[0] = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "发生时间",
+                Name = "发生时间",
+                ReadOnly = true,
+                Visible = true,
+                Width = TableSize[0]
+            };
 
-            dataGridView[1] = new DataGridViewTextBoxColumn();
-            dataGridView[1].HeaderText = "报警设备";
-            dataGridView[1].Name = "报警设备";
-            dataGridView[1].ReadOnly = true;
-            dataGridView[1].Visible = true;
-            dataGridView[1].Width = TableSize[1];
+            dataGridView[1] = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "报警设备",
+                Name = "报警设备",
+                ReadOnly = true,
+                Visible = true,
+                Width = TableSize[1]
+            };
 
-            dataGridView[2] = new DataGridViewTextBoxColumn();
-            dataGridView[2].HeaderText = "报警地址";
-            dataGridView[2].Name = "报警地址";
-            dataGridView[2].ReadOnly = true;
-            dataGridView[2].Visible = true;
-            dataGridView[2].Width = TableSize[2];
+            dataGridView[2] = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "报警地址",
+                Name = "报警地址",
+                ReadOnly = true,
+                Visible = true,
+                Width = TableSize[2]
+            };
 
-            dataGridView[3] = new DataGridViewTextBoxColumn();
-            dataGridView[3].HeaderText = "报警内容";
-            dataGridView[3].Name = "报警内容";
-            dataGridView[3].ReadOnly = true;
-            dataGridView[3].Visible = true;
-            dataGridView[3].Width = TableSize[3];
+            dataGridView[3] = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "报警内容",
+                Name = "报警内容",
+                ReadOnly = true,
+                Visible = true,
+                Width = TableSize[3]
+            };
 
             this.Columns.AddRange(dataGridView);
         }
@@ -182,9 +190,11 @@ namespace PLC通讯基础控件项目.基础控件
                 {
                     this.BeginInvoke((MethodInvoker)delegate
                     {
-                        FolderBrowserDialog dialog = new FolderBrowserDialog();
-                        dialog.Description = "请选择文件路径";
-                        dialog.SelectedPath = System.IO.Directory.GetCurrentDirectory();
+                        FolderBrowserDialog dialog = new FolderBrowserDialog
+                        {
+                            Description = "请选择文件路径",
+                            SelectedPath = System.IO.Directory.GetCurrentDirectory()
+                        };
                         if (dialog.ShowDialog() == DialogResult.OK)
                         {
                             saveAddress = dialog.SelectedPath;

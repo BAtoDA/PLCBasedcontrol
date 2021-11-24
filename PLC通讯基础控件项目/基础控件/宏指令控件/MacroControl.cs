@@ -172,7 +172,7 @@ namespace PLC通讯基础控件项目.基础控件.宏指令控件
                         }
                     }
 
-                    macroinstructionClasses.ForEach(async s =>
+                    macroinstructionClasses.ForEach( s =>
                     {
                         var state = s.Compilestate ? "编译成功" : "未编译/编译失败";
                         //判断是否程序已经编译  已经启动运行选择||循环运行选择是否选中

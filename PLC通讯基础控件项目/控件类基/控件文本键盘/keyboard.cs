@@ -16,7 +16,9 @@ namespace PLC通讯基础控件项目.控件类基.控件文本键盘
 {
     public sealed partial class keyboard :Sunny.UI.UIForm
     {
+#pragma warning disable CS0108 // 成员隐藏继承的成员；缺少关键字 new
         string Name="";//用户输入的文本
+#pragma warning restore CS0108 // 成员隐藏继承的成员；缺少关键字 new
         PLCDBase textBox;//获取该控件的参数
         public string O_Text { get => this.skinTextBox3.Text; }//文本
         public keyboard(string Name, PLCDBase textBox) 

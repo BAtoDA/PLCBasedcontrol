@@ -39,13 +39,5 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                 EventMessage.Invoke(Value, new EventArgs());
             Debug.WriteLine(Value);
         }
-        /// <summary>
-        /// 输出完毕进行回调
-        /// </summary>
-        /// <param name="async"></param>
-        private static void Call_back(IAsyncResult async)
-        {
-            
-        }
     }
 }

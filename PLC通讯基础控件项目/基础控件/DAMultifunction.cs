@@ -38,7 +38,7 @@ namespace PLC通讯基础控件项目.基础控件
                 //处理PLC通讯部分
                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false || DesignMode) return;//用户不开启PLC功能
                 {
-                    new ControlPLCMultifunctionBase(this);
+                    _ = new ControlPLCMultifunctionBase(this);
                 }
             });
         }
@@ -192,8 +192,10 @@ namespace PLC通讯基础控件项目.基础控件
         {
             this.Modification -= new EventHandler(Modifications_Eeve);
 
-            PLCMultifunctionBase pLCMultifunctionBase = new DAMultifunction();
-            pLCMultifunctionBase.pLCMultifunctions = pLCMultifunctions;
+            PLCMultifunctionBase pLCMultifunctionBase = new DAMultifunction
+            {
+                pLCMultifunctions = pLCMultifunctions
+            };
             //----------------复制该对象的属性---------------
             var Copyz = pLCBitselectRealizeq.GetType().GetProperties();
 
@@ -235,8 +237,10 @@ namespace PLC通讯基础控件项目.基础控件
 
             this.BeginInvoke((MethodInvoker)delegate
             {
-                PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(pLCMultifunctionBase);
-                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                PLCMultifunctionForm pLCpropertyBit = new PLCMultifunctionForm(pLCMultifunctionBase)
+                {
+                    StartPosition = FormStartPosition.CenterParent
+                };
                 pLCpropertyBit.ShowDialog();
                 if (pLCpropertyBit.Save)
                 {

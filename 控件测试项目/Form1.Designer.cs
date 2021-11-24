@@ -46,9 +46,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.uiRichTextBox1 = new Sunny.UI.UIRichTextBox();
-            this.uiLineChart1 = new Sunny.UI.UILineChart();
             this.daUiTextBox1 = new PLC通讯基础控件项目.基础控件.DAUiTextBox();
             this.daButton1 = new PLC通讯基础控件项目.基础控件.DAButton();
+            this.daPlcFunction1 = new PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction();
+            this.button1 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -339,19 +340,6 @@
             this.uiRichTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uiRichTextBox1_KeyPress);
             this.uiRichTextBox1.TextChanged += new System.EventHandler(this.uiRichTextBox1_TextChanged);
             // 
-            // uiLineChart1
-            // 
-            this.uiLineChart1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.uiLineChart1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLineChart1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            this.uiLineChart1.Location = new System.Drawing.Point(433, -12);
-            this.uiLineChart1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiLineChart1.Name = "uiLineChart1";
-            this.uiLineChart1.Size = new System.Drawing.Size(543, 370);
-            this.uiLineChart1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLineChart1.TabIndex = 7;
-            this.uiLineChart1.Text = "uiLineChart1";
-            // 
             // daUiTextBox1
             // 
             this.daUiTextBox1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
@@ -441,6 +429,7 @@
             this.daButton1.BackColor = System.Drawing.Color.Silver;
             this.daButton1.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daButton1.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.daButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daButton1.ForeColor = System.Drawing.Color.White;
             this.daButton1.Location = new System.Drawing.Point(222, 353);
             this.daButton1.Name = "daButton1";
@@ -506,15 +495,42 @@
             this.daButton1.TextFont_1 = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.daButton1.UseVisualStyleBackColor = false;
             // 
+            // daPlcFunction1
+            // 
+            this.daPlcFunction1.APLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLCSet.Set1;
+            this.daPlcFunction1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.daPlcFunction1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.daPlcFunction1.FormClose = true;
+            this.daPlcFunction1.FormName = "TemplateForm";
+            this.daPlcFunction1.FormPath = "PLC通讯基础控件项目.模板与控制界面";
+            this.daPlcFunction1.Location = new System.Drawing.Point(442, 180);
+            this.daPlcFunction1.MinimumSize = new System.Drawing.Size(1, 1);
+            this.daPlcFunction1.Name = "daPlcFunction1";
+            this.daPlcFunction1.PLC_Enable = false;
+            this.daPlcFunction1.Size = new System.Drawing.Size(100, 35);
+            this.daPlcFunction1.TabIndex = 10;
+            this.daPlcFunction1.Text = "daPlcFunction1";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(519, 31);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(228, 114);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.daPlcFunction1);
             this.Controls.Add(this.daButton1);
             this.Controls.Add(this.daUiTextBox1);
-            this.Controls.Add(this.uiLineChart1);
             this.Controls.Add(this.uiRichTextBox1);
             this.Controls.Add(this.uiButton1);
             this.Controls.Add(this.uiComboBox1);
@@ -546,8 +562,9 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private Sunny.UI.UIRichTextBox uiRichTextBox1;
-        private Sunny.UI.UILineChart uiLineChart1;
         private PLC通讯基础控件项目.基础控件.DAUiTextBox daUiTextBox1;
         private PLC通讯基础控件项目.基础控件.DAButton daButton1;
+        private PLC通讯基础控件项目.基础控件.底层PLC状态监控控件.DAPlcFunction daPlcFunction1;
+        private System.Windows.Forms.Button button1;
     }
 }

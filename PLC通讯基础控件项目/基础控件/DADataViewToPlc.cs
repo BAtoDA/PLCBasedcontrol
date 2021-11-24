@@ -126,9 +126,10 @@ namespace PLC通讯基础控件项目.基础控件
             //}
             //----------------复制该对象的属性---------------
             var Copy = pLCDataViewselectRealize.GetType().GetProperties();
-            PLCDataViewClassBase PlcBitselectCopy = new DADataViewToPlc();
-
-            PlcBitselectCopy.pLCDataViewselectRealize = (PLCDataViewselectRealize)Activator.CreateInstance(pLCDataViewselectRealize.GetType());
+            PLCDataViewClassBase PlcBitselectCopy = new DADataViewToPlc
+            {
+                pLCDataViewselectRealize = (PLCDataViewselectRealize)Activator.CreateInstance(pLCDataViewselectRealize.GetType())
+            };
 
             for (int i = 0; i < Copy.Length; i++)
             {
@@ -136,8 +137,10 @@ namespace PLC通讯基础控件项目.基础控件
             }
             this.BeginInvoke((MethodInvoker)delegate
             {
-                PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(PlcBitselectCopy, this);
-                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(PlcBitselectCopy, this)
+                {
+                    StartPosition = FormStartPosition.CenterParent
+                };
                 pLCpropertyBit.ShowDialog();
                 if (pLCpropertyBit.Save)
                 {
@@ -156,19 +159,23 @@ namespace PLC通讯基础控件项目.基础控件
                     this.Columns.Clear();
                     for (int i = 0; i < this.pLCDataViewselectRealize.DataGridView_Name.Length; i++)
                     {
-                        DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
-                        textboxcell.HeaderText = this.pLCDataViewselectRealize.DataGridView_Name[i];
-                        textboxcell.ToolTipText = this.pLCDataViewselectRealize.DataGridView_Name[i];
-                        textboxcell.ReadOnly = true;
+                        DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn
+                        {
+                            HeaderText = this.pLCDataViewselectRealize.DataGridView_Name[i],
+                            ToolTipText = this.pLCDataViewselectRealize.DataGridView_Name[i],
+                            ReadOnly = true
+                        };
                         this.Columns.Add(textboxcell);
                     }
                     if (this.pLCDataViewselectRealize.DataGridViewPLC_Time)
                     {
-                    //用户开启了 时间显示
-                    DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn();
-                        textboxcell.HeaderText = "更新时间";
-                        textboxcell.ToolTipText = "更新时间";
-                        textboxcell.ReadOnly = true;
+                        //用户开启了 时间显示
+                        DataGridViewTextBoxColumn textboxcell = new DataGridViewTextBoxColumn
+                        {
+                            HeaderText = "更新时间",
+                            ToolTipText = "更新时间",
+                            ReadOnly = true
+                        };
                         this.Columns.Add(textboxcell);
                     }
                 });

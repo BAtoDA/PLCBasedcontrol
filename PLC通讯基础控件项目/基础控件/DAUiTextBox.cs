@@ -207,8 +207,10 @@ namespace PLC通讯基础控件项目.基础控件
             }
             this.BeginInvoke((MethodInvoker)delegate
             {
-                PLCpropertyD pLCpropertyBit = new PLCpropertyD(PlcBitselectCopy);
-                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                PLCpropertyD pLCpropertyBit = new PLCpropertyD(PlcBitselectCopy)
+                {
+                    StartPosition = FormStartPosition.CenterParent
+                };
 
                 pLCpropertyBit.ShowDialog();
                 if (pLCpropertyBit.Save)
@@ -1188,8 +1190,10 @@ namespace PLC通讯基础控件项目.基础控件
 
         private void CalcEditHeight()
         {
-            TextBox textBox = new TextBox();
-            textBox.Font = edit.Font;
+            TextBox textBox = new TextBox
+            {
+                Font = edit.Font
+            };
             MinHeight = textBox.PreferredHeight;
             textBox.BorderStyle = BorderStyle.None;
             MaxHeight = textBox.PreferredHeight * 2 + MinHeight - textBox.PreferredHeight;

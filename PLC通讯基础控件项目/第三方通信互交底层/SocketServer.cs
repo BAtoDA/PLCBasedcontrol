@@ -40,9 +40,11 @@ namespace PLC通讯基础控件项目.第三方通信互交底层
         }
         public SocketServer()
         {
-            this.IPEnd = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9500);
-            this.IPEnd.Address = IPAddress.Parse(GetPhysicsNetworkCardIP().Count > 0 ? GetPhysicsNetworkCardIP()[0] : "127.0.0.1");
-            this.IPEnd.Port = 9500;
+            this.IPEnd = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9500)
+            {
+                Address = IPAddress.Parse(GetPhysicsNetworkCardIP().Count > 0 ? GetPhysicsNetworkCardIP()[0] : "127.0.0.1"),
+                Port = 9500
+            };
         }
         /// <summary>
         /// 获得本机真实物理网卡IP

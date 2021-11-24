@@ -75,9 +75,10 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
                     FormShow.Show();
                 }
             }
-            
-            FormIndex:
 
+        FormIndex:
+            //判断用户是否关闭了 窗口切换成功后关断父级窗口
+            if (!FormClose) return;
             //关闭当前窗口
             //获取所有运行中的窗口
             Regex r = new Regex(this.formPath ?? "PLC通讯基础控件项目.模板与控制界面");
@@ -100,7 +101,6 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
             }
             foreach (Form i in Application.OpenForms)
             {
-                //if (r.IsMatch(i.GetType().FullName) && i == (Form)Oop)
                 if (i == (Form)Oop)
                 {
                     i.Close();
@@ -169,6 +169,14 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
         [Description("Form窗口路径"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string FormName { get; set; } = "TemplateForm";
+        /// <summary>
+        /// 是否关闭控件归属窗口
+        /// </summary>
+        [ToolboxItem(true)]
+        [Browsable (true)]
+        [Description("是否关闭控件归属窗口"),Category("PLC类型")]
+        [DesignerSerializationVisibility (DesignerSerializationVisibility.Visible)]
+        public bool FormClose { get; set; }=true;
         /// <summary>
         /// 修改参数界面窗口事件方法
         /// </summary>

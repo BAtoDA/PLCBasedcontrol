@@ -114,10 +114,12 @@ namespace PLC通讯基础控件项目.基础控件
             }
             this.BeginInvoke((MethodInvoker)delegate
             {
-                 PLCpropertyD pLCpropertyBit = new PLCpropertyD(PlcBitselectCopy);
-                 pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                PLCpropertyD pLCpropertyBit = new PLCpropertyD(PlcBitselectCopy)
+                {
+                    StartPosition = FormStartPosition.CenterParent
+                };
 
-                 pLCpropertyBit.ShowDialog();
+                pLCpropertyBit.ShowDialog();
                 if (pLCpropertyBit.Save)
                 {
                     //-------------放回对象属性----------------

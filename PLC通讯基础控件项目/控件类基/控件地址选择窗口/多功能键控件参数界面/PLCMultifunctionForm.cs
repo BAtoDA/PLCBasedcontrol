@@ -225,7 +225,9 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.多�
         /// </summary>
         /// <param name="send"></param>
         /// <param name="e"></param>
+#pragma warning disable CS0108 // 成员隐藏继承的成员；缺少关键字 new
         public virtual void KeyPress(object send, KeyPressEventArgs e) => e.Handled = true;
+#pragma warning restore CS0108 // 成员隐藏继承的成员；缺少关键字 new
 
         /// <summary>
         /// 用户点击了保存

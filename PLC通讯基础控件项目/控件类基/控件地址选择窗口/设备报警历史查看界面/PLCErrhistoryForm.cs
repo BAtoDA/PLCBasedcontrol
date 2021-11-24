@@ -348,28 +348,36 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         }
         private void Histogram(string[] Days, List<Tuple<int, string>> Histogramdata)
         {
-            UIBarOption option = new UIBarOption();
-            option.Title = new UITitle();
+            UIBarOption option = new UIBarOption
+            {
+                Title = new UITitle()
+            };
             option.Title.Text = "7天警告分析";
             option.Title.SubText = "";
 
             //设置Legend
-            option.Legend = new UILegend();
-            option.Legend.Orient = UIOrient.Horizontal;
-            option.Legend.Top = UITopAlignment.Top;
-            option.Legend.Left = UILeftAlignment.Left;
+            option.Legend = new UILegend
+            {
+                Orient = UIOrient.Horizontal,
+                Top = UITopAlignment.Top,
+                Left = UILeftAlignment.Left
+            };
             option.Legend.AddData("警告总时长");
             option.Legend.AddData("发生次数");
 
-            var series = new UIBarSeries();
-            series.Name = "Bar1";
+            var series = new UIBarSeries
+            {
+                Name = "Bar1"
+            };
             //填充当前报警次数
             foreach (var i in Histogramdata)
                 series.AddData(i.Item1);
             option.Series.Add(series);
 
-            series = new UIBarSeries();
-            series.Name = "Bar2";
+            series = new UIBarSeries
+            {
+                Name = "Bar2"
+            };
             //填充当前报警时长
             foreach (var i in Histogramdata)
                 series.AddData(DateTime.Parse(i.Item2).Hour == 0 ? DateTime.Parse(i.Item2).Minute : DateTime.Parse(i.Item2).Hour);

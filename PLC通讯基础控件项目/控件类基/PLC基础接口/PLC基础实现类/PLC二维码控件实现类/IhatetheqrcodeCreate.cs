@@ -42,8 +42,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public Bitmap Generate1(string text, int width, int height)
         {
-            BarcodeWriter writer = new BarcodeWriter();
-            writer.Format = BarcodeFormat.QR_CODE;
+            BarcodeWriter writer = new BarcodeWriter
+            {
+                Format = BarcodeFormat.QR_CODE
+            };
             QrCodeEncodingOptions options = new QrCodeEncodingOptions()
             {
                 DisableECI = true,//设置内容编码
@@ -67,11 +69,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <returns></returns>
         public Bitmap Generate2(string text, int width, int height)
         {
-            BarcodeWriter writer = new BarcodeWriter();
-            //使用ITF 格式，不能被现在常用的支付宝、微信扫出来
-            //如果想生成可识别的可以使用 CODE_128 格式
-            //writer.Format = BarcodeFormat.ITF;
-            writer.Format = BarcodeFormat.CODE_39;
+            BarcodeWriter writer = new BarcodeWriter
+            {
+                //使用ITF 格式，不能被现在常用的支付宝、微信扫出来
+                //如果想生成可识别的可以使用 CODE_128 格式
+                //writer.Format = BarcodeFormat.ITF;
+                Format = BarcodeFormat.CODE_39
+            };
             EncodingOptions options = new EncodingOptions()
             {
                 Width = width,
@@ -96,9 +100,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             Bitmap logo = new Bitmap(logoPath);
             //构造二维码写码器
             MultiFormatWriter writer = new MultiFormatWriter();
-            Dictionary<EncodeHintType, object> hint = new Dictionary<EncodeHintType, object>();
-            hint.Add(EncodeHintType.CHARACTER_SET, "UTF-8");
-            hint.Add(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+            Dictionary<EncodeHintType, object> hint = new Dictionary<EncodeHintType, object>
+            {
+                { EncodeHintType.CHARACTER_SET, "UTF-8" },
+                { EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H }
+            };
             //hint.Add(EncodeHintType.MARGIN, 2);//旧版本不起作用，需要手动去除白边
 
             //生成二维码 

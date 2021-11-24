@@ -247,8 +247,10 @@ namespace PLC通讯基础控件项目.基础控件
             }
             this.BeginInvoke((MethodInvoker)delegate
             {
-                PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this);
-                pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+                PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this)
+                {
+                    StartPosition = FormStartPosition.CenterParent
+                };
                 pLCpropertyBit.ShowDialog();
                 if (!pLCpropertyBit.Save)
                 {
@@ -269,13 +271,17 @@ namespace PLC通讯基础控件项目.基础控件
         /// </summary>
         private void uiRefresh()
         {
-            UIBarOption option = new UIBarOption();
-            option.Title = new UITitle();
-            option.Title.Text =this.TitleText;
-            option.Title.SubText = this.TitleSubText;
+            UIBarOption option = new UIBarOption
+            {
+                Title = new UITitle
+                {
+                    Text = this.TitleText,
+                    SubText = this.TitleSubText
+                },
 
-            //设置Legend
-            option.Legend = new UILegend();
+                //设置Legend
+                Legend = new UILegend()
+            };
             option.Legend.Orient = UIOrient.Horizontal;
             option.Legend.Top = UITopAlignment.Top;
             option.Legend.Left = UILeftAlignment.Left;
@@ -283,8 +289,10 @@ namespace PLC通讯基础控件项目.基础控件
 
             option.Legend.AddData("Bar1");
 
-            var series = new UIBarSeries();
-            series.Name = "Bar1";
+            var series = new UIBarSeries
+            {
+                Name = "Bar1"
+            };
 
             for (int i = 0; i < this.pLCDataViewselectRealize.DataGridView_Name.Length; i++)
             {

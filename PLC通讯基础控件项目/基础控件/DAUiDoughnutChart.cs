@@ -137,8 +137,10 @@ namespace PLC通讯基础控件项目.基础控件
             {
                 CopyTo[i] = Copy[i];
             }
-            PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this);
-            pLCpropertyBit.StartPosition = FormStartPosition.CenterParent;
+            PLCDataViewForm pLCpropertyBit = new PLCDataViewForm(this, this)
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
             pLCpropertyBit.ShowDialog();
             if (!pLCpropertyBit.Save)
             {

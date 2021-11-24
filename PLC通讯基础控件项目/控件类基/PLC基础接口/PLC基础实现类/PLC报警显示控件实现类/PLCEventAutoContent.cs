@@ -23,7 +23,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 异步读取当天报警历史
         /// </summary>
         /// <returns></returns>
+#pragma warning disable CS0114 // 成员隐藏继承的成员；缺少关键字 override
         public async Task<string[]> TextRead()
+#pragma warning restore CS0114 // 成员隐藏继承的成员；缺少关键字 override
         {
             try
             {
