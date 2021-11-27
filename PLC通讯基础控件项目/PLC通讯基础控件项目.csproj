@@ -37,7 +37,6 @@
     </PackageReference>
     <PackageReference Include="Nancy" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="PLC通讯库" Version="1.0.4" />
     <PackageReference Include="SunnyUI" Version="3.0.6" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.115" />
     <PackageReference Include="System.Speech" Version="5.0.0" />
@@ -48,6 +47,10 @@
   <ItemGroup>
     <Folder Include="宏脚本\脚本函数类\" />
     <Folder Include="控件类基\控件文本键盘\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PLC通讯库\PLC通讯库.csproj" />
   </ItemGroup>
 
   <ItemGroup>
