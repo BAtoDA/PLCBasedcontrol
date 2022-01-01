@@ -44,6 +44,7 @@ namespace PLC通讯库.内部软元件.通讯实现
         public int ConnectTimeOut { get; set; } = 1000;
         public int ReceiveTimeOut { get; set; } = 1000;
         public bool PLC_ready { get; set; }
+        object obj=new object();
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -57,7 +58,7 @@ namespace PLC通讯库.内部软元件.通讯实现
                 return new Tuple<InteriorElement>(new InteriorElement(@"C:\", "LB"));
             });
             InteriorObjectPool<Tuple<InteriorElement>> InteriorObjectPool = new InteriorObjectPool<Tuple<InteriorElement>>(
-     10, Voice);
+     1, Voice);
             System.Threading.Timer InformationTimer = new System.Threading.Timer(new TimerCallback((s) =>
             {
                 Change(s);
@@ -65,7 +66,7 @@ namespace PLC通讯库.内部软元件.通讯实现
             InformationTimer.Change(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(3));
             void Change(object a)
             {
-                lock (this)
+                lock (obj)
                 {
                     //Debug.WriteLine(DateTime.Now.ToString("F"));
                     var Data = TextRead("RB0");
@@ -160,7 +161,7 @@ namespace PLC通讯库.内部软元件.通讯实现
                 return null;
             }
         }
-        private async Task TextWrite(string address,string Content)
+        private async Task TextWrite(string address, string Content)
         {
             //向对象池申请 
             var Poss = InteriorObjectPool<Tuple<InteriorElement>>.GetObject();
@@ -174,6 +175,7 @@ namespace PLC通讯库.内部软元件.通讯实现
                 Poss.Item1.TextCreate();
             }
             InteriorObjectPool<Tuple<InteriorElement>>.PutObject(Poss);
+
         }
         /// <summary>
         /// 写入Hmi内部对应线圈

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PLC通讯基础控件项目.控件类基.PLC基础接口;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口.配方控件参数设置界面;
 
 namespace 控件测试项目
 {
@@ -22,7 +23,13 @@ namespace 控件测试项目
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           // new PLCpropertyBit( new PLCBitselectRealize()).Show();
+            // new PLCRecipeForm(this.daRecipe1.PLCRecipeClass).Show();
+
+            
+
+
+
+            // new PLCpropertyBit( new PLCBitselectRealize()).Show();
             var dw = new EventCreateClass();
 
             foreach(var i in dw.EventName(this.uiButton1))
@@ -92,8 +99,13 @@ namespace 控件测试项目
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new 控件测试项目.dddddd.Form1().Show();
-            this.Hide();
+            daUiTextBox1.Text = "856";
+            daUiTextBox1.WrietCommand = true;
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+           
         }
     }
 }

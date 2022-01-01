@@ -4,7 +4,9 @@ using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+
 
 namespace PLC通讯库.内部软元件.底层数据保存
 {
@@ -16,6 +18,7 @@ namespace PLC通讯库.内部软元件.底层数据保存
     {
         public string Textaddress;
         private string Address;
+        object obj=new object();
         public InteriorElement(string Textaddress,string Name)
         {
             this.Address = @Textaddress;
@@ -29,8 +32,10 @@ namespace PLC通讯库.内部软元件.底层数据保存
         {
             try
             {
+              
                 using StreamReader TextReader = new StreamReader(@Textaddress, Encoding.UTF8);
-                return await TextReader.ReadToEndAsync();
+                var Data= await TextReader.ReadToEndAsync();
+                return Data;
             }
             catch { return null; }
         }

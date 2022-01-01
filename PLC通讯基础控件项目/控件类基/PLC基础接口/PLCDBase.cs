@@ -201,5 +201,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// 文本文字是否有下划线
         /// </summary>
         bool TextUnderline_1 { get; set; }
+
     }
 }
