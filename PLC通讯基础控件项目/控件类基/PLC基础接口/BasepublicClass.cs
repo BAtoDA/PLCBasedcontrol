@@ -73,11 +73,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
             {
                 if (pLCBitClassBase == null) throw new Exception($" 不实现：PLCBitBase接口");
                 if (pLCBitproperty == null) throw new Exception($" 不实现：PLCBitproperty接口");
-                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+                //if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
             }
-            catch (Exception E)
+            catch 
             {
-                Debug.WriteLine(E.Message);
+                //Debug.WriteLine(E.Message);
             }
         }
         /// <summary>
@@ -89,11 +89,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
             {
                 if (pLCDClassBase == null) throw new Exception($" 不实现：PLCDBase接口");
                 if (pLCDproperty == null) throw new Exception($" 不实现：PLCDproperty接口");
-                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCDClassBase.pLCDselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+                //if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCDClassBase.pLCDselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
             }
-            catch (Exception E)
+            catch
             {
-                Debug.WriteLine(E.Message);
+                //Debug.WriteLine(E.Message);
             }
         }
         /// <summary>
@@ -104,11 +104,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
             try
             {
                 if (pLCViewClassBase == null) throw new Exception($" 不实现：PLCDataViewClassBase接口");
-                if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
+                //if (IPLCsurface.PLCDictionary.Count < 1 || !IPLCsurface.PLCDictionary.ContainsKey(pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC.ToString())) throw new Exception("PLC通讯表为空");
             }
-            catch (Exception E)
+            catch 
             {
-                Debug.WriteLine(E.Message);
+                //Debug.WriteLine(E.Message);
             }
         }
         /// <summary>

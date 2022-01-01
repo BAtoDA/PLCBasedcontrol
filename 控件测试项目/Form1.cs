@@ -23,70 +23,30 @@ namespace 控件测试项目
 
         private void Form1_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             // new PLCRecipeForm(this.daRecipe1.PLCRecipeClass).Show();
 
             
+=======
+            new PLCRecipeForm(this.daRecipe1.PLCRecipeClass).Show();
+
+
+
+>>>>>>> ac331f6fa894e3d5b3dd08bc593b847bf125132a
 
 
 
             // new PLCpropertyBit( new PLCBitselectRealize()).Show();
             var dw = new EventCreateClass();
 
-            foreach(var i in dw.EventName(this.uiButton1))
-                this.uiComboBox1.Items.Add(i.Name);
-            this.uiComboBox1.SelectedIndex = 22;
-            dw.GainHandler(this.uiButton1, this.uiComboBox1.Text);
-            dw.ControlEvent += ((sender, e) =>
-              {
-                  MessageBox.Show(sender.ToString());
-              });
+           
 
-            //测试代码
-            List<string> l = new List<string>();
-            l.Add("if ");
-            l.Add("else ");
 
-            foreach (var v in l)
-            {
-                int count = Regex.Matches(this.uiRichTextBox1.Text, v).Count;//count occurrences of string
-                int WordLen = v.Length;
-                int startFrom = 0;
-                for (int i = 0; i < count; i++)
-                {
-                    uiRichTextBox1.SelectionStart = uiRichTextBox1.Text.IndexOf(v, startFrom);
-                    uiRichTextBox1.SelectionLength = WordLen;
-                    uiRichTextBox1.SelectionColor = Color.Red;
-                    startFrom = uiRichTextBox1.Text.IndexOf(v, startFrom) + WordLen;
-
-                }
-            }
         }
 
         private void uiRichTextBox1_TextChanged(object sender, EventArgs e)
         {
-            if (w1e) { w1e=false;  return; }
-            //测试代码
-            List<string> l = new List<string>();
-            l.Add("if ");
-            l.Add("else ");
-
-            foreach (var v in l)
-            {
-                int count = Regex.Matches(this.uiRichTextBox1.Text, v).Count;//count occurrences of string
-                int WordLen = v.Length;
-                int startFrom = 0;
-                for (int i = 0; i < count; i++)
-                {
-                    var w= uiRichTextBox1.Text.IndexOf(v, startFrom); 
-                   // uiRichTextBox1.SelectionStart = uiRichTextBox1.Text.IndexOf(v, startFrom);
-                   // uiRichTextBox1.SelectionLength = WordLen;
-                   // uiRichTextBox1.SelectionColor = Color.Red;
-                    // startFrom = uiRichTextBox1.Text.IndexOf(v, startFrom) + WordLen;
-                    uiRichTextBox1.Select(w, v.Length);
-                    uiRichTextBox1.SelectionColor = Color.Red;
-                }
-            }
-            uiRichTextBox1.SelectionColor = Color.Black;
+         
 
         }
         bool w1e=false;
@@ -106,6 +66,11 @@ namespace 控件测试项目
         private void Form1_Shown(object sender, EventArgs e)
         {
            
+        }
+
+        private void daUiButton4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

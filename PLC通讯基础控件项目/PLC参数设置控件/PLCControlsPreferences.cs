@@ -260,7 +260,7 @@ namespace PLC通讯基础控件项目
                                 if (!i.PLC_ready)
                                 {
                                     Debug.WriteLine($"正在重连:{i.IPEndPoint.Address} Port:{i.IPEndPoint.Port}");
-                                    i.PLC_open();
+                                    var d= i.PLC_open();
                                 }
                             }
                         }
