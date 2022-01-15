@@ -35,7 +35,7 @@ namespace PLC通讯基础控件项目.基础控件
                   if (!this.PLC_Enable || this.IsDisposed || this.Created == false|| DesignMode) return;//用户不开启PLC功能
                   {
                       //ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCDselectRealize.ReadWritePLC}");
-                      ControlPLCDBase controlPLCDBase = new ControlPLCDBase(this);
+                       controlPLCDBase = new ControlPLCDBase(this);
                       //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCDselectRealize.ReadWritePLC}");
                   }
                   //立马刷新状态
@@ -191,6 +191,41 @@ namespace PLC通讯基础控件项目.基础控件
                 this.ResumeLayout(false);
             }
             base.OnLayout(levent);
+        }
+        #endregion
+        #region 新增代码层写入值
+        /// <summary>
+        /// PLC写入底层对象
+        /// </summary>
+        ControlPLCDBase controlPLCDBase;
+        /// <summary>
+        /// 代码层写入
+        /// </summary>
+        object PLClock = new object();
+        /// <summary>
+        /// 写入值 格式由设置好的格式 可更改
+        /// </summary>
+        [Browsable(false)]
+        [ToolboxItem(false)]
+        public virtual bool WrietCommand
+        {
+            set
+            {
+                //进行写入操作
+                lock (PLClock)
+                {
+                    if (controlPLCDBase != null)
+                    {
+                        //触发写入事件---这里的操作相当点击
+                        var DataValue = pLCDselectRealize.Keyboard;//获取以前值
+                        this.Text = this.Text.Length < 1 ? "0" : this.Text == "" ? "0" : this.Text;
+                        //写入当前控件值
+                        controlPLCDBase.PLCWrite(this.pLCDselectRealize.ReadWrite ? this.pLCDselectRealize.WritePLC : this.pLCDselectRealize.ReadWritePLC, this.pLCDselectRealize.ReadWrite ?
+                            this.pLCDselectRealize.WriteFunction : this.pLCDselectRealize.ReadWriteFunction, this.pLCDselectRealize.ReadWrite ? this.pLCDselectRealize.WriteAddress : this.pLCDselectRealize.ReadWriteAddress, this.Text, this.pLCDselectRealize.ShowFormat);
+                    }
+
+                }
+            }
         }
         #endregion
     }

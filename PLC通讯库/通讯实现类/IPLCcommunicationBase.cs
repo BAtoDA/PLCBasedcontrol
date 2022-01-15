@@ -450,59 +450,64 @@ namespace PLC通讯库.通讯实现类
                     case numerical_format.Signed_16_Bit:
                     case numerical_format.BCD_16_Bit:
                         // 读取short变量
-                        return ReadInt16().Result.Content;
+                        return ReadInt16().Content;
                     case numerical_format.Signed_32_Bit:
                     case numerical_format.BCD_32_Bit:
                         // 读取int变量
-                        return ReadInt32().Result.Content;
+                        return ReadInt32().Content;
                     case numerical_format.Binary_16_Bit:
                         // 读取16位二进制数
-                        var Data = ReadInt16().Result.Content.ToList();
+                        var Data = ReadInt16().Content.ToList();
                         string[] PLCBinary = new string[Data.Count];
                         for (int i = 0; i < Data.Count; i++)
                             PLCBinary[i] = Convert.ToString(Convert.ToInt32(Data[i]), 2);
                         return PLCBinary;
                     case numerical_format.Binary_32_Bit:
                         // 读取32位二进制数
-                        var Data1 = ReadInt32().Result.Content.ToList();
+                        var Data1 = ReadInt32().Content.ToList();
                         string[] PLCBinaryq = new string[Data1.Count];
                         for (int i = 0; i < Data1.Count; i++)
                             PLCBinaryq[i] = Convert.ToString(Convert.ToInt32(Data1[i]), 2);
                         return PLCBinaryq;
                     case numerical_format.Float_32_Bit:
                         // 读取float变量
-                        return ReadFloat().Result.Content;
+                        return ReadFloat().Content;
                     case numerical_format.Hex_16_Bit:
                         // 读取short变量
-                        var Data2 = ReadInt16().Result.Content.ToList();
+                        var Data2 = ReadInt16().Content.ToList();
                         string[] PLCBinarya = new string[Data2.Count];
                         for (int i = 0; i < Data2.Count; i++)
                             PLCBinarya[i] = Convert.ToInt32(Data2[i]).ToString("X");
                         return PLCBinarya;
                     case numerical_format.Hex_32_Bit:
                         // 读取int变量
-                        var Data3 = ReadInt32().Result.Content.ToList();
+                        var Data3 = ReadInt32().Content.ToList();
                         string[] PLCBinarya1 = new string[Data3.Count];
                         for (int i = 0; i < Data3.Count; i++)
                             PLCBinarya1[i] = Convert.ToInt32(Data3[i]).ToString("X");
                         return PLCBinarya1;
                     case numerical_format.Unsigned_16_Bit:
                         // 读取ushort变量
-                        return ReadUInt16().Result.Content;
+                        return ReadUInt16().Content;
                     case numerical_format.Unsigned_32_Bit:
                         // 读取uint变量
-                        return ReadUInt32().Result.Content;
+                        return ReadUInt32().Content;
                 }
             }
             catch { }
 
             string Err = string.Empty;
             readResultRender(new OperateResult<bool>() { ErrorCode = 88, IsSuccess = false, Message = "错误" }, Name, ref Err);
-            async Task<OperateResult<short[]>> ReadInt16() => await melsec_net.ReadInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
-            async Task<OperateResult<int[]>> ReadInt32() => await melsec_net.ReadInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
-            async Task<OperateResult<ushort[]>> ReadUInt16() => await melsec_net.ReadUInt16Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
-            async Task<OperateResult<uint[]>> ReadUInt32() => await melsec_net.ReadUInt32Async(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
-            async Task<OperateResult<float[]>> ReadFloat() => await melsec_net.ReadFloatAsync(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            OperateResult<short[]> ReadInt16() => melsec_net.ReadInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            OperateResult<int[]> ReadInt32() => melsec_net.ReadInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            OperateResult<ushort[]> ReadUInt16() => melsec_net.ReadUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            OperateResult<uint[]> ReadUInt32() => melsec_net.ReadUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            OperateResult<float[]> ReadFloat() => melsec_net.ReadFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            //async Task<OperateResult<short[]>> ReadInt16() => await melsec_net.ReadInt16A(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+           // async Task<OperateResult<int[]>> ReadInt32() => await melsec_net.ReadInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            //async Task<OperateResult<ushort[]>> ReadUInt16() => await melsec_net.ReadUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+           // async Task<OperateResult<uint[]>> ReadUInt32() => await melsec_net.ReadUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+           // async Task<OperateResult<float[]>> ReadFloat() => await melsec_net.ReadFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
             return new int[] { 0 };
         }
         /// <summary>

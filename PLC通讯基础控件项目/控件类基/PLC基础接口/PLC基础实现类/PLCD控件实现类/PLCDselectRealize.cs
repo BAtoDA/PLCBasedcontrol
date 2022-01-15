@@ -72,6 +72,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public Color TextColor_1 { get; set; } = Color.Black;
         public string TextContent_1 { get; set; }
         public Timer PLCTimer { get; set; }
+        public bool WrietCommand { get; set; }
         #endregion
         #region 宏脚本实现
         /// <summary>

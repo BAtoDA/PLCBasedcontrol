@@ -31,7 +31,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
 
         }
 
-        private void PLCpropertyD_Load(object sender, EventArgs e)
+        private async void PLCpropertyD_Load(object sender, EventArgs e)
         {
             //填充PLC选型页面
             PLCpropertyClass pLCpropertyClass = new PLCpropertyClass(uiTextBox10, uiCheckBox10, uiCheckBox12, uiGroupBox11, uiComboBox10
@@ -49,8 +49,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             PLCpropertyText pLCpropertyText = new PLCpropertyText(uiComboBox30, uiButton30, uiButton31, uiComboBox31, uiComboBox32, uiComboBox33, uiComboBox34, uiRichTextBox30
                 , uiColorPicker30, uiCheckBox30, uiCheckBox31, PlcDselect, uiButton1);
             //加载宏指令窗口页面
-            new PLCmacrosClass(uiTextBox1, uiTextBox2, uiRichTextBox1, this.uiComboboxEx1, PlcDselect)
-               .MacroLoad(uiTextBox1, uiTextBox2, uiRichTextBox1, this.uiComboboxEx1, this.uiComboboxEx2, uiButton1, PlcDselect).Wait();
+            await new PLCmacrosClass(uiTextBox1, uiTextBox2, uiRichTextBox1, this.uiComboboxEx1, PlcDselect)
+               .MacroLoad(uiTextBox1, uiTextBox2, uiRichTextBox1, this.uiComboboxEx1, this.uiComboboxEx2, uiButton1, PlcDselect);
         }
 
         private void uiButton1_Click(object sender, EventArgs e)

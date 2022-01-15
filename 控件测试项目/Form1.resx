@@ -66,9 +66,6 @@
   <metadata name="plcPreferences2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>357, 17</value>
   </metadata>
-  <metadata name="plcPreferences3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>502, 17</value>
-  </metadata>
   <data name="resource.Macrocode" xml:space="preserve">
     <value>using CSScriptLib; 
 using Microsoft.CSharp;using System; 
@@ -92,6 +89,19 @@ public static class ScriptCCStatic
    public static void Main(string greeting) 
       { 
  //编写代码行： 
+
+            dynamic DATA = new int[2];
+            if(PLC通讯基础控件项目.宏脚本.脚本函数类.PLC.GetPLCD("Mitsubishi", "D", "12", ref DATA))
+            {
+                MessageBox.Show(Convert.ToString(DATA[0]));
+            }
+else
+{
+
+                MessageBox.Show("TEST");
+
+}
+
       } 
 } 
 </value>
@@ -113,294 +123,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms; 
 using System.Net; 
 using System.Threading; 
-using System.Diagnostics;
 public static class ScriptCCStatic 
 { 
 //主方法不可更改和删除否则编译报错 
    public static void Main(string greeting) 
       { 
  //编写代码行： 
-         int e6=66;
-        MessageBox.Show("Hello world ");
-       MessageBox.Show("你好啊");
+
+            dynamic DATA = new int[2];
+            if(PLC通讯基础控件项目.宏脚本.脚本函数类.PLC.GetPLCD("Mitsubishi", "D", "12", ref DATA))
+            {
+                MessageBox.Show(Convert.ToString(DATA[0]));
+            }
+else
+{
+
+                MessageBox.Show("TEST");
+
+}
+
       } 
 } 
 </value>
   </data>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 55</value>
-  </metadata>
-  <data name="resource.Macrocode2" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode3" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode4" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode5" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode6" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-<<<<<<< HEAD
-=======
-  <data name="resource.Macrocode7" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode8" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode9" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode10" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
-  <data name="resource.Macrocode11" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-      } 
-} 
-</value>
-  </data>
->>>>>>> ac331f6fa894e3d5b3dd08bc593b847bf125132a
 </root>

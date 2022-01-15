@@ -45,7 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="宏脚本\脚本函数类\" />
     <Folder Include="控件类基\控件文本键盘\" />
   </ItemGroup>
 

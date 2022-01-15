@@ -69,6 +69,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public System.Threading.Timer PLCTimer { get; set; }
         public string Textalign_0 { get; set; }= ContentAlignment.MiddleCenter.ToString();
         public string Textalign_1 { get; set; }= ContentAlignment.MiddleCenter.ToString();
+        public bool WrietCommand { get; set; }
+        public bool ReadCommand { get; set; }
         #endregion
         #region 宏脚本实现
         /// <summary>

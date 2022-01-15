@@ -69,5 +69,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         /// </summary>
         public bool TextUnderline_1 { get; set; }
         public Timer PLCTimer { get; set; }
+        public bool WrietCommand { get; set; }
+        public bool ReadCommand { get; set; }
     }
 }

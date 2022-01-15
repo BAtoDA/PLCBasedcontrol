@@ -66,5 +66,15 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
         /// </summary>
         [Browsable(false)]
         System.Threading.Timer PLCTimer { get; set; }
+        /// <summary>
+        /// 代码层  写入值
+        /// </summary>
+        [Browsable(true)]
+        bool WrietCommand { set; }
+        /// <summary>
+        /// 代码层  读取PKC当前值
+        /// </summary>
+        [Browsable(true)]
+        bool ReadCommand { get; set; }
     }
 }

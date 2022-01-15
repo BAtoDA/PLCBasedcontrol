@@ -112,7 +112,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <param name="send"></param>
         /// <param name="e"></param>
         private void ClickPLC(object send,EventArgs e)
-        {
+        {          
             lock (this)
             {
                 //语音播报系统
@@ -239,7 +239,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC.ToString() : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) as IPLCcommunicationBase;
                     if (!PLCoop.PLC_ready)
                     {
-                        UINotifierHelper.ShowNotifier("未连接设备：" + (pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC.ToString() : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                        //UINotifierHelper.ShowNotifier("未连接设备：" + (pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WritePLC.ToString() : pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()) + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                         return;
                     }
                     var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWrite ? pLCBitClassBase.pLCBitselectRealize.WriteFunction : pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction,
@@ -262,14 +262,25 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 写入PLC操作
         /// </summary>
-        private void PLCWrite(PLC IPLC, string Id, string Addary, bool Value)
+        public void PLCWrite(PLC IPLC, string Id, string Addary, bool Value)
         {
             System.Threading.Tasks.Task.Run(() =>
             {
                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
+                if (PLCoop == null) return;
                 if (PLCoop.PLC_ready)
+                {
+
                     PLCoop.PLC_write_M_bit(Id, Addary, (Button_state)Enum.Parse(typeof(Button_state), Value ? "ON" : "Off"));
-                else UINotifierHelper.ShowNotifier("未连接设备：" + IPLC + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                }
+                else
+                {
+                    PlcControl.BeginInvoke((MethodInvoker)delegate
+                    {
+                        UINotifierHelper.ShowNotifier("未连接设备：" + IPLC + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
+                    });
+                    Thread.Sleep(1000);
+                }
             });
         }
         /// <summary>
@@ -309,6 +320,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         return;
                     }
                     var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                    //把状态反馈到外部
+                    pLCBitproperty.ReadCommand = State;
                     //---委托控件----处理状态颜色
                     PlcControl.BeginInvoke((MethodInvoker)delegate
                     {

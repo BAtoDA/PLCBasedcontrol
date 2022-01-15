@@ -47,7 +47,7 @@ namespace PLC通讯基础控件项目.基础控件
                 if (!this.PLC_Enable || this.IsDisposed || this.Created == false|| DesignMode) return;//用户不开启PLC功能
                 {
                     //ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
-                    ControlPLCBitBase controlPLCBitBase = new ControlPLCBitBase(this);
+                     controlPLCBitBase = new ControlPLCBitBase(this);
                     //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                 }
             });
@@ -223,6 +223,44 @@ namespace PLC通讯基础控件项目.基础控件
             }
             base.OnLayout(levent);
         }
+        #endregion
+        #region 新增代码层写入值
+        /// <summary>
+        /// PLC写入底层对象
+        /// </summary>
+        ControlPLCBitBase controlPLCBitBase;
+        /// <summary>
+        /// 代码层写入
+        /// </summary>
+        object PLClock = new object();
+        /// <summary>
+        /// 写入值 格式由设置好的格式 可更改
+        /// </summary>
+        [Browsable(false)]
+        [ToolboxItem(false)]
+        public virtual bool WrietCommand
+        {
+            set
+            {
+                //进行写入操作
+                lock (PLClock)
+                {
+                    if (controlPLCBitBase != null)
+                    {
+                        //写入当前控件值
+                        controlPLCBitBase.PLCWrite(this.pLCBitselectRealize.ReadWrite ? this.pLCBitselectRealize.WritePLC : this.pLCBitselectRealize.ReadWritePLC, this.pLCBitselectRealize.ReadWrite ?
+                            this.pLCBitselectRealize.WriteFunction : this.pLCBitselectRealize.ReadWriteFunction, this.pLCBitselectRealize.ReadWrite ? this.pLCBitselectRealize.WriteAddress : this.pLCBitselectRealize.ReadWriteAddress, value);
+                    }
+
+                }
+            }
+        }
+        /// <summary>
+        /// 读取当前状态值
+        /// </summary>
+        [Browsable(false)]
+        [ToolboxItem(false)]
+        public virtual bool ReadCommand { get; set; }
         #endregion
 
     }

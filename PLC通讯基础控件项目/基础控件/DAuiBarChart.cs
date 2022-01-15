@@ -28,7 +28,7 @@ namespace PLC通讯基础控件项目.基础控件
                 else
                 {
                     uiRefresh();
-                    ControlPLCBarChartBase controlPLCDataViewBase = new ControlPLCBarChartBase(this);
+                    controlPLCDataViewBase = new ControlPLCBarChartBase(this);
                 }
             });
         }
@@ -184,10 +184,29 @@ namespace PLC通讯基础控件项目.基础控件
 
         #endregion
         #region 实现接口参数
+        ControlPLCBarChartBase controlPLCDataViewBase;
+        object Obj=new object();
+        private bool readCommand = true;
         /// <summary>
         /// 读取控制
         /// </summary>
-        public bool ReadCommand { get; set; }
+        [Browsable(false)]
+        [ToolboxItem(false)]
+        public bool ReadCommand 
+        {
+            get => readCommand;
+            set
+            {
+                lock (Obj)
+                {
+                    if (controlPLCDataViewBase != null)
+                    {
+                        //读取PLC值进行更新柱形图
+                        controlPLCDataViewBase.GetPLC();
+                    }
+                }
+            }
+        }
         [Browsable(false)]
         [Description("PLC保存参数"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]

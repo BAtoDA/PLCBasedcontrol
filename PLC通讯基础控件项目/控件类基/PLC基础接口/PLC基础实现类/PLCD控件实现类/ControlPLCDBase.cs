@@ -279,6 +279,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         public void PLCWrite(PLC IPLC, string Id, string Addary, string Value,PLC通讯库.通讯枚举.numerical_format numerical_Format)
         {
             IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(IPLC.ToString()) as IPLCcommunicationBase;
+            if (PLCoop == null) return;
             if (PLCoop.PLC_ready)
             {
                 Task.Run(() =>

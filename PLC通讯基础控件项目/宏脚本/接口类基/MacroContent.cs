@@ -12,7 +12,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     /// <summary>
     /// 自动保存宏指令
     /// </summary>
-    class MacroContent
+    public class MacroContent
     {
         #region 字段
         public string Textaddress;
@@ -44,10 +44,15 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         {
             try
             {
-                var Data = await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
-                return Data;
+                //using (StreamReader fsRead = new StreamReader(@Textaddress, Encoding.UTF8))
+                //{
+                //   return await fsRead.ReadLineAsync();
+                //}
+                return await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+                //var Data = await File.ReadAllLinesAsync(@Textaddress, Encoding.UTF8);
+                //return Data;
             }
-            catch { return new string[] { }; };
+            catch { return null; };
         }
         /// <summary>
         /// 异步写入当前宏指令文件

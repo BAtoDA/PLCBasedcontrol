@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using PLC通讯基础控件项目.控件类基.PLC基础接口;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类;
+using Nancy.Json;
+using PLC通讯基础控件项目.宏脚本.接口类基;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口;
-using PLC通讯基础控件项目.控件类基.控件地址选择窗口.配方控件参数设置界面;
 
 namespace 控件测试项目
 {
@@ -20,56 +18,52 @@ namespace 控件测试项目
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        protected override void OnShown(EventArgs e)
         {
-<<<<<<< HEAD
-            // new PLCRecipeForm(this.daRecipe1.PLCRecipeClass).Show();
+            base.OnShown(e);
+            //----------测试代码--------------
+            Timer PLCtimer = new Timer()
+            {
+                Interval = 100,
+               // Enabled = true
+            };
+           // PLCtimer.Start();
 
-            
-=======
-            new PLCRecipeForm(this.daRecipe1.PLCRecipeClass).Show();
-
-
-
->>>>>>> ac331f6fa894e3d5b3dd08bc593b847bf125132a
-
-
-
-            // new PLCpropertyBit( new PLCBitselectRealize()).Show();
-            var dw = new EventCreateClass();
-
-           
-
+            //------添加任务------
+            PLCtimer.Tick += PLCtimer_Tick;
 
         }
+        Random Rand= new Random();
+        private void PLCtimer_Tick(object sender, EventArgs e)
+        {
+            //处理PLC任务
+            var PLCTimer = (dynamic)sender;
+            PLCTimer.Stop();
+            //产生数据
+            this.daUiTextBox1.Text = Rand.Next(0,10000).ToString();
+            this.daUiTextBox1.WrietCommand = true;
 
-        private void uiRichTextBox1_TextChanged(object sender, EventArgs e)
+            //模拟按钮触发
+
+            var da = this.daButton1.ReadCommand;
+            this.uiTextBox1.Text=da.ToString();
+
+            //写
+            bool Boolean = da==false?true:false;
+            this.daButton1.WrietCommand = Boolean;
+
+            //更新柱形图
+            this.dAuiBarChart1.ReadCommand = true;
+
+            PLCTimer.Start();
+        }
+
+        private   void uiButton1_Click(object sender, EventArgs e)
         {
          
 
-        }
-        bool w1e=false;
-        private void uiRichTextBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == '\r')
-                w1e = true;
 
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            daUiTextBox1.Text = "856";
-            daUiTextBox1.WrietCommand = true;
-        }
-
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void daUiButton4_Click(object sender, EventArgs e)
-        {
 
         }
     }

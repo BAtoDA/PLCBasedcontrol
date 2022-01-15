@@ -186,6 +186,7 @@ namespace PLC通讯基础控件项目.基础控件
         public System.Threading.Timer PLCTimer { get; set; }
         public System.Windows.Forms.Timer Timerconfiguration { get; set; } = new System.Windows.Forms.Timer() { Enabled = true, Interval = 100 };
 
+
         private bool plc_Enable = false;
 
         public  void Modifications_Eeve(object send, EventArgs e)
@@ -304,6 +305,9 @@ namespace PLC通讯基础控件项目.基础控件
             });
         }
         #endregion
+        public bool WrietCommand { get; set; }
+        public bool ReadCommand { get; set; }
+
     }
 
 }
