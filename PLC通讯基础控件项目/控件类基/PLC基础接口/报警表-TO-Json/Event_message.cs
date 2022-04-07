@@ -33,5 +33,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_
         /// 报警表
         /// </summary>
        public static volatile List<Event_message> PLCEventLink = new List<Event_message>();
+
     }
 }

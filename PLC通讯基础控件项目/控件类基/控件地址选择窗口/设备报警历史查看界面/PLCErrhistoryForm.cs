@@ -193,11 +193,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(DateTime.Parse(q.报警发生时间.Trim()).ToString("Y"))) select q).ToList();
             this.BeginInvoke((EventHandler)delegate
             {
-                //填充当天报警次数
-                this.uiLabel2.Text = query.Count.ToString();
-                this.uiLabel3.Text = query1.Count.ToString();
-                //填充月底报警次数
-                this.uiLabel5.Text = Monthly.Count.ToString();
+                if (this.Handle != null)
+                {
+                    //填充当天报警次数
+                    this.uiLabel2.Text = query.Count.ToString();
+                    this.uiLabel3.Text = query1.Count.ToString();
+                    //填充月底报警次数
+                    this.uiLabel5.Text = Monthly.Count.ToString();
+                }
             });
             //生成分析7天警告报表
             //把7天结果LINQ分组
@@ -246,10 +249,13 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             });
             this.BeginInvoke((EventHandler)delegate
             {
-                //填充警告处理用时
-                this.uiLabel16.Text = Histogramdata[0].Item2;//当天用时
-                this.uiLabel14.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
-                this.uiLabel12.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
+                if (this.Handle != null)
+                {
+                    //填充警告处理用时
+                    this.uiLabel16.Text = Histogramdata[0].Item2;//当天用时
+                    this.uiLabel14.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
+                    this.uiLabel12.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
+                }
             });
             //填充设备警告分析
             //查找重复最多的数据--意味着报警最多的
@@ -327,11 +333,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             }
             this.BeginInvoke((EventHandler)delegate
             {
-                uiDataGridView3.DataSource = showErrs.OrderByDescending(x => x.次数).Select(pi => pi).ToList();
-                uiDataGridView3.Columns[0].Width = 300;
-                uiDataGridView3.Columns[2].Width = 80;
-                uiDataGridView3.Columns[3].Width = 50;
-                uiDataGridView3.Columns[4].Width = 70;
+                if (this.Handle != null)
+                {
+                    uiDataGridView3.DataSource = showErrs.OrderByDescending(x => x.次数).Select(pi => pi).ToList();
+                    uiDataGridView3.Columns[0].Width = 300;
+                    uiDataGridView3.Columns[2].Width = 80;
+                    uiDataGridView3.Columns[3].Width = 50;
+                    uiDataGridView3.Columns[4].Width = 70;
+                }
             });
         }
         /// <summary>

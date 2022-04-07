@@ -260,6 +260,7 @@ namespace PLC通讯库.内部软元件.通讯实现
             }
             return new OperateResult<int>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
         }
+
         /// <summary>
         /// 读取无符号单个字
         /// </summary>
@@ -333,6 +334,122 @@ namespace PLC通讯库.内部软元件.通讯实现
             }
             return new OperateResult<float>() { Content = 0, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
         }
+
+        /// <summary>
+        /// 批量读取无符号字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="Index"></param>
+        /// <returns></returns>
+        public OperateResult<ushort[]> ReadUInt16(string address, int Index)
+        {
+            try
+            {
+                ushort[] result = new ushort[Index];
+                for (int i = 0; i < Index; i++)
+                {
+                    result[i] = this.ReadUInt16(address).Content;
+                }
+                return new OperateResult<ushort[]>() { Content = result, IsSuccess = true };
+            }
+            catch
+            {
+                return new OperateResult<ushort[]>() { Content = null, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+
+        /// <summary>
+        /// 批量读取无符号双字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="Index"></param>
+        /// <returns></returns>
+        public OperateResult<uint[]> ReadUInt32(string address, int Index)
+        {
+            try
+            {
+                uint[] result = new uint[Index];
+                for (int i = 0; i < Index; i++)
+                {
+                    result[i] = this.ReadUInt32(address).Content;
+                }
+                return new OperateResult<uint[]>() { Content = result, IsSuccess = true };
+            }
+            catch
+            {
+                return new OperateResult<uint[]>() { Content = null, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+
+        /// <summary>
+        /// 批量读取有符号字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="Index"></param>
+        /// <returns></returns>
+        public OperateResult<short[]> ReadInt16(string address, int Index)
+        {
+            try
+            {
+                short[] result = new short[Index];
+                for (int i = 0; i < Index; i++)
+                {
+                    result[i] = this.ReadInt16(address).Content;
+                }
+                return new OperateResult<short[]>() { Content = result, IsSuccess = true };
+            }
+            catch
+            {
+                return new OperateResult<short[]>() { Content = null, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+
+        /// <summary>
+        /// 批量读取有符号双字
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="Index"></param>
+        /// <returns></returns>
+        public OperateResult<int[]> ReadInt32(string address, int Index)
+        {
+            try
+            {
+                int[] result = new int[Index];
+                for (int i = 0; i < Index; i++)
+                {
+                    result[i] = this.ReadInt32(address).Content;
+                }
+                return new OperateResult<int[]>() { Content = result, IsSuccess = true };
+            }
+            catch
+            {
+                return new OperateResult<int[]>() { Content = null, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+
+        }
+        /// <summary>
+        /// 批量读取浮点小数
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="Index"></param>
+        /// <returns></returns>
+        public OperateResult<float[]> ReadFloat(string address, int Index)
+        {
+            try
+            {
+                float[] result = new float[Index];
+                for (int i = 0; i < Index; i++)
+                {
+                    result[i] = this.ReadFloat(address).Content;
+                }
+                return new OperateResult<float[]>() { Content = result, IsSuccess = true };
+            }
+            catch
+            {
+                return new OperateResult<float[]>() { Content = null, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+        }
+
         public OperateResult<short> Write(string address, short Value)
         {
             switch (Getfunction(address))

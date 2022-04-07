@@ -11,6 +11,7 @@ using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json
 using Sunny.UI;
 using System.Linq;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
+using PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类;
 
 namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面
 {
@@ -180,6 +181,24 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             {
                 pLCEventContent.TextCreate();
                 await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
+            }
+        }
+        /// <summary>
+        /// 用户点击从威纶通导出的表格导入
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            var EvenList = await new PLCErrExportData().ExportImportData();
+            //获得导入的参数
+            if (EvenList.Count > 0)
+            {
+                EventLink.PLCEventLink = EvenList;
+                //保存到本地
+                await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
+                //重新加载表格控件
+                DataGridViewLoad();
             }
         }
     }

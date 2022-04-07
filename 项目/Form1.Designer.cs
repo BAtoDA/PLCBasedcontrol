@@ -67,7 +67,7 @@ namespace 项目
             this.plcPreferences1.PLCDevice = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.plcPreferences1.Point = 2000;
             this.plcPreferences1.Receptionovertime = 1000;
-            this.plcPreferences1.Retain = "S1500";
+            this.plcPreferences1.Retain = "Q";
             this.plcPreferences1.Sendovertime = 1000;
             // 
             // plcPreferences3
@@ -131,15 +131,21 @@ namespace 项目
             this.daUiButton1.pLCBitselectRealize.backgroundColor_0 = System.Drawing.Color.Silver;
             this.daUiButton1.pLCBitselectRealize.backgroundColor_1 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.daUiButton1.pLCBitselectRealize.BitPattern = false;
+            this.daUiButton1.pLCBitselectRealize.Compilestate = false;
             this.daUiButton1.pLCBitselectRealize.description = "PLCBitselectRealize";
             this.daUiButton1.pLCBitselectRealize.keyMinTime = 0;
             this.daUiButton1.pLCBitselectRealize.LoosenOut = false;
+            this.daUiButton1.pLCBitselectRealize.Macrocode = resources.GetString("resource.Macrocode");
+            this.daUiButton1.pLCBitselectRealize.MacroEvent = "不使用";
+            this.daUiButton1.pLCBitselectRealize.macroID = 1;
+            this.daUiButton1.pLCBitselectRealize.MacroName = "MacroList";
             this.daUiButton1.pLCBitselectRealize.NoAccessConceal = false;
             this.daUiButton1.pLCBitselectRealize.NoAccessForm = false;
             this.daUiButton1.pLCBitselectRealize.OperationAffirm = false;
             this.daUiButton1.pLCBitselectRealize.OutReverse = false;
             this.daUiButton1.pLCBitselectRealize.Pattern = PLC通讯基础控件项目.控件类基.控件数据结构.Button_pattern.selector_witch;
             this.daUiButton1.pLCBitselectRealize.PLCTimer = null;
+            this.daUiButton1.pLCBitselectRealize.ReadCommand = false;
             this.daUiButton1.pLCBitselectRealize.ReadWrite = false;
             this.daUiButton1.pLCBitselectRealize.ReadWriteAddress = "0";
             this.daUiButton1.pLCBitselectRealize.ReadWriteFunction = "M";
@@ -165,14 +171,17 @@ namespace 项目
             this.daUiButton1.pLCBitselectRealize.TextState = 0;
             this.daUiButton1.pLCBitselectRealize.TextUnderline_0 = false;
             this.daUiButton1.pLCBitselectRealize.TextUnderline_1 = false;
+            this.daUiButton1.pLCBitselectRealize.WrietCommand = false;
             this.daUiButton1.pLCBitselectRealize.WriteAddress = "0";
             this.daUiButton1.pLCBitselectRealize.WriteFunction = "M";
             this.daUiButton1.pLCBitselectRealize.WritePLC = PLC通讯基础控件项目.控件类基.控件数据结构.PLC.Mitsubishi;
             this.daUiButton1.pLCBitselectRealize.WrSafetyAddress = "0";
             this.daUiButton1.PLCTimer = null;
+            this.daUiButton1.ReadCommand = false;
             this.daUiButton1.Size = new System.Drawing.Size(158, 66);
+            this.daUiButton1.Style = Sunny.UI.UIStyle.Custom;
             this.daUiButton1.TabIndex = 7;
-            this.daUiButton1.Text = "进入";
+            this.daUiButton1.Text = "OFF";
             this.daUiButton1.Textalign_0 = "MiddleCenter";
             this.daUiButton1.Textalign_1 = "MiddleCenter";
             this.daUiButton1.TextColor_0 = System.Drawing.Color.White;

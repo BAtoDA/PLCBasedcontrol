@@ -147,7 +147,7 @@ namespace PLC通讯库.通讯实现类
         /// <param name="Name"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool PLC_read_M_bit(string Name, string id)
+        public  bool PLC_read_M_bit(string Name, string id)
         {
             string result = "false";//定义获取数据变量
             try
@@ -205,7 +205,9 @@ namespace PLC通讯库.通讯实现类
                     case MitsubishiPLC.L:
                     case MitsubishiPLC.R:
                     case MitsubishiPLC.Q:
-                        return PLCData = melsec_net.ReadBool(Name + id, 1);
+                        //MelsecMcNet D = new MelsecMcNet();
+                        //D.ReadBool("1")
+                        return PLCData = melsec_net.ReadBool(Name + id,1);
                 }
                 return null;
             }

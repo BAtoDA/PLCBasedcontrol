@@ -78,6 +78,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         object obj = new object();
         /// <summary>
+        /// 同步锁
+        /// </summary>
+        Mutex mutex = new Mutex();
+        /// <summary>
         /// 异步线程取消令牌
         /// </summary>
         CancellationTokenSource tokenSource = new CancellationTokenSource();
@@ -98,16 +102,17 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (((dynamic)PlcControl).PLC_Enable)
             {
                 PLCErrTimer = new System.Windows.Forms.Timer();
-                PLCErrTimer.Tick += ((sen, e) =>
+                PLCErrTimer.Tick += (async (sen, e) =>
                   {
-                      lock (obj)
-                      {
+                    if(mutex.WaitOne(50))
+                      {                      
                           PLCErrTimer.Stop();
-                          _ = PLCrefresh();
+                          await PLCrefresh();
                           PLCErrTimer.Start();
+                          mutex.ReleaseMutex();                         
                       }
                   });
-                PLCErrTimer.Interval = 1000;
+                PLCErrTimer.Interval = 200;
                 PLCErrTimer.Start();
             }
 
@@ -183,9 +188,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 处理控件报警表
         /// </summary>
-        private async Task PLCrefresh()
+        private  async Task<int> PLCrefresh()
         {
-            await Task.Run( () => {
+            var T= Task.Run( () => {
 
                 if (token.IsCancellationRequested)
                 {
@@ -197,56 +202,64 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 });
                 return 1;
             }, token);
-        }  
+            return await T;
+        }
         private async Task ReadPLC(Event_message event_Message)
         {
             //try
             //{
-                if (PlcControl.IsDisposed || PlcControl.Created == false) return;
-                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == event_Message.设备.Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
-                if (PLCoop == null) return;
-                if (!PLCoop.PLC_ready) return;
-                if (event_Message.类型 > 0)
-                {
-                    var State = PLCoop.PLC_read_D_register(event_Message.设备_地址, event_Message.设备_具体地址, PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit);
-                    trigger_word(State, event_Message);
-                }
-                else
-                {
-                    var State = PLCoop.PLC_read_M_bit(event_Message.设备_地址, event_Message.设备_具体地址);
-                    trigger_Bit(State, event_Message);
-                }
-                //找出不同的元素 
-                event_Messages = new ConcurrentBag<Event_message>();
-                //找出不同的元素(即交集的补集)
-                var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
-                var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
-                //开始把事件显示到表中
-                if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
+            if (PlcControl.IsDisposed || PlcControl.Created == false) return;
+            IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == event_Message.设备.Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+            if (PLCoop == null) return;
+            if (!PLCoop.PLC_ready) return;
+            if (event_Message.类型 > 0)
+            {
+                var State = PLCoop.PLC_read_D_register(event_Message.设备_地址, event_Message.设备_具体地址, PLC通讯库.通讯枚举.numerical_format.Signed_16_Bit);
+                trigger_word(State, event_Message);
+            }
+            else
+            {
+                var State = PLCoop.PLC_read_M_bit(event_Message.设备_地址, event_Message.设备_具体地址);
+                trigger_Bit(State, event_Message);
+            }
+            //找出不同的元素 
+            event_Messages = new ConcurrentBag<Event_message>();
+            //找出不同的元素(即交集的补集)
+            var diffArr = register_Event.Where(c => !Event_quantity.Contains(c)).ToList();
+            var diffArr1 = Event_quantity.Where(c => !register_Event.Contains(c)).ToList();
+            //开始把事件显示到表中
+            if ((diffArr.Count == 0 && diffArr1.Count == 0) || (register_Event.Count == 0 && Event_quantity.Count == 0)) return;
 
-                foreach (var i in register_Event) event_Messages.Add(i);
-                Event_quantity = new ConcurrentBag<Event_message>();
-                this.PlcControl.BeginInvoke((EventHandler)delegate { this.PlcControl.Rows.Clear(); });
-                register_Event.ForEach(s1 =>
-                {
-                    s1.报警发生时间= DateTime.Now.ToString("F");
-                    Event_quantity.Add(s1);                
+            foreach (var i in register_Event) event_Messages.Add(i);
+            Event_quantity = new ConcurrentBag<Event_message>();
+            this.PlcControl.BeginInvoke((EventHandler)delegate { this.PlcControl.Rows.Clear(); });
+            register_Event.ForEach(s1 =>
+            {
+                s1.报警发生时间 = DateTime.Now.ToString("F");
+                Event_quantity.Add(s1);
                     //遍历完成开始填充数据
                     this.PlcControl.BeginInvoke((EventHandler)delegate
-                    {
-                        this.PlcControl.Rows.Add(new object[] { DateTime.Now.ToString("T"), s1.设备, s1.设备_地址 + s1.设备_具体地址, s1.报警内容 ?? "000" });
-                    });
-                });//记录保持
+                {
+                    this.PlcControl.Rows.Add(new object[] { DateTime.Now.ToString("T"), s1.设备, s1.设备_地址 + s1.设备_具体地址, s1.报警内容 ?? "000" });
+                });
+            });//记录保持
 
-                if (!pLCViewClassBase.Save) return;
-                if (pLCEventAutoContent.IsText())
+            if (!pLCViewClassBase.Save) return;
+            if (pLCEventAutoContent.IsText())
+            {
+               await Task.Run( () =>
                 {
-                foreach (var i in diffArr1)
-                {
-                    i.报警处理时间 = DateTime.Now.ToString("F");
-                    await pLCEventAutoContent.TextWrite(new JavaScriptSerializer().Serialize(i));
-                }
-                }
+                    diffArr1.ForEach(async i =>
+                    { 
+                //    foreach ( var i in diffArr1)
+                //{
+                        i.报警处理时间 = DateTime.Now.ToString("F");
+                        await pLCEventAutoContent.TextWrite(new JavaScriptSerializer().Serialize(i));
+                    //pLCEventAutoContent.TextWrite(new JavaScriptSerializer().Serialize(i));
+                    //}
+                });
+            });
+            }
             //}
             //catch { }
         }

@@ -63,9 +63,6 @@
   <metadata name="plcPreferences1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>212, 17</value>
   </metadata>
-  <metadata name="plcPreferences2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>357, 17</value>
-  </metadata>
   <data name="resource.Macrocode" xml:space="preserve">
     <value>using CSScriptLib; 
 using Microsoft.CSharp;using System; 
@@ -91,9 +88,9 @@ public static class ScriptCCStatic
  //编写代码行： 
 
             dynamic DATA = new int[2];
-            if(PLC通讯基础控件项目.宏脚本.脚本函数类.PLC.GetPLCD("Mitsubishi", "D", "12", ref DATA))
+            if(PLC通讯基础控件项目.宏脚本.脚本函数类.PLC.GetPLCD("HMI", "LW", "0", ref DATA))
             {
-                MessageBox.Show(Convert.ToString(DATA[0]));
+                MessageBox.Show(Convert.ToString(DATA[0])+"访问成功");
             }
 else
 {
@@ -106,44 +103,7 @@ else
 } 
 </value>
   </data>
-  <data name="resource.Macrocode1" xml:space="preserve">
-    <value>using CSScriptLib; 
-using Microsoft.CSharp;using System; 
-using System.CodeDom.Compiler; 
-using System.Collections.Generic; 
-using System.ComponentModel; 
-using System.Data; 
-using System.Drawing; 
-using System.IO; 
-using System.Linq; 
-using System.Net.Sockets; 
-using System.Reflection; 
-using System.Text; 
-using System.Threading.Tasks; 
-using System.Windows.Forms; 
-using System.Net; 
-using System.Threading; 
-public static class ScriptCCStatic 
-{ 
-//主方法不可更改和删除否则编译报错 
-   public static void Main(string greeting) 
-      { 
- //编写代码行： 
-
-            dynamic DATA = new int[2];
-            if(PLC通讯基础控件项目.宏脚本.脚本函数类.PLC.GetPLCD("Mitsubishi", "D", "12", ref DATA))
-            {
-                MessageBox.Show(Convert.ToString(DATA[0]));
-            }
-else
-{
-
-                MessageBox.Show("TEST");
-
-}
-
-      } 
-} 
-</value>
-  </data>
+  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>357, 17</value>
+  </metadata>
 </root>

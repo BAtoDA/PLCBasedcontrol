@@ -14,8 +14,8 @@
 支持宏脚本以及宏任务运行 目前支持西门子的S7协议 三菱的3E帧 MOdbus TCP 发那科协议 教学视频请移步Github </Description>
     <AssemblyVersion>1.0.0.33</AssemblyVersion>
     <FileVersion>1.0.0.33</FileVersion>
-    <Version>1.0.33</Version>
-    <PackageReleaseNotes>新增宏指令脚本以及绑定Bit位控件支持脚本触发  </PackageReleaseNotes>
+    <Version>1.0.35</Version>
+    <PackageReleaseNotes>新增代码层 通过控件直接读取PLC 新增宏指令函数</PackageReleaseNotes>
     <NeutralLanguage></NeutralLanguage>
     <PackageProjectUrl>https://github.com/BAtoDA/PLCBasedcontrol</PackageProjectUrl>
     <Copyright>BAtoDA</Copyright>

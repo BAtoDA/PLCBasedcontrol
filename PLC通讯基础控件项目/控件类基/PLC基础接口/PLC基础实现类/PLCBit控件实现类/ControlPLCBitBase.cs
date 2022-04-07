@@ -82,7 +82,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 {
                     this.PLCrefresh();
                 }));
-                pLCBitproperty.PLCTimer.Change(TimeSpan.FromMilliseconds(500), TimeSpan.FromMilliseconds(300));
+                pLCBitproperty.PLCTimer.Change(TimeSpan.FromMilliseconds(300), TimeSpan.FromMilliseconds(200));
             }
             //---------安全操作模式----------
             PLCsafetypattern = pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? Getsafetypattern(pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern) : Safetypattern.Nooperation;
@@ -292,66 +292,69 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         public  void PLCrefresh()
         {
-            //mutex.WaitOne(50);
-            //{
-            try
+            if (mutex.WaitOne(20))
             {
-                lock (this)
+                try
                 {
-                    if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
-                    PLCoopErr(pLCBitClassBase, pLCBitproperty);
-                    PLCsafety();
-                    IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
-                    if (PLCoop == null) return;
-                    if (!PLCoop.PLC_ready)
+                    lock (this)
                     {
-                        //推出日志
-                        //ControlDebug.Write(this.PlcControl.Name + $"{pLCBitClassBase.pLCBitselectRealize.ReadWrite}PLC未准备好");
-                        //PLC未准备好 控件自动归零状态
+                        if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) { mutex.ReleaseMutex(); return; }
+                        PLCoopErr(pLCBitClassBase, pLCBitproperty);
+                        PLCsafety();
+                        IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                        if (PLCoop == null) { mutex.ReleaseMutex(); return; }
+                        if (!PLCoop.PLC_ready)
+                        {
+                            //推出日志
+                            //ControlDebug.Write(this.PlcControl.Name + $"{pLCBitClassBase.pLCBitselectRealize.ReadWrite}PLC未准备好");
+                            //PLC未准备好 控件自动归零状态
+                            PlcControl.BeginInvoke((MethodInvoker)delegate
+                            {
+                                PlcControl.SuspendLayout();
+                                pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
+                                pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
+                                pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                                PlcControl.Refresh();
+                                PlcControl.ResumeLayout(false);
+                            });
+                            mutex.ReleaseMutex();
+                            return;
+                        }
+                        var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                        //把状态反馈到外部
+                        pLCBitproperty.ReadCommand = State;
+                        //---委托控件----处理状态颜色
                         PlcControl.BeginInvoke((MethodInvoker)delegate
                         {
+                            //处理安全控制---是否要隐藏控件
+                            this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
+                            if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
                             PlcControl.SuspendLayout();
-                            pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
-                            pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
-                            pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                            if (!State)
+                            {
+                                pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
+                                pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
+                                pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
+                            }
+                            else
+                            {
+                                pLCBitproperty.backgroundColor_1 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_1;
+                                pLCBitproperty.TextContent_1 = pLCBitClassBase.pLCBitselectRealize.TextContent_1;
+                                pLCBitproperty.TextColor_1 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_1;
+                            }
                             PlcControl.Refresh();
                             PlcControl.ResumeLayout(false);
                         });
-                        return;
+                        //ControlDebug.Write(this.PlcControl.Name + $"刷新值为：{State}");
+                        mutex.ReleaseMutex();
                     }
-                    var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
-                    //把状态反馈到外部
-                    pLCBitproperty.ReadCommand = State;
-                    //---委托控件----处理状态颜色
-                    PlcControl.BeginInvoke((MethodInvoker)delegate
-                    {
-                        //处理安全控制---是否要隐藏控件
-                        this.PlcControl.Visible = PLCsafetypattern == Safetypattern.Hide ? false : true;
-                        if (!PlcControl.IsHandleCreated || PlcControl.IsDisposed || PlcControl.Created == false) return;
-                        PlcControl.SuspendLayout();
-                        if (!State)
-                        {
-                            pLCBitproperty.backgroundColor_0 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_0;
-                            pLCBitproperty.TextContent_0 = pLCBitClassBase.pLCBitselectRealize.TextContent_0;
-                            pLCBitproperty.TextColor_0 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_0;
-                        }
-                        else
-                        {
-                            pLCBitproperty.backgroundColor_1 = pLCBitClassBase.pLCBitselectRealize.backgroundColor_1;
-                            pLCBitproperty.TextContent_1 = pLCBitClassBase.pLCBitselectRealize.TextContent_1;
-                            pLCBitproperty.TextColor_1 = PLCsafetypattern == Safetypattern.Gray ? Color.FromName("DarkGray") : pLCBitClassBase.pLCBitselectRealize.TextColor_1;
-                        }
-                        PlcControl.Refresh();
-                        PlcControl.ResumeLayout(false);
-                    });
-                    //ControlDebug.Write(this.PlcControl.Name + $"刷新值为：{State}");
+                }
+                catch
+                {
+                    mutex.ReleaseMutex();
+                    //ControlDebug.Write(this.PlcControl.Name + e.Message);
                 }
             }
-            catch
-            { 
-                //ControlDebug.Write(this.PlcControl.Name + e.Message);
-            }
-            //mutex.ReleaseMutex();
         }
         /// <summary>
         /// PLC安全控制

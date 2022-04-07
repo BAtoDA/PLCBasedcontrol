@@ -31,6 +31,7 @@ using System.Speech.Synthesis;
 using HslCommunication.Profinet.Siemens;
 using PLC通讯基础控件项目.第三方通信互交底层;
 using PLC通讯库.通讯枚举;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.开机自动运行类;
 
 namespace PLC通讯基础控件项目
 {
@@ -239,6 +240,8 @@ namespace PLC通讯基础控件项目
                             }
                         }
                     }
+                    //添加软件开机自动启动
+                    BootAutomatically.SetMeStart();
                     PlcLoad = true;
                 }
             }
