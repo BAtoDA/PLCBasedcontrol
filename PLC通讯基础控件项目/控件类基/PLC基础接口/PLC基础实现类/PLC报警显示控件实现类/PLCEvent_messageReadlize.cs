@@ -104,10 +104,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 PLCErrTimer = new System.Windows.Forms.Timer();
                 PLCErrTimer.Tick += (async (sen, e) =>
                   {
-                    if(mutex.WaitOne(50))
+                    if(mutex.WaitOne(10))
                       {                      
                           PLCErrTimer.Stop();
-                          await PLCrefresh();
+                          _=await PLCrefresh();
                           PLCErrTimer.Start();
                           mutex.ReleaseMutex();                         
                       }

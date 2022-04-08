@@ -371,8 +371,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 Top = UITopAlignment.Top,
                 Left = UILeftAlignment.Left
             };
-            option.Legend.AddData("警告总时长");
             option.Legend.AddData("发生次数");
+            option.Legend.AddData("警告总时长");
 
             var series = new UIBarSeries
             {
