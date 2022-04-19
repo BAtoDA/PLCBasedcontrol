@@ -91,13 +91,14 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                     this.uiLabel2.Text = query.Count.ToString();
                     //填充7天警告次数
                     this.uiLabel3.Text = query1.Count.ToString();
-                    this.uiDataGridView1.DataSource = Event_Messages;
+                    this.uiDataGridView1.DataSource = query;
                     //填充报警历史的查询项
                     this.uiComboboxEx1.Items.Clear();
                     this.uiComboboxEx2.Items.Clear();
                     this.uiComboboxEx3.Items.Clear();
                     data.ForEach(s =>
                     {
+                        
                         this.uiComboboxEx1.Items.Add(s.报警发生时间.Trim());
                         this.uiComboboxEx2.Items.Add(s.报警处理时间.Trim());
                         this.uiComboboxEx3.Items.Add(s.设备.Trim());

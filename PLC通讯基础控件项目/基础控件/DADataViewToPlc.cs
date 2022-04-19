@@ -53,6 +53,7 @@ namespace PLC通讯基础控件项目.基础控件
     {
         #region 实现接口参数
         ControlPLCDataViewBase controlPLCDataViewBase;
+        object oj=new object();
         /// <summary>
         /// 读取控制
         /// </summary>
@@ -62,8 +63,11 @@ namespace PLC通讯基础控件项目.基础控件
             set
             {
                 //代码底层触发事件
-                if (controlPLCDataViewBase != null)
-                    controlPLCDataViewBase.GetPLC();
+                lock (oj)
+                {
+                    if (controlPLCDataViewBase != null)
+                        controlPLCDataViewBase.GetPLC();
+                }
             }
         }
         bool readCommand;

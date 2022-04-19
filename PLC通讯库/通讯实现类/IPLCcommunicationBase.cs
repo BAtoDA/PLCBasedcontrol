@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -205,9 +206,15 @@ namespace PLC通讯库.通讯实现类
                     case MitsubishiPLC.L:
                     case MitsubishiPLC.R:
                     case MitsubishiPLC.Q:
-                        //MelsecMcNet D = new MelsecMcNet();
-                        //D.ReadBool("1")
-                        return PLCData = melsec_net.ReadBool(Name + id,1);
+                        if ((Name != "X") & (Name != "Y"))
+                        {
+                            //判断是否读取寄存器的Bit位操作
+                            Regex rq = new Regex("Bit");
+                            //不是读取输入输出点
+                            return PLCData = rq.IsMatch(Name) ? MelsecMcNetBit() : melsec_net.ReadBool(Name + id, 1);
+                        }
+                        else
+                            return PLCData = melsec_net.ReadBool(Name + id,1);
                 }
                 return null;
             }
@@ -222,6 +229,118 @@ namespace PLC通讯库.通讯实现类
                 {
                     var IdArray = id.Split('.');
                     var Data = this.PLC_read_D_register(Name[0].ToString(),  IdArray[0], numerical_format.Signed_32_Bit);
+                    var DataBitArray = this.ConvertIntToBoolArray(Convert.ToInt32(Data), 32).Reverse().ToArray();
+                    //返回数据
+                    return new OperateResult<bool[]>() { Content = new bool[] { DataBitArray[Convert.ToInt32(TryStringTOint(IdArray[1]))] }, ErrorCode = 0, IsSuccess = true, Message = "0" };
+                }
+                return new OperateResult<bool[]>();
+            }
+        }
+        /// <summary>
+        /// 批量读取位
+        /// </summary>
+        /// <param name="Name">PLC功能码</param>
+        /// <param name="id">PLC地址</param>
+        /// <param name="Count">批量读取个数 三菱最大7千 西门子待测试 欧姆龙待测试</param>
+        /// <returns>返回泛型列表</returns>
+        public bool[] PLC_read_M_bit(string Name, string id,ushort Count)
+        {
+            bool[] result = new bool[Count];//定义获取数据变量
+            dynamic PLCData;
+            try
+            {
+                //三菱PLC处理
+                if (this.melsec_net.GetType().Name == "MelsecMcNet")
+                {
+                    PLCData = MelsecMcNet();
+                    //readResultRender(PLCData, Name.Trim() + id.Trim());
+                    if (PLCData is OperateResult<bool[]>)
+                        return PLCData.Content;
+                    else
+                        return result;
+                    //return PLCData != null ? PLCData.Content : result;
+                }
+                if (this.melsec_net.GetType().Name == "ModbusTcpNet")
+                {
+                    PLCData = ModbusTcpNet();
+                    //readResultRender(PLCData, Name.Trim() + id.Trim());
+                    return PLCData.Content != null ? PLCData.Content : result;
+                }
+                if (this.melsec_net.GetType().Name == "OmronFinsNet" || this.melsec_net.GetType().Name == "OmronFinsUdp")
+                {
+                    //欧姆龙处理UDP TCP
+                    PLCData = melsec_net.ReadBool(Name + id, Count);
+                    //readResultRender(PLCData, Name.Trim() + id.Trim());
+                    return PLCData.Content != null ? PLCData.Content : result;
+                }
+                //西门子//欧姆龙处理CIP//内部HMI处理
+                PLCData = melsec_net.ReadBool(Name + id, Count);
+                //readResultRender(PLCData, Name.Trim() + id.Trim());
+                if (PLCData is OperateResult<bool[]>)
+                    return PLCData.Content;
+                else
+                    return result;
+                //return PLCData != null ? PLCData.Content : result;
+
+            }
+            catch (Exception e)
+            {
+            
+            }
+            return result;//返回数据
+
+            dynamic MelsecMcNet()
+            {
+                dynamic PLCData;
+                //判断当前PLC类型--8进制
+                switch (mitsubishiPLC)
+                {
+                    case MitsubishiPLC.FX:
+                        if ((Name != "X") & (Name != "Y"))
+                        {
+                            //判断是否读取寄存器的Bit位操作
+                            Regex rq = new Regex("Bit");
+                            //不是读取输入输出点
+                            return PLCData = rq.IsMatch(Name) ? MelsecMcNetBit() : melsec_net.ReadBool(Name + id, Count);
+                        }
+                        else
+                        {
+                            //读取输入输出点位
+                            var Idto8 = Convert.ToInt16(id, 8).ToString("X");
+                            return PLCData = melsec_net.ReadBool(Name + Idto8, Count);
+                        }
+                    case MitsubishiPLC.L:
+                    case MitsubishiPLC.R:
+                    case MitsubishiPLC.Q:
+                        if ((Name != "X") & (Name != "Y"))
+                        {
+                            //判断是否读取寄存器的Bit位操作
+                            Regex rq = new Regex("Bit");
+                            //不是读取输入输出点
+                            return PLCData = rq.IsMatch(Name) ? MelsecMcNetBit() : melsec_net.ReadBool(Name + id, Count);
+
+                        }
+                        else
+                        {
+                            return PLCData = melsec_net.ReadBool(Name + id, Count);
+                        }
+
+
+
+                }
+                return null;
+            }
+            dynamic ModbusTcpNet()
+            {
+                dynamic PLCData = "";
+                return PLCData = melsec_net.ReadCoil(id);
+            }
+            dynamic MelsecMcNetBit()//三菱寄存器Bit位处理
+            {
+                if (id.IndexOf('.') > -1)
+                {
+                    var IdArray = id.Split('.');
+                    var Data = this.PLC_read_D_register(Name[0].ToString(), IdArray[0], numerical_format.Signed_32_Bit);
                     var DataBitArray = this.ConvertIntToBoolArray(Convert.ToInt32(Data), 32).Reverse().ToArray();
                     //返回数据
                     return new OperateResult<bool[]>() { Content = new bool[] { DataBitArray[Convert.ToInt32(TryStringTOint(IdArray[1]))] }, ErrorCode = 0, IsSuccess = true, Message = "0" };
@@ -546,7 +665,25 @@ namespace PLC通讯库.通讯实现类
             }
             ReadContn += 1;
         }
+        /// <summary>
+        /// 统一的读取结果的数据解析，显示
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="result"></param>
+        /// <param name="address"></param>
+        /// <param name="textBox"></param>
+        private void readResultRender<T>(OperateResult<T> result, string address)
+        {
+            if (result.IsSuccess)
+            {
+                retry = 0;
+            }
+            else
+            {
 
+            }
+            ReadContn += 1;
+        }
         /// <summary>
         /// 统一的数据写入的结果显示
         /// </summary>

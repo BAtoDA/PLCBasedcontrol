@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -139,6 +140,33 @@ namespace PLC通讯库.内部软元件.通讯实现
                     return new OperateResult<bool>() { Content = Boolarray[0], ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
             }
             return new OperateResult<bool>() { Content = Boolarray[0], ErrorCode = 0, IsSuccess = true, Message = "0" };
+        }
+        /// <summary>
+        /// 批量读取Hmi内部Bit位线圈操作
+        /// </summary>
+        /// <param name="address">传入功能码以及地址</param>
+        /// <returns></returns>
+        public OperateResult<bool[]> ReadBool(string address,ushort Count)
+        {
+            //预定义bool数组
+            bool[] Boolarray = new bool[Count];
+            //获取功能判断用户需要读取的功能码
+            switch (Getfunction(address))
+            {
+                case "LB":
+                    if (Convert.ToInt32(Getaddress(address)) < HmiLB.Length)
+                        Boolarray[0] = HmiLB[Convert.ToInt32(Getaddress(address))];
+                    break;
+                case "RB":
+                    if (Convert.ToInt32(Getaddress(address)) < HmiRB.Length)
+                    {
+                        Boolarray[0] = HmiRB[Convert.ToInt32(Getaddress(address))];
+                    }
+                    break;
+                default:
+                    return new OperateResult<bool[]>() { Content = Boolarray, ErrorCode = 0, IsSuccess = false, Message = $"当前输入的{address}无法解析" };
+            }
+            return new OperateResult<bool[]>() { Content = Boolarray, ErrorCode = 0, IsSuccess = true, Message = "0" };
         }
         private async Task<string> TextRead(string address)
         {

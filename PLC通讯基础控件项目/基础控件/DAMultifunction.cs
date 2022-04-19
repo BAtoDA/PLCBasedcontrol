@@ -34,9 +34,10 @@ namespace PLC通讯基础控件项目.基础控件
                 this.ResumeLayout(false);
                 Timerconfiguration.Stop();
 
-               // Modifications_Eeve(1, new EventArgs());
+                // Modifications_Eeve(1, new EventArgs());
                 //处理PLC通讯部分
-                if (!this.PLC_Enable || this.IsDisposed || this.Created == false || DesignMode) return;//用户不开启PLC功能
+                //if (!this.PLC_Enable || this.IsDisposed || this.Created == false || DesignMode) return;//用户不开启PLC功能
+                if (!this.PLC_Enable || this.IsDisposed || DesignMode) return;//用户不开启PLC功能
                 {
                     _ = new ControlPLCMultifunctionBase(this);
                 }

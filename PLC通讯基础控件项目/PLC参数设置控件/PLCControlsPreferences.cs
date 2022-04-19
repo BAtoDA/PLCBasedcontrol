@@ -32,6 +32,10 @@ using HslCommunication.Profinet.Siemens;
 using PLC通讯基础控件项目.第三方通信互交底层;
 using PLC通讯库.通讯枚举;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.开机自动运行类;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
+using Sunny.UI;
+using System.Text.RegularExpressions;
+using static PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_DataList;
 
 namespace PLC通讯基础控件项目
 {
@@ -242,6 +246,9 @@ namespace PLC通讯基础控件项目
                     }
                     //添加软件开机自动启动
                     BootAutomatically.SetMeStart();
+                    //--------------处理报警视图---------------------
+                    PLCEventDataListLoad();//加载注册的PLC
+                    //PLCEventDataListRefresh();
                     PlcLoad = true;
                 }
             }
@@ -271,6 +278,104 @@ namespace PLC通讯基础控件项目
                     });
                 }
                 catch { }
+            }
+            //--------------处理报警视图---------------------
+            void PLCEventDataListRefresh()//定期刷新区域性数据
+            {
+                var PLCErrTimer = new System.Windows.Forms.Timer();
+                PLCErrTimer.Tick += (async (sen, e) =>
+                {
+                    PLCErrTimer.Stop();
+                    await Task.Run(() =>
+                    {
+                        var PLCEventTask = new Task[PLCEvent_DataList.PLCEvent_Data.Count];//创建一定的异步任务\
+                        var TaskIndex = 0;//遍历任务指针
+                        foreach (var i in PLCEvent_DataList.PLCEvent_Data)
+                        {
+                            PLCEventTask[TaskIndex] = Task.Run(() =>
+                             {
+                                 IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == i.Key.Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                                 if (PLCoop == null) return 1;
+                                 if (PLCoop.PLC_ready)
+                                 {
+                                     //先遍历Bit位                
+                                     i.Value.ForEach(s =>
+                                         {
+                                             for (int j = 0; j < 4; j++)//一共遍历2.8W个 一次获得7K个Bit数据
+                                             {
+                                                 var PLCData = PLCoop.PLC_read_M_bit(s.Function, (j * 7000).ToString(), 7000);//批量获得PLC数据
+                                                 if (PLCData == null) continue;
+                                                 if (PLCData.Length == 7000)
+                                                 {
+                                                     for (int Ln = 0; Ln < PLCData.Length; Ln++)//填充数据到表中
+                                                     {
+                                                         s.DataList[(j * 7000) + Ln].State = PLCData[Ln];
+                                                     }
+                                                 }
+                                             }
+                                         });
+                                 }
+                                 return 1;
+                             });
+
+                            TaskIndex++;
+                        }
+                        Task.WaitAll(PLCEventTask);
+                    });
+                    PLCErrTimer.Start();
+                });
+                PLCErrTimer.Interval = 300;
+                PLCErrTimer.Start();
+
+            }
+            void PLCEventDataListLoad()//初次加载报警视图链表
+            {
+                PLCEvent_DataList.PLCEvent_Data.Clear();
+                foreach (var i in IPLCsurface.PLCDictionary)
+                {
+                    var PLCEvent = new List<PLCEvent_DataList.PLCData>();
+                    var EnumType = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.Key + "_bit");
+                    Enum.GetNames(EnumType).ForEach(Reuq =>
+                    {
+                        Regex rq = new Regex("_Bit".ToLower());
+                        MatchCollection mc = Regex.Matches( Reuq.ToLower(), "_Bit".ToLower());
+                        if (mc.Count < 1)//暂时不支持D_Bit类型
+                        {
+                            var AddData = new PLCEvent_DataList.PLCData();
+                            AddData.Function = Reuq.ToString();
+                            AddData.DataList = new List<DataList<dynamic>>();
+                            for (int i = 0; i < 30000; i++)//默认开辟区域为3W
+                            {
+                                AddData.DataList.Add(new DataList<dynamic>()
+                                {
+                                    Address = i.ToString(),
+                                    State = false
+                                });
+
+                            }
+                            PLCEvent.Add(AddData);
+                        }
+                    });
+                    var EnumType1 = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.Key + "_D");
+                    Enum.GetNames(EnumType1).ForEach(Reuq =>
+                    {
+
+                        var AddData = new PLCEvent_DataList.PLCData();
+                        AddData.Function = Reuq.ToString();
+                        AddData.DataList = new List<DataList<dynamic>>();
+                        for (int i = 0; i < 30000; i++)//默认开辟区域为3W
+                        {
+                            AddData.DataList.Add(new DataList<dynamic>()
+                            {
+                                Address = i.ToString(),
+                                State = 0
+                            });
+
+                        }
+                        PLCEvent.Add(AddData);
+                    });
+                    PLCEvent_DataList.PLCEvent_Data.Add(i.Key.ToString(), PLCEvent);
+                }
             }
             this.Start();
             #endregion

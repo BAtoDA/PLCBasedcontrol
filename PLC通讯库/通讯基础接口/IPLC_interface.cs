@@ -48,6 +48,14 @@ namespace PLC通讯库.通讯基础接口
         /// <returns></returns>
         bool PLC_read_M_bit(string Name, string id);//读取--位
         /// <summary>
+        /// 批量读取位
+        /// </summary>
+        /// <param name="Name">PLC功能码</param>
+        /// <param name="id">PLC地址</param>
+        /// <param name="Count">批量读取个数 三菱最大7千 西门子待测试 欧姆龙待测试</param>
+        /// <returns>返回泛型列表</returns>
+        bool[] PLC_read_M_bit(string Name, string id,ushort Count);
+        /// <summary>
         /// /写入--位
         /// </summary>
         /// <param name="Name"></param>

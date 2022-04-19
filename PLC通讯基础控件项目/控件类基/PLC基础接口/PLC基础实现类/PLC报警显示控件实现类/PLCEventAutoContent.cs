@@ -13,6 +13,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     /// </summary>
     class PLCEventAutoContent: PLCEventContent
     {
+        /// <summary>
+        /// 同步锁
+        /// </summary>
+        static Mutex mutex = new Mutex();
         private string Address;
         public PLCEventAutoContent(string Textaddress) :base(Textaddress)
         {
@@ -58,6 +62,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             try
             {
                 await File.AppendAllLinesAsync(@Textaddress, new List<string>() { Content });
+                mutex.ReleaseMutex();
             }
             catch { }
         }

@@ -61,7 +61,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     public enum Mitsubishi_bit
     {
         /*  LCS,LCC,*/
-        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
+        X, Y, M, L, F, B,D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
@@ -77,7 +77,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     public enum Mitsubishi1_bit
     {
         /*  LCS,LCC,*/
-        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit=14, R_Bit=15, SW_Bit=16, W_Bit=17
+        X, Y, M, L, F, B, D_Bit=14, R_Bit=15, SW_Bit=16, W_Bit=17
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
@@ -93,7 +93,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     public enum Mitsubishi2_bit
     {
         /*  LCS,LCC,*/
-        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
+        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
@@ -109,7 +109,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     public enum Mitsubishi3_bit
     {
         /*  LCS,LCC,*/
-        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
+        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB,  D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
@@ -125,7 +125,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     public enum Mitsubishi4_bit
     {
         /*  LCS,LCC,*/
-        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
+        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
@@ -141,7 +141,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     public enum Mitsubishi5_bit
     {
         /*  LCS,LCC,*/
-        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, S, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
+        X, Y, M, L, F, B, TS, SM, SS, SC, CS, CC, SB, D_Bit = 14, R_Bit = 15, SW_Bit = 16, W_Bit = 17
     }
     /// <summary>
     /// PLC各可访问软元件 三菱 -WORD 字
