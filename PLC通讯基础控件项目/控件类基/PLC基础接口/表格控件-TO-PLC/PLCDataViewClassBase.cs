@@ -40,5 +40,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_
         /// 读取控制
         /// </summary>
         bool ReadCommand { get; set; }
+        /// <summary>
+        /// 读取返回的数组
+        /// </summary>
+        string[] ReadCommandData { get; set; }
+        /// <summary>
+        /// 读取完成事件
+        /// </summary>
+        event EventHandler ReadCommandEvent;
     }
 }

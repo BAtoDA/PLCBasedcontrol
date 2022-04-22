@@ -248,7 +248,7 @@ namespace PLC通讯基础控件项目
                     BootAutomatically.SetMeStart();
                     //--------------处理报警视图---------------------
                     PLCEventDataListLoad();//加载注册的PLC
-                    //PLCEventDataListRefresh();
+                    PLCEventDataListRefresh();
                     PlcLoad = true;
                 }
             }
@@ -303,14 +303,21 @@ namespace PLC通讯基础控件项目
                                          {
                                              for (int j = 0; j < 4; j++)//一共遍历2.8W个 一次获得7K个Bit数据
                                              {
-                                                 var PLCData = PLCoop.PLC_read_M_bit(s.Function, (j * 7000).ToString(), 7000);//批量获得PLC数据
-                                                 if (PLCData == null) continue;
-                                                 if (PLCData.Length == 7000)
+                                                 if (s.PLC_Bit_D)
                                                  {
-                                                     for (int Ln = 0; Ln < PLCData.Length; Ln++)//填充数据到表中
+                                                     var PLCData = PLCoop.PLC_read_M_bit(s.Function, (j * 7000).ToString(), 7000);//批量获得PLC数据
+                                                     if (PLCData == null) continue;
+                                                     if (PLCData.Length == 7000)
                                                      {
-                                                         s.DataList[(j * 7000) + Ln].State = PLCData[Ln];
+                                                         for (int Ln = 0; Ln < PLCData.Length; Ln++)//填充数据到表中
+                                                         {
+                                                             s.DataList[(j * 7000) + Ln].State = PLCData[Ln];
+                                                         }
                                                      }
+                                                 }
+                                                 else
+                                                 {
+                                                  
                                                  }
                                              }
                                          });
@@ -343,6 +350,7 @@ namespace PLC通讯基础控件项目
                         {
                             var AddData = new PLCEvent_DataList.PLCData();
                             AddData.Function = Reuq.ToString();
+                            AddData.PLC_Bit_D = true;
                             AddData.DataList = new List<DataList<dynamic>>();
                             for (int i = 0; i < 30000; i++)//默认开辟区域为3W
                             {
@@ -362,6 +370,7 @@ namespace PLC通讯基础控件项目
 
                         var AddData = new PLCEvent_DataList.PLCData();
                         AddData.Function = Reuq.ToString();
+                        AddData.PLC_Bit_D = false;
                         AddData.DataList = new List<DataList<dynamic>>();
                         for (int i = 0; i < 30000; i++)//默认开辟区域为3W
                         {

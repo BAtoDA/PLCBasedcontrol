@@ -81,6 +81,14 @@ namespace PLC通讯基础控件项目.基础控件
         /// 读取控制
         /// </summary>
         public bool ReadCommand { get; set; }
+        /// <summary>
+        /// 读取返回的数组
+        /// </summary>
+        public string[] ReadCommandData { get; set; }
+        /// <summary>
+        /// 读取完成事件
+        /// </summary>
+        public event EventHandler ReadCommandEvent;
         [Browsable(false)]
         [Description("PLC保存参数"), Category("PLC类型")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]

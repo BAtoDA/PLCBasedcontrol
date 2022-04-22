@@ -33,7 +33,7 @@ namespace PLC通讯基础控件项目.基础控件
               {
                   Timerconfiguration.Stop();
                   //处理PLC通讯部分
-                  if (!this.PLC_Enable || this.IsDisposed || this.Created == false|| DesignMode) return;//用户不开启PLC功能
+                  if (!this.PLC_Enable || this.IsDisposed || DesignMode) return;//用户不开启PLC功能
                   else
                   {
                        controlPLCDataViewBase = new ControlPLCDataViewBase(this);
@@ -117,6 +117,26 @@ namespace PLC通讯基础控件项目.基础控件
         System.Threading.Timer PLCTimer { get; set; }
         [Browsable(false)]
         public event EventHandler Modification;
+        /// <summary>
+        /// 读取完成事件
+        /// </summary>
+        public event EventHandler ReadCommandEvent;
+
+        /// <summary>
+        /// 读取返回的数组
+        /// </summary>
+        public string[] ReadCommandData 
+        {
+            get => readCommandData;
+            set
+            {
+                if(ReadCommandEvent != null)
+                  ReadCommandEvent(value, new EventArgs());
+                readCommandData = value;
+            }
+        
+        }
+        string[] readCommandData;
         #endregion
         public void Modifications_Eeve(object send, EventArgs e)
         {

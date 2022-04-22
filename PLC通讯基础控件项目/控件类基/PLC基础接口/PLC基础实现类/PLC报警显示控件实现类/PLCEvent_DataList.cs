@@ -24,6 +24,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             /// </summary>
             public string Function { get; set; }
             /// <summary>
+            /// 访问PLC的数据类型
+            /// true=Bit false=D
+            /// </summary>
+            public bool PLC_Bit_D { get; set; }
+            /// <summary>
             /// 临时存放的PLC数据区域 
             /// </summary>
             public List<DataList<dynamic>> DataList { get; set; }

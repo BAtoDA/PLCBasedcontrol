@@ -146,7 +146,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //for (int i = 0; i < PLCValue.Count; i++)
             //{
             if (PLCValue.Count > 0)
+            {
                 this.PlcControl.Rows.Add(PLCValue.ToArray());
+                this.pLCViewClassBase.ReadCommandData=PLCValue.ToArray();
+            }
            // }
 
         }
