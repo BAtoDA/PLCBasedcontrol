@@ -25,7 +25,7 @@ namespace PLC通讯库.通讯枚举
     public enum numerical_format
     {
         BCD_16_Bit, BCD_32_Bit, Hex_16_Bit, Hex_32_Bit, Binary_16_Bit, Binary_32_Bit, Unsigned_16_Bit, Signed_16_Bit
-            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit
+            , Unsigned_32_Bit, Signed_32_Bit, Float_32_Bit,String
     }
     public enum MitsubishiPLC
     {

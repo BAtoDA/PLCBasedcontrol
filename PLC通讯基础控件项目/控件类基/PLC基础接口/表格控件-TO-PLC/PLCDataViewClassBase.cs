@@ -47,6 +47,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_
         /// <summary>
         /// 读取完成事件
         /// </summary>
+        [Description("读取完成事件"), Category("PLC事件")]
         event EventHandler ReadCommandEvent;
     }
 }

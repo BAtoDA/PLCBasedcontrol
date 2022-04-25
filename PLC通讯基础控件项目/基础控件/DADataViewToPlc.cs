@@ -65,8 +65,12 @@ namespace PLC通讯基础控件项目.基础控件
                 //代码底层触发事件
                 lock (oj)
                 {
-                    if (controlPLCDataViewBase != null)
+                    readCommand=value;
+                    if (controlPLCDataViewBase != null & readCommand)
+                    {
                         controlPLCDataViewBase.GetPLC();
+                    }
+                    readCommand = false;
                 }
             }
         }
@@ -120,6 +124,7 @@ namespace PLC通讯基础控件项目.基础控件
         /// <summary>
         /// 读取完成事件
         /// </summary>
+        [Description("读取完成事件"), Category("PLC事件")]
         public event EventHandler ReadCommandEvent;
 
         /// <summary>

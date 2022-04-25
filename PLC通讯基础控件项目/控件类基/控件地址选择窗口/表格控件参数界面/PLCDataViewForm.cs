@@ -186,7 +186,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
         //添加操作
         private void uiButton1_Click(object sender, EventArgs e)
         {
-            this.uiDataGridView1.Rows.Add(new object[]
+            var SelecIndex = this.uiDataGridView1.SelectedIndex>-1? this.uiDataGridView1.SelectedIndex: this.uiDataGridView1.Rows.Count;
+            this.uiDataGridView1.Rows.Insert(SelecIndex, new object[]
                {
                    "Mitsubishi",
                    "D",
@@ -195,8 +196,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.表�
                    "Name"+this.uiDataGridView1.Rows.Count,
                    "varchar"
                });
-
-            this.uiDataGridView1.SelectedIndex = this.uiDataGridView1.Rows.Count-1;
+            this.uiDataGridView1.SelectedIndex = SelecIndex;
+            //this.uiDataGridView1.SelectedIndex = this.uiDataGridView1.Rows.Count-1;
         }
         //修改操作
         private void uiButton2_Click(object sender, EventArgs e)

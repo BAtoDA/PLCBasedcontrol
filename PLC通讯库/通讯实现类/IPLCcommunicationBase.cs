@@ -486,6 +486,12 @@ namespace PLC通讯库.通讯实现类
                         // 读取uint变量
                         readResultRender(ReadUInt32(), Name.Trim() + id.Trim(), ref result);
                         break;
+                    case numerical_format.String:
+                        // 读取uint变量
+                        var ResData = ReadString();
+                        result = ResData != null? ResData.Content:"Null";
+                        //readResultRender(ReadString(), Name.Trim() + id.Trim(), ref result);
+                        break;
                 }
             }
             catch { }
@@ -495,6 +501,7 @@ namespace PLC通讯库.通讯实现类
             OperateResult<ushort> ReadUInt16() => melsec_net.ReadUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
             OperateResult<uint> ReadUInt32() => melsec_net.ReadUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
             OperateResult<float> ReadFloat() => melsec_net.ReadFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim());
+            OperateResult<string> ReadString() => melsec_net.ReadString(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(),16,Encoding.UTF8);
             return result;//返回数据
         }
         /// <summary>
@@ -613,6 +620,13 @@ namespace PLC通讯库.通讯实现类
                     case numerical_format.Unsigned_32_Bit:
                         // 读取uint变量
                         return ReadUInt32().Content;
+                    case numerical_format.String:
+                        // 读取String变量
+                        string[] PLCBinarya3 = new string[Index];
+                        for (int i = 0; i < PLCBinarya3.Length; i++)
+                            PLCBinarya3[i] = ReadString().Content;
+                        return PLCBinarya3;
+
                 }
             }
             catch { }
@@ -624,11 +638,12 @@ namespace PLC通讯库.通讯实现类
             OperateResult<ushort[]> ReadUInt16() => melsec_net.ReadUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
             OperateResult<uint[]> ReadUInt32() => melsec_net.ReadUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
             OperateResult<float[]> ReadFloat() => melsec_net.ReadFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            OperateResult<string> ReadString() => melsec_net.ReadString(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), 1, Encoding.UTF8);
             //async Task<OperateResult<short[]>> ReadInt16() => await melsec_net.ReadInt16A(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
-           // async Task<OperateResult<int[]>> ReadInt32() => await melsec_net.ReadInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            // async Task<OperateResult<int[]>> ReadInt32() => await melsec_net.ReadInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
             //async Task<OperateResult<ushort[]>> ReadUInt16() => await melsec_net.ReadUInt16(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
-           // async Task<OperateResult<uint[]>> ReadUInt32() => await melsec_net.ReadUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
-           // async Task<OperateResult<float[]>> ReadFloat() => await melsec_net.ReadFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            // async Task<OperateResult<uint[]>> ReadUInt32() => await melsec_net.ReadUInt32(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
+            // async Task<OperateResult<float[]>> ReadFloat() => await melsec_net.ReadFloat(this.melsec_net.GetType().Name != "ModbusTcpNet" ? Name.Trim() + id.Trim() : id.Trim(), Index);
             return new int[] { 0 };
         }
         /// <summary>
