@@ -16,6 +16,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
@@ -111,47 +112,50 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// 读取PLC数据
         /// </summary>
-        public void GetPLC()
+        public async void GetPLC()
         {
             if (PlcControl.IsDisposed || PlcControl.Created == false) return;
             if (((dynamic)this.PlcControl).PLC_Enable)
             {
-                //PLCoopErr(pLCViewClassBase);
-                //---清除事务表---
-                SQLoperation.Clear();
-                PLCValue.Clear();
-                //循环遍历---获取PLC对象名---
-                for (int i=0;i< this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC.Length;i++)
+                await Task.Run(() =>
                 {
-                    IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC[i].ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
-                    if (PLCoop == null) return;
-                    if (!PLCoop.PLC_ready)
+                    //PLCoopErr(pLCViewClassBase);
+                    //---清除事务表---
+                    SQLoperation.Clear();
+                    PLCValue.Clear();
+                    //循环遍历---获取PLC对象名---
+                    for (int i = 0; i < this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC.Length; i++)
                     {
-                        //--当有PLC未就绪时直接返回方法--
-                        return;
+                        IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC[i].ToString().Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                        if (PLCoop == null) return;
+                        if (!PLCoop.PLC_ready)
+                        {
+                            //--当有PLC未就绪时直接返回方法--
+                            return;
+                        }
+                        var PLCdata = PLCoop.PLC_read_D_register(this.pLCViewClassBase.pLCDataViewselectRealize.ReadWriteFunction[i], this.pLCViewClassBase.pLCDataViewselectRealize.PLC_address[i], this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_numerical[i]);
+                        SQLoperation.Add($" INSERT INTO {this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface} ({this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]}) VALUES ( { GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata)} )");
+                        PLCValue.Add(PLCdata);
                     }
-                    var PLCdata = PLCoop.PLC_read_D_register(this.pLCViewClassBase.pLCDataViewselectRealize.ReadWriteFunction[i], this.pLCViewClassBase.pLCDataViewselectRealize.PLC_address[i], this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_numerical[i]);
-                    SQLoperation.Add($" INSERT INTO {this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface} ({this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]}) VALUES ( { GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata)} )");
-                    PLCValue.Add(PLCdata);
-                }
-            }
-            //---处理SQL数据事务---
-            if(this.pLCViewClassBase.pLCDataViewselectRealize.SQLOpen)
-            {
-                SetSQL(this.pLCViewClassBase.pLCDataViewselectRealize.SQLCharacter, this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface, SQLoperation.ToArray(), this.pLCViewClassBase.pLCDataViewselectRealize.SQLServer_SQLinte);
-            }
-            //--处理添加后的事务--
-            if (this.pLCViewClassBase.pLCDataViewselectRealize.DataGridViewPLC_Time)
-                PLCValue.Add(DateTime.Now.ToString("g"));
-            //for (int i = 0; i < PLCValue.Count; i++)
-            //{
-            if (PLCValue.Count > 0)
-            {
-                this.PlcControl.Rows.Add(PLCValue.ToArray());
-                this.pLCViewClassBase.ReadCommandData=PLCValue.ToArray();
-            }
-           // }
 
+                    //---处理SQL数据事务---
+                    if (this.pLCViewClassBase.pLCDataViewselectRealize.SQLOpen)
+                    {
+                        SetSQL(this.pLCViewClassBase.pLCDataViewselectRealize.SQLCharacter, this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface, SQLoperation.ToArray(), this.pLCViewClassBase.pLCDataViewselectRealize.SQLServer_SQLinte);
+                    }
+                    //--处理添加后的事务--
+                    if (this.pLCViewClassBase.pLCDataViewselectRealize.DataGridViewPLC_Time)
+                        PLCValue.Add(DateTime.Now.ToString("G"));
+                });
+
+                if (PLCValue.Count > 0)
+                {
+                    this.PlcControl.Rows.Add(PLCValue.ToArray());
+                    this.pLCViewClassBase.ReadCommandData = PLCValue.ToArray();
+                    this.PlcControl.CurrentCell= this.PlcControl.Rows[this.PlcControl.Rows.Count-1].Cells[0];
+                }
+
+            }
         }
         /// <summary>
         /// 使用事务把数据

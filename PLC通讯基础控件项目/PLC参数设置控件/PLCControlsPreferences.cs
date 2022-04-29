@@ -331,7 +331,7 @@ namespace PLC通讯基础控件项目
                     });
                     PLCErrTimer.Start();
                 });
-                PLCErrTimer.Interval = 300;
+                PLCErrTimer.Interval = 100;
                 PLCErrTimer.Start();
 
             }

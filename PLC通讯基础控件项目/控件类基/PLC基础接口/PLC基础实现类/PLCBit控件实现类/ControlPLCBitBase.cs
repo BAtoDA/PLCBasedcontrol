@@ -59,6 +59,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// PLC安全操作模式
         /// </summary>
         volatile Safetypattern PLCsafetypattern=Safetypattern.Nooperation;
+        /// <summary>
+        /// 锁
+        /// </summary>
+        Mutex mutexLock=new Mutex();
         #endregion
         /// <summary>
         /// 构造函数
@@ -80,9 +84,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 PlcControl.MouseUp += MouseUpPLC;
                 pLCBitproperty.PLCTimer = new System.Threading.Timer(new TimerCallback((s) =>
                 {
-                    this.PLCrefresh();
+                    if (mutexLock.WaitOne(100))
+                    {
+                        this.PLCrefresh();
+                        mutexLock.ReleaseMutex();
+                    }
                 }));
-                pLCBitproperty.PLCTimer.Change(TimeSpan.FromMilliseconds(300), TimeSpan.FromMilliseconds(200));
+                pLCBitproperty.PLCTimer.Change(TimeSpan.FromMilliseconds(300), TimeSpan.FromMilliseconds(500));
             }
             //---------安全操作模式----------
             PLCsafetypattern = pLCBitClassBase.pLCBitselectRealize.OperationAffirm ? Getsafetypattern(pLCBitClassBase.pLCBitselectRealize.SafetyBehaviorPattern) : Safetypattern.Nooperation;

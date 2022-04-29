@@ -63,15 +63,15 @@ namespace PLC通讯基础控件项目.基础控件
             set
             {
                 //代码底层触发事件
-                lock (oj)
-                {
+                //lock (oj)
+                //{
                     readCommand=value;
                     if (controlPLCDataViewBase != null & readCommand)
                     {
                         controlPLCDataViewBase.GetPLC();
                     }
                     readCommand = false;
-                }
+              // }
             }
         }
         bool readCommand;
