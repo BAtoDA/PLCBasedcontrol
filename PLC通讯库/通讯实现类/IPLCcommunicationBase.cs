@@ -333,7 +333,7 @@ namespace PLC通讯库.通讯实现类
             dynamic ModbusTcpNet()
             {
                 dynamic PLCData = "";
-                return PLCData = melsec_net.ReadCoil(id);
+                return PLCData = melsec_net.ReadCoil(id, Count);
             }
             dynamic MelsecMcNetBit()//三菱寄存器Bit位处理
             {

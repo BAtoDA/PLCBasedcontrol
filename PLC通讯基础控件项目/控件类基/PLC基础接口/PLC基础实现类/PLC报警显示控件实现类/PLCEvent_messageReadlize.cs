@@ -210,14 +210,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         private async Task<int> PLCrefresh()
         {
-            //await Task.Run( () =>
-            //{
-            //    for (int i = 0; i < EventLink.PLCEventLink.Count-1; i++)
-            //    {
-            //        ReadPLC(EventLink.PLCEventLink[i]);
-            //    }
-            //}, token);
-            //return 1;
             int EventCount = (EventLink.PLCEventLink.Count / 150) > 0 ? EventLink.PLCEventLink.Count / 150 : 0;
             int AwaitIndex = 0;
             if (EventCount > 0)

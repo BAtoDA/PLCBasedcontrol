@@ -16,6 +16,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// 唯一不可重复
         /// </summary>
         public static volatile Dictionary<string,List<PLCData>> PLCEvent_Data = new Dictionary<string, List<PLCData>>();
+        /// <summary>
+        /// 存储PLC批量读取的最大数量
+        /// </summary>
+        public static volatile Dictionary<string, List<DataList<int>>> PLCEventCount = new Dictionary<string, List<DataList<int>>>();
         [Serializable]
         public class PLCData
         {

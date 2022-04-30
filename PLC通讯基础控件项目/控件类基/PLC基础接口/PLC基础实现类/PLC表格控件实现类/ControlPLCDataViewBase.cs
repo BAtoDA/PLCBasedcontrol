@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.表格控件_TO_PLC;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using PLC通讯库.PLC通讯设备类型表;
@@ -133,6 +134,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                             //--当有PLC未就绪时直接返回方法--
                             return;
                         }
+                        //测试代码 如果是三菱PLC直接访问内存区域
+                        //var PLCData = PLCEvent_DataList.PLCEvent_Data.Where(p => p.Key.Trim() == this.pLCViewClassBase.pLCDataViewselectRealize.ReadWritePLC[i].ToString().Trim()).FirstOrDefault().Value?.Where(pi => pi.Function == this.pLCViewClassBase.pLCDataViewselectRealize.ReadWriteFunction[i].Trim()).FirstOrDefault();
+                        //var PLCdata = PLCData.DataList.Where(pi => pi.Address == this.pLCViewClassBase.pLCDataViewselectRealize.PLC_address[i].Trim()).FirstOrDefault()?.State.ToString();
+
                         var PLCdata = PLCoop.PLC_read_D_register(this.pLCViewClassBase.pLCDataViewselectRealize.ReadWriteFunction[i], this.pLCViewClassBase.pLCDataViewselectRealize.PLC_address[i], this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_numerical[i]);
                         SQLoperation.Add($" INSERT INTO {this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurface} ({this.pLCViewClassBase.pLCDataViewselectRealize.DataGridView_Name[i]}) VALUES ( { GetSQLType(this.pLCViewClassBase.pLCDataViewselectRealize.SQLsurfaceType[i], PLCdata)} )");
                         PLCValue.Add(PLCdata);

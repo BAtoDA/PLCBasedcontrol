@@ -24,6 +24,7 @@
   <ItemGroup>
     <PackageReference Include="HslCommunication" Version="7.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="16.11.230815" />
     <PackageReference Include="Nancy" Version="2.0.0" />
     <PackageReference Include="System.IO.FileSystem.AccessControl" Version="5.0.0" />
     <PackageReference Include="System.Security.AccessControl" Version="6.0.0" />
@@ -31,6 +32,22 @@
 
   <ItemGroup>
     <AdditionalDesignTimeBuildInput Remove="FakesAssemblies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="通讯内部存储区域\PLCDataSet.Designer.cs">
+      <DependentUpon>PLCDataSet.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="通讯内部存储区域\PLCDataSet.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>PLCDataSet.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
   </ItemGroup>
 
 </Project>

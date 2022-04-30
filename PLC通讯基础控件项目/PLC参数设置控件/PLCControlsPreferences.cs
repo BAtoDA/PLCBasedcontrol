@@ -305,13 +305,13 @@ namespace PLC通讯基础控件项目
                                              {
                                                  if (s.PLC_Bit_D)
                                                  {
-                                                     var PLCData = PLCoop.PLC_read_M_bit(s.Function, (j * 7000).ToString(), 7000);//批量获得PLC数据
+                                                     var PLCData = PLCoop.PLC_read_M_bit(s.Function, (j * 1000).ToString(), 1000);//批量获得PLC数据
                                                      if (PLCData == null) continue;
-                                                     if (PLCData.Length == 7000)
+                                                     if (PLCData.Length == 1000)
                                                      {
                                                          for (int Ln = 0; Ln < PLCData.Length; Ln++)//填充数据到表中
                                                          {
-                                                             s.DataList[(j * 7000) + Ln].State = PLCData[Ln];
+                                                             s.DataList[(j * 1000) + Ln].State = PLCData[Ln];
                                                          }
                                                      }
                                                  }
@@ -331,7 +331,7 @@ namespace PLC通讯基础控件项目
                     });
                     PLCErrTimer.Start();
                 });
-                PLCErrTimer.Interval = 100;
+                PLCErrTimer.Interval = 10;
                 PLCErrTimer.Start();
 
             }
@@ -386,6 +386,130 @@ namespace PLC通讯基础控件项目
                     PLCEvent_DataList.PLCEvent_Data.Add(i.Key.ToString(), PLCEvent);
                 }
             }
+           
+            //void PLCEventCountLoad()//加载批量读取PLC区域的范围
+            //{
+            //    foreach (PLC i in Enum.GetValues(typeof(PLC)))
+            //    {
+            //        switch (i)
+            //        {
+            //            case PLC.Siemens:
+            //            case PLC.Siemens1:
+            //            case PLC.Siemens2:
+            //            case PLC.Siemens3:
+            //            case PLC.Siemens4:
+            //            case PLC.Siemens5:
+            //                var SiemensPLC = new List<DataList<int>>();
+            //                var SiemensType = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.ToString() + "_bit");
+            //                Enum.GetNames(SiemensType).ForEach(Reuq =>
+            //                {
+            //                    SiemensPLC.Add(new DataList<int>()
+            //                    {
+            //                        Address = Reuq.ToString(),
+            //                        State = 7000
+            //                    }) ;
+            //                });
+            //                var SiemensType1 = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.ToString() + "_D");
+            //                Enum.GetNames(SiemensType1).ForEach(Reuq =>
+            //                {
+            //                    SiemensPLC.Add(new DataList<int>()
+            //                    {
+            //                        Address = Reuq.ToString(),
+            //                        State = 7000
+            //                    });
+            //                });
+            //                PLCEventCount.Add(i.ToString(), SiemensPLC);
+            //                break;
+            //            case PLC.Modbus_TCP:
+            //            case PLC.Modbus_TCP1:
+            //            case PLC.Modbus_TCP2:
+            //            case PLC.Modbus_TCP3:
+            //            case PLC.Modbus_TCP4:
+            //            case PLC.Modbus_TCP5:
+            //                var Modbus_TCPPLC = new List<DataList<int>>();
+            //                var Modbus_TCPType = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.ToString() + "_bit");
+            //                Enum.GetNames(Modbus_TCPType).ForEach(Reuq =>
+            //                {
+            //                    Modbus_TCPPLC.Add(new DataList<int>()
+            //                    {
+            //                        Address = Reuq.ToString(),
+            //                        State = 1024
+            //                    });
+            //                });
+            //                var Modbus_TCPType1 = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.ToString() + "_D");
+            //                Enum.GetNames(Modbus_TCPType1).ForEach(Reuq =>
+            //                {
+            //                    Modbus_TCPPLC.Add(new DataList<int>()
+            //                    {
+            //                        Address = Reuq.ToString(),
+            //                        State = 8000
+            //                    });
+            //                });
+            //                PLCEventCount.Add(i.ToString(), Modbus_TCPPLC);
+            //                break;
+            //            case PLC.Mitsubishi:
+            //            case PLC.Mitsubishi1:
+            //            case PLC.Mitsubishi2:
+            //            case PLC.Mitsubishi3:
+            //            case PLC.Mitsubishi4:
+            //            case PLC.Mitsubishi5:
+            //                var MitsubishiPLC = new List<DataList<int>>();
+            //                var MitsubishiType = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.ToString() + "_bit");
+            //                Enum.GetNames(MitsubishiType).ForEach(Reuq =>
+            //                {
+            //                    MitsubishiPLC.Add(new DataList<int>()
+            //                    {
+            //                        Address = Reuq.ToString(),
+            //                        State = 7000
+            //                    });
+            //                });
+            //                var MitsubishiType1 = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.ToString() + "_D");
+            //                Enum.GetNames(MitsubishiType1).ForEach(Reuq =>
+            //                {
+            //                    MitsubishiPLC.Add(new DataList<int>()
+            //                    {
+            //                        Address = Reuq.ToString(),
+            //                        State = 7000
+            //                    });
+            //                });
+            //                PLCEventCount.Add(i.ToString(), MitsubishiPLC);
+            //                break;
+            //            case PLC.Fanuc:
+            //            case PLC.Fanuc1:
+            //            case PLC.Fanuc2:
+            //            case PLC.Fanuc3:
+            //            case PLC.Fanuc4:
+            //            case PLC.Fanuc5:
+
+            //                break;
+            //            case PLC.OmronCIP:
+            //            case PLC.OmronCIP1:
+            //            case PLC.OmronCIP2:
+            //            case PLC.OmronCIP3:
+            //            case PLC.OmronCIP4:
+            //            case PLC.OmronCIP5:
+            //            case PLC.OmronTCP:
+            //            case PLC.OmronTCP1:
+            //            case PLC.OmronTCP2:
+            //            case PLC.OmronTCP3:
+            //            case PLC.OmronTCP4:
+            //            case PLC.OmronTCP5:
+            //            case PLC.OmronUDP:
+            //            case PLC.OmronUDP1:
+            //            case PLC.OmronUDP2:
+            //            case PLC.OmronUDP3:
+            //            case PLC.OmronUDP4:
+            //            case PLC.OmronUDP5:
+
+
+
+
+            //            default:
+
+            //                break;
+            //        }
+            //    }
+            //}
             this.Start();
             #endregion
             base.OnTick(e);
