@@ -210,21 +210,22 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         private async Task<int> PLCrefresh()
         {
-            int EventCount = (EventLink.PLCEventLink.Count / 150) > 0 ? EventLink.PLCEventLink.Count / 150 : 0;
+            int TotalMax = EventLink.PLCEventLink.Count-1;
+            int StrokeMax = 200;
+            int EventCount = (EventLink.PLCEventLink.Count / StrokeMax) > 0 ? (EventLink.PLCEventLink.Count / StrokeMax) : 0;
             int AwaitIndex = 0;
             if (EventCount > 0)
             {
-                for (int i = 0; i < EventCount; i++)
+                for (int i = 0;(StrokeMax * i)< EventLink.PLCEventLink.Count; i++)
                 {
-                    var TaskRefresh = new Task[150];//创建一定的异步线程池
-                    for (int j = 0; j < 150; j++)
+                    int StrokeIndex = (TotalMax - (StrokeMax * i))> StrokeMax ? StrokeMax : (TotalMax - (StrokeMax * i));//笔数
+                    int TotalIndex = TotalMax > StrokeMax ? (StrokeMax * i) : 0;//起始
+                    var TaskRefresh = new Task[StrokeIndex];//创建一定的异步线程池
+                    for (int j = 0; j < StrokeIndex; j++)
                     {
-                        int Len = (i * 150) + j;
-                        AwaitIndex = j;
-                        if (Len >= EventLink.PLCEventLink.Count) continue;
                         TaskRefresh[j] = new Task(() =>
                              {
-                                 ReadPLC(EventLink.PLCEventLink[Len]);
+                                 ReadPLC(EventLink.PLCEventLink[TotalIndex+j]);
                              }, token);
                         TaskRefresh[j].Start();
                     }
@@ -233,9 +234,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             }
             else
             {
+                var TaskRefresh = new Task[EventLink.PLCEventLink.Count];//创建一定的异步线程池
                 for (int j = 0; j < EventLink.PLCEventLink.Count; j++)
                 {
-                    var TaskRefresh = new Task[150];//创建一定的异步线程池
                     int Len = j;
                     AwaitIndex = j;
                     if (Len >= EventLink.PLCEventLink.Count) continue;
@@ -244,9 +245,8 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         ReadPLC(EventLink.PLCEventLink[Len]);
                     }, token);
                     TaskRefresh[j].Start();
-                    await Task.WhenAll(TaskRefresh);//4.等待处理完全
-
                 }
+                await Task.WhenAll(TaskRefresh);//4.等待处理完全
             }
             return 1;
         }
@@ -272,7 +272,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 if (mc.Count < 1)//暂时不支持D_Bit类型
                 {
                     var PLCData = PLCEvent_DataList.PLCEvent_Data.Where(p => p.Key.Trim() == event_Message.设备.Trim()).FirstOrDefault().Value?.Where(pi => pi.Function == event_Message.设备_地址.Trim()).FirstOrDefault();
-                    State = PLCData.DataList.Where(pi => pi.Address == event_Message.设备_具体地址.Trim()).FirstOrDefault()?.State;
+                    if (PLCData == null) return;
+                    var PlcRead= PLCData.DataList.Where(pi => pi.Address == event_Message.设备_具体地址.Trim()).FirstOrDefault();
+                    State = PlcRead != null ? PlcRead.State : false;
                 }
                 else
                 {

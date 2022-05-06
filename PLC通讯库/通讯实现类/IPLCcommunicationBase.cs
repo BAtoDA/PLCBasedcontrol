@@ -69,7 +69,7 @@ namespace PLC通讯库.通讯实现类
         /// <summary>
         /// 三菱PLC枚举
         /// </summary>
-        MitsubishiPLC mitsubishiPLC;
+        public MitsubishiPLC mitsubishiPLC= MitsubishiPLC.FX;
         /// <summary>
         /// 初始化PLC需要传入类型
         /// </summary>
@@ -306,8 +306,9 @@ namespace PLC通讯库.通讯实现类
                         else
                         {
                             //读取输入输出点位
-                            var Idto8 = Convert.ToInt16(id, 8).ToString("X");
-                            return PLCData = melsec_net.ReadBool(Name + Idto8, Count);
+                            var Idto8 = Convert.ToInt16(id, 8);
+                            var IdtoD= melsec_net.ReadBool(Name + Idto8, Count);
+                            return IdtoD;
                         }
                     case MitsubishiPLC.L:
                     case MitsubishiPLC.R:

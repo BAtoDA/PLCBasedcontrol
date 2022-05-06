@@ -28,7 +28,7 @@ namespace PLC通讯库.PLC通讯设备类型表
         /// </summary>
         public volatile static Dictionary<string, object> PLCDictionary = new Dictionary<string, object>()
         {
-            {"HMI",new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse("127.0.0.0"),2000),new HmiInteriorElementBase("127.0.0.0",2000),1000,1000)}
+           // {"HMI",new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse("127.0.0.0"),2000),new HmiInteriorElementBase("127.0.0.0",2000),1000,1000)}
         };
         /// <summary>
         /// 添加PLC通讯表对象

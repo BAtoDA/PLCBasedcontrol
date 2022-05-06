@@ -434,7 +434,7 @@ namespace PLC通讯库.通讯内部存储区域 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PLCData_DRow AddPLCData_DRow(string PLCName, string PLCfunction, string PLCaddress, short state, long id) {
+            public PLCData_DRow AddPLCData_DRow(string PLCName, string PLCfunction, string PLCaddress, int state, long id) {
                 PLCData_DRow rowPLCData_DRow = ((PLCData_DRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PLCName,
@@ -480,7 +480,7 @@ namespace PLC通讯库.通讯内部存储区域 {
                 base.Columns.Add(this.columnPLCfunction);
                 this.columnPLCaddress = new global::System.Data.DataColumn("PLCaddress", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPLCaddress);
-                this.columnstate = new global::System.Data.DataColumn("state", typeof(short), null, global::System.Data.MappingType.Element);
+                this.columnstate = new global::System.Data.DataColumn("state", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstate);
                 this.columnid = new global::System.Data.DataColumn("id", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
@@ -739,14 +739,14 @@ namespace PLC通讯库.通讯内部存储区域 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PLCData_BitRow AddPLCData_BitRow(string PLCName, string PLCfunction, string PLCaddress, bool state) {
+            public PLCData_BitRow AddPLCData_BitRow(string PLCName, string PLCfunction, string PLCaddress, bool state, long id) {
                 PLCData_BitRow rowPLCData_BitRow = ((PLCData_BitRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PLCName,
                         PLCfunction,
                         PLCaddress,
                         state,
-                        null};
+                        id};
                 rowPLCData_BitRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPLCData_BitRow);
                 return rowPLCData_BitRow;
@@ -789,7 +789,6 @@ namespace PLC通讯库.通讯内部存储区域 {
                 base.Columns.Add(this.columnstate);
                 this.columnid = new global::System.Data.DataColumn("id", typeof(long), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid);
-                this.columnid.AutoIncrement = true;
                 this.columnid.AutoIncrementSeed = -1;
                 this.columnid.AutoIncrementStep = -1;
             }
@@ -982,10 +981,10 @@ namespace PLC通讯库.通讯内部存储区域 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public short state {
+            public int state {
                 get {
                     try {
-                        return ((short)(this[this.tablePLCData_D.stateColumn]));
+                        return ((int)(this[this.tablePLCData_D.stateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("表“PLCData_D”中列“state”的值为 DBNull。", e);
