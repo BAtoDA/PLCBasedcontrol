@@ -25,6 +25,8 @@ using Sunny.UI;
 using System.Threading.Tasks;
 using System.Reflection;
 using CSScriptLib;
+using System.Text.RegularExpressions;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类
 {
@@ -328,7 +330,23 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                             mutex.ReleaseMutex();
                             return;
                         }
-                        var State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+
+                        //改为内存区域
+                        bool State = false;
+                        //判断是否带 _Bit 寄存器中判断某个Bit位
+                        Regex rq = new Regex("_Bit".ToLower());
+                        MatchCollection mc = Regex.Matches(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, "_Bit".ToLower());
+                        if (mc.Count < 1)//暂时不支持D_Bit类型
+                        {
+                            var PLCData = PLCEvent_DataList.PLCEvent_Data.Where(p => p.Key.Trim() == pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()).FirstOrDefault().Value?.Where(pi => pi.Function == pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction).FirstOrDefault();
+                            if (PLCData == null) return;
+                            var PlcRead = PLCData.DataList.Where(pi => pi.Address == pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress).FirstOrDefault();
+                            State = PlcRead != null ? PlcRead.State : false;
+                        }
+                        else
+                        {
+                             State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                        }
                         //把状态反馈到外部
                         pLCBitproperty.ReadCommand = State;
                         //---委托控件----处理状态颜色

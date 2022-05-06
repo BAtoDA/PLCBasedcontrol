@@ -294,6 +294,8 @@ namespace PLC通讯基础控件项目
                         {
                             PLCEventTask[TaskIndex] = Task.Run(() =>
                              {
+                                 var PLCTaskIn = new Task[i.Value.Count];//创建一定的异步任务\
+                                 var TaskIn = 0;//遍历任务指针
                                  IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == i.Key.Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                                  if (PLCoop == null) return 1;
                                  var TypeMax = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.Key + "_addressMax_Bit");
@@ -302,32 +304,38 @@ namespace PLC通讯基础控件项目
                                  {
                                      //先遍历Bit位                
                                      i.Value.ForEach(s =>
-                                         {
-                                             if (s.PLC_Bit_D)//Bit位区域读取
-                                             {
-                                                 int TotalMax = (int)Enum.Parse(TypeMax, s.Function);
-                                                 int StrokeMax = (int)Enum.Parse(ReadMax, "Max_" + s.Function);
-                                                 for (int j = 0; (StrokeMax * j) < TotalMax; j++)//一共遍历
-                                                 {
+                                        {
+                                            PLCTaskIn[TaskIn] = Task.Run(() =>
+                                            {
+                                                if (s.PLC_Bit_D)//Bit位区域读取
+                                                {
+                                                    int TotalMax = (int)Enum.Parse(TypeMax, s.Function);
+                                                    int StrokeMax = (int)Enum.Parse(ReadMax, "Max_" + s.Function);
+                                                    for (int j = 0; (StrokeMax * j) < TotalMax; j++)//一共遍历
+                                                    {
 
-                                                     int StrokeIndex = (TotalMax - (StrokeMax * j)) > StrokeMax  ? StrokeMax : (TotalMax - (StrokeMax * j));//笔数
-                                                     int TotalIndex = TotalMax > StrokeMax ? (StrokeMax * j) : 0;//起始
-                                                     var PLCData = PLCoop.PLC_read_M_bit(s.Function, TotalIndex.ToString(), (ushort)StrokeIndex);//批量获得PLC数据
-                                                     if (PLCData == null) continue;
-                                                     if (PLCData.Length == StrokeIndex)
-                                                     {
-                                                         for (int Ln = 0; Ln < PLCData.Length; Ln++)//填充数据到表中
-                                                         {
-                                                             s.DataList[TotalIndex + Ln].State = PLCData[Ln];
-                                                         }
-                                                     }
-                                                 }
-                                             }
-                                             else
-                                             {//D区域读取
+                                                        int StrokeIndex = (TotalMax - (StrokeMax * j)) > StrokeMax ? StrokeMax : (TotalMax - (StrokeMax * j));//笔数
+                                                        int TotalIndex = TotalMax > StrokeMax ? (StrokeMax * j) : 0;//起始
+                                                        var PLCData = PLCoop.PLC_read_M_bit(s.Function, TotalIndex.ToString(), (ushort)StrokeIndex);//批量获得PLC数据
+                                                        if (PLCData == null) continue;
+                                                        if (PLCData.Length == StrokeIndex)
+                                                        {
+                                                            for (int Ln = 0; Ln < PLCData.Length; Ln++)//填充数据到表中
+                                                            {
+                                                                s.DataList[TotalIndex + Ln].State = PLCData[Ln];
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {//D区域读取
 
-                                             }
-                                         });
+                                                }
+                                            });
+                                            TaskIn++;
+                                        });
+                                     Task.WaitAll(PLCTaskIn);
+
                                  }
                                  return 1;
                              });
