@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Nancy.Json;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json;
+using PLC通讯基础控件项目.控件类基.报警表_TO_Json;
 using Sunny.UI;
 using System.Linq;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
@@ -73,7 +73,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             var PLCErrData = new Event_message()
             {
 
-                ID = EventLink.PLCEventLink.Count > 0 ? EventLink.PLCEventLink.Max(pi => pi.ID)+1 : 1,
+                ID = EventLink.PLCEventLink.Count > 0 ? EventLink.PLCEventLink.Max(pi => pi.ID) + 1 : 1,
                 位触发条件 = true,
                 字触发条件 = ">",
                 字触发条件_具体 = "0",

@@ -2,7 +2,7 @@
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json;
+using PLC通讯基础控件项目.控件类基.报警表_TO_Json;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using System;
 using System.Collections.Generic;

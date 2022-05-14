@@ -283,7 +283,7 @@ namespace PLC通讯库.通讯实现类
                 //return PLCData != null ? PLCData.Content : result;
 
             }
-            catch (Exception e)
+            catch
             {
             
             }

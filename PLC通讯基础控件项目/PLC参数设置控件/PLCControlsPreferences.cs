@@ -36,6 +36,7 @@ using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现�
 using Sunny.UI;
 using System.Text.RegularExpressions;
 using static PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类.PLCEvent_DataList;
+using Microsoft.EntityFrameworkCore;
 
 namespace PLC通讯基础控件项目
 {
@@ -152,6 +153,23 @@ namespace PLC通讯基础控件项目
                 SocketServer socketServer = new SocketServer();
                 socketServer.SocketLoad();
                 SocketLoad = true;
+            }
+            #endregion
+            #region 创建数据库
+            if(!PlcLoad)
+            {
+                try
+                {
+                    using (var context = new 控件类基.PLC基础接口.PLC基础实现类.PLC报警控件保存类.PoliceContext())
+                    {
+                        // 检查是否有新的迁移
+                        if (context.Database.GetPendingMigrations().Any())
+                        {
+                            context.Database.Migrate(); //执行迁移
+                        }
+                    }
+                }
+                catch { }
             }
             #endregion
             #region 分配对象池
@@ -346,61 +364,10 @@ namespace PLC通讯基础控件项目
                     });
                     PLCErrTimer.Start();
                 });
-                PLCErrTimer.Interval = 300;
+                PLCErrTimer.Interval = 150;
                 PLCErrTimer.Start();
 
             }
-            //void PLCEventDataListLoad()//初次加载报警视图链表
-            //{
-            //    PLCEvent_DataList.PLCEvent_Data.Clear();
-            //    foreach (var i in IPLCsurface.PLCDictionary)
-            //    {
-            //        var PLCEvent = new List<PLCEvent_DataList.PLCData>();
-            //        var EnumType = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.Key + "_bit");
-            //        Enum.GetNames(EnumType).ForEach(Reuq =>
-            //        {
-            //            Regex rq = new Regex("_Bit".ToLower());
-            //            MatchCollection mc = Regex.Matches( Reuq.ToLower(), "_Bit".ToLower());
-            //            if (mc.Count < 1)//暂时不支持D_Bit类型
-            //            {
-            //                var AddData = new PLCEvent_DataList.PLCData();
-            //                AddData.Function = Reuq.ToString();
-            //                AddData.PLC_Bit_D = true;
-            //                AddData.DataList = new List<DataList<dynamic>>();
-            //                for (int i = 0; i < 30000; i++)//默认开辟区域为3W
-            //                {
-            //                    AddData.DataList.Add(new DataList<dynamic>()
-            //                    {
-            //                        Address = i.ToString(),
-            //                        State = false
-            //                    });
-
-            //                }
-            //                PLCEvent.Add(AddData);
-            //            }
-            //        });
-            //        var EnumType1 = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.Key + "_D");
-            //        Enum.GetNames(EnumType1).ForEach(Reuq =>
-            //        {
-
-            //            var AddData = new PLCEvent_DataList.PLCData();
-            //            AddData.Function = Reuq.ToString();
-            //            AddData.PLC_Bit_D = false;
-            //            AddData.DataList = new List<DataList<dynamic>>();
-            //            for (int i = 0; i < 30000; i++)//默认开辟区域为3W
-            //            {
-            //                AddData.DataList.Add(new DataList<dynamic>()
-            //                {
-            //                    Address = i.ToString(),
-            //                    State = 0
-            //                });
-
-            //            }
-            //            PLCEvent.Add(AddData);
-            //        });
-            //        PLCEvent_DataList.PLCEvent_Data.Add(i.Key.ToString(), PLCEvent);
-            //    }
-            //}
 
             void PLCEventCountLoad()//加载批量读取PLC区域的范围
             {
@@ -606,10 +573,6 @@ namespace PLC通讯基础控件项目
                         case PLC.OmronUDP3:
                         case PLC.OmronUDP4:
                         case PLC.OmronUDP5:
-
-
-
-
                         default:
 
                             break;

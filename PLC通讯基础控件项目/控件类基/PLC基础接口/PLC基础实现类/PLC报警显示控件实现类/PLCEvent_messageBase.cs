@@ -1,4 +1,4 @@
-﻿using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json;
+﻿using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC报警控件保存类;
 using System;
 using System.Collections.Generic;
 using System.Text;

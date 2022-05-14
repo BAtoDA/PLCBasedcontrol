@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nancy.Json;
 using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
-using PLC通讯基础控件项目.控件类基.PLC基础接口.报警表_TO_Json;
+using PLC通讯基础控件项目.控件类基.报警表_TO_Json;
 using Sunny.UI;
 using System.Linq;
 using System.IO;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警控件保存类;
 
 namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史查看界面
 {
@@ -19,69 +20,31 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
     {
         PLCEventAutoContent pLCEventAutoContent;
         PLCEvent_messageBase pLCEvent_MessageBase;
-        volatile List<Event_message> Event_Messages = new List<Event_message>();
+        volatile List<EventHistory> Event_Messages = new List<EventHistory>();
         public PLCErrhistoryForm(PLCEvent_messageBase pLCEvent_MessageBase)
         {
             InitializeComponent();
             this.pLCEvent_MessageBase = pLCEvent_MessageBase;
             pLCEventAutoContent = new PLCEventAutoContent(@pLCEvent_MessageBase.SaveAddress);
         }
-        /// <summary>
-        /// 异步读取用户设定内容
-        /// </summary>
-        private async Task TextRead()
-        {
-            try
-            {
-                if (!pLCEventAutoContent.IsText()) return;
-                //-----获取后30天最新的报警表---------
-                //清空表
-                Event_Messages.Clear();
-                //获取后30天的日期
-                string[] Days = new string[30];
-                for (int i = 0; i < Days.Length; i++)
-                {
-                    try
-                    {
-                        Days[i] = @pLCEvent_MessageBase.SaveAddress + "\\PLCEventErr\\" + DateTime.Now.AddDays(Convert.ToInt16($"-{i}")).ToString("D") + ".txt"; //当前时间减去7天
-                        if (!File.Exists(@Days[i])) continue;                                                                                                                                         //读取PLC设置报警内容表
-                        var Content = await pLCEventAutoContent.TextRead(Days[i]);
-                        if (Content == null) continue;
-                        //反序列化
-                        foreach (var ix in Content)
-                        {
-                            var ContentOop = new JavaScriptSerializer().Deserialize<Event_message>(ix);
-                            if (ContentOop != null)
-                            {
-                                Event_Messages.Add(ContentOop);
-                            }
-                        }
-                    }
-                    catch { continue; }
-                    
-                }
-            }
-            catch
-            {
-
-            }
-        }
         protected async override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             //显示UI过度
             UIWaitFormService.ShowWaitForm("开始加载UI...");
-            //读取自动保存历史
-            await TextRead();
             await Task.Run(() =>
             {
-                //从数据获取数据
+                //从数据库获取数据
+                using (var db = new PoliceContext())
+                {
+                    Event_Messages = db.UserEventHistory.ToList();
+                }
                 var data = Event_Messages;
-                var query = (from q in Event_Messages where DateTime.Parse(q.报警发生时间).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
+                var query = (from q in Event_Messages where q.报警发生时间.Date == DateTime.Now.Date select q).ToList();
                 //填充7天警告次数
-                var query1 = (from q in data where (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警发生时间)).Days >= 0 && (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警发生时间)).Days <= 7 select q).ToList();
+                var query1 = (from q in data where (DateTime.Parse(DateTime.Now.ToString("F")) - q.报警发生时间).Days >= 0 && (DateTime.Parse(DateTime.Now.ToString("F")) - q.报警发生时间).Days <= 7 select q).ToList();
                 //查询月度警告次数
-                var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(DateTime.Parse(q.报警发生时间).ToString("Y"))) select q).ToList();
+                var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(q.报警发生时间.ToString("Y"))) select q).ToList();
                 //填充报警历史
                 this.BeginInvoke((EventHandler)delegate
                 {
@@ -99,8 +62,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                     data.ForEach(s =>
                     {
                         
-                        this.uiComboboxEx1.Items.Add(s.报警发生时间.Trim());
-                        this.uiComboboxEx2.Items.Add(s.报警处理时间.Trim());
+                        this.uiComboboxEx1.Items.Add(s.报警发生时间.ToString("f"));
+                        this.uiComboboxEx2.Items.Add(s.报警处理时间.ToString("f"));
                         this.uiComboboxEx3.Items.Add(s.设备.Trim());
                     });
                     this.uiComboboxEx1.Items.Add("全部");
@@ -114,7 +77,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 });
                 //生成分析7天警告报表
                 //把7天结果LINQ分组
-                var grouping = query1.GroupBy(pi => DateTime.Parse(pi.报警发生时间.Trim()).Date).Select(group => new StoreInfo
+                var grouping = query1.GroupBy(pi => pi.报警发生时间.Date).Select(group => new StoreInfo
                 {
                     StoreID = group.Key,
                     List = group.ToList()
@@ -134,7 +97,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                     var group = grouping.Where(pi => pi.StoreID.ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(pi => pi).FirstOrDefault();
                     if (group != null)
                     {
-                        var grouptime = group.List.Where(pi => DateTime.Parse(pi.报警发生时间.Trim()).ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(P => new { DatetimeName = DateTime.Parse(P.报警处理时间.Trim()) - DateTime.Parse(P.报警发生时间.Trim()) }).ToList();
+                        var grouptime = group.List.Where(pi => pi.报警发生时间.Date == DateTime.Parse(i.Trim()).Date).Select(P => new { DatetimeName = P.报警处理时间 - P.报警发生时间 }).ToList();
                         //求和时间
                         grouptime.ForEach(s =>
                         {
@@ -184,28 +147,25 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <param name="e"></param>
         private async void HistoryErrTiming()
         {
-            //读取自动保存历史
-            await TextRead();
             var data = Event_Messages;
-            var query = (from q in data where DateTime.Parse(q.报警发生时间.Trim()).ToString("D") == DateTime.Now.ToString("D") select q).ToList();
+            var query = (from q in data where q.报警发生时间.Date == DateTime.Now.Date select q).ToList();
             //填充7天警告次数
-            var query1 = (from q in data where (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警发生时间.Trim())).Days >= 0 && (DateTime.Parse(DateTime.Now.ToString("F")) - DateTime.Parse(q.报警发生时间.Trim())).Days <= 7 select q).ToList();
+            var query1 = (from q in data where (DateTime.Parse(DateTime.Now.ToString("F")) - q.报警发生时间).Days >= 0 && (DateTime.Parse(DateTime.Now.ToString("F")) - q.报警发生时间).Days <= 7 select q).ToList();
             //查询月度警告次数
-            var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(DateTime.Parse(q.报警发生时间.Trim()).ToString("Y"))) select q).ToList();
+            var Monthly = (from q in data where (DateTime.Parse(DateTime.Now.ToString("Y")) == DateTime.Parse(q.报警发生时间.ToString("Y"))) select q).ToList();
             this.BeginInvoke((EventHandler)delegate
             {
-                if (this.Handle != null)
-                {
+
                     //填充当天报警次数
                     this.uiLabel2.Text = query.Count.ToString();
                     this.uiLabel3.Text = query1.Count.ToString();
                     //填充月底报警次数
                     this.uiLabel5.Text = Monthly.Count.ToString();
-                }
+                
             });
             //生成分析7天警告报表
             //把7天结果LINQ分组
-            var grouping = query1.GroupBy(pi => DateTime.Parse(pi.报警发生时间.Trim()).Date).Select(group => new StoreInfo
+            var grouping = query1.GroupBy(pi => pi.报警发生时间.Date).Select(group => new StoreInfo
             {
                 StoreID = group.Key,
                 List = group.ToList()
@@ -225,7 +185,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 var group = grouping.Where(pi => pi.StoreID.ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(pi => pi).FirstOrDefault();
                 if (group != null)
                 {
-                    var grouptime = group.List.Where(pi => DateTime.Parse(pi.报警发生时间.Trim()).ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(P => new { DatetimeName = DateTime.Parse(P.报警处理时间.Trim()) - DateTime.Parse(P.报警发生时间.Trim()) }).ToList();
+                    var grouptime = group.List.Where(pi => pi.报警发生时间.Date == DateTime.Parse(i.Trim()).Date).Select(P => new { DatetimeName = P.报警处理时间 - P.报警发生时间 }).ToList();
                     //求和时间
                     grouptime.ForEach(s =>
                     {
@@ -250,13 +210,12 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             });
             this.BeginInvoke((EventHandler)delegate
             {
-                if (this.Handle != null)
-                {
+
                     //填充警告处理用时
                     this.uiLabel16.Text = Histogramdata[0].Item2;//当天用时
                     this.uiLabel14.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
                     this.uiLabel12.Text = $"{(24 * dateTim.Days) + dateTim.Hours}:{dateTim.Minutes}:{dateTim.Seconds}";
-                }
+                
             });
             //填充设备警告分析
             //查找重复最多的数据--意味着报警最多的
@@ -265,10 +224,10 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <summary>
         /// 计算30天的报警处理用时
         /// </summary>
-        private List<Tuple<int, string>> MonthlyErr(List<Event_message> Querydata)
+        private List<Tuple<int, string>> MonthlyErr(List<EventHistory> Querydata)
         {
             //把30天结果LINQ分组
-            var grouping = Querydata.GroupBy(pi => DateTime.Parse(pi.报警发生时间.Trim()).Date).Select(group => new StoreInfo
+            var grouping = Querydata.GroupBy(pi => pi.报警发生时间.Date).Select(group => new StoreInfo
             {
                 StoreID = group.Key,
                 List = group.ToList()
@@ -288,7 +247,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 var group = grouping.Where(pi => pi.StoreID.ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(pi => pi).FirstOrDefault();
                 if (group != null)
                 {
-                    var grouptime = group.List.Where(pi => DateTime.Parse(pi.报警发生时间.Trim()).ToString("D") == DateTime.Parse(i.Trim()).ToString("D")).Select(P => new { DatetimeName = DateTime.Parse(P.报警处理时间.Trim()) - DateTime.Parse(P.报警发生时间.Trim()) }).ToList();
+                    var grouptime = group.List.Where(pi => pi.报警发生时间.Date == DateTime.Parse(i.Trim()).Date).Select(P => new { DatetimeName = P.报警处理时间 - P.报警发生时间 }).ToList();
                     //求和时间
                     grouptime.ForEach(s =>
                     {
@@ -303,7 +262,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <summary>
         /// 分析设备报警最多的数据
         /// </summary>
-        private void EquipmentErr(List<Event_message> Querydata)
+        private void EquipmentErr(List<EventHistory> Querydata)
         {
             var res = (from n in Querydata
                        group n by n.报警内容 into g
@@ -334,25 +293,24 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             }
             this.BeginInvoke((EventHandler)delegate
             {
-                if (this.Handle != null)
-                {
+
                     uiDataGridView3.DataSource = showErrs.OrderByDescending(x => x.次数).Select(pi => pi).ToList();
                     uiDataGridView3.Columns[0].Width = 300;
                     uiDataGridView3.Columns[2].Width = 80;
                     uiDataGridView3.Columns[3].Width = 50;
                     uiDataGridView3.Columns[4].Width = 70;
-                }
+                
             });
         }
         /// <summary>
         /// 计算的报警处理用时
         /// </summary>
-        private TimeSpan MonthlyErr(List<Event_message> Querydata, int index)
+        private TimeSpan MonthlyErr(List<EventHistory> Querydata, int index)
         {
             TimeSpan time = new TimeSpan();
             Querydata.ForEach(P =>
             {
-                time += DateTime.Parse(P.报警处理时间.Trim()) - DateTime.Parse(P.报警发生时间.Trim());
+                time += P.报警处理时间 - P.报警发生时间;
             });
             return time;
         }
@@ -428,7 +386,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <summary>
         /// 用于保存历史报警源数据
         /// </summary>
-        List<Event_message> alarmhistories = new List<Event_message>();
+        List<EventHistory> alarmhistories = new List<EventHistory>();
         /// <summary>
         /// 用户点击了刷新数据源
         /// </summary>
@@ -444,20 +402,21 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// </summary>
         public void QueryErr(object sender, EventArgs e)
         {
-            if (this.uiDataGridView1.DataSource != null && alarmhistories != null)
-                this.uiDataGridView1.DataSource = alarmhistories.Where(pi => pi.报警发生时间 == (uiComboboxEx1.Text == "全部" ? pi.报警发生时间 : uiComboboxEx1.Text) && pi.报警处理时间 == (uiComboboxEx2.Text == "全部" ? pi.报警处理时间 : uiComboboxEx2.Text) && pi.设备 == (this.uiComboboxEx3.Text == "全部" ? pi.设备 : this.uiComboboxEx3.Text)).OrderBy(x => x.报警发生时间.Trim()).ToList();
+            //    if (this.uiDataGridView1.DataSource != null && alarmhistories != null)
+            //        this.uiDataGridView1.DataSource = alarmhistories.Where(pi => pi.报警发生时间 == (uiComboboxEx1.Text == "全部" ? pi.报警发生时间 : uiComboboxEx1.Text) && pi.报警处理时间 == (uiComboboxEx2.Text == "全部" ? pi.报警处理时间 : uiComboboxEx2.Text) && pi.设备 == (this.uiComboboxEx3.Text == "全部" ? pi.设备 : this.uiComboboxEx3.Text)).OrderBy(x => x.报警发生时间.Trim()).ToList();
+            //}
         }
     }
     public class StoreInfo
     {
         public DateTime StoreID { get; set; }
-        public List<Event_message> List { get; set; }
+        public List<EventHistory> List { get; set; }
 
     }
     public class StoreInfoErr
     {
         public string ErrID { get; set; }
-        public IGrouping<string, Event_message> List { get; set; }
+        public IGrouping<string, EventHistory> List { get; set; }
     }
     [Serializable]
     public class ShowErr
