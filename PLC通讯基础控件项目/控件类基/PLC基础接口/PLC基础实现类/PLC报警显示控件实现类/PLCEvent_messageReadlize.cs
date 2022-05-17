@@ -64,39 +64,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// PLC安全操作模式
         /// </summary>
         volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
-        /// <summary>
-        /// 指示着已经登录的事件--已经注册的不再显示到表格中--等待事件变不成立移除事件
-        /// </summary>
-        //private  List<Event_message> register_Event 
-        //{ 
-        //    get
-        //    {
-        //        lock(this)
-        //        {
-        //            return Qegister_Event;
-        //        }
-        //    }
-        //    set
-        //    {
-        //        lock (this)
-        //        {
-        //            Qegister_Event = value;
-        //        }
-        //    }
-        //}
-        private List<Event_message> Qegister_Event = new List<Event_message>();
-        /// <summary>
-        /// 定义安全集合
-        /// </summary>
-        private ConcurrentBag<EventMessage> event_Messages;//定义安全集合
+
         /// <summary>
         /// 指示上次遍历已经登录的事件
         /// </summary>
         private ConcurrentBag<EventMessage> Event_quantity = new ConcurrentBag<EventMessage>();//指示上次遍历已经登录的事件
-        /// <summary>
-        /// 锁
-        /// </summary>
-        object obj = new object();
         /// <summary>
         /// 同步锁
         /// </summary>
@@ -227,58 +199,13 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         {
             var T = Task.Run( () =>
               {
-                  EventLink.PLCEventLink.ForEach(S =>
+                  EventLink.PLCEventLink.ForEach( S =>
                   {
                       ReadPLC(S);
                   });
                   return 1;
-              });
+              }, token);
             return await T;
-        }
-        /// <summary>
-        /// 处理控件报警表
-        /// </summary>
-        private async Task<int> PLCrefresh1()
-        {
-            int TotalMax = EventLink.PLCEventLink.Count-1;
-            int StrokeMax = 200;
-            int EventCount = (EventLink.PLCEventLink.Count / StrokeMax) > 0 ? (EventLink.PLCEventLink.Count / StrokeMax) : 0;
-            int AwaitIndex = 0;
-            if (EventCount > 0)
-            {
-                for (int i = 0;(StrokeMax * i)< EventLink.PLCEventLink.Count; i++)
-                {
-                    int StrokeIndex = (TotalMax - (StrokeMax * i))> StrokeMax ? StrokeMax : (TotalMax - (StrokeMax * i));//笔数
-                    int TotalIndex = TotalMax > StrokeMax ? (StrokeMax * i) : 0;//起始
-                    var TaskRefresh = new Task[StrokeIndex];//创建一定的异步线程池
-                    for (int j = 0; j < StrokeIndex; j++)
-                    {
-                        TaskRefresh[j] = new Task(() =>
-                             {
-                                 ReadPLC(EventLink.PLCEventLink[TotalIndex+j]);
-                             }, token);
-                        TaskRefresh[j].Start();
-                    }
-                    await Task.WhenAll(TaskRefresh);//4.等待处理完全
-                }
-            }
-            else
-            {
-                var TaskRefresh = new Task[EventLink.PLCEventLink.Count];//创建一定的异步线程池
-                for (int j = 0; j < EventLink.PLCEventLink.Count; j++)
-                {
-                    int Len = j;
-                    AwaitIndex = j;
-                    if (Len >= EventLink.PLCEventLink.Count) continue;
-                    TaskRefresh[j] = new Task(() =>
-                    {
-                        ReadPLC(EventLink.PLCEventLink[Len]);
-                    }, token);
-                    TaskRefresh[j].Start();
-                }
-                await Task.WhenAll(TaskRefresh);//4.等待处理完全
-            }
-            return 1;
         }
         private void ReadPLC(Event_message event_Message)
         {
@@ -288,7 +215,6 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (PLCoop == null) return;
             if (!PLCoop.PLC_ready) return;
             //创建临时对象
-            event_Messages = new ConcurrentBag<EventMessage>();
             List<EventMessage> register_Event = new List<EventMessage>();
             //从SQL中取出当前报警数据
             using (var db = new PoliceContext())
@@ -310,7 +236,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 {
                     var PLCData = PLCEvent_DataList.PLCEvent_Data.Where(p => p.Key.Trim() == event_Message.设备.Trim()).FirstOrDefault().Value?.Where(pi => pi.Function == event_Message.设备_地址.Trim()).FirstOrDefault();
                     if (PLCData == null) return;
-                    var PlcRead = PLCData.DataList.Where(pi => pi.Address == event_Message.设备_具体地址.Trim()).FirstOrDefault();
+                    var PlcRead = PLCData.DataList.Where(pi => pi.Address.ToLower() == event_Message.设备_具体地址.ToLower()).FirstOrDefault();
                     State = PlcRead != null ? PlcRead.State : false;
                 }
                 else

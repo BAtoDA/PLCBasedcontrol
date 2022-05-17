@@ -86,6 +86,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
             this.uiTextBox12.Text = event_Message.设备_具体地址.Trim();
 
             this.uiComboboxEx1.SelectedItem = event_Message.位触发条件 ? 1 : 0;
+            this.uiComboboxEx1.Text= event_Message.位触发条件 ? "ON" : "OFF";
+
             this.uiComboboxEx2.Text = event_Message.字触发条件.Trim();
             this.uiTextBox1.Text = event_Message.字触发条件_具体.Trim();
 

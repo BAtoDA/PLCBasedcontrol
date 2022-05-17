@@ -26,9 +26,9 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         Max_X = 1000,
         Max_Y = 1000,
         Max_M = 7000,
-        Max_L = 3000,
-        Max_F = 3000,
-        Max_B = 3000,
+        Max_L = 1000,
+        Max_F = 1000,
+        Max_B = 1000,
         Max_D = 7000,
         Max_R = 7000,
         Max_W = 7000,
@@ -44,12 +44,12 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     /// </summary>
     public enum Mitsubishi_addressMax_Bit
     {
-        X = 1024,
-        Y = 1024,
-        M = 20000,
-        L = 4000,
-        F = 2000,
-        B = 16000
+        X = 5000,
+        Y = 1000,
+        M = 10000,
+        L = 1000,
+        F = 1000,
+        B = 1000
     }
     /// <summary>
     /// 三菱PLC对应功能码最大地址
@@ -57,8 +57,8 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     /// </summary>
     public enum Mitsubishi_addressMax_D
     {
-        D = 30000,
-        R = 30000,
+        D = 10000,
+        R = 10000,
         W = 10000,
         TN = 2000,
         SN = 1000,

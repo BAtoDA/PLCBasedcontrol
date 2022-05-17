@@ -318,7 +318,19 @@ namespace PLC通讯库.通讯实现类
                             //判断是否读取寄存器的Bit位操作
                             Regex rq = new Regex("Bit");
                             //不是读取输入输出点
-                            return PLCData = rq.IsMatch(Name) ? MelsecMcNetBit() : melsec_net.ReadBool(Name + id, Count);
+
+                            if (rq.IsMatch(Name))
+                            {
+                                PLCData = MelsecMcNetBit();
+                            }
+                            else
+                            {
+                                //Debug.WriteLine(Name + id + Count);
+                                PLCData = melsec_net.ReadBool(Name + id, Count);
+                            }
+                            return PLCData;
+
+                            //return PLCData = rq.IsMatch(Name) ? MelsecMcNetBit() : melsec_net.ReadBool(Name + id, Count);
 
                         }
                         else

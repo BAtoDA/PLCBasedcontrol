@@ -142,7 +142,7 @@ namespace PLC通讯库.内部软元件.通讯实现
             return new OperateResult<bool>() { Content = Boolarray[0], ErrorCode = 0, IsSuccess = true, Message = "0" };
         }
         /// <summary>
-        /// 批量读取Hmi内部Bit位线圈操作
+        /// 批量读取Hmi内部Bit位线圈操作ReadBool
         /// </summary>
         /// <param name="address">传入功能码以及地址</param>
         /// <returns></returns>

@@ -150,9 +150,9 @@ namespace PLC通讯基础控件项目
             #region 处理第三方通信互交
             if (!SocketLoad)
             {
-                SocketServer socketServer = new SocketServer();
-                socketServer.SocketLoad();
-                SocketLoad = true;
+                //SocketServer socketServer = new SocketServer();
+                //socketServer.SocketLoad();
+                //SocketLoad = true;
             }
             #endregion
             #region 创建数据库
@@ -316,6 +316,8 @@ namespace PLC通讯基础控件项目
                                  var TaskIn = 0;//遍历任务指针
                                  IPLC_interface PLCoop = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == i.Key.Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
                                  if (PLCoop == null) return 1;
+                                 var PLCHex = IPLCsurface.PLCDictionary.Where(p => p.Key.Trim() == i.Key.Trim()).FirstOrDefault().Value as IPLCcommunicationBase;
+                                 string PlcAdds = string.Empty;
                                  var TypeMax = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.Key + "_addressMax_Bit");
                                  var ReadMax = Assembly.GetExecutingAssembly().GetType("PLC通讯基础控件项目.控件类基.控件数据结构." + i.Key + "_addressMax");
                                  if (PLCoop.PLC_ready)
@@ -329,13 +331,18 @@ namespace PLC通讯基础控件项目
                                                 {
                                                     int TotalMax = (int)Enum.Parse(TypeMax, s.Function);
                                                     int StrokeMax = (int)Enum.Parse(ReadMax, "Max_" + s.Function);
-                                                    for (int j = 0; (StrokeMax * j) < TotalMax; j++)//一共遍历
+                                                    for (int j = 0; (StrokeMax * j)< TotalMax; j++)//一共遍历
                                                     {
 
                                                         int StrokeIndex = (TotalMax - (StrokeMax * j)) > StrokeMax ? StrokeMax : (TotalMax - (StrokeMax * j));//笔数
                                                         int TotalIndex = TotalMax > StrokeMax ? (StrokeMax * j) : 0;//起始
-                                                        var PLCData = PLCoop.PLC_read_M_bit(s.Function, TotalIndex.ToString(), (ushort)StrokeIndex);//批量获得PLC数据
+                                                        if (s.Function == "X" || s.Function == "Y")
+                                                            PlcAdds = PLCHex.mitsubishiPLC == MitsubishiPLC.FX ? Convert.ToString(TotalIndex, 8) : Convert.ToString(TotalIndex, 16);//16进制
+                                                        else
+                                                            PlcAdds = TotalIndex.ToString();
+                                                        var PLCData = PLCoop.PLC_read_M_bit(s.Function, PlcAdds, (ushort)StrokeIndex);//批量获得PLC数据
                                                         if (PLCData == null) continue;
+
                                                         if (PLCData.Length == StrokeIndex)
                                                         {
                                                             for (int Ln = 0; Ln < PLCData.Length; Ln++)//填充数据到表中
@@ -364,7 +371,7 @@ namespace PLC通讯基础控件项目
                     });
                     PLCErrTimer.Start();
                 });
-                PLCErrTimer.Interval = 150;
+                PLCErrTimer.Interval = 300;
                 PLCErrTimer.Start();
 
             }

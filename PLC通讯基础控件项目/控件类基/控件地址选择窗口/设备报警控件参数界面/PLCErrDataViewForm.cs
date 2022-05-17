@@ -12,6 +12,7 @@ using Sunny.UI;
 using System.Linq;
 using PLC通讯基础控件项目.控件类基.控件数据结构;
 using PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警历史导出界面.导出表格类;
+using System.Threading.Tasks;
 
 namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设备报警控件参数界面
 {
@@ -52,7 +53,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                         //修改参数完成 进行参数序列化保存
                         if (PLCErr.Save)
                             await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
-                        DataGridViewLoad();
+                       await DataGridViewLoad();
 
                     }
                 }
@@ -91,7 +92,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 EventLink.PLCEventLink.Add(PLCErrData);
                 //修改参数完成 进行参数序列化保存
                 await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
-                DataGridViewLoad();
+                await DataGridViewLoad();
             }
         }
         /// <summary>
@@ -118,8 +119,10 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                         //修改参数完成 进行参数序列化保存
                         if (PLCErr.Save)
                             await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
-                        DataGridViewLoad();
 
+                       await DataGridViewLoad();
+
+                       await DataGridViewLoad();
                     }
                 }
                 else
@@ -150,7 +153,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                         var Index = EventLink.PLCEventLink.Where(p => p.ID == Convert.ToInt32(this.uiDataGridView1.Rows[this.uiDataGridView1.SelectedIndex].Cells[0].Value)).FirstOrDefault();
                         EventLink.PLCEventLink.Remove(Index);
                         await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
-                        DataGridViewLoad();
+                       await DataGridViewLoad();
                     }
                 }
                 else
@@ -163,7 +166,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
         /// <summary>
         /// 刷新表显示
         /// </summary>
-        private async void DataGridViewLoad()
+        private async Task DataGridViewLoad()
         {
             //加载参数
             if (pLCEventContent.IsText())
@@ -198,7 +201,7 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口.设�
                 //保存到本地
                 await pLCEventContent.TextWrite(new JavaScriptSerializer().Serialize(EventLink.PLCEventLink));
                 //重新加载表格控件
-                DataGridViewLoad();
+               await DataGridViewLoad();
             }
         }
     }
