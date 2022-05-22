@@ -147,14 +147,6 @@ namespace PLC通讯基础控件项目
             //判定改控件是否在窗口设计期
             if (DesignMode) return;
             this.Stop();
-            #region 处理第三方通信互交
-            if (!SocketLoad)
-            {
-                //SocketServer socketServer = new SocketServer();
-                //socketServer.SocketLoad();
-                //SocketLoad = true;
-            }
-            #endregion
             #region 创建数据库
             if(!PlcLoad)
             {
@@ -167,9 +159,20 @@ namespace PLC通讯基础控件项目
                         {
                             context.Database.Migrate(); //执行迁移
                         }
+                        //清除当前报警表
+                       // context.UserElectricMark.RemoveRange(context.UserElectricMark.ToArray());
+                        //await context.SaveChangesAsync();
                     }
                 }
                 catch { }
+            }
+            #endregion
+            #region 处理第三方通信互交
+            if (!SocketLoad)
+            {
+                SocketServer socketServer = new SocketServer();
+                socketServer.SocketLoad();
+                SocketLoad = true;
             }
             #endregion
             #region 分配对象池

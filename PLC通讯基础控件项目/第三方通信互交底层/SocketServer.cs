@@ -175,7 +175,7 @@ namespace PLC通讯基础控件项目.第三方通信互交底层
                 catch (Exception e)
                 {
                     Messagehandling messagehandling = new Messagehandling();
-                    var da = messagehandling.Replymessage(new COPYDATASTRUCT() { lpData = e.Message, Address = " ", cbData = 0, characteristic = " ", Equipmenttype = " ", function = 0, length = "10", Type = " " }, e.Message, false);
+                    var da = messagehandling.Replymessage(new COPYDATASTRUCT() { lpData = e.Message, Address = " ", cbData = 0, characteristic = " ", Equipmenttype = " ", function = 0, length = "10", Type = " " }, e.Message, false, "SystemErr");
                     JavaScriptSerializer jss = new JavaScriptSerializer();
                     var jsondata = Encoding.UTF8.GetBytes(jss.Serialize(da));
                     socket.BeginSend(jsondata, 0, jsondata.Length, SocketFlags.None, new AsyncCallback(SocketSendcall_back), $"向IP:发送：" + Data + "成功 \r\n");

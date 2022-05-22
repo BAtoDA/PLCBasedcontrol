@@ -19,6 +19,10 @@ namespace PLC通讯基础控件项目.第三方通信互交底层
             /// </summary>
             public string characteristic;
             /// <summary>
+            /// 需要操作的设备名
+            /// </summary>
+            public string facility;
+            /// <summary>
             /// 功能码 
             /// </summary>
             public int function;
@@ -59,6 +63,10 @@ namespace PLC通讯基础控件项目.第三方通信互交底层
             /// 消息标识符 一般是指发送与回复方的名称
             /// </summary>
             public string characteristic;
+            /// <summary>
+            /// 需要操作的设备名
+            /// </summary>
+            public string facility;
             /// <summary>
             /// 功能码 
             /// </summary>
