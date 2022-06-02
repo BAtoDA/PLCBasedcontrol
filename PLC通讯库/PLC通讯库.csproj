@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>1.0.5</Version>
+    <Version>1.1.0</Version>
     <AssemblyVersion>1.0.0.5</AssemblyVersion>
     <FileVersion>1.0.0.5</FileVersion>
     <Description>用于PLC通讯底层库 目前支持三菱 西门子 欧姆龙 ModbusTCP需要配合 PLC通讯基础控件项目进行使用</Description>

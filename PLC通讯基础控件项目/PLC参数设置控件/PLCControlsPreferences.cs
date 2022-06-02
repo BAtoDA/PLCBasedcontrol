@@ -160,8 +160,8 @@ namespace PLC通讯基础控件项目
                             context.Database.Migrate(); //执行迁移
                         }
                         //清除当前报警表
-                       // context.UserElectricMark.RemoveRange(context.UserElectricMark.ToArray());
-                        //await context.SaveChangesAsync();
+                        context.UserElectricMark.RemoveRange(context.UserElectricMark.ToArray());
+                        await context.SaveChangesAsync();
                     }
                 }
                 catch { }
@@ -374,7 +374,7 @@ namespace PLC通讯基础控件项目
                     });
                     PLCErrTimer.Start();
                 });
-                PLCErrTimer.Interval = 300;
+                PLCErrTimer.Interval = 400;
                 PLCErrTimer.Start();
 
             }
