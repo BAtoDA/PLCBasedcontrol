@@ -11,7 +11,28 @@ namespace FanucRobot
         protected string ipAddr;
         protected int port;
         protected Socket _sc;
-        bool connnected = false;
+        /// <summary>
+        /// 状态标志
+        /// </summary>
+        public virtual bool isConnected 
+        {
+            get => isconnected;
+            set
+            {
+                if(!value & _sc!=null)
+                {
+                    //触发套接字事件
+                    if (SocketClose != null)
+                        SocketClose.Invoke(value, new EventArgs());
+                }
+                isconnected = value;
+            }
+        }
+        private bool isconnected;
+        /// <summary>
+        /// 套接字切断事件
+        /// </summary>
+        public event EventHandler SocketClose;
         /// <summary>
         /// 创建套接字发送报文事件
         /// </summary>
@@ -25,7 +46,8 @@ namespace FanucRobot
         public SocketBase(string ip, int port)
         {
             this.ipAddr = ip;
-            this.port = port;       
+            this.port = port;
+            
         }
         protected ResultMessage CreatResult(bool iserr = false, string msg ="")
         {
@@ -33,7 +55,7 @@ namespace FanucRobot
         }
         Socket GetAvailableConn()
         {
-            if (!connnected)
+            if (!isConnected)
             {
                 _sc = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 _sc.ReceiveTimeout = 1000;
@@ -42,7 +64,7 @@ namespace FanucRobot
                 if (ar.AsyncWaitHandle.WaitOne(5000))
                 {
                     _sc.EndConnect(ar);
-                    this.connnected = true;
+                    this.isConnected = true;
                 }
                 else
                 {
@@ -65,7 +87,7 @@ namespace FanucRobot
                 }
                 catch
                 {
-                    this.connnected = false;
+                    this.isConnected = false;
                     CreatResult(true, "socket error : send time out.");
                 }
                 return CreatResult();
@@ -85,15 +107,16 @@ namespace FanucRobot
                     int count = 0;
                     do
                     {
-                        Thread.Sleep(20);
-                        count += socket.Receive(read, count, socket.Available, SocketFlags.None);
+                        Thread.Sleep(10);
+                        //count += socket.Receive(read, count, socket.Available, SocketFlags.None);
+                        socket.Receive(read);
                         if (this.SocketRead != null)
                             this.SocketRead(read, new EventArgs());
                     } while (socket.Available > 0);
                 }
                 catch
                 {
-                    this.connnected = false;
+                    this.isConnected = false;
                     return CreatResult(true, "socket error : read time out.");
                 }
                 return CreatResult();
@@ -115,7 +138,18 @@ namespace FanucRobot
                 return this.Read(read);
             }
         }
-
+        /// <summary>
+        /// 清除数据
+        /// </summary>
+        protected void SocketRset()
+        {
+            //发生数据前清除上次缓冲区数据
+            if (_sc.Available > 0)
+            {
+                byte[] AvailableData = new byte[_sc.Available];
+                _sc.Receive(AvailableData);
+            }
+        }
         protected void Close()
         {
             this._sc?.Close();
@@ -124,7 +158,7 @@ namespace FanucRobot
                 this._sc?.Close();
                 this._sc.Dispose();
             }
-            this.connnected = false;
+            this.isConnected = false;
         }
     }
 }

@@ -48,8 +48,8 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         Y = 1000,
         M = 10000,
         L = 1000,
-        F = 1000,
-        B = 1000
+        //F = 1000,
+        //B = 1000
     }
     /// <summary>
     /// 三菱PLC对应功能码最大地址
@@ -59,12 +59,12 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     {
         D = 10000,
         R = 10000,
-        W = 10000,
-        TN = 2000,
-        SN = 1000,
-        CN = 2000,
-        SW = 2000,
-        Z = 20
+        //W = 10000,
+        //TN = 2000,
+        //SN = 1000,
+        //CN = 2000,
+        //SW = 2000,
+        //Z = 20
     }
     public enum Mitsubishi1_addressMax
     {
@@ -115,7 +115,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
     {
         Max_I = 1000,
         Max_Q = 1000,
-        Max_M = 7000
+        Max_MW = 7000
     }
     /// <summary>
     /// 西门子PLC对应功能码最大地址
@@ -136,7 +136,7 @@ namespace PLC通讯基础控件项目.控件类基.控件数据结构
         /// <summary>
         /// 字方式
         /// </summary>
-        M = 2000
+        MW = 2000
     }
     public enum Modbus_TCP_addressMax
     {

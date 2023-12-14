@@ -87,9 +87,18 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             macroinstructionClasses.Clear();
             macrosTxtList.Items.Clear();
             macroContent = new MacroContent(@"C:\");
+            string[] filenames = new string[1] { "" };
             if (!macroContent.IsDirectory())
-                macroContent.DirectoryCreate();
-            string[] filenames = Directory.GetFiles(@"C:\PLCMacroList", "*.txt", SearchOption.AllDirectories);
+            {
+               // macroContent.DirectoryCreate();
+               new UIMessageForm().ShowErrorDialog($"当前路径：@\"C:\\PLCMacroList\", \"*.txt\"为创建宏文件.\r\n" +
+                   $"请在项目窗口控件添加：DAMacroControl宏控件后运行软件右键添加宏指令编译成功后正常使用宏绑定",true);
+            }
+            else
+            {
+                filenames = Directory.GetFiles(@"C:\PLCMacroList", "*.txt", SearchOption.AllDirectories);
+            }
+         
             //遍历文件夹下面的.txt文本
             foreach (string filename in filenames)
             {

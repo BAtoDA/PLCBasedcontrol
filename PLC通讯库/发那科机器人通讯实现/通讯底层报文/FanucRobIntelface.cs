@@ -11,7 +11,6 @@ namespace FanucRobot
     public class FanucRobIntelface:SocketBase
     {
         int regCount = 0;
-        protected bool isConnected = false;
         Dictionary<RegCls, int[]> registerList = new Dictionary<RegCls, int[]>();
 
         //数值寄存器
@@ -22,7 +21,7 @@ namespace FanucRobot
         public float[] floatRegs = null;
 
         //位置寄存器
-        public int[] prRegion = new int[] { 1, 10 };
+        public int[] prRegion = new int[] { 1, 100 };
         public PR[] prRegs = null;
         public bool canReadCurrentPos = true;//设置是否读取当前位置
         public PR curPos = null;
@@ -107,15 +106,50 @@ namespace FanucRobot
                 regCount += regLength;
             }
             this.isConnected = true;
+            //注册清除数据
+            this.SocketClose += ((send,NetPipeStyleUriParser) =>
+            {
+                RefreshClear();
+            });
             return result;
         }
         public void Disconnect()
         {
             Close();
+            this.isConnected = false;
+            registerList = new Dictionary<RegCls, int[]>();
+            //移除清除数据
+            this.SocketClose -= ((send, NetPipeStyleUriParser) =>
+            {
+                RefreshClear();
+            });
+
+        }
+        /// <summary>
+        /// 通讯失败后清除刷新数据
+        /// </summary>
+        private void RefreshClear()
+        {
+            //数值寄存器
+            //int和float数组是同一块R寄存器的内容，只是编码方式不同，区间设置可以重叠。
+            intRegion = new int[] { 1, 100 };//表示R[1]~R[100]为整数
+            intRegs = null;//数据
+            floatRegion = new int[] { 101, 200 };//表示R[101]~R[200]为实数
+            floatRegs = null;
+
+            //位置寄存器
+            prRegion = new int[] { 1, 100 };
+            prRegs = null;
+            canReadCurrentPos = true;//设置是否读取当前位置
+            curPos = null;
+
+            //字符串寄存器
+            strRegion = new int[] { 1, 10 };
+            strRegs = null;
         }
         public ResultMessage Refresh()
         {
-            byte[] conRec = new byte[8000];
+            byte[] conRec = new byte[80000];
             var result = FetchData(conRec, 0, regCount, "0408");
             if (result.isError) return result;
             byte[] data = null;
@@ -215,6 +249,8 @@ namespace FanucRobot
         }
         ResultMessage WriteData1(byte[] data, int startIdx, int count, string code)
         {
+            //发送数据前清除上次缓冲区数据
+            SocketRset();
             byte[] recData = new byte[256];
             var len = hexhelper.Int2Hexstring(data.Length);
             var countH = hexhelper.Int2Hexstring(count);
@@ -226,9 +262,11 @@ namespace FanucRobot
             var result = SendRead(sendData, recData);
             if (result.isError) return result;
             return CheckAnswer(recData, "09", "d4", 0);
-        }
+        }   
         ResultMessage WriteData2(byte[] data, int startIdx, int count, string code)
         {
+            //发送数据前清除上次缓冲区数据
+            SocketRset();
             byte[] recData = new byte[256]; 
             var countH = hexhelper.Int2Hexstring(count);
             var startIdxH = hexhelper.Int2Hexstring(startIdx);
@@ -241,6 +279,8 @@ namespace FanucRobot
         }
         ResultMessage FetchData(byte[] data, int startIdx, int count, string code)
         {
+            //发送数据前清除上次缓冲区数据
+            SocketRset();
             var countH = hexhelper.Int2Hexstring(count);
             var startIdxH = hexhelper.Int2Hexstring(startIdx);
             var cmdData = hexhelper.Hexstr2Byte($"02000600000000000001000000000000000100000000000000000000000006c000000000100e00000101{code}{startIdxH}{countH}0000000000000000");

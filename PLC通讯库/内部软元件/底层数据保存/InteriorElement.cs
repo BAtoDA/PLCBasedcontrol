@@ -30,14 +30,15 @@ namespace PLC通讯库.内部软元件.底层数据保存
         /// <returns></returns>
         public virtual async Task<string> TextRead()
         {
-            try
-            {
+            //try
+            //{
               
                 using StreamReader TextReader = new StreamReader(@Textaddress, Encoding.UTF8);
                 var Data= await TextReader.ReadToEndAsync();
+                TextReader.Close();
                 return Data;
-            }
-            catch { return null; }
+            //}
+            //catch { return null; }
         }
         /// <summary>
         /// 异步写入当前设置参数
@@ -47,12 +48,12 @@ namespace PLC通讯库.内部软元件.底层数据保存
         /// <returns></returns>
         public virtual async Task TextWrite(string Content)
         {
-            try
-            {
+            //try
+            //{
                 //File.WriteAllText(@Textaddress, Content);
                 await File.WriteAllTextAsync(@Textaddress, Content);
-            }
-            catch { }
+            //}
+            //catch { }
         }
         /// <summary>
         /// 创建文本
@@ -60,8 +61,8 @@ namespace PLC通讯库.内部软元件.底层数据保存
         /// <returns></returns>
         public virtual bool TextCreate()
         {
-            try
-            {
+            //try
+            //{
                 //先判定文件夹是否存在
                 if (!Directory.Exists(@Address + "InteriorElement"))
                 {
@@ -78,8 +79,8 @@ namespace PLC通讯库.内部软元件.底层数据保存
                 }
                 return true;
 
-            }
-            catch { return false; }
+            //}
+            //catch { return false; }
         }
         /// <summary>
         /// 判定文件是否存在
@@ -102,8 +103,8 @@ namespace PLC通讯库.内部软元件.底层数据保存
         /// <param name="dirPath"></param>
         public void AddSecurityControll2Folder(string dirPath)
         {
-            try
-            {
+            //try
+            //{
                 //获取文件夹信息
                 DirectoryInfo dir = new DirectoryInfo(dirPath);
                 //获得该文件夹的所有访问权限
@@ -119,8 +120,8 @@ namespace PLC通讯库.内部软元件.底层数据保存
                 dirSecurity.ModifyAccessRule(AccessControlModification.Add, usersFileSystemAccessRule, out isModified);
                 //设置访问权限
                 dir.SetAccessControl(dirSecurity);
-            }
-            catch { }
+            //}
+            //catch { }
         }
         /// <summary>
         /// 判断当前是否开启了管理员权限
@@ -128,13 +129,13 @@ namespace PLC通讯库.内部软元件.底层数据保存
         /// <returns></returns>
         public bool IsAdministrator()
         {
-            try
-            {
+            //try
+            //{
                 WindowsIdentity identity = WindowsIdentity.GetCurrent();
                 WindowsPrincipal principal = new WindowsPrincipal(identity);
                 return principal.IsInRole(WindowsBuiltInRole.Administrator);
-            }
-            catch { return false; }
+            //}
+            //catch { return false; }
         }
     }
 }

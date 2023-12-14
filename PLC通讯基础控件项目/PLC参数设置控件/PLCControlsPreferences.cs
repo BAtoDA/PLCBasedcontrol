@@ -103,7 +103,8 @@ namespace PLC通讯基础控件项目
             new PlclinkClass(){PLC=PLC.Fanuc2,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"},
             new PlclinkClass(){PLC=PLC.Fanuc3,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"},
             new PlclinkClass(){PLC=PLC.Fanuc4,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"},
-            new PlclinkClass(){PLC=PLC.Fanuc5,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"}
+            new PlclinkClass(){PLC=PLC.Fanuc5,Link="PLC通讯库.发那科机器人通讯实现.通讯实现.FANUCRobotBase",Dllplace=true,Dll="PLC通讯库"},
+            new PlclinkClass(){PLC=PLC.HMI,Link="PLC通讯库.内部软元件.通讯实现.InteriorElement",Dllplace=true,Dll="PLC通讯库"}
         };
     }
     public partial class PLCControlsPreferences : Timer
@@ -268,8 +269,8 @@ namespace PLC通讯基础控件项目
                     //添加软件开机自动启动
                     BootAutomatically.SetMeStart();
                     //--------------处理报警视图---------------------
-                    PLCEventCountLoad();//加载注册的PLC
-                    PLCEventDataListRefresh();
+                    //PLCEventCountLoad();//加载注册的PLC
+                    //PLCEventDataListRefresh();
                     PlcLoad = true;
                 }
             }

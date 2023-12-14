@@ -25,6 +25,7 @@ using System.Text.RegularExpressions;
 using PLC通讯库.通讯枚举;
 using System.Threading.Tasks;
 using CSScriptLib;
+using PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLC报警显示控件实现类;
 
 namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实现类.PLCD控件实现类
 {
@@ -407,6 +408,115 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             if (minusInde > -1)
                 Name=Name = Name.Insert(0, "-");//填充数据
             return Name;//返回数据
+        }
+        /// <summary>
+        /// 访问PLC内存区域数据
+        /// </summary>
+        /// <returns></returns>
+        private string GetPlcData()
+        {
+            var PLCData = PLCEvent_DataList.PLCEvent_Data.Where(p => p.Key.Trim() == pLCDClassBase.pLCDselectRealize.ReadWritePLC.ToString()).FirstOrDefault().Value?.
+                Where(pi => pi.Function == pLCDClassBase.pLCDselectRealize.ReadWriteFunction).FirstOrDefault();
+            int PlcAdd = Convert.ToInt32(pLCDClassBase.pLCDselectRealize.ReadWriteAddress);
+            if (PLCData == null) return "0";
+            //根据类型进行访问
+            switch (pLCDClassBase.pLCDselectRealize.ShowFormat)
+            {
+                case numerical_format.Signed_16_Bit:
+                case numerical_format.BCD_16_Bit:
+                    // 读取short变量
+                    var PlcReadSigned_16 = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    return PlcReadSigned_16 != null? PlcReadSigned_16.ToString() : "0";
+                case numerical_format.Signed_32_Bit:
+                case numerical_format.BCD_32_Bit:
+                    // 读取int变量
+                    var PlcReadSigned_32high = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    var PlcReadSigned_32low = PLCData.DataList.Where(pi => pi.Address == (PlcAdd - 1).ToString()).FirstOrDefault();
+                    if (PlcReadSigned_32high == null || PlcReadSigned_32low == null) return "0";
+                    return GetData(pLCDClassBase.pLCDselectRealize.ReadWriteFunction == "MW" ? true : false, PlcReadSigned_32high.State, PlcReadSigned_32low.State);
+                case numerical_format.Binary_16_Bit:
+                    // 读取16位二进制数                      
+                    var Binary_16_Bit = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    if (Binary_16_Bit == null) return "0";
+                    return Convert.ToString(Convert.ToInt32(Binary_16_Bit.State), 2);
+                case numerical_format.Binary_32_Bit:
+                    // 读取32位二进制数
+                    var Binary_32high = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    var Binary_32low = PLCData.DataList.Where(pi => pi.Address == (PlcAdd - 1).ToString()).FirstOrDefault();
+                    if (Binary_32high == null || Binary_32low == null) return "0";
+                    var Binary_32Data= GetData(pLCDClassBase.pLCDselectRealize.ReadWriteFunction == "MW" ? true : false, Binary_32high.State, Binary_32low.State);
+                    return Convert.ToString(Convert.ToInt32(Binary_32Data), 2);
+                case numerical_format.Float_32_Bit:
+                    // 读取float变量
+                    var Float_32_Bithigh = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    var Float_32_Bitlow = PLCData.DataList.Where(pi => pi.Address == (PlcAdd - 1).ToString()).FirstOrDefault();
+                    if (Float_32_Bithigh == null || Float_32_Bitlow == null) return "0";
+                    return Convert.ToUInt32(GetData(pLCDClassBase.pLCDselectRealize.ReadWriteFunction == "MW" ? true : false, Float_32_Bithigh.State, Float_32_Bitlow.State),1);
+                    break;
+                case numerical_format.Hex_16_Bit:
+                    // 读取short变量
+                    var Hex_16_Bit = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    if (Hex_16_Bit == null) return "0";
+                    return Convert.ToInt32(Hex_16_Bit.State).ToString("X");
+                case numerical_format.Hex_32_Bit:
+                    // 读取int变量
+                    var Hex_32_Bithigh = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    var Hex_32_Bitlow = PLCData.DataList.Where(pi => pi.Address == (PlcAdd - 1).ToString()).FirstOrDefault();
+                    if (Hex_32_Bithigh == null || Hex_32_Bitlow == null) return "0";
+                    var Hex_32Data= GetData(pLCDClassBase.pLCDselectRealize.ReadWriteFunction == "MW" ? true : false, Hex_32_Bithigh.State, Hex_32_Bitlow.State);
+                    return Convert.ToInt32(Hex_32Data).ToString("X");
+                case numerical_format.Unsigned_16_Bit:
+                    // 读取ushort变量
+                    var Unsigned_16_Bit = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    if (Unsigned_16_Bit == null) return "0";
+                    return Convert.ToUInt16(Unsigned_16_Bit.State);
+                case numerical_format.Unsigned_32_Bit:
+                    // 读取uint变量
+                    var Unsigned_32_Bithigh = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    var Unsigned_32_Bitlow = PLCData.DataList.Where(pi => pi.Address == (PlcAdd - 1).ToString()).FirstOrDefault();
+                    if (Unsigned_32_Bithigh == null || Unsigned_32_Bitlow == null) return "0";
+                    return Convert.ToUInt32(GetData(pLCDClassBase.pLCDselectRealize.ReadWriteFunction == "MW" ? true : false, Unsigned_32_Bithigh.State, Unsigned_32_Bitlow.State));
+                case numerical_format.String:
+                    // 读取uint变量
+                    var Stringhigh = PLCData.DataList.Where(pi => pi.Address == pLCDClassBase.pLCDselectRealize.ReadWriteAddress).FirstOrDefault();
+                    var Stringlow = PLCData.DataList.Where(pi => pi.Address == (PlcAdd - 1).ToString()).FirstOrDefault();
+                    if (Stringhigh == null || Stringlow == null) return "0";
+                    return  Convert.ToString(Stringhigh.State) + Convert.ToString(Stringlow.State);
+            }
+            return "0";
+        }
+        /// <summary>
+        /// 根据类型进行高低位处理
+        /// 
+        /// </summary>
+        /// <param name="high_low"></param>
+        /// <param name="highData"></param>
+        /// <param name="lowData"></param>
+        /// <returns></returns>
+        private string GetData(bool high_low, int highData, int lowData)
+        {
+            byte[] hig = BitConverter.GetBytes(highData);
+            byte[] low = BitConverter.GetBytes(lowData);
+            if (high_low)
+                return BitConverter.ToInt32(new byte[] { low[0], low[1], hig[0], hig[1] }, 0).ToString();
+            else
+                return BitConverter.ToInt32(new byte[] { hig[0], hig[1], low[0], low[1] }, 0).ToString();
+        }
+        /// <summary>
+        /// 根据类型进行高低位处理
+        /// </summary>
+        /// <param name="high_low"></param>
+        /// <param name="highData"></param>
+        /// <param name="lowData"></param>
+        /// <returns></returns>
+        private string GetData(bool high_low, int highData, int lowData,float i)
+        {
+            byte[] hig = BitConverter.GetBytes(highData);
+            byte[] low = BitConverter.GetBytes(lowData);
+            if (high_low)
+                return BitConverter.ToSingle(new byte[] { low[0], low[1], hig[0], hig[1] }, 0).ToString();
+            else
+                return BitConverter.ToSingle(new byte[] { hig[0], hig[1], low[0], low[1] }, 0).ToString();
         }
     }
 }

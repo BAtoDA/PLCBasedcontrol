@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using HslCommunication;
 using Nancy.Json;
 using PLC通讯库.内部软元件.底层数据保存;
@@ -44,8 +45,9 @@ namespace PLC通讯库.内部软元件.通讯实现
         private int Ports;
         public int ConnectTimeOut { get; set; } = 1000;
         public int ReceiveTimeOut { get; set; } = 1000;
-        public bool PLC_ready { get; set; }
+        public bool PLC_ready { get; set; } = true;
         object obj=new object();
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -65,8 +67,19 @@ namespace PLC通讯库.内部软元件.通讯实现
                 Change(s);
             }));
             InformationTimer.Change(TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(3));
+            //System.Timers.Timer InformationTimer = new System.Timers.Timer()
+            //{
+            //    Interval = 100,
+            //    Enabled = true
+            //};
+            //InformationTimer.Elapsed += ((send, e) =>
+            //{
+            //    Change(send);
+            //});
+            //InformationTimer.Start();
             void Change(object a)
             {
+                //InformationTimer.Stop();
                 lock (obj)
                 {
                     //Debug.WriteLine(DateTime.Now.ToString("F"));
@@ -93,9 +106,17 @@ namespace PLC通讯库.内部软元件.通讯实现
                         JavaScriptSerializer javaScript = new JavaScriptSerializer();
                         TextWrite("RW0", javaScript.Serialize(HmiRW)).Wait();
                     }
+
                 }
+                //InformationTimer.Start();
             }
         }
+
+        private void InformationTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// 切断通讯
         /// </summary>

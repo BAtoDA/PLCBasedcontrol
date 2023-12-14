@@ -338,10 +338,11 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         MatchCollection mc = Regex.Matches(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, "_Bit".ToLower());
                         if (mc.Count < 1)//暂时不支持D_Bit类型
                         {
-                            var PLCData = PLCEvent_DataList.PLCEvent_Data.Where(p => p.Key.Trim() == pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()).FirstOrDefault().Value?.Where(pi => pi.Function == pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction).FirstOrDefault();
-                            if (PLCData == null) return;
-                            var PlcRead = PLCData.DataList.Where(pi => pi.Address == pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress).FirstOrDefault();
-                            State = PlcRead != null ? PlcRead.State : false;
+                            //var PLCData = PLCEvent_DataList.PLCEvent_Data.Where(p => p.Key.Trim() == pLCBitClassBase.pLCBitselectRealize.ReadWritePLC.ToString()).FirstOrDefault().Value?.Where(pi => pi.Function == pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction).FirstOrDefault();
+                            //if (PLCData == null) return;
+                            //var PlcRead = PLCData.DataList.Where(pi => pi.Address == pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress).FirstOrDefault();
+                            State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                            //State = PlcRead != null ? PlcRead.State : false;
                         }
                         else
                         {
