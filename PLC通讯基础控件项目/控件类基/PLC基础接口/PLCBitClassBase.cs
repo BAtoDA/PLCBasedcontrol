@@ -13,6 +13,16 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口
     /// </summary>
     public interface PLCBitClassBase
     {
+        #region 新增代码       
+        /// <summary>
+        /// 代码宏事件
+        /// </summary>
+        event EventHandler Macro;
+        /// <summary>
+        /// 代码层宏启动宏事件
+        /// </summary>
+        void MacroRunCommand();
+        #endregion
         /// <summary>
         /// 修改参数界面启动事件
         /// </summary>

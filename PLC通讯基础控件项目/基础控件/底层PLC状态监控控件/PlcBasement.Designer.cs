@@ -29,344 +29,349 @@ namespace PLC通讯基础控件项目.基础控件.底层PLC状态监控控件
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.uiPanel1 = new Sunny.UI.UIPanel();
-            this.uiTabControl1 = new Sunny.UI.UITabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.uiGroupBox2 = new Sunny.UI.UIGroupBox();
-            this.uiTextBox3 = new Sunny.UI.UITextBox();
-            this.uiTextBox4 = new Sunny.UI.UITextBox();
-            this.uiLabel5 = new Sunny.UI.UILabel();
-            this.uiLabel6 = new Sunny.UI.UILabel();
-            this.uiTextBox2 = new Sunny.UI.UITextBox();
-            this.uiTextBox1 = new Sunny.UI.UITextBox();
-            this.uiLabel4 = new Sunny.UI.UILabel();
-            this.uiLabel3 = new Sunny.UI.UILabel();
-            this.uiLedBulb1 = new Sunny.UI.UILedBulb();
-            this.uiLabel2 = new Sunny.UI.UILabel();
-            this.uiGroupBox1 = new Sunny.UI.UIGroupBox();
-            this.uiComboboxEx1 = new Sunny.UI.UIComboboxEx();
-            this.uiLabel1 = new Sunny.UI.UILabel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.uiRichTextBox1 = new Sunny.UI.UIRichTextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.uiPanel1.SuspendLayout();
-            this.uiTabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.uiGroupBox2.SuspendLayout();
-            this.uiGroupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            uiPanel1 = new Sunny.UI.UIPanel();
+            uiTabControl1 = new Sunny.UI.UITabControl();
+            tabPage1 = new System.Windows.Forms.TabPage();
+            uiGroupBox2 = new Sunny.UI.UIGroupBox();
+            uiTextBox3 = new Sunny.UI.UITextBox();
+            uiTextBox4 = new Sunny.UI.UITextBox();
+            uiLabel5 = new Sunny.UI.UILabel();
+            uiLabel6 = new Sunny.UI.UILabel();
+            uiTextBox2 = new Sunny.UI.UITextBox();
+            uiTextBox1 = new Sunny.UI.UITextBox();
+            uiLabel4 = new Sunny.UI.UILabel();
+            uiLabel3 = new Sunny.UI.UILabel();
+            uiLedBulb1 = new Sunny.UI.UILedBulb();
+            uiLabel2 = new Sunny.UI.UILabel();
+            uiGroupBox1 = new Sunny.UI.UIGroupBox();
+            uiComboboxEx1 = new Sunny.UI.UIComboboxEx();
+            uiLabel1 = new Sunny.UI.UILabel();
+            tabPage2 = new System.Windows.Forms.TabPage();
+            uiRichTextBox1 = new Sunny.UI.UIRichTextBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
+            uiPanel1.SuspendLayout();
+            uiTabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            uiGroupBox2.SuspendLayout();
+            uiGroupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            SuspendLayout();
             // 
             // uiPanel1
             // 
-            this.uiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiPanel1.Controls.Add(this.uiTabControl1);
-            this.uiPanel1.FillColor = System.Drawing.Color.Transparent;
-            this.uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiPanel1.Location = new System.Drawing.Point(0, 0);
-            this.uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiPanel1.Name = "uiPanel1";
-            this.uiPanel1.Size = new System.Drawing.Size(496, 280);
-            this.uiPanel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiPanel1.TabIndex = 1;
-            this.uiPanel1.Text = null;
-            this.uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            uiPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            uiPanel1.Controls.Add(uiTabControl1);
+            uiPanel1.FillColor = System.Drawing.Color.Transparent;
+            uiPanel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiPanel1.IsScaled = false;
+            uiPanel1.Location = new System.Drawing.Point(0, 0);
+            uiPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiPanel1.MinimumSize = new System.Drawing.Size(1, 1);
+            uiPanel1.Name = "uiPanel1";
+            uiPanel1.Size = new System.Drawing.Size(496, 280);
+            uiPanel1.Style = Sunny.UI.UIStyle.Custom;
+            uiPanel1.TabIndex = 1;
+            uiPanel1.Text = null;
+            uiPanel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // uiTabControl1
             // 
-            this.uiTabControl1.Controls.Add(this.tabPage1);
-            this.uiTabControl1.Controls.Add(this.tabPage2);
-            this.uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTabControl1.ItemSize = new System.Drawing.Size(150, 40);
-            this.uiTabControl1.Location = new System.Drawing.Point(3, 3);
-            this.uiTabControl1.MainPage = "";
-            this.uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
-            this.uiTabControl1.Name = "uiTabControl1";
-            this.uiTabControl1.SelectedIndex = 0;
-            this.uiTabControl1.Size = new System.Drawing.Size(493, 274);
-            this.uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTabControl1.TabIndex = 0;
-            this.uiTabControl1.TabUnSelectedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            uiTabControl1.Controls.Add(tabPage1);
+            uiTabControl1.Controls.Add(tabPage2);
+            uiTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            uiTabControl1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiTabControl1.ItemSize = new System.Drawing.Size(150, 40);
+            uiTabControl1.Location = new System.Drawing.Point(3, 3);
+            uiTabControl1.MainPage = "";
+            uiTabControl1.MenuStyle = Sunny.UI.UIMenuStyle.Custom;
+            uiTabControl1.Name = "uiTabControl1";
+            uiTabControl1.SelectedIndex = 0;
+            uiTabControl1.Size = new System.Drawing.Size(493, 274);
+            uiTabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            uiTabControl1.Style = Sunny.UI.UIStyle.Custom;
+            uiTabControl1.TabIndex = 0;
+            uiTabControl1.TabUnSelectedForeColor = System.Drawing.Color.FromArgb(240, 240, 240);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.uiGroupBox2);
-            this.tabPage1.Controls.Add(this.uiGroupBox1);
-            this.tabPage1.Location = new System.Drawing.Point(0, 40);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(493, 234);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "PLC状态监控";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(uiGroupBox2);
+            tabPage1.Controls.Add(uiGroupBox1);
+            tabPage1.Location = new System.Drawing.Point(0, 40);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new System.Drawing.Size(493, 234);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "PLC状态监控";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // uiGroupBox2
             // 
-            this.uiGroupBox2.Controls.Add(this.uiTextBox3);
-            this.uiGroupBox2.Controls.Add(this.uiTextBox4);
-            this.uiGroupBox2.Controls.Add(this.uiLabel5);
-            this.uiGroupBox2.Controls.Add(this.uiLabel6);
-            this.uiGroupBox2.Controls.Add(this.uiTextBox2);
-            this.uiGroupBox2.Controls.Add(this.uiTextBox1);
-            this.uiGroupBox2.Controls.Add(this.uiLabel4);
-            this.uiGroupBox2.Controls.Add(this.uiLabel3);
-            this.uiGroupBox2.Controls.Add(this.uiLedBulb1);
-            this.uiGroupBox2.Controls.Add(this.uiLabel2);
-            this.uiGroupBox2.FillColor = System.Drawing.Color.Transparent;
-            this.uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox2.Location = new System.Drawing.Point(4, 77);
-            this.uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox2.Name = "uiGroupBox2";
-            this.uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            this.uiGroupBox2.Size = new System.Drawing.Size(485, 154);
-            this.uiGroupBox2.Style = Sunny.UI.UIStyle.Custom;
-            this.uiGroupBox2.TabIndex = 1;
-            this.uiGroupBox2.Text = null;
-            this.uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiGroupBox2.TitleInterval = 0;
-            this.uiGroupBox2.TitleTop = 0;
+            uiGroupBox2.Controls.Add(uiTextBox3);
+            uiGroupBox2.Controls.Add(uiTextBox4);
+            uiGroupBox2.Controls.Add(uiLabel5);
+            uiGroupBox2.Controls.Add(uiLabel6);
+            uiGroupBox2.Controls.Add(uiTextBox2);
+            uiGroupBox2.Controls.Add(uiTextBox1);
+            uiGroupBox2.Controls.Add(uiLabel4);
+            uiGroupBox2.Controls.Add(uiLabel3);
+            uiGroupBox2.Controls.Add(uiLedBulb1);
+            uiGroupBox2.Controls.Add(uiLabel2);
+            uiGroupBox2.FillColor = System.Drawing.Color.Transparent;
+            uiGroupBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiGroupBox2.IsScaled = false;
+            uiGroupBox2.Location = new System.Drawing.Point(4, 77);
+            uiGroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiGroupBox2.MinimumSize = new System.Drawing.Size(1, 1);
+            uiGroupBox2.Name = "uiGroupBox2";
+            uiGroupBox2.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
+            uiGroupBox2.Size = new System.Drawing.Size(485, 154);
+            uiGroupBox2.Style = Sunny.UI.UIStyle.Custom;
+            uiGroupBox2.TabIndex = 1;
+            uiGroupBox2.Text = null;
+            uiGroupBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            uiGroupBox2.TitleInterval = 0;
+            uiGroupBox2.TitleTop = 0;
             // 
             // uiTextBox3
             // 
-            this.uiTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox3.FillColor = System.Drawing.Color.White;
-            this.uiTextBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTextBox3.Location = new System.Drawing.Point(328, 111);
-            this.uiTextBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox3.Maximum = 2147483647D;
-            this.uiTextBox3.Minimum = -2147483648D;
-            this.uiTextBox3.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiTextBox3.Name = "uiTextBox3";
-            this.uiTextBox3.Size = new System.Drawing.Size(150, 29);
-            this.uiTextBox3.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTextBox3.TabIndex = 10;
-            this.uiTextBox3.Text = "uiTextBox3";
-            this.uiTextBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            uiTextBox3.ButtonSymbol = 61761;
+            uiTextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            uiTextBox3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiTextBox3.IsScaled = false;
+            uiTextBox3.Location = new System.Drawing.Point(328, 111);
+            uiTextBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiTextBox3.Maximum = 2147483647D;
+            uiTextBox3.Minimum = -2147483648D;
+            uiTextBox3.MinimumSize = new System.Drawing.Size(1, 1);
+            uiTextBox3.Name = "uiTextBox3";
+            uiTextBox3.Size = new System.Drawing.Size(150, 29);
+            uiTextBox3.Style = Sunny.UI.UIStyle.Custom;
+            uiTextBox3.TabIndex = 10;
+            uiTextBox3.Text = "uiTextBox3";
+            uiTextBox3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox4
             // 
-            this.uiTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox4.FillColor = System.Drawing.Color.White;
-            this.uiTextBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTextBox4.Location = new System.Drawing.Point(89, 110);
-            this.uiTextBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox4.Maximum = 2147483647D;
-            this.uiTextBox4.Minimum = -2147483648D;
-            this.uiTextBox4.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiTextBox4.Name = "uiTextBox4";
-            this.uiTextBox4.Size = new System.Drawing.Size(150, 29);
-            this.uiTextBox4.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTextBox4.TabIndex = 9;
-            this.uiTextBox4.Text = "uiTextBox4";
-            this.uiTextBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            uiTextBox4.ButtonSymbol = 61761;
+            uiTextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            uiTextBox4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiTextBox4.IsScaled = false;
+            uiTextBox4.Location = new System.Drawing.Point(89, 110);
+            uiTextBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiTextBox4.Maximum = 2147483647D;
+            uiTextBox4.Minimum = -2147483648D;
+            uiTextBox4.MinimumSize = new System.Drawing.Size(1, 1);
+            uiTextBox4.Name = "uiTextBox4";
+            uiTextBox4.Size = new System.Drawing.Size(150, 29);
+            uiTextBox4.Style = Sunny.UI.UIStyle.Custom;
+            uiTextBox4.TabIndex = 9;
+            uiTextBox4.Text = "uiTextBox4";
+            uiTextBox4.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel5
             // 
-            this.uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel5.Location = new System.Drawing.Point(245, 113);
-            this.uiLabel5.Name = "uiLabel5";
-            this.uiLabel5.Size = new System.Drawing.Size(127, 23);
-            this.uiLabel5.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel5.TabIndex = 8;
-            this.uiLabel5.Text = "PLCWrite：";
-            this.uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiLabel5.Location = new System.Drawing.Point(245, 113);
+            uiLabel5.Name = "uiLabel5";
+            uiLabel5.Size = new System.Drawing.Size(127, 23);
+            uiLabel5.Style = Sunny.UI.UIStyle.Custom;
+            uiLabel5.TabIndex = 8;
+            uiLabel5.Text = "PLCWrite：";
+            uiLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel6
             // 
-            this.uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel6.Location = new System.Drawing.Point(0, 114);
-            this.uiLabel6.Name = "uiLabel6";
-            this.uiLabel6.Size = new System.Drawing.Size(127, 23);
-            this.uiLabel6.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel6.TabIndex = 7;
-            this.uiLabel6.Text = "PLCRead：";
-            this.uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiLabel6.Location = new System.Drawing.Point(0, 114);
+            uiLabel6.Name = "uiLabel6";
+            uiLabel6.Size = new System.Drawing.Size(127, 23);
+            uiLabel6.Style = Sunny.UI.UIStyle.Custom;
+            uiLabel6.TabIndex = 7;
+            uiLabel6.Text = "PLCRead：";
+            uiLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox2
             // 
-            this.uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox2.FillColor = System.Drawing.Color.White;
-            this.uiTextBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTextBox2.Location = new System.Drawing.Point(326, 63);
-            this.uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox2.Maximum = 2147483647D;
-            this.uiTextBox2.Minimum = -2147483648D;
-            this.uiTextBox2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiTextBox2.Name = "uiTextBox2";
-            this.uiTextBox2.Size = new System.Drawing.Size(150, 29);
-            this.uiTextBox2.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTextBox2.TabIndex = 6;
-            this.uiTextBox2.Text = "uiTextBox2";
-            this.uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            uiTextBox2.ButtonSymbol = 61761;
+            uiTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            uiTextBox2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiTextBox2.IsScaled = false;
+            uiTextBox2.Location = new System.Drawing.Point(326, 63);
+            uiTextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiTextBox2.Maximum = 2147483647D;
+            uiTextBox2.Minimum = -2147483648D;
+            uiTextBox2.MinimumSize = new System.Drawing.Size(1, 1);
+            uiTextBox2.Name = "uiTextBox2";
+            uiTextBox2.Size = new System.Drawing.Size(150, 29);
+            uiTextBox2.Style = Sunny.UI.UIStyle.Custom;
+            uiTextBox2.TabIndex = 6;
+            uiTextBox2.Text = "uiTextBox2";
+            uiTextBox2.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiTextBox1
             // 
-            this.uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.uiTextBox1.FillColor = System.Drawing.Color.White;
-            this.uiTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiTextBox1.Location = new System.Drawing.Point(87, 62);
-            this.uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiTextBox1.Maximum = 2147483647D;
-            this.uiTextBox1.Minimum = -2147483648D;
-            this.uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiTextBox1.Name = "uiTextBox1";
-            this.uiTextBox1.Size = new System.Drawing.Size(150, 29);
-            this.uiTextBox1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiTextBox1.TabIndex = 5;
-            this.uiTextBox1.Text = "uiTextBox1";
-            this.uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
+            uiTextBox1.ButtonSymbol = 61761;
+            uiTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            uiTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiTextBox1.IsScaled = false;
+            uiTextBox1.Location = new System.Drawing.Point(87, 62);
+            uiTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiTextBox1.Maximum = 2147483647D;
+            uiTextBox1.Minimum = -2147483648D;
+            uiTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            uiTextBox1.Name = "uiTextBox1";
+            uiTextBox1.Size = new System.Drawing.Size(150, 29);
+            uiTextBox1.Style = Sunny.UI.UIStyle.Custom;
+            uiTextBox1.TabIndex = 5;
+            uiTextBox1.Text = "uiTextBox1";
+            uiTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel4
             // 
-            this.uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel4.Location = new System.Drawing.Point(267, 65);
-            this.uiLabel4.Name = "uiLabel4";
-            this.uiLabel4.Size = new System.Drawing.Size(127, 23);
-            this.uiLabel4.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel4.TabIndex = 4;
-            this.uiLabel4.Text = "PLCIP：";
-            this.uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiLabel4.Location = new System.Drawing.Point(267, 65);
+            uiLabel4.Name = "uiLabel4";
+            uiLabel4.Size = new System.Drawing.Size(127, 23);
+            uiLabel4.Style = Sunny.UI.UIStyle.Custom;
+            uiLabel4.TabIndex = 4;
+            uiLabel4.Text = "PLCIP：";
+            uiLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLabel3
             // 
-            this.uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel3.Location = new System.Drawing.Point(21, 65);
-            this.uiLabel3.Name = "uiLabel3";
-            this.uiLabel3.Size = new System.Drawing.Size(127, 23);
-            this.uiLabel3.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel3.TabIndex = 3;
-            this.uiLabel3.Text = "PLCIP：";
-            this.uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiLabel3.Location = new System.Drawing.Point(21, 65);
+            uiLabel3.Name = "uiLabel3";
+            uiLabel3.Size = new System.Drawing.Size(127, 23);
+            uiLabel3.Style = Sunny.UI.UIStyle.Custom;
+            uiLabel3.TabIndex = 3;
+            uiLabel3.Text = "PLCIP：";
+            uiLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiLedBulb1
             // 
-            this.uiLedBulb1.Location = new System.Drawing.Point(233, 8);
-            this.uiLedBulb1.Name = "uiLedBulb1";
-            this.uiLedBulb1.Size = new System.Drawing.Size(35, 34);
-            this.uiLedBulb1.TabIndex = 0;
-            this.uiLedBulb1.Text = "uiLedBulb1";
+            uiLedBulb1.Location = new System.Drawing.Point(233, 8);
+            uiLedBulb1.Name = "uiLedBulb1";
+            uiLedBulb1.Size = new System.Drawing.Size(35, 34);
+            uiLedBulb1.TabIndex = 0;
+            uiLedBulb1.Text = "uiLedBulb1";
             // 
             // uiLabel2
             // 
-            this.uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel2.Location = new System.Drawing.Point(157, 13);
-            this.uiLabel2.Name = "uiLabel2";
-            this.uiLabel2.Size = new System.Drawing.Size(127, 23);
-            this.uiLabel2.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel2.TabIndex = 2;
-            this.uiLabel2.Text = "PLC链接：";
-            this.uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiLabel2.Location = new System.Drawing.Point(143, 13);
+            uiLabel2.Name = "uiLabel2";
+            uiLabel2.Size = new System.Drawing.Size(127, 23);
+            uiLabel2.Style = Sunny.UI.UIStyle.Custom;
+            uiLabel2.TabIndex = 2;
+            uiLabel2.Text = "PLC链接：";
+            uiLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // uiGroupBox1
             // 
-            this.uiGroupBox1.Controls.Add(this.uiComboboxEx1);
-            this.uiGroupBox1.Controls.Add(this.uiLabel1);
-            this.uiGroupBox1.FillColor = System.Drawing.Color.Transparent;
-            this.uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiGroupBox1.Location = new System.Drawing.Point(4, 8);
-            this.uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiGroupBox1.Name = "uiGroupBox1";
-            this.uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            this.uiGroupBox1.Size = new System.Drawing.Size(485, 60);
-            this.uiGroupBox1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiGroupBox1.TabIndex = 0;
-            this.uiGroupBox1.Text = " ";
-            this.uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiGroupBox1.TitleAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.uiGroupBox1.TitleInterval = 0;
-            this.uiGroupBox1.TitleTop = 0;
+            uiGroupBox1.Controls.Add(uiComboboxEx1);
+            uiGroupBox1.Controls.Add(uiLabel1);
+            uiGroupBox1.FillColor = System.Drawing.Color.Transparent;
+            uiGroupBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiGroupBox1.IsScaled = false;
+            uiGroupBox1.Location = new System.Drawing.Point(4, 8);
+            uiGroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiGroupBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            uiGroupBox1.Name = "uiGroupBox1";
+            uiGroupBox1.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
+            uiGroupBox1.Size = new System.Drawing.Size(485, 60);
+            uiGroupBox1.Style = Sunny.UI.UIStyle.Custom;
+            uiGroupBox1.TabIndex = 0;
+            uiGroupBox1.Text = " ";
+            uiGroupBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            uiGroupBox1.TitleAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            uiGroupBox1.TitleInterval = 0;
+            uiGroupBox1.TitleTop = 0;
             // 
             // uiComboboxEx1
             // 
-            this.uiComboboxEx1.BackColor = System.Drawing.Color.White;
-            this.uiComboboxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.uiComboboxEx1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiComboboxEx1.FormattingEnabled = true;
-            this.uiComboboxEx1.ItemSelectForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(243)))), ((int)(((byte)(255)))));
-            this.uiComboboxEx1.Location = new System.Drawing.Point(184, 15);
-            this.uiComboboxEx1.Name = "uiComboboxEx1";
-            this.uiComboboxEx1.Size = new System.Drawing.Size(217, 30);
-            this.uiComboboxEx1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiComboboxEx1.TabIndex = 1;
-            this.uiComboboxEx1.TextChanged += new System.EventHandler(this.uiComboboxEx1_TextChanged);
+            uiComboboxEx1.BackColor = System.Drawing.Color.White;
+            uiComboboxEx1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            uiComboboxEx1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiComboboxEx1.FormattingEnabled = true;
+            uiComboboxEx1.ItemSelectForeColor = System.Drawing.Color.FromArgb(235, 243, 255);
+            uiComboboxEx1.Location = new System.Drawing.Point(184, 15);
+            uiComboboxEx1.Name = "uiComboboxEx1";
+            uiComboboxEx1.Size = new System.Drawing.Size(217, 35);
+            uiComboboxEx1.Style = Sunny.UI.UIStyle.Custom;
+            uiComboboxEx1.TabIndex = 1;
+            uiComboboxEx1.TextChanged += uiComboboxEx1_TextChanged;
             // 
             // uiLabel1
             // 
-            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiLabel1.Location = new System.Drawing.Point(74, 17);
-            this.uiLabel1.Name = "uiLabel1";
-            this.uiLabel1.Size = new System.Drawing.Size(127, 23);
-            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiLabel1.TabIndex = 0;
-            this.uiLabel1.Text = "PLC对象选择：";
-            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiLabel1.Location = new System.Drawing.Point(74, 17);
+            uiLabel1.Name = "uiLabel1";
+            uiLabel1.Size = new System.Drawing.Size(127, 23);
+            uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            uiLabel1.TabIndex = 0;
+            uiLabel1.Text = "PLC对象选择：";
+            uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.uiRichTextBox1);
-            this.tabPage2.Location = new System.Drawing.Point(0, 40);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(450, 230);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "底层日志";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Controls.Add(uiRichTextBox1);
+            tabPage2.Location = new System.Drawing.Point(0, 40);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Size = new System.Drawing.Size(200, 60);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "底层日志";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // uiRichTextBox1
             // 
-            this.uiRichTextBox1.AutoWordSelection = true;
-            this.uiRichTextBox1.DetectUrls = false;
-            this.uiRichTextBox1.FillColor = System.Drawing.Color.White;
-            this.uiRichTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.uiRichTextBox1.Location = new System.Drawing.Point(1, 0);
-            this.uiRichTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.uiRichTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
-            this.uiRichTextBox1.Name = "uiRichTextBox1";
-            this.uiRichTextBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.uiRichTextBox1.ReadOnly = true;
-            this.uiRichTextBox1.Size = new System.Drawing.Size(492, 237);
-            this.uiRichTextBox1.Style = Sunny.UI.UIStyle.Custom;
-            this.uiRichTextBox1.StyleCustomMode = true;
-            this.uiRichTextBox1.TabIndex = 0;
-            this.uiRichTextBox1.Text = " ";
-            this.uiRichTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.uiRichTextBox1.WordWrap = true;
+            uiRichTextBox1.AutoWordSelection = true;
+            uiRichTextBox1.DetectUrls = false;
+            uiRichTextBox1.FillColor = System.Drawing.Color.White;
+            uiRichTextBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            uiRichTextBox1.IsScaled = false;
+            uiRichTextBox1.Location = new System.Drawing.Point(1, 0);
+            uiRichTextBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            uiRichTextBox1.MinimumSize = new System.Drawing.Size(1, 1);
+            uiRichTextBox1.Name = "uiRichTextBox1";
+            uiRichTextBox1.Padding = new System.Windows.Forms.Padding(2);
+            uiRichTextBox1.ReadOnly = true;
+            uiRichTextBox1.Size = new System.Drawing.Size(492, 237);
+            uiRichTextBox1.Style = Sunny.UI.UIStyle.Custom;
+            uiRichTextBox1.StyleCustomMode = true;
+            uiRichTextBox1.TabIndex = 0;
+            uiRichTextBox1.Text = " ";
+            uiRichTextBox1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            uiRichTextBox1.WordWrap = true;
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 500;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            timer1.Enabled = true;
+            timer1.Interval = 500;
+            timer1.Tick += timer1_Tick;
             // 
             // timer2
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 2000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            timer2.Enabled = true;
+            timer2.Interval = 2500;
+            timer2.Tick += timer2_Tick;
             // 
             // PlcBasement
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.DarkGray;
-            this.Controls.Add(this.uiPanel1);
-            this.Name = "PlcBasement";
-            this.Size = new System.Drawing.Size(496, 280);
-            this.Load += new System.EventHandler(this.PlcBasement_Load);
-            this.uiPanel1.ResumeLayout(false);
-            this.uiTabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.uiGroupBox2.ResumeLayout(false);
-            this.uiGroupBox1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            BackColor = System.Drawing.Color.DarkGray;
+            Controls.Add(uiPanel1);
+            Name = "PlcBasement";
+            Size = new System.Drawing.Size(496, 280);
+            Load += PlcBasement_Load;
+            uiPanel1.ResumeLayout(false);
+            uiTabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            uiGroupBox2.ResumeLayout(false);
+            uiGroupBox1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

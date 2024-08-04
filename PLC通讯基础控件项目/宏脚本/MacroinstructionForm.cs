@@ -98,20 +98,20 @@ namespace PLC通讯基础控件项目.宏脚本
             string Code = this.uiRichTextBox1.Text;
             try
             {
-                await Task.Run(()=>
+                await Task.Run(() =>
                 {
                     stopwatch.Start();
                     Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@Code);
                     var Macroinstructiontype = compilemethod.GetType("css_root+DynamicClass+ScriptCCStatic");
                     var MacroinstructionMethod = Macroinstructiontype.GetMethod("Main");
                     if (MacroinstructionMethod == null) throw new Exception("编译失败：不存在主方法（Main）;");
-                   // MacroinstructionMethod.Invoke(null, new object[] { "1" });
+                    // MacroinstructionMethod.Invoke(null, new object[] { "1" });
                 });
                 stopwatch.Stop();
                 this.uiLabel4.Text = stopwatch.Elapsed.TotalMilliseconds.ToString();
                 this.uiLedBulb1.On = true;
-                Compiling=true;
-                this.uiRichTextBox3.AppendText(DateTime.Now.ToString("f") + "编译完成：耗时"+ stopwatch.Elapsed.TotalMilliseconds.ToString() + "\r\n");
+                Compiling = true;
+                this.uiRichTextBox3.AppendText(DateTime.Now.ToString("f") + "编译完成：耗时" + stopwatch.Elapsed.TotalMilliseconds.ToString() + "\r\n");
             }
             catch (Exception ex)
             {
@@ -119,7 +119,7 @@ namespace PLC通讯基础控件项目.宏脚本
                 stopwatch.Stop();
                 this.uiLabel4.Text = stopwatch.Elapsed.TotalMilliseconds.ToString();
                 this.uiLedBulb1.On = false;
-                this.uiRichTextBox3.AppendText(DateTime.Now.ToString("f")+ex.Message+"\r\n");
+                this.uiRichTextBox3.AppendText(DateTime.Now.ToString("f") + ex.Message + "\r\n");
                 Compiling = false;
             }
         }

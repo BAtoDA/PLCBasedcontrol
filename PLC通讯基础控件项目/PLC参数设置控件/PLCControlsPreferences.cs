@@ -201,80 +201,83 @@ namespace PLC通讯基础控件项目
             #endregion
             #region 添加数据到--PLC通讯表中
             //添加数据到--PLC通讯表中
-            try
+            if (!PlcLoad)
             {
-                if (IPLCsurface.PLCDictionary.Count < 2 && !PlcLoad)
+                try
                 {
-                    IPLCsurface IPLCsurface = new IPLCsurface();
-                    foreach (var i in this.PLCPreference)
+                    if (IPLCsurface.PLCDictionary.Count < 2 && !PlcLoad)
                     {
-                        //联查数据
-                        var PLClink = this.plclinkClasses.Where(p => p.PLC == i.PLCDevice).FirstOrDefault();
-                        if (PLClink != null)
+                        IPLCsurface IPLCsurface = new IPLCsurface();
+                        foreach (var i in this.PLCPreference)
                         {
-                            //-----查找指定dll并且按照路径进行反射获取Type命名空间-----
-                            Type PLCoop;
-                            if (PLClink.Dllplace)
-                                PLCoop = Assembly.LoadFrom(PLClink.Dll).GetType(PLClink.Link);
-                            else
-                                PLCoop = Assembly.GetExecutingAssembly().GetType(PLClink.Link);
-                            if (PLCoop != null && !IPLCsurface.PLCDictionary.ContainsKey(PLClink.PLC.ToString()))
+                            //联查数据
+                            var PLClink = this.plclinkClasses.Where(p => p.PLC == i.PLCDevice).FirstOrDefault();
+                            if (PLClink != null)
                             {
-                                Object[] constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
-                                Object obj = new object();
-                                switch (i.PLCDevice)
+                                //-----查找指定dll并且按照路径进行反射获取Type命名空间-----
+                                Type PLCoop;
+                                if (PLClink.Dllplace)
+                                    PLCoop = Assembly.LoadFrom(PLClink.Dll).GetType(PLClink.Link);
+                                else
+                                    PLCoop = Assembly.GetExecutingAssembly().GetType(PLClink.Link);
+                                if (PLCoop != null && !IPLCsurface.PLCDictionary.ContainsKey(PLClink.PLC.ToString()))
                                 {
-                                    case PLC.Siemens:
-                                    case PLC.Siemens1:
-                                    case PLC.Siemens2:
-                                    case PLC.Siemens3:
-                                    case PLC.Siemens4:
-                                    case PLC.Siemens5:
-                                        constructParms = new object[] { (SiemensPLCS)(Enum.Parse(typeof(HslCommunication.Profinet.Siemens.SiemensPLCS), i.Retain) ?? HslCommunication.Profinet.Siemens.SiemensPLCS.S1500) };  //构造器参数 
-                                        SiemensS7Net obj1 = (SiemensS7Net)Activator.CreateInstance(PLCoop, constructParms);
-                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj1, i.Sendovertime, i.Receptionovertime));
-                                        break;
-                                    case PLC.Modbus_TCP:
-                                    case PLC.Modbus_TCP1:
-                                    case PLC.Modbus_TCP2:
-                                    case PLC.Modbus_TCP3:
-                                    case PLC.Modbus_TCP4:
-                                    case PLC.Modbus_TCP5:
-                                        constructParms = new object[] { };  //构造器参数
-                                        obj = Activator.CreateInstance(PLCoop, constructParms);
-                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime));
-                                        break;
-                                    case PLC.Mitsubishi:
-                                    case PLC.Mitsubishi1:
-                                    case PLC.Mitsubishi2:
-                                    case PLC.Mitsubishi3:
-                                    case PLC.Mitsubishi4:
-                                    case PLC.Mitsubishi5:
-                                        //三菱协议
-                                        var constructParmse = (MitsubishiPLC)(Enum.Parse(typeof(MitsubishiPLC), i.Retain) ?? MitsubishiPLC.FX) ;  //构造器参数 
-                                        constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
-                                        obj = Activator.CreateInstance(PLCoop, constructParms);
-                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime, constructParmse));
-                                        break;
-                                    default:
-                                        //欧姆龙协议
-                                        constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
-                                        obj = Activator.CreateInstance(PLCoop, constructParms);
-                                        IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime));
-                                        break;
+                                    Object[] constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
+                                    Object obj = new object();
+                                    switch (i.PLCDevice)
+                                    {
+                                        case PLC.Siemens:
+                                        case PLC.Siemens1:
+                                        case PLC.Siemens2:
+                                        case PLC.Siemens3:
+                                        case PLC.Siemens4:
+                                        case PLC.Siemens5:
+                                            constructParms = new object[] { (SiemensPLCS)(Enum.Parse(typeof(HslCommunication.Profinet.Siemens.SiemensPLCS), i.Retain) ?? HslCommunication.Profinet.Siemens.SiemensPLCS.S1500) };  //构造器参数 
+                                            SiemensS7Net obj1 = (SiemensS7Net)Activator.CreateInstance(PLCoop, constructParms);
+                                            IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj1, i.Sendovertime, i.Receptionovertime));
+                                            break;
+                                        case PLC.Modbus_TCP:
+                                        case PLC.Modbus_TCP1:
+                                        case PLC.Modbus_TCP2:
+                                        case PLC.Modbus_TCP3:
+                                        case PLC.Modbus_TCP4:
+                                        case PLC.Modbus_TCP5:
+                                            constructParms = new object[] { };  //构造器参数
+                                            obj = Activator.CreateInstance(PLCoop, constructParms);
+                                            IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime));
+                                            break;
+                                        case PLC.Mitsubishi:
+                                        case PLC.Mitsubishi1:
+                                        case PLC.Mitsubishi2:
+                                        case PLC.Mitsubishi3:
+                                        case PLC.Mitsubishi4:
+                                        case PLC.Mitsubishi5:
+                                            //三菱协议
+                                            var constructParmse = (MitsubishiPLC)(Enum.Parse(typeof(MitsubishiPLC), i.Retain) ?? MitsubishiPLC.FX);  //构造器参数 
+                                            constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
+                                            obj = Activator.CreateInstance(PLCoop, constructParms);
+                                            IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime, constructParmse));
+                                            break;
+                                        default:
+                                            //欧姆龙协议
+                                            constructParms = new object[] { i.IPEnd, i.Point };  //构造器参数
+                                            obj = Activator.CreateInstance(PLCoop, constructParms);
+                                            IPLCsurface.PLCDictionaryAdd(PLClink.PLC.ToString(), new IPLCcommunicationBase(new System.Net.IPEndPoint(IPAddress.Parse(i.IPEnd), i.Point), obj, i.Sendovertime, i.Receptionovertime));
+                                            break;
+                                    }
                                 }
                             }
                         }
+                        //添加软件开机自动启动
+                        BootAutomatically.SetMeStart();
+                        //--------------处理报警视图---------------------
+                        //PLCEventCountLoad();//加载注册的PLC
+                        //PLCEventDataListRefresh();
+                        PlcLoad = true;
                     }
-                    //添加软件开机自动启动
-                    BootAutomatically.SetMeStart();
-                    //--------------处理报警视图---------------------
-                    //PLCEventCountLoad();//加载注册的PLC
-                    //PLCEventDataListRefresh();
-                    PlcLoad = true;
                 }
+                catch { }
             }
-            catch { }
             #endregion
             #region 处理链接PLC部分
             //--------------处理链接PLC部分---------------------

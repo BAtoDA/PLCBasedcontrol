@@ -56,9 +56,13 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             "using System.Windows.Forms; \r\n" +
             "using System.Net; \r\n" +
             "using System.Threading; \r\n" +
+            "using PLC通讯基础控件项目.宏脚本.脚本函数类; \r\n"+
             "public static class ScriptCCStatic \r\n" +
             "{ \r\n" +
-                  "//主方法不可更改和删除否则编译报错 \r\n" +
+                  "//主方法不可更改和删除否则编译报错  \r\n" +
+                   "//读取指定PLCBit位的方法： PLC.GetPLCBit(PLC名称,功能码,地址,读取返回的状态); 写入PLC.SetPLCBit(PLC名称,功能码,地址,写入状态);  \r\n" +
+                    "//读取指定PLC数据位的方法： PLC.GetPLCD(PLC名称,功能码,地址,读取寄存器的类型); 写入PLC.SetPLCD(PLC名称,功能码,地址,写入状态);  \r\n" +
+                     "//PLC目前支持类型如下:Mitsubishi Siemens  Modbus_TCP  HMI OmronTCP OmronCIP OmronUDP Fanuc 等一切解析全在BA_to_DA \r\n" +
               "   public static void Main(string greeting) \r\n" +
             "      { \r\n " +
                      "//编写代码行： \r\n" +
@@ -123,6 +127,8 @@ namespace PLC通讯基础控件项目.控件类基.控件地址选择窗口
             //-----------加载可绑定事件------------------
             EventList.Items.Add("不使用");
             new EventCreateClass().EventName(new Control()).ForEach(s => { EventList.Items.Add(s.Name); });
+            //-----------新增代码宏------------------
+            EventList.Items.Add("Macro");
             EventList.SelectedIndex = 0;
             //-----------加载下拉选项改变内容-----------------
             macrosTxtList.SelectedIndexChanged += ((send, e) =>

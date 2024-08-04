@@ -56,6 +56,28 @@ namespace PLC通讯基础控件项目.基础控件
     [Description("实现上位机底层控件 普通按钮类 -不再公共运行时 ")]
     public partial class DAButton:Button, PLCBitClassBase, PLCBitproperty, ICloneable
     {
+        #region 测试宏代码
+        //新增代码测试
+        /// <summary>
+        /// 宏事件-指示着可以代码层启动宏
+        /// </summary>
+        [Description("宏事件：用于绑定代码层启动宏"), Category("PLC类型")]
+        [Browsable(true)]
+        public event EventHandler Macro;
+        object Macroobj = new object();
+        /// <summary>
+        /// 启动运行宏
+        /// </summary>
+        [Browsable(false)]
+        public void MacroRunCommand()
+        {
+            lock (Macroobj)
+            {
+                if (Macro != null)
+                    Macro.Invoke(this, EventArgs.Empty);
+            }
+        }
+        #endregion
         #region 实现接口参数
         [Browsable(false)]
         public event EventHandler Modification;

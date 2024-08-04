@@ -16,7 +16,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
     {
         #region 字段
         public string Textaddress;
-        private string Address;
+        protected string Address;
         #endregion
         public MacroContent(string Textaddress)
         {

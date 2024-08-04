@@ -23,7 +23,7 @@ namespace PLC通讯基础控件项目.宏脚本.接口类基
         public PLC ReadWritePLC { get; set; } = PLC.Mitsubishi;
         public string ReadWriteFunction { get; set; } = "M";
         public string ReadWriteAddress { get; set; } = "0";
-        public string Macrocode { get; set; } = "using CSScriptLib; \r\n" +
+        public  string Macrocode { get; set; } = "using CSScriptLib; \r\n" +
             "using Microsoft.CSharp;using System; \r\n" +
             "using System.CodeDom.Compiler; \r\n" +
             "using System.Collections.Generic; \r\n" +
@@ -39,9 +39,13 @@ namespace PLC通讯基础控件项目.宏脚本.接口类基
             "using System.Windows.Forms; \r\n" +
             "using System.Net; \r\n" +
             "using System.Threading; \r\n" +
+            "using PLC通讯基础控件项目.宏脚本.脚本函数类; \r\n" +
             "public static class ScriptCCStatic \r\n" +
             "{ \r\n" +
-                  "//主方法不可更改和删除否则编译报错 \r\n" +
+                  "//主方法不可更改和删除否则编译报错  \r\n" +
+                   "//读取指定PLCBit位的方法： PLC.GetPLCBit(PLC名称,功能码,地址,读取返回的状态); 写入PLC.SetPLCBit(PLC名称,功能码,地址,写入状态);  \r\n" +
+                    "//读取指定PLC数据位的方法： PLC.GetPLCD(PLC名称,功能码,地址,读取寄存器的类型); 写入PLC.SetPLCD(PLC名称,功能码,地址,写入状态);  \r\n" +
+                     "//PLC目前支持类型如下:Mitsubishi Siemens  Modbus_TCP  HMI OmronTCP OmronCIP OmronUDP Fanuc 等一切解析全在BA_to_DA \r\n" +
               "   public static void Main(string greeting) \r\n" +
             "      { \r\n " +
                      "//编写代码行： \r\n" +

@@ -123,7 +123,7 @@ namespace PLC通讯基础控件项目.基础控件.宏指令控件
                 MacroObjectPool<Task> objectPool = new MacroObjectPool<Task>(
          20, func);
                 //-----处理宏任务-----
-                await MacroLoad();
+                //await MacroLoad();
                 //-----处理用户打开宏窗口停止运行任务-----
                 toolStripMenuItem.Click += (async (s, e) =>
                   {
@@ -135,7 +135,7 @@ namespace PLC通讯基础控件项目.基础控件.宏指令控件
                       tokenSource = new CancellationTokenSource();
                       token=tokenSource.Token;
                       //修改完成继续运行任务
-                      await MacroLoad();
+                      //await MacroLoad();
                   });
                 IsLoad = true;
                 void MacroTask()

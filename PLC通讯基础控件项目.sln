@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLC通讯基础控件项目
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PLC通讯库", "PLC通讯库\PLC通讯库.csproj", "{31BAB9B3-AFE9-4858-BE23-628CEE72DBA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "测试项目", "测试项目\测试项目.csproj", "{53FFB8A0-D057-4202-AE7B-C5F44B790151}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test项目", "Test项目\Test项目.csproj", "{A7F37954-5839-47CF-8FAB-5F48C0D746AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HD烟灶联动项目", "测试项目\HD烟灶联动项目.csproj", "{53FFB8A0-D057-4202-AE7B-C5F44B790151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{53FFB8A0-D057-4202-AE7B-C5F44B790151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53FFB8A0-D057-4202-AE7B-C5F44B790151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53FFB8A0-D057-4202-AE7B-C5F44B790151}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7F37954-5839-47CF-8FAB-5F48C0D746AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7F37954-5839-47CF-8FAB-5F48C0D746AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7F37954-5839-47CF-8FAB-5F48C0D746AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7F37954-5839-47CF-8FAB-5F48C0D746AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

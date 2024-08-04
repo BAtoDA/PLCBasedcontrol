@@ -60,11 +60,16 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// PLC安全操作模式
         /// </summary>
-        volatile Safetypattern PLCsafetypattern=Safetypattern.Nooperation;
+        volatile Safetypattern PLCsafetypattern = Safetypattern.Nooperation;
         /// <summary>
         /// 锁
         /// </summary>
-        Mutex mutexLock=new Mutex();
+        Mutex mutexLock = new Mutex();
+        object obj = new object();
+        /// <summary>
+        /// 指示着宏是否在忙
+        /// </summary>
+        bool Macrousy { set; get; }
         #endregion
         /// <summary>
         /// 构造函数
@@ -99,19 +104,22 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             //---------宏指令处理----------
             if (pLCBitClassBase.pLCBitselectRealize.MacroEvent != "不使用")
             {
+                //判断用户是否开启代码宏-如果开启代码宏该事件不做处理
                 var ContrEvent = new EventCreateClass();
                 ContrEvent.GainHandler(this.PlcControl, pLCBitClassBase.pLCBitselectRealize.MacroEvent ?? "Click");//注册控件事件
-                ContrEvent.ControlEvent += ( async(send,e) =>//控件触发后处理事件
+                ContrEvent.ControlEvent += (async (send, e) =>//控件触发后处理事件
                   {
-                      if (@pLCBitClassBase.pLCBitselectRealize.Macrocode == null || @pLCBitClassBase.pLCBitselectRealize.Macrocode == "") return;
+                      if (@pLCBitClassBase.pLCBitselectRealize.Macrocode == null || @pLCBitClassBase.pLCBitselectRealize.Macrocode == "" || Macrousy == true) return;
                       await Task.Run(() =>
                       {
+                          Macrousy = true;
                           Assembly compilemethod = CSScript.RoslynEvaluator.CompileMethod(@pLCBitClassBase.pLCBitselectRealize.Macrocode);
                           var Macroinstructiontype = compilemethod.GetType("css_root+DynamicClass+ScriptCCStatic");
                           var MacroinstructionMethod = Macroinstructiontype.GetMethod("Main");
                           Debug.WriteLine($"正在执行：{pLCBitClassBase.pLCBitselectRealize.MacroName}");
                           MacroinstructionMethod.Invoke(null, new object[] { "1" });
                           Debug.WriteLine($"执行完成：{pLCBitClassBase.pLCBitselectRealize.MacroName}");
+                          Macrousy = false;
                       });
                   });
             }
@@ -121,9 +129,9 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// </summary>
         /// <param name="send"></param>
         /// <param name="e"></param>
-        private void ClickPLC(object send,EventArgs e)
-        {          
-            lock (this)
+        private void ClickPLC(object send, EventArgs e)
+        {
+            lock (obj)
             {
                 //语音播报系统
                 if (pLCBitClassBase.pLCBitselectRealize.Speech && pLCBitClassBase.pLCBitselectRealize.OperationAffirm)
@@ -184,10 +192,10 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                 }
             }
         }
-        private void MouseUpPLC(object send,EventArgs e)
+        private void MouseUpPLC(object send, EventArgs e)
         {
             //判断改控件是否只读
-            if (pLCBitClassBase.pLCBitselectRealize.BitPattern|| PLCsafetypattern != Safetypattern.Nooperation) return;
+            if (pLCBitClassBase.pLCBitselectRealize.BitPattern || PLCsafetypattern != Safetypattern.Nooperation) return;
             PLCoopErr(pLCBitClassBase, pLCBitproperty);
             //根据设定的模式进行写入PLC操作
             if (pLCBitClassBase.pLCBitselectRealize.LoosenOut)
@@ -216,7 +224,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         Poss.Item2.Tick -= SafetyTick;
                         Poss.Item1.Reset();
                         ObjectPool<Tuple<Stopwatch, System.Windows.Forms.Timer>>.PutObject(Poss);
-                    }                
+                    }
                 }
                 else
                     PLCSwitch(pLCBitClassBase.pLCBitselectRealize.Pattern);
@@ -289,7 +297,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                     {
                         UINotifierHelper.ShowNotifier("未连接设备：" + IPLC + "Err", UINotifierType.WARNING, UILocalize.WarningTitle, false, 1000);//推出异常提示用户
                     });
-                    Thread.Sleep(1000);
+                    Thread.Sleep(100);
                 }
             });
         }
@@ -300,7 +308,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
         /// <summary>
         /// PLC刷新处理
         /// </summary>
-        public  void PLCrefresh()
+        public void PLCrefresh()
         {
             if (mutex.WaitOne(20))
             {
@@ -346,7 +354,7 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
                         }
                         else
                         {
-                             State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
+                            State = PLCoop.PLC_read_M_bit(pLCBitClassBase.pLCBitselectRealize.ReadWriteFunction, pLCBitClassBase.pLCBitselectRealize.ReadWriteAddress);
                         }
                         //把状态反馈到外部
                         pLCBitproperty.ReadCommand = State;
@@ -413,6 +421,5 @@ namespace PLC通讯基础控件项目.控件类基.PLC基础接口.PLC基础实�
             else
                 PLCsafetypattern = Safetypattern.Nooperation;
         }
-  
     }
 }

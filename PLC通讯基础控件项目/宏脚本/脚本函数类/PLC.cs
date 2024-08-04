@@ -5,6 +5,7 @@ using PLC通讯库.PLC通讯设备类型表;
 using PLC通讯库.通讯基础接口;
 using PLC通讯库.通讯实现类;
 using System.Linq;
+using PLC通讯库.通讯枚举;
 
 namespace PLC通讯基础控件项目.宏脚本.脚本函数类
 {
@@ -14,6 +15,62 @@ namespace PLC通讯基础控件项目.宏脚本.脚本函数类
     /// </summary>
     public class PLC
     {
+        /// <summary>
+        /// 读取指定PLC的单个Bit位数据
+        /// </summary>
+        /// <param name="PLC">需要读取的PLC</param>
+        /// <param name="Function">PLC的功能码</param>
+        /// <param name="Address">PLC的地址</param>
+        /// <param name="Data">读取返回</param>
+        /// <returns></returns>
+        public static bool GetPLCBit(string PLC, string Function, string Address,ref bool Data)
+        {
+            try
+            {
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(PLC) as IPLCcommunicationBase;
+                if (PLCoop == null) return false;
+                if (PLCoop.PLC_ready)
+                {
+                    Data= PLCoop.PLC_read_M_bit(Function, Address);
+                    return true;
+                }
+            }
+            catch
+            {
+                System.Windows.Forms.MessageBox.Show($"未链接:{PLC}");
+                return false;
+            }
+            return false;
+
+        }
+        /// <summary>
+        /// 写入指定PLC的单个Bit位数据
+        /// </summary>
+        /// <param name="PLC">需要读取的PLC</param>
+        /// <param name="Function">PLC的功能码</param>
+        /// <param name="Address">PLC的地址</param>
+        /// <param name="Data">写入位状态</param>
+        /// <returns></returns>
+        public static bool SetPLCBit(string PLC, string Function, string Address,ref bool Data)
+        {
+            try
+            {
+                IPLC_interface PLCoop = IPLCsurface.PLCDictionary.GetValueOrDefault(PLC) as IPLCcommunicationBase;
+                if (PLCoop == null) return false;
+                if (PLCoop.PLC_ready)
+                {
+                    return PLCoop.PLC_write_M_bit(Function, Address,Data?Button_state.ON:Button_state.Off);
+                }
+            }
+            catch
+            {
+                System.Windows.Forms.MessageBox.Show($"未链接:{PLC}");
+                return false;
+            }
+            return false;
+
+        }
+
         /// <summary>
         /// 读取指定PLC的数据
         /// 读取个数由Data个数决定

@@ -48,6 +48,7 @@ namespace PLC通讯基础控件项目.基础控件
                 {
                     //ControlDebug.Write($"开始加载：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                      controlPLCBitBase = new ControlPLCBitBase(this);
+                     //controlPLCBitBase.MacroeventAdd(ref Macro);//注册宏事件
                     //ControlDebug.Write($"加载完成：{this.Name}控件 归属PLC是：{this.pLCBitselectRealize.ReadWritePLC}");
                 }
             });
@@ -58,6 +59,28 @@ namespace PLC通讯基础控件项目.基础控件
     [Description("实现上位机底层控件 优化UI类按钮类 -不再公共运行时")]
     public partial class DAUiButton : UIButton, PLCBitClassBase, PLCBitproperty, ICloneable
     {
+        #region 测试宏代码
+        //新增代码测试
+        /// <summary>
+        /// 宏事件-指示着可以代码层启动宏
+        /// </summary>
+        [Description("宏事件：用于绑定代码层启动宏"), Category("PLC类型")]
+        [Browsable(false)]
+        public event EventHandler Macro;
+        object Macroobj = new object();
+        /// <summary>
+        /// 启动运行宏
+        /// </summary>
+        [Browsable(false)]
+        public void MacroRunCommand()
+        {
+            lock (Macroobj)
+            {
+                if (Macro != null)
+                    Macro.Invoke(this, EventArgs.Empty);
+            }
+        }
+        #endregion
         #region 实现接口参数
         [Browsable(false)]
         public event EventHandler Modification;
