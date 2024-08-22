@@ -39,5 +39,10 @@
 # 更新计划：
 1：全面覆盖宏指令脚本 以及控件触发宏脚本。  
 2：全面支持通过控件指定函数以及属性进行对PLC访问 写入等操作。   
+                                  PLC通讯参数设置   
+1..在主窗口添加PlcControlsPreferences1    控件 三菱  西门子，MODBUS TCP设置如下：                         
+![企业微信截图_17243275801895](https://github.com/user-attachments/assets/b37f19b6-7495-4135-9f34-bd9f77462c30)
+![企业微信截图_1724328102909](https://github.com/user-attachments/assets/2fcd7f3e-caf4-491f-93c8-39dc74c0e914)
+
 # 作者：
 DAtoDA
