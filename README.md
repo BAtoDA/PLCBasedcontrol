@@ -37,8 +37,8 @@
   状态1：
  ![image](https://user-images.githubusercontent.com/60955669/137632738-238bb3f4-0f05-4a79-8a52-28cb7f9c7e2c.png)
 # 更新计划：
-1：全面覆盖宏指令脚本 以及控件触发宏脚本。  
-2：全面支持通过控件指定函数以及属性进行对PLC访问 写入等操作。   
+1.最后一舞即将更新软件帮助文档控件，支持开发者查看项目的使用Api控件使用等等。
+2.部分控件通过拖放WabApi控件，让其他上位机通过WebApi访问控件。
                                   PLC通讯参数设置   
 1..在主窗口添加PlcControlsPreferences1    控件 三菱  西门子，MODBUS TCP设置如下：                         
 ![企业微信截图_17243275801895](https://github.com/user-attachments/assets/b37f19b6-7495-4135-9f34-bd9f77462c30)
